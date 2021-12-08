@@ -1,6 +1,12 @@
 /**
 符号两边的数据都要有空格 sum = start + end
 while-if后面的括号也要有空格 if () {}
+为啥老丁写的只写2个分支？
+重点：
+start + 1 < end 
+start + (end - start) / 2 
+A[mid] ==, <, >  mid
+A[start] A[end] ? target
 */
 
 class Solution {
