@@ -3,7 +3,7 @@ LeetCode coding notes
 
 ## [Binary_Search](/Data-Structure.py) 
 
-第一境界：二分搜索模板<br>
+二分搜索模板<br>
 - [0704.Binary Search](Solutions/0704.Binary_Search.java) (!!!E) <br>
 九章模板：1.start + 1 < end; 2.start + (end - start) / 2; 3.A[mid] ==, <, >  mid 4.A[start] A[end] ? target
 - [0034.Find_First_and_Last_Position_of_Element_in_Sorted_Array](Solutions/0034.Find_First_and_Last_Position_of_Element_in_Sorted_Array.java) (!!M) <br>
