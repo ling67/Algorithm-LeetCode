@@ -11,7 +11,7 @@ LeetCode coding notes
 Follow up: In a sorted array [1,3,4.......], search the elements that are in a certain range eg:[10, 100]. solution: 用两次二分分别找first position of 10 and last position of 100. Then the elements between the two positions should be in range [10, 100]. <br>
 
 第一境界：二分位置之ooxx<br>
-- [0278.First Bad Version.java](Solutions/0278.First_Bad_Version.java) (E) <br>
+- [0278.First Bad Version](Solutions/0278.First_Bad_Version.java) (E) <br>
 - [0702.Search in a Sorted Array of Unknown Size](Solutions/0702.Search_in_a_Sorted_Array_of_Unknown_Size.java) (M) <br>
 
 第二境界：不能00xx, half-half,找不到一个严格的分界点是左派还是右派，所以可以考虑是half-half<br>
@@ -22,6 +22,14 @@ Follow up: In a sorted array [1,3,4.......], search the elements that are in a c
 画个图分几个区间讨论就可以了, 分target在左边区间和target在右边区间讨论. <br>
 
 第三境界：
+- [0069.Sqrt(x)](Solutions/0069.Sqrt(x).java)(!!E)<br>
+- [0183.wood cut](Solutions/0183.wood_cut.java)(H Lintcode)<br>
+minimum/maximum to satisfy some condition 的问题: If we can cut into pieces with lens, then we can also cut into prices with len - 1, So this is a OOOXXX problem, to find the last O.<br>
+- [0437.Copy Books](Solutions/0437.Copy_Books.java)(!!M Lintcode) <br>
+minimum/maximum to satisfy some condition 的问题: OOOXXX problem, to find the first O. 二分法不难想，难想的是比较mid时的那个helper function, helper function return if k people can finish all the pages in the midTime. Algorithm: greedy. 只有上一个人无法在mid时间内完成的情况下，我们才加一个人进来
+- [0875.Koko Eating Bananas](Solutions/0875.Koko_Eating_Bananas.java)(M)<br>
+minimum/maximum to satisfy some condition 的问题: If Koko can finish eating all the bananas (within H hours) with an eating speed of K, she can finish with a larger speed too. So it is a OOOXXX problem trying to find the first X. end is set to be max(piles). Every time find if it posible to eat all the bananas with speed mid. if yes, then drop the right part, if no, then drop the left.
+
 
 
 
