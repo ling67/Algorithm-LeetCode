@@ -21,7 +21,8 @@ Follow up: In a sorted array [1,3,4.......], search the elements that are in a c
 - [0033.Search_in_Rotated_Sorted_Array](Solutions/0033.Search_in_Rotated_Sorted_Array.java) (M) <br>
 画个图分几个区间讨论就可以了, 分target在左边区间和target在右边区间讨论. <br>
 
-第三境界：
+第三境界：Binary Search on Result，往往没有给你一个数组让你二分 而且题目压根看不出来是个二分法可以做的题，同样是找到满足某个条件的最大或者最小值
+ 
 - [0069.Sqrt(x)](Solutions/0069.Sqrt(x).java)(!!E)<br>
 - [0183.wood cut](Solutions/0183.wood_cut.java)(H Lintcode)<br>
 minimum/maximum to satisfy some condition 的问题: If we can cut into pieces with lens, then we can also cut into prices with len - 1, So this is a OOOXXX problem, to find the last O.<br>
@@ -30,6 +31,7 @@ minimum/maximum to satisfy some condition 的问题: OOOXXX problem, to find the
 - [0875.Koko Eating Bananas](Solutions/0875.Koko_Eating_Bananas.java)(M)<br>
 minimum/maximum to satisfy some condition 的问题: If Koko can finish eating all the bananas (within H hours) with an eating speed of K, she can finish with a larger speed too. So it is a OOOXXX problem trying to find the first X. end is set to be max(piles). Every time find if it posible to eat all the bananas with speed mid. if yes, then drop the right part, if no, then drop the left.
 
+回答：this is a good question,
 
 ## [Binary_Tree & Divide Conquer](/Data-Structure.py) 
 
