@@ -40,6 +40,8 @@ O(n)的时间，把n的问题，变成了2个n/2的问题，复杂度是多少�
 O(1)的时间，把n的问题，变成了1个n/2的问题，复杂度是多少？  logn <br>
 O(1)的时间，把n的问题，变成了2个n/2的问题，复杂度是多少？  n （为什么）<br>
 
+解法：1.Non-Recursion 2.Recursion：Traverse 3.Recursion：Divide & Conquer 4.Recursion：Traverse + Divide & Conquer
+
 区别：全局变量和局部变量 <br>
 递归三要素：定义-拆解-结束条件 <br>
 
