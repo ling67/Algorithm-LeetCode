@@ -31,7 +31,7 @@ minimum/maximum to satisfy some condition 的问题: OOOXXX problem, to find the
 - [0875.Koko Eating Bananas](Solutions/0875.Koko_Eating_Bananas.java)(M)<br>
 minimum/maximum to satisfy some condition 的问题: If Koko can finish eating all the bananas (within H hours) with an eating speed of K, she can finish with a larger speed too. So it is a OOOXXX problem trying to find the first X. end is set to be max(piles). Every time find if it posible to eat all the bananas with speed mid. if yes, then drop the right part, if no, then drop the left.
 
-回答：this is a good question,
+回答：this is a good question,二分的问题，永远的解决办法是，某一部分满足条件，某一部分不满足条件，就可以去除不满足条件的部分
 
 ## [Binary_Tree & Divide Conquer](/Data-Structure.py) 
 
