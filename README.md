@@ -35,6 +35,10 @@ minimum/maximum to satisfy some condition 的问题: If Koko can finish eating a
 
 ## [Binary_Tree & Divide Conquer](/Data-Structure.py) 
 
+classic binary tree & divide conquer
+- [0226.Invert Binary Tree](Solutions/0226.Invert_Binary_Tree.java) (E)
+- [0100.Same Tree](Solutions/0100.Same_Tree.java) (E)
+
 time complexity training II <br>
 O(n)的时间，把n的问题，变成了2个n/2的问题，复杂度是多少？  nlogn:merge sort//quick sort <br>
 O(1)的时间，把n的问题，变成了1个n/2的问题，复杂度是多少？  logn <br>
@@ -71,10 +75,49 @@ helper function return (if the tree is balanced, maxDepth); rootIsBalan = leftIs
 
 总结：二叉树的通用时间复杂度计算公式  =O(二叉树的节点个数N * 每个节点的处理时间)
 
+最近公共祖先 Lowest Common Ancestor
+situation1: has parent note 
+situation2: do not has parent note example:0236
+situation3: a,b exist in binary tree?
+situation4: binary search tree example:0235
+- [0236.Lowest Common Ancestor of a Binary Tree.java](Solutions/0236.Lowest_Common_Ancestor_of_a_Binary_Tree.java)<br>
+- [0235.Lowest Common Ancestor of a Binary Search Tree.java](Solutions/0235.Lowest_Common_Ancestor_of_a_Binary_Search_Tree)<br>
+
+最长连续序列 Binary Tree Longest Consecutive Sequence
+situation1: 二叉树不可转弯 example:0298
+situation2: 可转弯 example:0549
+situation3: 多叉树   所有子树最长递增和最长递减
+- [0298.Binary Tree Longest Consecutive Sequence](Solutions/0298.Binary_Tree_Longest_Consecutive_Sequence.java)(!!M)<br>
+helper function returns (the LCS ended with root, without root)
+- [0549.Binary Tree Longest Consecutive Sequence II](Solutions/0549.Binary_Tree_Longest_Consecutive_Sequence_II.java)(!!M)<br>
+helper function returns (the LCS ended with root decreasing, increasing, without root, pass root)
 
 
+路径相关的题目：
 
+二叉树的路径和:Binary Tree Path Sum I && II && III
+situation1: include root (a.return boolean  b.return all path and then print) example:0112
+situation2: can not include root example:0437 
+situation3: any to any can make a turn
+- [0112.Path Sum](Solutions/0112.Path_Sum.java)(E)<br>
+求path, 第一反应当然是dfs了
+- [0113.Path Sum II](Solutions/0113.Path_Sum_II.java)(!!M)<br>    TODO
+Solution 1: 碰到打印所有路径的问题，第一反应就是带backtracking the dfs
+0437. Path Sum III (!!M)     TODO
+不需要从根节点出发，solution 1: dfs every node in the tree. at each node, do a backtrack to find how many root-to-any_node paths are there. solution 2: dfs + memorization. 用 HashMap 来建立路径之和跟其个数之间的映射，即路径之和为 curSum 的个数为 m[curSum].
 
+binary tree maximum path sum  还有一个相关的题
+
+BST
+
+LCA建立在BST的基础之上
+
+- [0098.Validate Binary Search Tree.java](Solutions/0098.Validate_Binary_Search_Tree.java)(M)<br>
+注意判断条件不仅仅是left.val<root.val<right.val而是max of left < root < min of right; helper函数返回以root为根的树(是不是BST，max and min value in the tree); if (isLeftBST and isRightBST and maxLeft < root.val < minRight): return True
+
+ convert binary search tree to doubly linked list
+ 
+ 跟flatten相似
 
 
 
