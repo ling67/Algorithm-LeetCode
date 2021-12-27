@@ -49,17 +49,17 @@ O(1)的时间，把n的问题，变成了2个n/2的问题，复杂度是多少�
 区别：全局变量和局部变量 <br>
 递归三要素：定义-拆解-结束条件 <br>
 
-非递归的 前序-中序-后序算法要背诵 <br>
+非递归的 前序-中序-后序算法要背诵   TODO： <br>
 
 - [0144.Binary Tree Preorder Traversal](Solutions/0144.Binary_Tree_Preorder_Traversal.java) (M) memorize the iterative version using stack<br>
-preorder前序遍历: 1.非递归算法 (recommend) 2.递归算法：分治法 3.递归算法：遍历法<br>
+preorder前序遍历: 1.非递归算法 (recommend) 2.递归算法：分治法 3.递归算法：遍历法  TODO :只写了一个方法 <br>
 分治法和遍历法的区别，遍历法用了全局变量
 
 - [0094.Binary Tree Inorder Traversal.java](Solutions/0094.Binary_Tree_Inorder_Traversal.java)(M) memorize the iterative version using stack solution 2: in order traversal of BST (iteratively) - O(k+H) where H is height of tree. solution 1: trivial - in order traversal of BST - O(N), O(N).<br>
-inorder中序遍历: 1.非递归算法 (recommend) 2.递归算法：分治法 3.递归算法：遍历法<br>
+inorder中序遍历: 1.非递归算法 (recommend) 2.递归算法：分治法 3.递归算法：遍历法   TODO :只写了一个方法 <br>
 
 - [0145.Binary Tree Postorder Traversal](Solutions/0145.Binary_Tree_Postorder_Traversal.java) (M) memorize the iterative version using stack<br>
-postorder后序遍历: 1.非递归算法 (recommend) 2.递归算法：分治法 3.递归算法：遍历法<br>
+postorder后序遍历: 1.非递归算法 (recommend) 2.递归算法：分治法 3.递归算法：遍历法 TODO :只写了一个方法 <br>
 
 碰到二叉树的问题，就想想整棵树在该问题上的结果
 和左右儿子在该问题上的结果之间的联系是什么
@@ -72,8 +72,9 @@ Divide and Conquer的方法输出以root为根的subTree的subSum，然后每次
 - [0110.Balanced Binary Tree.java](Solutions/0110.Balanced_Binary_Tree.java)(E) <br>
 helper function return (if the tree is balanced, maxDepth); rootIsBalan = leftIsBalan and rightIsBalan and abs(leftMaxDepth - rightMaxDepth) <= 1
 - [1120.Maximum Average Subtree](Solutions/1120.Maximum_Average_Subtree)(E) <br>
-
 总结：二叉树的通用时间复杂度计算公式  =O(二叉树的节点个数N * 每个节点的处理时间)
+
+- [0114.Flatten Binary Tree to Linked List](Solutions/0114.Flatten_Binary_Tree_to_Linked_List.java)<br>
 
 最近公共祖先 Lowest Common Ancestor
 situation1: has parent note 
@@ -92,6 +93,8 @@ helper function returns (the LCS ended with root, without root)
 - [0549.Binary Tree Longest Consecutive Sequence II](Solutions/0549.Binary_Tree_Longest_Consecutive_Sequence_II.java)(!!M)<br>
 helper function returns (the LCS ended with root decreasing, increasing, without root, pass root)
 
+TODO：https://leetcode.com/problems/binary-tree-longest-consecutive-sequence-ii/  <br>
+
 
 路径相关的题目：
 
@@ -103,21 +106,23 @@ situation3: any to any can make a turn
 求path, 第一反应当然是dfs了
 - [0113.Path Sum II](Solutions/0113.Path_Sum_II.java)(!!M)<br>    TODO
 Solution 1: 碰到打印所有路径的问题，第一反应就是带backtracking the dfs
-0437. Path Sum III (!!M)     TODO
+- [0437.Path Sum III](Solutions/0437.Path_Sum III)(!!M)  TODO<br>
 不需要从根节点出发，solution 1: dfs every node in the tree. at each node, do a backtrack to find how many root-to-any_node paths are there. solution 2: dfs + memorization. 用 HashMap 来建立路径之和跟其个数之间的映射，即路径之和为 curSum 的个数为 m[curSum].
-
-binary tree maximum path sum  还有一个相关的题
+TODO:
+1.https://leetcode.com/problems/path-sum-iii/ 
+2.binary tree maximum path sum  还有一个相关的题  <br>
 
 BST
 
-LCA建立在BST的基础之上
+TODO:思考LCA建立在BST的基础之上
 
 - [0098.Validate Binary Search Tree.java](Solutions/0098.Validate_Binary_Search_Tree.java)(M)<br>
 注意判断条件不仅仅是left.val<root.val<right.val而是max of left < root < min of right; helper函数返回以root为根的树(是不是BST，max and min value in the tree); if (isLeftBST and isRightBST and maxLeft < root.val < minRight): return True
 
- convert binary search tree to doubly linked list
+TODO:运行失败convert binary search tree to doubly linked list:https://leetcode.com/problems/convert-binary-search-tree-to-sorted-doubly-linked-list/ <br>
+ TODO ：Question:全局变量---变量
  
- 跟flatten相似
+ 
 
 
 
