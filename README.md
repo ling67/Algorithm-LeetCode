@@ -122,7 +122,19 @@ TODO:思考LCA建立在BST的基础之上
 TODO:运行失败convert binary search tree to doubly linked list:https://leetcode.com/problems/convert-binary-search-tree-to-sorted-doubly-linked-list/ <br>
  TODO ：Question:全局变量---变量
  
+
+## [Breadth First Search](/Data-Structure.py) 
+
+模板
+1.把源节点放入q中
+2.while循环：把源节点一个个弹出q，与此同时把刚刚弹出来的节点的邻居（们）加入q
+
+ 二叉树上的宽度优先搜索 BFS in Binary Tree
+0449.Serialize_and_Deserialize_BST.java
+0102.Binary_Tree_Level_Order_Traversal.java
  
+图上的宽搜 BFS in Graph，和树上有什么区别？图中存在环，存在环意味着，同一个节点可能重复进入队列
+
 
 
 
