@@ -128,13 +128,22 @@ TODO:运行失败convert binary search tree to doubly linked list:https://leetco
 模板
 1.把源节点放入q中
 2.while循环：把源节点一个个弹出q，与此同时把刚刚弹出来的节点的邻居（们）加入q
+能够用BFS解决的问题，一定不要用DFS去做
 
  二叉树上的宽度优先搜索 BFS in Binary Tree
-0449.Serialize_and_Deserialize_BST.java
-0102.Binary_Tree_Level_Order_Traversal.java
+- [0449.Serialize and Deserialize BST](Solutions/0449.Serialize_and_Deserialize_BST)<br>
+Same as 297. Solution says since BST, the answer could be as compact as possible. Don't know how?
+- [0102.Binary Tree Level Order Traversal](Solutions/0102.Binary_Tree_Level_Order_Traversal.java)<br>
+
+
  
+判断图是不是树？
+1.边树刚好等于n-1，点数和边数差1
+2.n-1条边一定要把整个图连起来，判断连通性，就是通过一个点把其他的点都能找到
 图上的宽搜 BFS in Graph，和树上有什么区别？图中存在环，存在环意味着，同一个节点可能重复进入队列
 
+- [0133.Clone Graph](Solutions/0133.Clone_Graph.java) (!!!M) <br>
+用一个mapping 保存node-->node_copy. 然后一边dfs一边新建copied nodes
 
 
 
