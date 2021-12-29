@@ -101,4 +101,67 @@ public class Solution {
     }
 }
 
+//修改程序，如果没有对应的拓扑排序，输出为null
+public class Solution {
+    /**
+     * @param graph: A list of Directed graph node
+     * @return: Any topological order for the given graph.
+     */
+    public ArrayList<DirectedGraphNode> topSort(ArrayList<DirectedGraphNode> graph) {
+        // write your code here
+
+        ArrayList<DirectedGraphNode> order = new ArrayList<>();
+
+        if (graph == null) {
+            return order;
+        }
+
+        //1.count indegree
+        Map<DirectedGraphNode, Integer> indegree = getIndegree(graph); 
+
+        //2.topological sorting - put all nodes that indgree = 0 into queue bfs 为什么不需要hashset，因为靠的是indegree中是否为0控制的是否进入队列，不可能两次为0
+        Queue<DirectedGraphNode> queue = new LinkedList<>();
+        for (DirectedGraphNode node : graph) {
+            if (indegree.get(node) == 0) {
+                queue.offer(node);
+                order.add(node);
+            }
+        }
+        
+        while (!queue.isEmpty()) {
+            DirectedGraphNode node = queue.poll();
+            for (DirectedGraphNode neighbor : node.neighbors) {
+                indegree.put(neighbor, indegree.get(neighbor) - 1);
+                if (indegree.get(neighbor) == 0) {
+                    queue.offer(neighbor);
+                    order.add(neighbor);
+                }
+            }
+        }
+        
+        //只有当点全部拿出来了才说明有拓扑排序
+        if(order.size() == graph.size()) {
+            return order;
+        }
+        return null;
+    }
+
+    private Map<DirectedGraphNode, Integer> getIndegree(ArrayList<DirectedGraphNode> graph) {
+        Map<DirectedGraphNode, Integer> indegree = new HashMap<>();
+        for (DirectedGraphNode node : graph) {
+            indegree.put(node, 0);
+        } 
+        for (DirectedGraphNode node : graph) {
+            for (DirectedGraphNode neighbor : node.neighbors) {
+                indegree.put(neighbor, indegree.get(neighbor) + 1);
+            }
+        }
+        return indegree;
+    }
+}
+
+
+
+
+
 
