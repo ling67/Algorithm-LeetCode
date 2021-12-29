@@ -145,7 +145,7 @@ b.图上的宽搜 BFS in Graph
 用一个mapping 保存node-->node_copy. 然后一边dfs一边新建copied nodes
 
 - [0618.Search Graph Nodes](Solutions/0618.Search_Graph_Nodes.java) (leetcode)  图的遍历(由点及面) <br>
-如何找所有最近的value=target的点?
+如何找所有最近的value=target的点? 加上层序遍历
 
 b.1 拓扑排序 Topological Sorting
 
