@@ -140,14 +140,18 @@ b.图上的宽搜 BFS in Graph
 1.边树刚好等于n-1，点数和边数差1
 2.n-1条边一定要把整个图连起来，判断连通性，就是通过一个点把其他的点都能找到
 图上的宽搜 BFS in Graph，和树上有什么区别？图中存在环，存在环意味着，同一个节点可能重复进入队列
-
+- [0261.Graph Valid Tree](Solutions/0261.Graph_Valid_Tree.java) (!!!M) <br>
 - [0133.Clone Graph](Solutions/0133.Clone_Graph.java) (!!!M) <br>
-用一个mapping 保存node-->node_copy. 然后一边dfs一边新建copied nodes
-
 - [0618.Search Graph Nodes](Solutions/0618.Search_Graph_Nodes.java) (leetcode)  图的遍历(由点及面) <br>
 如何找所有最近的value=target的点? 加上层序遍历
 
 b.1 拓扑排序 Topological Sorting
+- [0127.Topological Sorting.java ](Solutions/0127.Topological_Sorting.java) (!!LintCode)  <br>
+有向图的问题，可以检测有向图是否有环！必考，其实也非常模板化，一定要记住。Three steps: 1. 从数字关系求出每个节点的inDegrees（就是找节点与相邻节点的依赖关系） (inDegrees = collections.defaultdict(int))，key是node, val是这个node的indegree值; 2. 和每个节点的neighbors （neighbors = collections.defaultdict(list)), key是node, val是装有这个node的neighbor的list; 3. 然后 BFS，背诵模板就可以了。
+相关题目一定要做 TODO
+
+c.矩阵中的宽度优先搜索BFS in Matrix
+ 
 
 
 
