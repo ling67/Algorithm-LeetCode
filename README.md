@@ -151,8 +151,19 @@ b.1 拓扑排序 Topological Sorting
 相关题目一定要做 TODO
 
 c.矩阵中的宽度优先搜索BFS in Matrix
- 
+图的遍历(由点及面) Number of Islands 经典矩阵宽度优先搜索 
+- [0200.Number_of_Islands.java](Solutions/0200.Number_of_Islands.java) (!!LintCode) <br>
+图的遍历(层级遍历)  同：https://leetcode.com/problems/rotting-oranges/ 复习时可做
+- [0598.Zombie in Matrix](Solutions/0598.Zombie_in_Matrix.java) (!!LintCode) <br>
+简单图最短路径 
+- [0611.Knight Shortest Path](Solutions/0611.Knight_Shortest_Path.java) (!!LintCode) <br>
+- [0573.Build Post Office II](Solutions/0573.Build_Post_Office_II.java) (!!LintCode) <br>
 
+
+
+
+
+ 
 
 
 
