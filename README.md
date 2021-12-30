@@ -161,13 +161,23 @@ c.矩阵中的宽度优先搜索BFS in Matrix
 
 
 ## [Depth_First_Search](/Data-Structure.py) 
-碰到让你找所有方案的题，一定是DFS 
+碰到让你找所有方案的题，一定是DFS  
 90%DFS的题，要么是排列，要么是组合
 DFS更节约空间 
 DFS算法有时候=回溯算法
 
 递归三要素：• 递归的定义 • 递归的拆解 • 递归的出口
 一般来说，如果面试官不特别要求的话，DFS都可以使用递归(Recursion)的方式来实现。 递归三要素是实现递归的重要步骤:
+
+模板
+subset问题
+- [0078.Subsets](Solutions/0078.Subsets.java) (M) <br>
+combination sum
+- [0039.Combination Sum](Solutions/0039.Combination_Sum.java) (M) <br>
+
+
+
+
 
 
  
