@@ -25,7 +25,6 @@ Input: candidates = [2], target = 1
 Output: []
 */
 
-
 class Solution {
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> results = new ArrayList();
@@ -70,7 +69,26 @@ class Solution {
             combination.remove(combination.size() -1);   
         }
     }    
-
 }
+
+//去重方法：两个指针，一个指针遍历，一个指针左边永远是去重好的数组
+private int[] removeDuplicates(int[] candidates) {
+        Arrays.sort(candidates);
+        
+        int index = 0;
+        for (int i = 0; i < candidates.length; i++) {
+            if (candidates[i] != candidates[index]) {
+                candidates[++index] = candidates[i];
+            }
+        }
+        
+        int[] nums = new int[index + 1];
+        for (int i = 0; i < index + 1; i++) {
+            nums[i] = candidates[i];
+        }
+        
+        return nums;
+    }
+
 
 
