@@ -33,7 +33,7 @@ class Solution {
         }
         
         for (int i = 0; i < nums.length; i++) {
-            //如果permutation中已经包含了这个元素，后面就忽略
+            //如果permutation中已经包含了这个元素，后面就忽略，这里的复杂度是O（n）,用visit[]可以降低复杂度
             if (permutation.contains(nums[i])) {
                 continue;
             }
