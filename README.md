@@ -191,9 +191,12 @@ Palindrome Partitioning
 
 ### [排列搜索问题 Permutation](/Data-Structure.py) 
 
- 问题模型:求出所有满足条件的“排列”。 
- 判断条件:组合中的元素是顺序“相关”的。 
- 时间复杂度:与 n! 相关。
+问题模型:求出所有满足条件的“排列”。 
+判断条件:组合中的元素是顺序“相关”的。 
+时间复杂度:与 n! 相关。
+- [0046.Permutations.java](Solutions/0046.Permutations.java) (M) <br>
+- [0047.Permutations_II](Solutions/0047.Permutations_II.java) (M) <br>
+
 
 ### [图中的搜索 Search in a Graph](/Data-Structure.py) 
 
