@@ -1,28 +1,29 @@
 # leetCode-java
 LeetCode coding notes
 
-## [Binary_Search](/Data-Structure.py) 
+## [Binary_Search]()
 
-二分搜索模板<br>
+### [二分搜索模板]<br>
 - [0704.Binary Search]   (!!!E) <br>
 九章模板：1.start + 1 < end; 2.start + (end - start) / 2; 3.A[mid] ==, <, >  mid 4.A[start] A[end] ? target
 - [0034.Find_First_and_Last_Position_of_Element_in_Sorted_Array](Solutions/0034.Find_First_and_Last_Position_of_Element_in_Sorted_Array.java) (!!M) <br>
 用两次二分分别找first pos of target and last pos of target. 想找first position of target，要保证两点：1. while循环里的判断要往左逼，也就是if nums[mid] >= target: end = mid； 2. 就把start放在后面更新，这样如果出现nums[end]和nums[start]都等于target的情况的话，first可以被后面较小的start替换掉，因为start肯定是小于end的。
 Follow up: In a sorted array [1,3,4.......], search the elements that are in a certain range eg:[10, 100]. solution: 用两次二分分别找first position of 10 and last position of 100. Then the elements between the two positions should be in range [10, 100]. <br>
 
-第一境界：二分位置之ooxx<br>
+### [第一境界：二分位置之ooxx]<br>
 - [0278.First Bad Version](Solutions/0278.First_Bad_Version.java) (E) <br>
 - [0702.Search in a Sorted Array of Unknown Size](Solutions/0702.Search_in_a_Sorted_Array_of_Unknown_Size.java) (M) <br>
 
-第二境界：不能00xx, half-half,找不到一个严格的分界点是左派还是右派，所以可以考虑是half-half<br>
+### [第二境界：不能00xx, half-half]<br>
+找不到一个严格的分界点是左派还是右派，所以可以考虑是half-half<br>
 - [0278.First Bad Version](Solutions/0278.First_Bad_Version.java) (E) <br>
 - [0153.Find Minimum in Rotated Sorted Array](Solutions/0153.Find_Minimum_in_Rotated_Sorted_Array.java) (!!M) <br>
 与153类似，只是array里可能有duplicates，采用153的解法三，唯一不同的是：nums[mid] == nums[end]: end -= 1, 注意不能drop掉一半，因为eg: nums=[2,2,2,2,2,1,2,2,2,2,2,2........], 由于不知道mid是1前面的2还是1后面的2，所以无法确定是drop前面还是drop后面，只能保险地把end往前挪一位，所以154这题in extreme case, 时间复杂度是O(N). 这题用nums[end]与nums[mid]比较能work的原因是end永远不可能出现在最小值的左边。<br>
 - [0033.Search_in_Rotated_Sorted_Array](Solutions/0033.Search_in_Rotated_Sorted_Array.java) (M) <br>
 画个图分几个区间讨论就可以了, 分target在左边区间和target在右边区间讨论. <br>
 
-第三境界：Binary Search on Result，往往没有给你一个数组让你二分 而且题目压根看不出来是个二分法可以做的题，同样是找到满足某个条件的最大或者最小值
- 
+### [第三境界：Binary Search on Result]<br>
+往往没有给你一个数组让你二分 而且题目压根看不出来是个二分法可以做的题，同样是找到满足某个条件的最大或者最小值
 - [0069.Sqrt(x)](Solutions/0069.Sqrt(x).java)(!!E)<br>
 - [0183.wood cut](Solutions/0183.wood_cut.java)(H Lintcode)<br>
 minimum/maximum to satisfy some condition 的问题: If we can cut into pieces with lens, then we can also cut into prices with len - 1, So this is a OOOXXX problem, to find the last O.<br>
@@ -95,7 +96,6 @@ helper function returns (the LCS ended with root decreasing, increasing, without
 
 TODO：https://leetcode.com/problems/binary-tree-longest-consecutive-sequence-ii/  <br>
 
-
 路径相关的题目：
 
 二叉树的路径和:Binary Tree Path Sum I && II && III
@@ -125,7 +125,7 @@ TODO:运行失败convert binary search tree to doubly linked list:https://leetco
 
 ## [Breadth First Search](/Data-Structure.py) 
 
-a.二叉树上的宽搜 BFS in Binary Tree模板
+### [a.二叉树上的宽搜 BFS in Binary Tree模板](/Data-Structure.py) 
 1.把源节点放入q中
 2.while循环：把源节点一个个弹出q，与此同时把刚刚弹出来的节点的邻居（们）加入q
 能够用BFS解决的问题，一定不要用DFS去做
@@ -135,7 +135,7 @@ a.二叉树上的宽搜 BFS in Binary Tree模板
 Same as 297. Solution says since BST, the answer could be as compact as possible. Don't know how?
 - [0102.Binary Tree Level Order Traversal](Solutions/0102.Binary_Tree_Level_Order_Traversal.java)<br>
  
-b.图上的宽搜 BFS in Graph
+### [b.图上的宽搜 BFS in Graph](/Data-Structure.py) 
 判断图是不是树？
 1.边树刚好等于n-1，点数和边数差1
 2.n-1条边一定要把整个图连起来，判断连通性，就是通过一个点把其他的点都能找到
@@ -150,7 +150,7 @@ b.1 拓扑排序 Topological Sorting
 有向图的问题，可以检测有向图是否有环！必考，其实也非常模板化，一定要记住。Three steps: 1. 从数字关系求出每个节点的inDegrees（就是找节点与相邻节点的依赖关系） (inDegrees = collections.defaultdict(int))，key是node, val是这个node的indegree值; 2. 和每个节点的neighbors （neighbors = collections.defaultdict(list)), key是node, val是装有这个node的neighbor的list; 3. 然后 BFS，背诵模板就可以了。
 相关题目一定要做 TODO
 
-c.矩阵中的宽度优先搜索BFS in Matrix
+### [c.矩阵中的宽度优先搜索BFS in Matrix](/Data-Structure.py) 
 图的遍历(由点及面) Number of Islands 经典矩阵宽度优先搜索 
 - [0200.Number_of_Islands.java](Solutions/0200.Number_of_Islands.java) (!!LintCode) <br>
 图的遍历(层级遍历)  同：https://leetcode.com/problems/rotting-oranges/ 复习时可做
@@ -158,7 +158,6 @@ c.矩阵中的宽度优先搜索BFS in Matrix
 简单图最短路径 
 - [0611.Knight Shortest Path](Solutions/0611.Knight_Shortest_Path.java) (!!LintCode) <br>
 - [0573.Build Post Office II](Solutions/0573.Build_Post_Office_II.java) (!!LintCode) <br>
-
 
 ## [Depth_First_Search](/Data-Structure.py) 
 碰到让你找所有方案的题，一定是DFS  
@@ -172,13 +171,17 @@ DFS算法有时候=回溯算法
 模板
 subset问题
 - [0078.Subsets](Solutions/0078.Subsets.java) (M) <br>
+- [0090.Subsets_II](Solutions/0090.Subsets_II) (M) <br>
+
 combination sum
 - [0039.Combination Sum](Solutions/0039.Combination_Sum.java) (M) <br>
+- 40. Combination Sum II
 
+时间复杂度通用公式：
+搜索的时间复杂度：O(答案总数 * 构造每个答案的时间)   不能明显知道答案个数，就用s，所以为s*n      通用的DFS时间复杂度计算公式 O(答案个数 * 构造每个答案的时间)
+举例Subsets问题，求所有的子集，子集个数一共2^n，每个集合的平均长度是O(n)的，所以时间复杂度为O(n*2^n),同理Permutations问题的时间度咋读为O（n*n!）
 
-
-
-
+ 
 
  
 
