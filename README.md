@@ -168,6 +168,11 @@ DFS算法有时候=回溯算法
 递归三要素：• 递归的定义 • 递归的拆解 • 递归的出口
 一般来说，如果面试官不特别要求的话，DFS都可以使用递归(Recursion)的方式来实现。 递归三要素是实现递归的重要步骤:
 
+### [组合搜索问题 Combination](/Data-Structure.py) 
+ 问题模型:求出所有满足条件的“组合”。 <br>
+ 判断条件:组合中的元素是顺序无关的。 <br>
+ 时间复杂度:与 2^n 相关。<br>
+
 subset问题
 - [0078.Subsets](Solutions/0078.Subsets.java) (M) <br>
 - [0090.Subsets_II](Solutions/0090.Subsets_II) (M) <br>
@@ -175,14 +180,25 @@ subset问题
 combination sum
 - [0039.Combination Sum](Solutions/0039.Combination_Sum.java) (M) <br>
 - [0040.Combination_Sum_II](Solutions/0040.Combination_Sum_II.java) (M) <br>
+ 
+Palindrome Partitioning 
+字母和字母之间的位置当成切和不切
+从s的startIndex进行切分
 
 时间复杂度通用公式：
 搜索的时间复杂度：O(答案总数 * 构造每个答案的时间)   不能明显知道答案个数，就用s，所以为s*n      通用的DFS时间复杂度计算公式 O(答案个数 * 构造每个答案的时间)
 举例Subsets问题，求所有的子集，子集个数一共2^n，每个集合的平均长度是O(n)的，所以时间复杂度为O(n*2^n),同理Permutations问题的时间度咋读为O（n*n!）
 
- 
+### [排列搜索问题 Permutation](/Data-Structure.py) 
+
+ 问题模型:求出所有满足条件的“排列”。 
+ 判断条件:组合中的元素是顺序“相关”的。 
+ 时间复杂度:与 n! 相关。
+
+### [图中的搜索 Search in a Graph](/Data-Structure.py) 
 
  
+
 
 
 
