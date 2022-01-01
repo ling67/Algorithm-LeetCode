@@ -16,6 +16,8 @@ Output: [5,4,3,2,1]
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
+
+//non-recursion
 class Solution {
     public ListNode reverseList(ListNode head) {
         ListNode prev = null;
@@ -30,3 +32,22 @@ class Solution {
         return prev;
     }
 }
+
+//recursion
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode second_node = head.next;
+        ListNode reversed_head = reverseList(second_node);  // 递归调用，返回的是已经revere好了的head
+        second_node.next = head;
+        head.next = null;
+        return reversed_head;
+    }
+}
+
+
+
+
+
