@@ -244,7 +244,7 @@ DFS不回溯的题目：Number of Islands，因为就是要找点，不是要找
 ## [链表与数组 Linked List & Array](/Data-Structure.py) 
 
 ### [Linked List]()
-a.Dummy Node 链表的题一般就使用dummy node
+a.Dummy Node 
 如何使用 Dummy Node
 head = dummy 这句话总是需要么? 
 什么时候使用 Dummy Node? 结构变化，会导致头部变化，就可以用Dummy Node
@@ -254,7 +254,9 @@ Dummy Node 非用不可么? 不是，写起来可能很麻烦
 Dummy Node 初始化的值重要么?  不重要
 链表的问题都需要用到 Dummy Node 么?  90%都可以用到
 
-- [0206.Reverse_Linked_List.java](Solutions/0206.Reverse_Linked_List.java)<br>
+总结：链表的题一般就使用dummy node
+- [0206.Reverse Linked List.java](Solutions/0206.Reverse_Linked_List.java)<br>
+- [0025.Reverse Nodes in k-Group](Solutions/0025.Reverse_Nodes_in_k-Group.java)<br>
 
 b.High Frequency
  
