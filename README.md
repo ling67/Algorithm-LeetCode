@@ -244,7 +244,7 @@ DFS不回溯的题目：Number of Islands，因为就是要找点，不是要找
 ## [链表与数组 Linked List & Array](/Data-Structure.py) 
 
 ### [Linked List]()
-a.Dummy Node 
+a.Dummy Node <br>
 如何使用 Dummy Node
 head = dummy 这句话总是需要么? 
 什么时候使用 Dummy Node? 结构变化，会导致头部变化，就可以用Dummy Node
@@ -258,7 +258,12 @@ Dummy Node 初始化的值重要么?  不重要
 - [0206.Reverse Linked List.java](Solutions/0206.Reverse_Linked_List.java)<br>
 - [0025.Reverse Nodes in k-Group](Solutions/0025.Reverse_Nodes_in_k-Group.java)<br>
 
-b.High Frequency
+ Copy List with Random Pointer  TODO
+ 方法1：先复制点，再复制边，记录下来新老节点的映射关系，用hashMap存储。  缺点：用了额外的存储空间
+ 方法2：记住，讨巧的方式，改变链表结构变成1-1’-2-2‘-3-3’ 再分离，不用额外的空间
+ 解题时：复杂问题先分成几个小问题，定好小问题的输入和输出，再写小问题
+
+b.High Frequency <br>
  
 ### [Array]()
 Subarray
