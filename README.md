@@ -257,8 +257,7 @@ Dummy Node 初始化的值重要么?  不重要
 总结：链表的题一般就使用dummy node
 - [0206.Reverse Linked List.java](Solutions/0206.Reverse_Linked_List.java)<br>
 - [0025.Reverse Nodes in k-Group](Solutions/0025.Reverse_Nodes_in_k-Group.java)<br>
-
- Copy List with Random Pointer  TODO
+- [0138.Copy List with Random Pointer](Solutions/0138.Copy_List_with_Random_Pointer.java)<br>
  方法1：先复制点，再复制边，记录下来新老节点的映射关系，用hashMap存储。  缺点：用了额外的存储空间 <br>
  方法2：记住，讨巧的方式，改变链表结构变成1-1’-2-2‘-3-3’ 再分离，不用额外的空间 <br>
  解题时：复杂问题先分成几个小问题，定好小问题的输入和输出，再写小问题 <br>
