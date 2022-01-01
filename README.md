@@ -193,9 +193,8 @@ combination sum
 - [0039.Combination Sum](Solutions/0039.Combination_Sum.java) (M) <br>
 - [0040.Combination_Sum_II](Solutions/0040.Combination_Sum_II.java) (M) <br>
  
-Palindrome Partitioning  TODO
-字母和字母之间的位置当成切和不切
-从s的startIndex进行切分
+Palindrome Partitioning 解题思路：字母和字母之间的位置当成切和不切，从s的startIndex进行切分
+- [0131.Palindrome Partitioning](Solutions/0131.Palindrome_Partitioning.java) <br>
 
 时间复杂度通用公式：
 搜索的时间复杂度：O(答案总数 * 构造每个答案的时间)   不能明显知道答案个数，就用s，所以为s*n      通用的DFS时间复杂度计算公式 O(答案个数 * 构造每个答案的时间)
