@@ -241,9 +241,27 @@ http://www.jiuzhang.com/solutions/permutations/ <br>
 DFS不回溯的题目：Number of Islands，因为就是要找点，不是要找路径
 
 
- 
+## [链表与数组 Linked List & Array](/Data-Structure.py) 
 
+### [Linked List]()
+a.Dummy Node 链表的题一般就使用dummy node
+如何使用 Dummy Node
+head = dummy 这句话总是需要么? 
+什么时候使用 Dummy Node? 结构变化，会导致头部变化，就可以用Dummy Node
+Dummy Node 是否需要删除? 不用，Java会自动删除
+使用 Dummy Node 算面试官会说我耗费了额外空间么? 
+Dummy Node 非用不可么? 不是，写起来可能很麻烦
+Dummy Node 初始化的值重要么?  不重要
+链表的问题都需要用到 Dummy Node 么?  90%都可以用到
+
+- [0206.Reverse_Linked_List.java](Solutions/0206.Reverse_Linked_List.java)<br>
+
+b.High Frequency
  
+### [Array]()
+Subarray
+Sorted Array
+
 
 
 
