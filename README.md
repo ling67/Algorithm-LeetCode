@@ -265,14 +265,10 @@ Dummy Node 初始化的值重要么?  不重要
  Linked List Cycle  
  常规解法1：extra空间 用hashSet
  非常规解法2：快慢指针
-- [0141.Linked List Cycle](Solutions/ 0141.Linked_List_Cycle.java)<br>
- follow up 1相遇在进入的点   TODO 没找到
- - [0141.Linked List Cycle](Solutions/ 0141.Linked_List_Cycle.java)<br>
-
- follow up:判断两个链表是不是有交集，并且  两个链表连起来看有没有环
-
- 
- 
+- [0141.Linked List Cycle](Solutions/0141.Linked_List_Cycle.java)<br>
+- [0160.Intersection of Two Linked Lists](Solutions/0160.Intersection_of_Two_Linked_Lists.java)<br>
+ follow up:判断两个链表是不是有交集，并且求出相交点；
+ 解法：两个链表连起来看有没有环，将一个链表的头尾相连，判断有没有环，有环说明是相交的，然后求出相交点。
 
  Sort List 必须会这两个算法（） 2个小视频 merge sort / quick sort  heap也看小视频  （TODO）
  问:哪些排序算法时间复杂度是 O(nlogn) 的? merge sort / quick sort / heap sort
