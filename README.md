@@ -274,15 +274,28 @@ Dummy Node 初始化的值重要么?  不重要
  问:哪些排序算法时间复杂度是 O(nlogn) 的? merge sort / quick sort / heap sort
  
 ### [Array]()
-Subarray
-Sorted Array
+子数组Subarray:令PrefixSum[i] = A[0] + A[1] + ... A[i - 1], PrefixSum[0] = 0。易知构造PrefixSum耗费O(n)时间和O(n)空间，如需计算子数组从下标i到下标j之间的所有数之和，则有 Sum(i~j) = PrefixSum[j + 1] - PrefixSum[i]
+- [0053.Maximum Subarray](Solutions/0053.Maximum_Subarray.java)<br>
+Window Sum (A)  TODO
+Subarray Sum   TODO
+Subarray Sum Closest 求出来后排个序  TODO
 
+Sorted Array 
+1.Merge Two Sorted Arrays  TODO
+2.将小数组归并到大数组里，从后往前merge  TODO
+3.两个数组的交  TODO  简单题应该会很多种方法  TODO
+ hash  time O(n+m)  space O(min(n,m))  一个数组放进去，另一个数组进行遍历在不在hash中
+ merge two sorted arrays  time O(nlogn + mlogm)  space O(1)  先把两个数组排序，再用两个指针遍历merge
+ Binary Search(n << m)  time O(nlogn + mlogn)  space O(1) 一个数组先排序，遍历另一个数组，查找在不在已经排好序的数组中，把小的数组排序，然后for循环大的数组
+4.数组内积（点乘）  设计：数组index和value的形式，index相同的才乘起来。   TODO
+ 
 一个node.next==null
 node.next占个字节
 说明node占8个字节
 null在编译后值为0，所以还是占4个字节
 
-
+ Median of Two Sorted Arrays
+ 
 
 
 
