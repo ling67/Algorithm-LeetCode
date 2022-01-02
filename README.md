@@ -277,7 +277,7 @@ Dummy Node 初始化的值重要么?  不重要
 子数组Subarray:令PrefixSum[i] = A[0] + A[1] + ... A[i - 1], PrefixSum[0] = 0。易知构造PrefixSum耗费O(n)时间和O(n)空间，如需计算子数组从下标i到下标j之间的所有数之和，则有 Sum(i~j) = PrefixSum[j + 1] - PrefixSum[i]
 - [0053.Maximum Subarray](Solutions/0053.Maximum_Subarray.java)<br>
 - [0604.Window Sum.java](Solutions/0604.Window_Sum.java)<br>
-- [0138.Subarray Sum](Solutions/0138.Subarray_Sum.java) （lintcode） 有点没搞懂  <br>
+- [0138.Subarray Sum](Solutions/0138.Subarray_Sum.java) （lintcode）<br>
 Subarray Sum Closest 求出来后排个序 （lintcode） TODO
 
 Sorted Array 
