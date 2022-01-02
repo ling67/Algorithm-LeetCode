@@ -31,7 +31,7 @@ public class Solution {
         for (int i = 0; i < len; i++) {
             sum += nums[i];
             if (map.containsKey(sum)) {
-                result.add(map.get(sum) + 1);
+                result.add(map.get(sum) + 1);  // 思考下[-3, 1, 2, -3, 4]，输出[1, 3]，思考下就知道为什么要+1了
                 result.add(i);
                 return result;
             }
