@@ -278,25 +278,18 @@ Dummy Node 初始化的值重要么?  不重要
 - [0053.Maximum Subarray](Solutions/0053.Maximum_Subarray.java)<br>
 - [0604.Window Sum.java](Solutions/0604.Window_Sum.java)<br>
 - [0138.Subarray Sum](Solutions/0138.Subarray_Sum.java)  有点没搞懂  <br>
-
 Subarray Sum Closest 求出来后排个序  TODO
 
 Sorted Array 
 1.Merge Two Sorted Arrays  TODO
-2.将小数组归并到大数组里，从后往前merge  相关问题TODO
+2.将小数组归并到大数组里，从后往前merge  - [0088.Merge Sorted Array](Solutions/0088.Merge_Sorted_Array.java)<br> 
 3.两个数组的交 简单题应该会很多种方法  相关问题TODO
  hash  time O(n+m)  space O(min(n,m))  一个数组放进去，另一个数组进行遍历在不在hash中
  merge two sorted arrays  time O(nlogn + mlogm)  space O(1)  先把两个数组排序，再用两个指针遍历merge
  Binary Search(n << m)  time O(nlogn + mlogn)  space O(1) 一个数组先排序，遍历另一个数组，查找在不在已经排好序的数组中，把小的数组排序，然后for循环大的数组
 4.数组内积（点乘）  设计：数组index和value的形式，index相同的才乘起来。
  
-一个node.next==null
-node.next占个字节
-说明node占8个字节
-null在编译后值为0，所以还是占4个字节
-
- 高频:Median of Two Sorted Arrays   TODO
- 
+ - [0004.Median_of_Two_Sorted_Arrays](Solutions/0004.Median_of_Two_Sorted_Arrays.java)<br>
  
  相关问题：TODO
  小视频:Quick select 算法
@@ -305,7 +298,11 @@ null在编译后值为0，所以还是占4个字节
  2个数组的中位数，就是合并后从小到大第k个数  
  时间复杂度倒推算法 logk
  
- 
+java知识点： 
+一个node.next==null
+node.next占个字节
+说明node占8个字节
+null在编译后值为0，所以还是占4个字节
  
  
  
