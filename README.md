@@ -324,24 +324,19 @@ Rainbow sort   低频下次再写 (待做)
  
 ### [Two Sum]()
 模板必记：可以循环其中一个变量，然后研究另外一个变量如何变化
-1.two sum  - [0001.Two Sum](Solutions/0001.Two_Sum.java) <br>  
-方法：1.hashmap 2.先排序 低空间复杂度 two pointers  
-2.two-sum-data-structure-design 只能使用HashMap    (待做)
-3.two-sum-input-array-is-sorted 使用Two Pointers会更快   (待做)
-4.Two Sum - Unique pairs   是否可以先去重？不能      做
-5.3Sum  统计所有的和为0的三元组（Triples） - [0015.3Sum](Solutions/0015.3Sum.java) <br>   
-6.two sum计数问题 统计所有和 <= target 的配对数      (待做)
-7.two sum计数问题 统计所有和 >= target 的配对数      (待做)
-8.Two Sum Closest                     做
-9.Follow Up: 3Sum Closest            做
-10.4Sum                            (待做)
-11.Two Sum - difference equals to target (同向双指针)     (待做)
-
-
- 
- 
-
-
+1.two sum I - [0001.Two Sum](Solutions/0001.Two_Sum.java) <br>  
+方法：1.hashmap 2.先排序 低空间复杂度 two pointers  <br>
+2.Two Sum II - [0167.Two Sum II Input Array Is Sorted](Solutions/0167.Two_Sum_II_Input_Array_Is_Sorted.java)  使用Two Pointers会更快 <br>   
+3.Two Sum III - Data structure design 只能使用HashMap - [0170.Two_Sum_III_Data_structure_design](Solutions/0170.Two_Sum_III_Data_structure_design.java)  <br> 
+4.Two Sum IV - Input is a BST   https://leetcode.com/problems/two-sum-iv-input-is-a-bst/  （以后做）
+5.Two Sum - Unique pairs   是否可以先去重？不能         做
+6.3Sum  统计所有的和为0的三元组（Triples） - [0015.3Sum](Solutions/0015.3Sum.java) <br>   
+7.two sum计数问题 统计所有和 <= target 的配对数      (待做)
+8.two sum计数问题 统计所有和 >= target 的配对数      (待做)
+9.Two Sum Closest                     做
+10.Follow Up: 3Sum Closest            做
+11.4Sum                            (待做)
+12.Two Sum - difference equals to target (同向双指针)     (待做)
 
  
  
