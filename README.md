@@ -304,6 +304,47 @@ node.next占个字节
 说明node占8个字节
 null在编译后值为0，所以还是占4个字节
  
+## [两根指针 Two Pointes]()
+同向双指针  相向双指针
+一般适合时间复杂度要求是O（n）的
+
+### [partition]()
+快排 quick sort：<br>
+1.Partition Array （lintcode） 注意：4个地方的判断语序写成一样的 - [0031.Partition Array](Solutions/0031.Partition_Array.java) <br>
+2.（小视频TODO） Quick Select// Kth-largest-element   <br>
+3.Related Questions（related questions）  <br>
+4.Sort Colors 三分的问题  - [0075.Sort Colors](Solutions/0075.Sort_Colors.java) <br>   
+解法：分成两个部分 vs 分成三个部分 1)2次partition，先分0和1-2，再分1-2  2)只能1次循环    下次尝试1这个方法   <br>
+ 
+排序 Rainbow sort    待写，低频下次再写 
+烙饼排序 先解决最下面的变成最大  
+睡眠排序  （不考）
+面条排序  （不考）
+猴子排序：洗牌算法  （不考）
+ 
+### [Two Sum]()
+模板必记：可以循环其中一个变量，然后研究另外一个变量如何变化
+1.two sum 
+方法：1.hashmap 2.先排序 低空间复杂度 two pointers  
+2.two-sum-data-structure-design 只能使用HashMap  
+3.two-sum-input-array-is-sorted 使用Two Pointers会更快
+4.Two Sum - Unique pairs   是否可以先去重？不能
+5.3Sum  统计所有的和为0的三元组（Triples）
+6.two sum计数问题 统计所有和 <= target 的配对数
+7.two sum计数问题 统计所有和 >= target 的配对数
+8.Two Sum Closest 
+9.Follow Up: 3Sum Closest
+ 
+related questions (下次写)
+4Sum
+Two Sum - difference equals to target (同向双指针)
+
+
+ 
+ 
+
+
+
  
  
  
