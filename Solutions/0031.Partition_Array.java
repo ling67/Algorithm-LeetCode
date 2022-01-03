@@ -38,14 +38,14 @@ public class Solution {
             return 0;
         }
         int left = 0, right = nums.length - 1;
-        while (left <= right) {
-            while ((left <= right) && (nums[left] < k)) {
+        while (left <= right) {   //判断1
+            while ((left <= right) && (nums[left] < k)) { //判断2
                 left++;
             }
-            while ((left <= right) && nums[right] >= k) {
+            while ((left <= right) && nums[right] >= k) { //判断3
                 right--;
             }
-            if (left <= right) {
+            if (left <= right) {  //判断4 这四句判断一定要写的一样
                 int temp = nums[left];
                 nums[left] = nums[right];
                 nums[right] = temp;
