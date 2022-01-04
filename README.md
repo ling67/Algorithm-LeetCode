@@ -1,7 +1,15 @@
 # leetCode-java
-LeetCode coding notes
+第一课：二分搜索 Binary_Search <br>
+第二课：二叉树和分治法 Binary_Tree & Divide Conquer <br>
+第三课：宽度优先搜索 Breadth First Search <br>
+第四课：深度优先搜索 Depth_First_Search  <br>
+第五课：链表与数组 Linked List & Array <br>
+第六课：两根指针 Two Pointes <br>
+第七课：数据结构 Data Structure  <br>
+第八课：动态规划 Dynamic Programming <br>
+小视频知识点<br>
 
-## [Binary_Search]()
+## [第一课：Binary_Search 二分搜索]()
 
 ### [二分搜索模板]<br>
 - [0704.Binary Search]   (!!!E) <br>
@@ -34,7 +42,7 @@ minimum/maximum to satisfy some condition 的问题: If Koko can finish eating a
 
 回答：this is a good question,二分的问题，永远的解决办法是，某一部分满足条件，某一部分不满足条件，就可以去除不满足条件的部分
 
-## [Binary_Tree & Divide Conquer](/Data-Structure.py) 
+## [第二课：Binary_Tree & Divide Conquer 二叉树和分治法](/Data-Structure.py) 
 
 classic binary tree & divide conquer
 - [0226.Invert Binary Tree](Solutions/0226.Invert_Binary_Tree.java) (E)
@@ -123,7 +131,7 @@ TODO:运行失败convert binary search tree to doubly linked list:https://leetco
  TODO ：Question:全局变量---变量
  
 
-## [Breadth First Search](/Data-Structure.py) 
+## [第三课：Breadth First Search 宽度优先搜索](/Data-Structure.py) 
 求最短的路径就可以用BFS
 
 分层遍历三层循环 
@@ -169,7 +177,7 @@ b.1 拓扑排序 Topological Sorting
 - [0611.Knight Shortest Path](Solutions/0611.Knight_Shortest_Path.java) (!!LintCode) <br>
 - [0573.Build Post Office II](Solutions/0573.Build_Post_Office_II.java) (!!LintCode) <br>
 
-## [Depth_First_Search](/Data-Structure.py) 
+## [第四课：Depth_First_Search 深度优先搜索](/Data-Structure.py) 
 碰到让你找所有方案的题，一定是DFS  
 90%DFS的题，要么是排列，要么是组合
 DFS更节约空间 
@@ -235,13 +243,12 @@ http://www.jiuzhang.com/solutions/permutations/ <br>
 
 ### [Stack-Non Recursion]()
 
-
 总结：BFS和DFS区别，BFS擅长求点，DFS擅长求路径
 
 DFS不回溯的题目：Number of Islands，因为就是要找点，不是要找路径
 
 
-## [链表与数组 Linked List & Array](/Data-Structure.py) 
+## [第五课：Linked List & Array 链表与数组](/Data-Structure.py) 
 
 ### [Linked List]()
 a.Dummy Node <br>
@@ -304,7 +311,7 @@ node.next占个字节
 说明node占8个字节
 null在编译后值为0，所以还是占4个字节
  
-## [两根指针 Two Pointes]()
+## [第六课：Two Pointes 两根指针]()
 同向双指针  相向双指针
 一般适合时间复杂度要求是O（n）的
 
@@ -337,6 +344,41 @@ Rainbow sort   低频下次再写 (待做)
 10.Follow Up: 3Sum Closest  - [0016.3Sum Closest](Solutions/0016.3Sum_Closest.java) <br>    
 11.4Sum                                                 (待做)
 12.Two Sum - difference equals to target (同向双指针)     (待做)
+
+## [第七课：数据结构 Data Structure]()
+
+
+## [第八课：动态规划 Dynamic Programming]()
+
+ 
+## [小视频]()
+1.SubsetII  done
+
+2.字符串查找之Rabin Karp算法
+
+3.Algorithm-search a 2DMatrix II
+
+4.三步翻转法
+
+5.Merge sort 归并排序算法：分治法，分别拍好序再合并成一个数组    - [0912.Sort an Array](Solutions/0912.Sort_an_Array.java)   merge two sorted array/list可以做 很类似的  
+
+6.Quick Sort 为什么<= 和 >=，因为为了避免极端情况下不均分，例如11111112切点容易不均分  - [0912.Sort an Array](Solutions/0912.Sort_an_Array.java)
+
+7.Quick Sort vs Merge sort   
+时间复杂度：Quick Sort  快排平均时间复杂度O(nlogn) 最坏O(n2)   Merge：最好最坏都是O(nlogn)  
+空间复杂度：Quick:O(1)  Merge:O(n）
+稳定排序：Quick 不稳定  Merge 稳定
+都是分治算法，有点细微差别，quick先整体有序，再局部有序 merge先局部有序，再整体有序
+
+8.Quick Select   快排的引申题目 T(n) = T(n/2) + O(n)  平均O(n) 最坏O(n2)
+median Kth of 
+//smallest
+
+9.Heap
+
+10.Subarray子数组问题
+
+11.Merge K Sorted Lists
 
  
  
