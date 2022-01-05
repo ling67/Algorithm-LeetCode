@@ -11,9 +11,20 @@
 
 ## [第一课：Binary_Search 二分搜索]()
 
+思想：Binary_Search is a search algorithm that finds the position of a target value within a sorted array. 
+Binary search compares the target value to the middle element of the array. 
+If they are not equal, we can eliminate the half in which the target cannot lie, and the search continues on the remaining half.
+Again taking the middle element to compare to the target value, and repeating this until the target value is found. 
+If the search ends with the remaining half being empty, the target is not in the array.
+
+模板(背诵)：<br>
+1.start + 1 < end; <br>
+2.start + (end - start) / 2; <br>
+3.A[mid] ==, <, >  mid <br>
+4.A[start] A[end] ? target <br>
+
 ### [二分搜索模板]<br>
-- [0704.Binary Search]   (!!!E) <br>
-九章模板：1.start + 1 < end; 2.start + (end - start) / 2; 3.A[mid] ==, <, >  mid 4.A[start] A[end] ? target
+- [0704.Binary Search](Solutions/0704.Binary_Search.java)   (!!!E) <br> 
 - [0034.Find_First_and_Last_Position_of_Element_in_Sorted_Array](Solutions/0034.Find_First_and_Last_Position_of_Element_in_Sorted_Array.java) (!!M) <br>
 用两次二分分别找first pos of target and last pos of target. 想找first position of target，要保证两点：1. while循环里的判断要往左逼，也就是if nums[mid] >= target: end = mid； 2. 就把start放在后面更新，这样如果出现nums[end]和nums[start]都等于target的情况的话，first可以被后面较小的start替换掉，因为start肯定是小于end的。
 Follow up: In a sorted array [1,3,4.......], search the elements that are in a certain range eg:[10, 100]. solution: 用两次二分分别找first position of 10 and last position of 100. Then the elements between the two positions should be in range [10, 100]. <br>
@@ -43,36 +54,36 @@ minimum/maximum to satisfy some condition 的问题: If Koko can finish eating a
 回答：this is a good question,二分的问题，永远的解决办法是，某一部分满足条件，某一部分不满足条件，就可以去除不满足条件的部分
 
 ## [第二课：Binary_Tree & Divide Conquer 二叉树和分治法](/Data-Structure.py) 
+思想：A divide-and-conquer algorithm works by recursively breaking down a problem into two or more sub-problems of the same or related type, until these become simple enough to be solved directly. 
+The solutions to the sub-problems are then combined to give a solution to the original problem.
 
-classic binary tree & divide conquer
+模板(背诵)：<br>
+解法：1.Non-Recursion 2.Recursion：Traverse 3.Recursion：Divide & Conquer 4.Recursion：Traverse + Divide & Conquer  <br>
+递归三要素：定义-拆解-结束条件 <br>
+
+### [classic binary tree & divide conquer]() 
 - [0226.Invert Binary Tree](Solutions/0226.Invert_Binary_Tree.java) (E)
 - [0100.Same Tree](Solutions/0100.Same_Tree.java) (E)
 
 time complexity training II <br>
-O(n)的时间，把n的问题，变成了2个n/2的问题，复杂度是多少？  nlogn:merge sort//quick sort <br>
+O(n)的时间，把n的问题，变成了2个n/2的问题，复杂度是多少？  nlogn: merge sort//quick sort <br>
 O(1)的时间，把n的问题，变成了1个n/2的问题，复杂度是多少？  logn <br>
 O(1)的时间，把n的问题，变成了2个n/2的问题，复杂度是多少？  n （为什么）<br>
 
-解法：1.Non-Recursion 2.Recursion：Traverse 3.Recursion：Divide & Conquer 4.Recursion：Traverse + Divide & Conquer
-
 区别：全局变量和局部变量 <br>
-递归三要素：定义-拆解-结束条件 <br>
 
+### [二叉树前序-中序-后序算法]() 
 非递归的 前序-中序-后序算法要背诵   TODO： <br>
-
 - [0144.Binary Tree Preorder Traversal](Solutions/0144.Binary_Tree_Preorder_Traversal.java) (M) memorize the iterative version using stack<br>
 preorder前序遍历: 1.非递归算法 (recommend) 2.递归算法：分治法 3.递归算法：遍历法  TODO :只写了一个方法 <br>
 分治法和遍历法的区别，遍历法用了全局变量
-
 - [0094.Binary Tree Inorder Traversal.java](Solutions/0094.Binary_Tree_Inorder_Traversal.java)(M) memorize the iterative version using stack solution 2: in order traversal of BST (iteratively) - O(k+H) where H is height of tree. solution 1: trivial - in order traversal of BST - O(N), O(N).<br>
 inorder中序遍历: 1.非递归算法 (recommend) 2.递归算法：分治法 3.递归算法：遍历法   TODO :只写了一个方法 <br>
-
 - [0145.Binary Tree Postorder Traversal](Solutions/0145.Binary_Tree_Postorder_Traversal.java) (M) memorize the iterative version using stack<br>
 postorder后序遍历: 1.非递归算法 (recommend) 2.递归算法：分治法 3.递归算法：遍历法 TODO :只写了一个方法 <br>
+碰到二叉树的问题，就想想整棵树在该问题上的结果；和左右儿子在该问题上的结果之间的联系是什么
 
-碰到二叉树的问题，就想想整棵树在该问题上的结果
-和左右儿子在该问题上的结果之间的联系是什么
-
+### [二叉树深度、路径、子树]() 
 - [0104.Maximum Depth of Binary Tree.java](Solutions/0104.Maximum_Depth_of_Binary_Tree.java)(E) <br>
 rootDepth = max(leftDepth, rightDepth) + 1 <br>
 - [0480.Binary Tree paths](Solutions/0480.Binary_Tree_paths.java)(LintCode) <br>
@@ -85,7 +96,7 @@ helper function return (if the tree is balanced, maxDepth); rootIsBalan = leftIs
 
 - [0114.Flatten Binary Tree to Linked List](Solutions/0114.Flatten_Binary_Tree_to_Linked_List.java)<br>
 
-最近公共祖先 Lowest Common Ancestor
+### [最近公共祖先 Lowest Common Ancestor]() 
 situation1: has parent note 
 situation2: do not has parent note example:0236
 situation3: a,b exist in binary tree?
@@ -93,7 +104,7 @@ situation4: binary search tree example:0235
 - [0236.Lowest Common Ancestor of a Binary Tree.java](Solutions/0236.Lowest_Common_Ancestor_of_a_Binary_Tree.java)<br>
 - [0235.Lowest Common Ancestor of a Binary Search Tree.java](Solutions/0235.Lowest_Common_Ancestor_of_a_Binary_Search_Tree)<br>
 
-最长连续序列 Binary Tree Longest Consecutive Sequence
+### [最长连续序列 Binary Tree Longest Consecutive Sequence]() 
 situation1: 二叉树不可转弯 example:0298
 situation2: 可转弯 example:0549
 situation3: 多叉树   所有子树最长递增和最长递减
@@ -104,8 +115,7 @@ helper function returns (the LCS ended with root decreasing, increasing, without
 
 TODO：https://leetcode.com/problems/binary-tree-longest-consecutive-sequence-ii/  <br>
 
-路径相关的题目：
-
+### [路径相关的题目]() 
 二叉树的路径和:Binary Tree Path Sum I && II && III
 situation1: include root (a.return boolean  b.return all path and then print) example:0112
 situation2: can not include root example:0437 
@@ -132,8 +142,8 @@ TODO:运行失败convert binary search tree to doubly linked list:https://leetco
  
 
 ## [第三课：Breadth First Search 宽度优先搜索](/Data-Structure.py) 
-求最短的路径就可以用BFS
-
+使用场景：求最短的路径就可以用BFS
+模板：
 分层遍历三层循环 
 1.queue！= null 
 2.size = queue.size 当前这一层的每个节点 
@@ -178,12 +188,13 @@ b.1 拓扑排序 Topological Sorting
 - [0573.Build Post Office II](Solutions/0573.Build_Post_Office_II.java) (!!LintCode) <br>
 
 ## [第四课：Depth_First_Search 深度优先搜索](/Data-Structure.py) 
+使用场景：
 碰到让你找所有方案的题，一定是DFS  
 90%DFS的题，要么是排列，要么是组合
 DFS更节约空间 
 DFS算法有时候=回溯算法
 
-递归三要素：• 递归的定义 • 递归的拆解 • 递归的出口
+模板：递归三要素：• 递归的定义 • 递归的拆解 • 递归的出口
 一般来说，如果面试官不特别要求的话，DFS都可以使用递归(Recursion)的方式来实现。 递归三要素是实现递归的重要步骤:
 
 ### [组合搜索问题 Combination](/Data-Structure.py) 
@@ -216,12 +227,9 @@ Palindrome Partitioning 解题思路：字母和字母之间的位置当成切�
 - [0046.Permutations.java](Solutions/0046.Permutations.java) (M) <br>
 - [0047.Permutations_II](Solutions/0047.Permutations_II.java) (M) <br>
 
-
 ### [图中的搜索 Search in a Graph](/Data-Structure.py)  
-
 N皇后问题（一）·N-Queens  TODO
 N皇后问题（二）·N-Queens  TODO
-
 
 - [0127.Word Ladder](Solutions/0127.Word_Ladder.java) (M) <br>
 Word Ladder II：TODO 太难了
