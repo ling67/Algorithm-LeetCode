@@ -354,7 +354,11 @@ Rainbow sort   低频下次再写 (待做)
 12.Two Sum - difference equals to target (同向双指针)     (待做)
 
 ## [第七课：数据结构 Data Structure]()
-
+队列 Queue 支持操作:O(1) Push / O(1) Pop / O(1) Top  BFS的主要数据结构 多做做BFS的题就可以了 
+栈 stack 数组//链表 支持操作:O(1) Push / O(1) Pop / O(1) Top 非递归实现DFS的主要数据结构
+BFS 的主要数据结构是 Queue // DFS 的主要数据结构是 Stack 
+哈希 数组
+堆 二叉树
 
 ## [第八课：动态规划 Dynamic Programming]()
 
