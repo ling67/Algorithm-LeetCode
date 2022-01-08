@@ -354,11 +354,34 @@ Rainbow sort   低频下次再写 (待做)
 12.Two Sum - difference equals to target (同向双指针)     (待做)
 
 ## [第七课：数据结构 Data Structure]()
+
+### [队列]()
 队列 Queue 支持操作:O(1) Push / O(1) Pop / O(1) Top  BFS的主要数据结构 多做做BFS的题就可以了 
-栈 stack 数组//链表 支持操作:O(1) Push / O(1) Pop / O(1) Top 非递归实现DFS的主要数据结构
+
+### [栈 stack]()
+数组//链表 支持操作:O(1) Push / O(1) Pop / O(1) Top 非递归实现DFS的主要数据结构
+Expression Expand
+
+相关问题 TODO
+Implement Queue by Two Stacks 
+Implement Stack by Two Queues
+
 BFS 的主要数据结构是 Queue // DFS 的主要数据结构是 Stack 
-哈希 数组
-堆 二叉树
+
+### [哈希 hash]()
+
+ 数组 O(k的size)
+支持操作:O(1) Insert / O(1) Find / O(1) Delete  (真的是O(1)吗？key的size有关系)
+Hash Function 使命:对于任意的key 得到一个固定且无规律的介于0~capacity-1的整数
+著名的hash算法：MD5, SHA-1, SHA-2
+Hash Table:线程安全的hash，同时做好几件事情，都不会崩掉
+Hash Map:存key-value
+Hash Set:只存key
+
+### [堆 heap]()
+二叉树
+支持操作:O(log N) Add / O(log N) Remove / O(1) Min or Max Max Heap vs Min Heap
+ 
 
 ## [第八课：动态规划 Dynamic Programming]()
 
