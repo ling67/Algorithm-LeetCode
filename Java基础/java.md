@@ -65,5 +65,32 @@ System.out.println(coll.contains(new String("Tom")));	// true
 // Person没有重写equals方法时：false；重写了equals方法：true
 System.out.println(coll.contains(new Person("Jerry",20)));
 
+常用数据结构
+String方法
+
+集合  
+Queue is a data structure. The basic idea of this structure is first in and first out.
+定义：Queue<String> queue = new LinkedList<>();
+获取队列长度 int size()
+添加元素到队尾 boolean offer()  
+取队首元素并删除	E poll()
+取队首元素但不删除	E peek()
+  
+Stack
+
+Heap  
+  
+Hash
+  
+ArrayList
+  
+LinkedList
+  
+
+  
+  
+  
+  
+  
 
 
