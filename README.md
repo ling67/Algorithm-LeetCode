@@ -355,33 +355,54 @@ Rainbow sort   低频下次再写 (待做)
 
 ## [第七课：数据结构 Data Structure]()
 
-### [队列]()
-队列 Queue 支持操作:O(1) Push / O(1) Pop / O(1) Top  BFS的主要数据结构 多做做BFS的题就可以了 
+### [队列 Queue]()
+支持操作:O(1) Push / O(1) Pop / O(1) Top  
+BFS的主要数据结构 多做做BFS的题就可以了
+BFS 的主要数据结构是 Queue // DFS 的主要数据结构是 Stack 
 
 ### [栈 stack]()
-数组//链表 支持操作:O(1) Push / O(1) Pop / O(1) Top 非递归实现DFS的主要数据结构
-Expression Expand
-
+数组//链表 支持操作:O(1) Push / O(1) Pop / O(1) Top 
+非递归实现DFS的主要数据结构
+ - [Expression Expand](Solutions/111) 没找到题目<br>
 相关问题 TODO
 Implement Queue by Two Stacks 
 Implement Stack by Two Queues
 
-BFS 的主要数据结构是 Queue // DFS 的主要数据结构是 Stack 
+Flatten Nested List Iterator
+Iterator相关题
+
+栈相关的问题
 
 ### [哈希 hash]()
-
- 数组 O(k的size)
+数组 O(k的size)
 支持操作:O(1) Insert / O(1) Find / O(1) Delete  (真的是O(1)吗？key的size有关系)
+
 Hash Function 使命:对于任意的key 得到一个固定且无规律的介于0~capacity-1的整数
 著名的hash算法：MD5, SHA-1, SHA-2
 Hash Table:线程安全的hash，同时做好几件事情，都不会崩掉
 Hash Map:存key-value
 Hash Set:只存key
+存在冲突的两种解决办法：Open Hashing（占用别人的位置） vs Closed Hashing（链表连起来）
+hash不够大时：Rehashing  - [Rehashing](Solutions/) <br>
+LRU Cache   - [asd](Solutions/) <br>
+Related Questions
 
-### [堆 heap]()
-二叉树
-支持操作:O(log N) Add / O(log N) Remove / O(1) Min or Max Max Heap vs Min Heap
- 
+### [堆 heap & PriorityQueue]()
+实际上是二叉树，实现时可以用数组去存储, sink down, swimm up
+支持操作: 堆支持快速的删除任意一个节点，堆怎么删除的？？？ 
+O(log N) Add 
+O(log N) Remove：需要在logn时删除，需要hashmap，key存储区别每个节点的值，value是在堆里的位置，需要先知道位置后，才能快速删除
+O(1) Min or Max Max Heap vs Min Heap
+- [0130.Heapify.java](Solutions/0130.Heapify.java) <br>
+
+PriorityQueue（Java-从小到大） vs Heap关系：PriorityQueue是用heap实现的，heap是数据结构角度说的名词，PriorityQueue是从类的角度说的，包装好了一个工具，本质是一个堆。但是没有实现堆的所有功能。
+PriorityQueue一定要用这个数据结构，面试会考，不是Queue，只是具有Q的接口.
+
+Ugly Number
+Top k Largest Number II
+Related Questions（TODO）
+TreeMap
+Related Questions（TODO）
 
 ## [第八课：动态规划 Dynamic Programming]()
 
@@ -409,7 +430,7 @@ Hash Set:只存key
 median Kth of 
 //smallest
 
-9.Heap
+9.Heap   done
 
 10.Subarray子数组问题
 
