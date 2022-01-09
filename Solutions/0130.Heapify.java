@@ -12,6 +12,8 @@ Return any of them.
 */
 
 //区别是向上调还是向下调，跟孩子比较就是向下调，跟父亲比较就是向上调，就决定了时间复杂度
+//1.数组从前往后for每个数，数组从前往后for循环，从上到下，交换 nlogn  1-n sift up 
+//2.数组中间往前for循环，往下调shif down
 
 //version 1 siftup nlogn
 public class Solution {
