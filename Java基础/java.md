@@ -66,9 +66,25 @@ System.out.println(coll.contains(new String("Tom")));	// true
 System.out.println(coll.contains(new Person("Jerry",20)));
 
 常用数据结构
-String方法
 
-集合  
+基本数据类型的转变
+  
+  
+Char 
+==  判断是否相等 
+  
+String方法
+int length() 返回此字符串的长度
+isEmpty() 判断字符串是否为空。 
+contains(CharSequence chars) 判断是否包含指定的字符系列。
+str1.equals(str2) 判断是否相等  
+char charAt(int index) 返回指定索引处的 char 值。
+int compareTo(Object o) 把这个字符串和另一个对象比较。  
+int compareTo(String anotherString) 按字典顺序比较两个字符串。
+String concat(String str) 将指定字符串连接到此字符串的结尾。
+  
+8.集合使用方法
+Queue 
 Queue is a data structure. The basic idea of this structure is first in and first out.
 定义：Queue<String> queue = new LinkedList<>();
 获取队列长度 int size()
@@ -77,15 +93,31 @@ Queue is a data structure. The basic idea of this structure is first in and firs
 取队首元素但不删除	E peek()
   
 Stack
-
-Heap  
-  
+Stack is a data structure. The basic idea of this structure is last in and first out.
+Stack<Character> stack = new Stack<Character>();  
+判断栈是否为空: boolean empty()	 
+把元素压栈:Object push(E)；
+把栈顶的元素“弹出”: Object pop()；
+取栈顶元素但不弹出: Object peek()。  
+    
 Hash
+  
+Set 
+It is used to store a collection of elements that are not repeated. It mainly provides the following methods:
+Set<String> set = new HashSet<>();
+获取长度：set.size()
+将元素添加进Set<E>：boolean add(E e)
+将元素从Set<E>删除：boolean remove(Object e)
+判断是否包含元素：boolean contains(Object e)
   
 ArrayList
   
 LinkedList
   
+Heap
+is a kind of data structure but not a class, so we always use PriorityQueue as a class to use
+  
+
 
   
   
