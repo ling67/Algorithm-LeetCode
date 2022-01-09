@@ -406,6 +406,7 @@ Related Questions（TODO）
 
 ## [第八课：动态规划 Dynamic Programming]()
 
+优化DFS的题：冗余计算 // 重复计算 
  
 ## [小视频]()
 1.SubsetII  done
