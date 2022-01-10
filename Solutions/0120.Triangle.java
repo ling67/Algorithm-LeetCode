@@ -40,3 +40,39 @@ class Solution {
 }
 
 
+//version 2
+
+/*
+1.状态定义: dp[i][j] = 从坐标(0,0)出发，到达坐标（i, j）的最小路径和
+2.求dp[n-1][j]中最小的一个;
+3.初始条件 dp[0][0] = A[0][0]
+4.递推公式： dp[i][j] = A[i][j] + min(dp[i-1][j-1], dp[i-1][j])
+*/
+
+class Solution {
+    public int minimumTotal(List<List<Integer>> triangle) {
+        int m = triangle.size();
+        int dp[][] = new int[m][m];
+        dp[0][0] = triangle.get(0).get(0);
+        
+        for (int i = 1; i < m; i++) {
+            dp[i][0] = dp[i-1][0] + triangle.get(i).get(0);
+            dp[i][i] = dp[i-1][i-1] + triangle.get(i).get(i);
+        }
+        
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < i; j++) {
+                dp[i][j] = triangle.get(i).get(j) + Math.min(dp[i-1][j-1], dp[i-1][j]);
+            }
+        }
+        
+        int min = dp[m-1][0];
+        for(int j = 0; j < m; j++) {
+            min = min > dp[m-1][j] ? dp[m-1][j] : min;
+        }
+        
+        return min;
+    }
+}
+
+
