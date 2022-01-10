@@ -100,17 +100,16 @@ LinkedList
 求长度：size()
 boolean add(E e)：在链表后添加一个元素，如果成功，返回true，否则返回false；  
 void addFirst(E e)：在链表头部插入一个元素；
-移除链表中第一个元素：remove()
-E get(int index)：按照下边获取元素；
-  
+E remove()；移除链表中第一个元素；
+E get(int index)：按照下边获取元素；  
 void push(E e)：与addFirst一样，实际上它就是addFirst；
 E pop()：与removeFirst一样，实际上它就是removeFirst；
-  
-队列之间可以直接赋值吗？ 可以， queue1 = queue2;
-  
 add()和offer()的区别：
 offer方法-尝试将元素添加到队列中，如果无法添加元素（例如，队列已满），则返回false；如果添加了元素且不引发任何特定异常，则返回true。
 add方法-尝试将元素添加到队列中，如果添加了元素，则返回true；如果当前没有可用空间，则抛出IllegalStateException。 
+    
+队列之间可以直接赋值吗？ 可以， queue1 = queue2;
+  
 
 subset subsequence    
   
