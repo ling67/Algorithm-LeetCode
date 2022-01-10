@@ -405,9 +405,30 @@ TreeMap
 Related Questions（TODO）
 
 ## [第八课：动态规划 Dynamic Programming]()
+总体来说DP的两种写法：
+1.自上而下：DFS+Memoriztion   (todo 等DFS刷完了就知道了)
+2. 自下而上：traditional 写法：定义数组记录状态
 
-优化DFS的题：冗余计算 // 重复计算 
- 
+DP四要素：
+1.定义状态： dp[i][j]的意义
+2.返回什么东西
+3.初始化  初始化一个二维的动态规划时 就去初始化第0行和第0列
+4.递推公式：怎么从初始化里面推测想返回的值
+
+什么情况下使用动态规划?
+满足下面三个条件之一，则 极有可能 是使用动态规划求解: 
+• 求最大值最小值
+• 判断是否可行 
+• 统计方案个数
+
+- [0120.Triangle](Solutions/0120.Triangle.java) <br>
+- [0064.Minimum Path Sum](Solutions/0064.Minimum_Path_Sum.java) <br>
+- [0062.Unique Paths](Solutions/0062.Unique_Paths.java) <br>
+- [0063.Unique Paths II](Solutions/0063.Unique_Paths_II.java) <br>
+- [0070.Climbing Stairs](Solutions/0070.Climbing_Stairs.java) <br>
+
+
+
 ## [小视频]()
 1.SubsetII  done
 
