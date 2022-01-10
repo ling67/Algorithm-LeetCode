@@ -358,22 +358,32 @@ Rainbow sort   低频下次再写 (待做)
 ### [队列 Queue]()
 支持操作:O(1) Push / O(1) Pop / O(1) Top  
 BFS的主要数据结构 多做做BFS的题就可以了
-BFS 的主要数据结构是 Queue // DFS 的主要数据结构是 Stack 
+BFS的主要数据结构是 Queue // DFS 的主要数据结构是 Stack 
 
 ### [栈 stack]()
 数组//链表 支持操作:O(1) Push / O(1) Pop / O(1) Top 
 非递归实现DFS的主要数据结构
- - [Expression Expand](Solutions/111) 没找到题目<br>
-相关问题 TODO
-Implement Queue by Two Stacks 
-Implement Stack by Two Queues
+ 
+- [Expression Expand](Solutions/111) 没找到题目  <br>
+- [0232.Implement Queue using Stacks](Solutions/232.Implement_Queue_using_Stacks)  <br>
+- [0225.Implement Stack using Queues](Solutions/0225.Implement_Stack_using_Queues.java)  <br>
+- [0155.Min Stack](Solutions/0155.Min_Stack.java) (!!!E) <br>
+- [0716.Max Stack.java](Solutions/0716.Max Stack.java)  716一直超时  <br>
 
+Largest Rectangle in Histogram   (hard) <br>
+Maximal Rectangle  (hard) <br>
+Max Tree  (hard) <br>
+
+Iterator
 Flatten Nested List Iterator
-Iterator相关题
+http://www.lintcode.com/problem/binary-search-tree-iterator/
+http://www.lintcode.com/problem/zigzag-iterator/ 
+http://www.lintcode.com/problem/zigzag-iterator-ii/ 
+http://www.lintcode.com/problem/flatten-2d-vector/
 
 栈相关的问题
 
-### [哈希 hash]()
+### [哈希表 hash]()
 数组 O(k的size)
 支持操作:O(1) Insert / O(1) Find / O(1) Delete  (真的是O(1)吗？key的size有关系)
 
@@ -405,31 +415,51 @@ TreeMap
 Related Questions（TODO）
 
 ## [第八课：动态规划 Dynamic Programming]()
-总体来说DP的两种写法：
-1.自上而下：DFS+Memoriztion   (todo 等DFS刷完了就知道了)
-2. 自下而上：traditional 写法：定义数组记录状态
+总体来说DP的两种写法：<br>
+1. 记忆化搜索方式：自上而下：DFS+Memoriztion   (todo 等DFS刷完了就知道了)<br>
+2. 多重循环：traditional 写法：定义数组记录状态 两种实现没有区别，思维模式一个正向，一个逆向<br>
+   自下而上  自上而下<br>
 
-DP四要素：
-1.定义状态： dp[i][j]的意义
-2.返回什么东西
-3.初始化  初始化一个二维的动态规划时 就去初始化第0行和第0列
-4.递推公式：怎么从初始化里面推测想返回的值
+DP四要素：<br>
+1.定义状态： dp[i][j]的意义<br>
+2.返回什么东西<br>
+3.初始化  初始化一个二维的动态规划时 就去初始化第0行和第0列<br>
+4.递推公式：怎么从初始化里面推测想返回的值<br>
 
-什么情况下使用动态规划?
-满足下面三个条件之一，则 极有可能 是使用动态规划求解: 
-• 求最大值最小值
-• 判断是否可行 
-• 统计方案个数
+什么情况下使用动态规划?<br>
+满足下面三个条件之一，则 极有可能 是使用动态规划求解: <br>
+• 求最大值最小值<br>
+• 判断是否可行 <br>
+• 统计方案个数<br>
 
-- [0120.Triangle](Solutions/0120.Triangle.java) <br>
+什么时候不用动态规划？<br>
+• 所有方案而不是方案数<br>
+• 集合而非序列<br>
+• 暴力算法已经是多项式级别复杂度<br>
+    动态规划擅长优化指数级别(2^n)到多项式级别(n^2)<br>
+
+贪心算法 vs 动态规划？？？
+
+### [坐标型DP]()
+- [0120.Triangle](Solutions/0120.Triangle.java) <br>  • DFS: Traverse • DFS: Divide Conquer • Divide Conquer + Memorization • Traditional Dynamic Programming
 - [0064.Minimum Path Sum](Solutions/0064.Minimum_Path_Sum.java) <br>
 - [0062.Unique Paths](Solutions/0062.Unique_Paths.java) <br>
 - [0063.Unique Paths II](Solutions/0063.Unique_Paths_II.java) <br>
 - [0070.Climbing Stairs](Solutions/0070.Climbing_Stairs.java) <br>
+- [0746.Min Cost Climbing Stairs](Solutions/0746.Min_Cost_Climbing_Stairs.java) <br>
 
+跳跃游戏 I && II  这个题最优的方法是使用“贪心法”，动态规划复杂度较高
+- [0055.Jump Game.java](Solutions/0055.Jump_Game.java) <br>     TODO:贪心算法
+- [0045.Jump_Game II](Solutions/0045.Jump_Game_II.java)  <br>
 
+### [子序列型DP]()
+- [0300.Longest Increasing Subsequence](Solutions/0300.Longest_Increasing_Subsequence.java) (!!!M) <br>
+- [0279.Perfect Squares](Solutions/0279.Perfect_Squares.java) <br>
+Largest Divisible Subset  没懂！！！ 动态规划只能记录一种最优的方案  TODO:问一下Jimmy   
+俄罗斯套娃 http://www.lintcode.com/en/problem/russian-doll-envelopes/   TODO
+青蛙过河 http://www.lintcode.com/en/problem/frog-jump/   TODO
 
-## [小视频]()
+## [9.小视频]()
 1.SubsetII  done
 
 2.字符串查找之Rabin Karp算法
