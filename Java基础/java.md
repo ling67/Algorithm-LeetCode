@@ -67,7 +67,18 @@ System.out.println(coll.contains(new Person("Jerry",20)));
 
 常用数据结构
 
-基本数据类型的转变
+### [基本数据类型]()
+
+数组
+int[] dp = new int[n];
+初始化：Arrays.fill(dp, Integer.MAX_VALUE);  //pay attention do not forget initialize the array.
+静态初始化数组：int[] array = new int[]{10, 20, 30, 40, 50};
+动态初始化数组：int[] array = new int[50];  
+
+int[][] nums = new int[m][n];
+int a[][]={{1,2,3},{4,5,6}};
+int m = nums.length;   行数
+int n = nums[0].length;   列数
   
   
 Char 
@@ -82,8 +93,29 @@ char charAt(int index) 返回指定索引处的 char 值。
 int compareTo(Object o) 把这个字符串和另一个对象比较。  
 int compareTo(String anotherString) 按字典顺序比较两个字符串。
 String concat(String str) 将指定字符串连接到此字符串的结尾。
+
+ArrayList
   
-8.集合使用方法
+LinkedList
+求长度：size()
+boolean add(E e)：在链表后添加一个元素，如果成功，返回true，否则返回false；  
+void addFirst(E e)：在链表头部插入一个元素；
+移除链表中第一个元素：remove()
+E get(int index)：按照下边获取元素；
+  
+void push(E e)：与addFirst一样，实际上它就是addFirst；
+E pop()：与removeFirst一样，实际上它就是removeFirst；
+  
+队列之间可以直接赋值吗？ 可以， queue1 = queue2;
+  
+add()和offer()的区别：
+offer方法-尝试将元素添加到队列中，如果无法添加元素（例如，队列已满），则返回false；如果添加了元素且不引发任何特定异常，则返回true。
+add方法-尝试将元素添加到队列中，如果添加了元素，则返回true；如果当前没有可用空间，则抛出IllegalStateException。 
+
+subset subsequence    
+  
+### [集合使用方法]()
+  
 Queue 
 Queue is a data structure. The basic idea of this structure is first in and first out.
 定义：Queue<String> queue = new LinkedList<>();
@@ -109,10 +141,6 @@ Set<String> set = new HashSet<>();
 将元素添加进Set<E>：boolean add(E e)
 将元素从Set<E>删除：boolean remove(Object e)
 判断是否包含元素：boolean contains(Object e)
-  
-ArrayList
-  
-LinkedList
   
 Heap
 is a kind of data structure but not a class, so we always use PriorityQueue as a class to use
