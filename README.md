@@ -368,7 +368,7 @@ BFS的主要数据结构是 Queue // DFS 的主要数据结构是 Stack
 - [0232.Implement Queue using Stacks](Solutions/232.Implement_Queue_using_Stacks)  <br>
 - [0225.Implement Stack using Queues](Solutions/0225.Implement_Stack_using_Queues.java)  <br>
 - [0155.Min Stack](Solutions/0155.Min_Stack.java) (!!!E) <br>
-- [0716.Max Stack.java](Solutions/0716.Max Stack.java)  716一直超时  <br>
+- [0716.Max Stack.java](Solutions/0716.Max Stack.java) <br>
 
 Largest Rectangle in Histogram   (hard) <br>
 Maximal Rectangle  (hard) <br>
@@ -453,7 +453,9 @@ DP四要素：<br>
 - [0045.Jump_Game II](Solutions/0045.Jump_Game_II.java)  <br>
 
 ### [子序列型DP]()
+dp[i]都是定义以i结尾的最长...
 - [0300.Longest Increasing Subsequence](Solutions/0300.Longest_Increasing_Subsequence.java) (!!!M) <br>
+- [0674.Longest Continuous Increasing Subsequence](Solution/0674.Longest_Continuous_Increasing_Subsequence.java) <br>
 - [0279.Perfect Squares](Solutions/0279.Perfect_Squares.java) <br>
 Largest Divisible Subset  没懂！！！ 动态规划只能记录一种最优的方案  TODO:问一下Jimmy   
 俄罗斯套娃 http://www.lintcode.com/en/problem/russian-doll-envelopes/   TODO
