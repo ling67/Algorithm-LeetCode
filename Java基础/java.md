@@ -80,6 +80,10 @@ int a[][]={{1,2,3},{4,5,6}};
 int m = nums.length;   行数
 int n = nums[0].length;   列数
   
+排序数组:Arrays.sort(str1);
+数组对比:Arrays.equals(str1, str2);  
+  
+数组和集合的区别：数组可以重复，集合不能重复，用于去重
   
 Char 
 ==  判断是否相等 
@@ -131,15 +135,20 @@ Stack<Character> stack = new Stack<Character>();
 把栈顶的元素“弹出”: Object pop()；
 取栈顶元素但不弹出: Object peek()。  
     
-Hash
-  
-Set 
+HashSet 
 It is used to store a collection of elements that are not repeated. It mainly provides the following methods:
 Set<String> set = new HashSet<>();
 获取长度：set.size()
 将元素添加进Set<E>：boolean add(E e)
 将元素从Set<E>删除：boolean remove(Object e)
 判断是否包含元素：boolean contains(Object e)
+  
+HashMap
+HashMap getOrDefault(key, defaultValue)  used to get the value mapped with specified key. If no value is mapped with the provided key then the default value is returned. 
+HashMap遍历：  
+1.for(Map.Entry<> entry : map.entrySet())
+2.Integer key:map.keySet()
+3.迭代器 Iterator<Map.Entry<Integer, Integer>> entries = map.entrySet().iterator();
   
 Heap
 is a kind of data structure but not a class, so we always use PriorityQueue as a class to use
