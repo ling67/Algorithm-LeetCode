@@ -44,16 +44,16 @@ class MaxStack {
     }
     
     public void push(int x) {
-        if(maxStack.isEmpty() || x >= maxStack.peek()) {
+        if(maxStack.isEmpty()) {
             maxStack.push(x);
+        } else {
+            maxStack.push(Math.max(x, maxStack.peek()));  //注意每次都要push
         }
         stack.push(x);
     }
     
     public int pop() {
-        if (maxStack.peek() == stack.peek()) {
-            maxStack.pop();
-        }
+        maxStack.pop(); //注意每次都要pop
         return stack.pop();
     }
     
@@ -84,5 +84,3 @@ class MaxStack {
  * int param_4 = obj.peekMax();
  * int param_5 = obj.popMax();
  */
-
-
