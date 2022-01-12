@@ -433,9 +433,6 @@ Ugly Number
 • http://www.lintcode.com/problem/data-stream-median/
 • http://www.lintcode.com/problem/kth-smallest-number-in-sorted-matrix/
 
-• http://www.lintcode.com/problem/top-k-largest-numbers/
-
-
 TreeMap
 • http://www.lintcode.com/problem/building-outline/
 • http://www.lintcode.com/problem/top-k-frequent-words/
