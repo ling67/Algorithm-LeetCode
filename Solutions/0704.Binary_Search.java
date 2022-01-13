@@ -36,6 +36,14 @@ A[mid] ==, <, >  mid
 A[start] A[end] ? target
 */
 
+/*
+we can use binary search to solve this problem.
+each time we compare the mid value between start and end to target, 
+if nums[mid] == target, return
+if the nums[mid] larger than target, search the target from start to mid, repeat
+if the nums[mid] smaller than target, search the target from mid to end, repeat 
+*/
+
 class Solution {
     public int search(int[] nums, int target) {
         if (nums == null || nums.length == 0) {
