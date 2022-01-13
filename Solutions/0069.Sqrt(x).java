@@ -27,25 +27,33 @@ Submissions
 2,472,427
 */
 
-//确定答案的范围
-//在范围中找答案-满不满足答案 
-//注意mid * mid 会overflow
+/*
+we know the maximum value of sqrt(x) is x, so we can make sure the result is between 0 to x.
+use a loop to find result
+1.compare the the power of mid with x.
+equal return mid
+larger find the result from 0 to mid
+else find the result form mid to end
+*/
 class Solution {
     public int mySqrt(int x) {
-        
-        if (x < 0) throw new IllegalArgumentException();
-        else if (x <= 1) {
+        if (x == 0 || x == 1) {
             return x;
         }
-        int start = 0,  end = x;
+        int start = 1, end = x;
         while (start + 1 < end) {
             int mid = start + (end - start) / 2;
-            if (mid == x / mid) return mid;
-            else if (mid < x / mid) start = mid;
-            else end = mid;
+            if (x / mid == mid) {
+                return mid;
+            } else if (x / mid < mid) {
+                end = mid; 
+            } else {
+                start = mid;
+            }
         }
-        
-        if (end > x / end) return start;
+        if (x / end < end ) {
+            return start;
+        }
         return end;
     }
 }
