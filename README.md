@@ -1,4 +1,7 @@
 # leetCode-java
+## 二刷目标：复习之前自己刷过的题，Easy都刷掉，重要的Medium也刷掉！
+### 01/12 - 完成7题
+
 第一课：二分搜索 Binary_Search <br>
 第二课：二叉树和分治法 Binary_Tree & Divide Conquer <br>
 第三课：宽度优先搜索 Breadth First Search <br>
@@ -32,6 +35,7 @@ Follow up: In a sorted array [1,3,4.......], search the elements that are in a c
 ### [第一境界：二分位置之ooxx]<br>
 - [0278.First Bad Version](Solutions/0278.First_Bad_Version.java) (E) <br>
 - [0702.Search in a Sorted Array of Unknown Size](Solutions/0702.Search_in_a_Sorted_Array_of_Unknown_Size.java) (M) <br>
+  key point : Find end point using "double method" <br>
 
 ### [第二境界：不能00xx, half-half]<br>
 找不到一个严格的分界点是左派还是右派，所以可以考虑是half-half<br>
