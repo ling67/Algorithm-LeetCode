@@ -40,6 +40,17 @@ secret is sorted in a strictly increasing order.
  * }
  */
 
+
+/*
+I think we can use binary search, but the main point is we can not make sure end of array
+1. we need to find the right border where the target located.
+2. then we can use binary search to solve this problem
+3. compare the target with the nums[mid], which is from start to end
+4. if == return mid index
+5. if larger, we search target in right side
+6. otherwise, we search in left side
+*/
+
 class Solution {
     public int search(ArrayReader reader, int target) {
         
