@@ -39,9 +39,9 @@ If the search ends with the remaining half being empty, the target is not in the
 用两次二分分别找first pos of target and last pos of target. 想找first position of target，要保证两点：1. while循环里的判断要往左逼，也就是if nums[mid] >= target: end = mid； 2. 就把start放在后面更新，这样如果出现nums[end]和nums[start]都等于target的情况的话，first可以被后面较小的start替换掉，因为start肯定是小于end的。
 Follow up: In a sorted array [1,3,4.......], search the elements that are in a certain range eg:[10, 100]. 
 solution: 用两次二分分别找first position of 10 and last position of 100. Then the elements between the two positions should be in range [10, 100]. <br>
+- [0035.Search Insert Position](0035.Search_Insert_Position.java) (E) <br> 
 - [1287.Element Appearing More Than 25% In Sorted Array](Solutions/1287.Element_Appearing_More_Than_25%_In_Sorted_Array.java)   (!!E) <br> 
 想想如果我们需要求sorted arr 里 more than n//2 times的num, 只需要直接return arr[n//2]就可以了 同理我们可以求more than 25%的num. step 1: 找出 n//4, 2n//4, 3n//4 位置处的num, 因为答案只可能存在于这三个位置上 step 2: 对这三个num分别做binary search求出first_pos and last_pos, 如果last_pos - first_pos >= n//4 就找到了
-- [0035.Search Insert Position](0035.Search_Insert_Position.java) (E) <br>    (为什么？？？？)
 
 ### [第一境界：二分位置之ooxx]<br>
 思想：严格找到左边都满足一个条件，右边不满足条件，或者倒过来！！！！
@@ -49,12 +49,9 @@ solution: 用两次二分分别找first position of 10 and last position of 100.
 - [0278.First Bad Version](Solutions/0278.First_Bad_Version.java) (E) <br>
 - [0702.Search in a Sorted Array of Unknown Size](Solutions/0702.Search_in_a_Sorted_Array_of_Unknown_Size.java) (M) <br>
   key point : Find end point using "double method" <br>
-- [0153.Find Minimum in Rotated Sorted Array](Solutions/0153.Find_Minimum_in_Rotated_Sorted_Array.java) (!!M) (为什么？？？？) <br>
-0154. Find Minimum in Rotated Sorted Array II (!!H)   (不会？？？？) 
-与153类似，只是array里可能有duplicates，采用153的解法三，唯一不同的是：nums[mid] == nums[end]: end -= 1, 注意不能drop掉一半，因为eg: nums=[2,2,2,2,2,1,2,2,2,2,2,2........], 由于不知道mid是1前面的2还是1后面的2，所以无法确定是drop前面还是drop后面，只能保险地把end往前挪一位，所以154这题in extreme case, 时间复杂度是O(N). 这题用nums[end]与nums[mid]比较能work的原因是end永远不可能出现在最小值的左边。<br>
 - [0074.Search a 2D_Matrix](Solutions/0074.Search_a_2D_Matrix.java) (M) <br>
-- [0240.Search a 2D Matrix II](Solutions/0240.Search_a_2D_Matrix_II.java) (M) <br>   (解释的意思？？？？)
-从左下角出发往右上角搜索, each comparism rule out a row (i-1=1) or rule out a col (j+=1). O(M+N). Comparing with 74, we can see that in 74, the 2D matrix is strongly sorted, so the time is logM + logN
+- [0240.Search a 2D Matrix II](Solutions/0240.Search_a_2D_Matrix_II.java) (M) <br>
+从左下角出发往右上角搜索, each comparism rule out a row (i-1=1) or rule out a col (j+=1). O(M+N). Comparing with 0074题目, we can see that in 74, the 2D matrix is strongly sorted, so the time is logM + logN
 in 240, the 2D matrix is less strongly sorted, so the time is M + N
 If the 2D matrix is not sorted at all, then the time is MN.
 - [0852.Peak Index in a Mountain Array](Solutions/0852.Peak_Index_in_a_Mountain_Array.java) (E) <br>
@@ -62,40 +59,57 @@ If the 2D matrix is not sorted at all, then the time is MN.
 ### [第二境界：不能00xx, half-half]<br>
 思想：找不到一个严格的分界点是左派还是右派，所以可以考虑是half-half<br>
 
- - [0162.Find Peak Element](Solutions/0162.Find_Peak_Element.java) (M) <br>
- follow up: Find Peak Element II (by 算法强化班)   (TODO!!! hard)
+- [0162.Find Peak Element](Solutions/0162.Find_Peak_Element.java) (M) <br>
+  follow up: Find Peak Element II (by 算法强化班)   (TODO!!! hard)
+- [0153.Find Minimum in Rotated Sorted Array](Solutions/0153.Find_Minimum_in_Rotated_Sorted_Array.java) (!!M)  <br>
+  pay attention, compare with nums[n-1],not nums[0], 跟nums[0]比较，有可能全部递增的情况，会有问题
+- [0154.Find Minimum in Rotated Sorted Array II](Solutions/0154.Find_Minimum_in_Rotated_Sorted_Array_II.java)  (!!H)   <br>
+  与153类似，只是array里可能有duplicates，mid小于或者大于都不会影响程序，只有mid=right的情况不知道判断是向左走还是向右走？
+  没法判断mid在左区间还是右区间，有个技巧是right - 1，丢掉right，因为right和mid相等，也不会影响最终答案，右区间一直压缩，直到mid和right不相等。
+  采用153的解法三，唯一不同的是：nums[mid] == nums[end]: end -= 1, 注意不能drop掉一半，因为eg: nums= [2,2,2,2,2,1,2,2,2,2,2,2........], 由于不知道mid是1   前面的2还是1后面的2，所以无法确定是drop前面还是drop后面，只能保险地把end往前挪一位，所以154这题in extreme case, 时间复杂度是O(N). 这题用nums[end]与nums[mid]   比较能work的原因是end永远不可能出现在最小值的左边。<br>
 - [0033.Search_in_Rotated_Sorted_Array](Solutions/0033.Search_in_Rotated_Sorted_Array.java) (M) <br>
-画个图分几个区间讨论就可以了, 分target在左边区间和target在右边区间讨论. <br>
-- [0081.Search_in_Rotated_Sorted_Array](Solutions/0081.Search_in_Rotated_Sorted_Array.java) (M) <br>   (让老丁讲一下！！！！)
-
+  画个图分几个区间讨论就可以了, 分target在左边区间和target在右边区间讨论. <br>
+- [0081.Search in Rotated Sorted Array II](Solutions/0081.Search_in_Rotated_Sorted_Array_II.java) (M) <br> 
+  33题的follow up, 解法应该与154相似，传统二分不适合的情况，头等于尾巴，1，1，2，3，0，1，1，不知道向左走还是向右走？所以简单的方法就是去掉尾部和头部相同的元素.
+  
 ### [第三境界：Binary Search on Result 二分答案]<br>
 思想：往往没有给你一个数组让你二分 而且题目压根看不出来是个二分法可以做的题，同样是找到满足某个条件的最大或者最小值
 
 - [0069.Sqrt(x)](Solutions/0069.Sqrt(x).java)(!!E)<br>
 - [0367.Valid_Perfect_Square](Solutions/0367.Valid_Perfect_Square)(!!E)  注意越界问题<br>
 - [0183.wood cut](Solutions/0183.wood_cut.java)(H Lintcode)<br>
-minimum/maximum to satisfy some condition 的问题: If we can cut into pieces with lens, then we can also cut into prices with len - 1, So this is a OOOXXX problem, to find the last O.<br>
+  minimum/maximum to satisfy some condition 的问题: If we can cut into pieces with lens, then we can also cut into prices with len - 1, So this   is a OOOXXX problem, to find the last O.<br>
 - [0437.Copy Books](Solutions/0437.Copy_Books.java)(!!M Lintcode) <br>
-minimum/maximum to satisfy some condition 的问题: OOOXXX problem, to find the first O. 二分法不难想，难想的是比较mid时的那个helper function, helper function return if k people can finish all the pages in the midTime. Algorithm: greedy. 只有上一个人无法在mid时间内完成的情况下，我们才加一个人进来
+  minimum/maximum to satisfy some condition 的问题: OOOXXX problem, to find the first O. 二分法不难想，难想的是比较mid时的那个helper function, helper   function return if k people can finish all the pages in the midTime. Algorithm: greedy. 只有上一个人无法在mid时间内完成的情况下，我们才加一个人进来
 - [0875.Koko Eating Bananas](Solutions/0875.Koko_Eating_Bananas.java)(M)<br>
-minimum/maximum to satisfy some condition 的问题: If Koko can finish eating all the bananas (within H hours) with an eating speed of K, she can finish with a larger speed too. So it is a OOOXXX problem trying to find the first X. end is set to be max(piles). Every time find if it posible to eat all the bananas with speed mid. if yes, then drop the right part, if no, then drop the left.
+  minimum/maximum to satisfy some condition 的问题: If Koko can finish eating all the bananas (within H hours) with an eating speed of K, she     can finish with a larger speed too. So it is a OOOXXX problem trying to find the first X. end is set to be max(piles). Every time find if it   posible to eat all the bananas with speed mid. if yes, then drop the right part, if no, then drop the left.
 
 ### [Related Questions]<br>
 • Binary Search:
-search in a 2D Matrix II (楼上)
 - [0248.Count of Smaller Number](Solutions/0248.Count_of_Smaller_Number.java)(M Lintcode) <br>
-
 • Rotate Array 小视频， remember it.
 - [0039.Recover Rotated Sorted Array](Solutions/0039.Recover_Rotated_Sorted_Array.java)(E Lintcode) <br>
 - [0008.Rotate String](Solutions/0008.Rotate_String.java)(E Lintcode) <br>
 三步翻转法: [4,5,1,2,3] → [5,4,1,2,3] → [5,4,3,2,1] → [1,2,3,4,5]
+
+1552
+0792
+524
+392
+1055
+0941
+0911
 
 ## [第二课：Binary_Tree & Divide Conquer 二叉树和分治法](/Data-Structure.py) 
 思想：A divide-and-conquer algorithm works by recursively breaking down a problem into two or more sub-problems of the same or related type, until these become simple enough to be solved directly. 
 The solutions to the sub-problems are then combined to give a solution to the original problem.
 
 模板(背诵)：<br>
-解法：1.Non-Recursion 2.Recursion：Traverse 3.Recursion：Divide & Conquer 4.Recursion：Traverse + Divide & Conquer  <br>
+解法：
+1.Non-Recursion 
+2.Recursion：Traverse 
+3.Recursion：Divide & Conquer 
+4.Recursion：Traverse + Divide & Conquer  <br>
 递归三要素：定义-拆解-结束条件 <br>
 
 ### [classic binary tree & divide conquer]() 
@@ -140,7 +154,8 @@ situation3: a,b exist in binary tree?
 situation4: binary search tree example:0235
 - [0236.Lowest Common Ancestor of a Binary Tree.java](Solutions/0236.Lowest_Common_Ancestor_of_a_Binary_Tree.java)<br>
 - [0235.Lowest Common Ancestor of a Binary Search Tree.java](Solutions/0235.Lowest_Common_Ancestor_of_a_Binary_Search_Tree)<br>
-
+ follow up:LCA II & III
+ 
 ### [最长连续序列 Binary Tree Longest Consecutive Sequence]() 
 situation1: 二叉树不可转弯 example:0298
 situation2: 可转弯 example:0549
@@ -149,7 +164,8 @@ situation3: 多叉树   所有子树最长递增和最长递减
 helper function returns (the LCS ended with root, without root)
 - [0549.Binary Tree Longest Consecutive Sequence II](Solutions/0549.Binary_Tree_Longest_Consecutive_Sequence_II.java)(!!M)<br>
 helper function returns (the LCS ended with root decreasing, increasing, without root, pass root)
-
+follow up: BT LCS II & III
+ 
 TODO：https://leetcode.com/problems/binary-tree-longest-consecutive-sequence-ii/  <br>
 
 ### [路径相关的题目]() 
@@ -167,15 +183,28 @@ TODO:
 1.https://leetcode.com/problems/path-sum-iii/ 
 2.binary tree maximum path sum  还有一个相关的题  <br>
 
-BST
+
+### [BST]() 
 
 TODO:思考LCA建立在BST的基础之上
-
 - [0098.Validate Binary Search Tree.java](Solutions/0098.Validate_Binary_Search_Tree.java)(M)<br>
 注意判断条件不仅仅是left.val<root.val<right.val而是max of left < root < min of right; helper函数返回以root为根的树(是不是BST，max and min value in the tree); if (isLeftBST and isRightBST and maxLeft < root.val < minRight): return True
 
 TODO:运行失败convert binary search tree to doubly linked list:https://leetcode.com/problems/convert-binary-search-tree-to-sorted-doubly-linked-list/ <br>
  TODO ：Question:全局变量---变量
+
+### [Related Questions]() 
+ Binary Search Tree Iterator
+• http://www.lintcode.com/problem/binary-search-tree-iterator
+• http://www.jiuzhang.com/solutions/binary-search-tree-iterator • In-order Successor in Binary Search Tree
+• http://www.lintcode.com/problem/inorder-successor-in-binary-search-tree/ 
+• http://www.jiuzhang.com/solutions/inorder-successor-in-binary-search-tree/ • Search Range in Binary Search Tree
+• http://www.lintcode.com/problem/search-range-in-binary-search-tree/
+• Insert Node in a Binary Search Tree
+• http://www.lintcode.com/problem/insert-node-in-a-binary-search-tree/
+• Remove Node in a Binary Search Tree
+• http://www.lintcode.com/problem/remove-node-in-binary-search-tree/
+• http://www.mathcs.emory.edu/~cheung/Courses/171/Syllabus/9-BinTree/BST-delete.html
  
 
 ## [第三课：Breadth First Search 宽度优先搜索](/Data-Structure.py) 
