@@ -54,7 +54,7 @@ class Solution {
             }
         }
         
-        int start = 1, end = max;
+        int start = 1, end = max;    //注意读题，一次最多吃一堆香蕉
         
         while (start + 1 < end) {
             int mid = start + (end - start) / 2;
