@@ -72,7 +72,7 @@ If the 2D matrix is not sorted at all, then the time is MN.
 思想：往往没有给你一个数组让你二分 而且题目压根看不出来是个二分法可以做的题，同样是找到满足某个条件的最大或者最小值
 
 - [0069.Sqrt(x)](Solutions/0069.Sqrt(x).java)(!!E)<br>
-- 
+- [0367.Valid_Perfect_Square](Solutions/0367.Valid_Perfect_Square)(!!E)  注意越界问题<br>
 - [0183.wood cut](Solutions/0183.wood_cut.java)(H Lintcode)<br>
 minimum/maximum to satisfy some condition 的问题: If we can cut into pieces with lens, then we can also cut into prices with len - 1, So this is a OOOXXX problem, to find the last O.<br>
 - [0437.Copy Books](Solutions/0437.Copy_Books.java)(!!M Lintcode) <br>
@@ -81,16 +81,14 @@ minimum/maximum to satisfy some condition 的问题: OOOXXX problem, to find the
 minimum/maximum to satisfy some condition 的问题: If Koko can finish eating all the bananas (within H hours) with an eating speed of K, she can finish with a larger speed too. So it is a OOOXXX problem trying to find the first X. end is set to be max(piles). Every time find if it posible to eat all the bananas with speed mid. if yes, then drop the right part, if no, then drop the left.
 
 ### [Related Questions]<br>
-earch in a 2D Matrix II
-• 小视频:http://www.jiuzhang.com/video/28/?session_id=7 • 不是二分法，但是是常考题
 • Binary Search:
-• http://www.lintcode.com/problem/search-insert-position/ • http://www.lintcode.com/problem/count-of-smaller-number/
-• http://www.lintcode.com/problem/search-for-a-range/
-• Rotate Array
-• 小视频:http://www.jiuzhang.com/video/29/?session_id=7
-• http://www.lintcode.com/problem/recover-rotated-sorted-array/ • http://www.lintcode.com/problem/rotate-string/
-• 三步翻转法:
-• [4,5,1,2,3] → [5,4,1,2,3] → [5,4,3,2,1] → [1,2,3,4,5]
+search in a 2D Matrix II (楼上)
+- [0248.Count of Smaller Number](Solutions/0248.Count_of_Smaller_Number.java)(M Lintcode) <br>
+
+• Rotate Array 小视频， remember it.
+- [0039.Recover Rotated Sorted Array](Solutions/0039.Recover_Rotated_Sorted_Array.java)(E Lintcode) <br>
+- [0008.Rotate String](Solutions/0008.Rotate_String.java)(E Lintcode) <br>
+三步翻转法: [4,5,1,2,3] → [5,4,1,2,3] → [5,4,3,2,1] → [1,2,3,4,5]
 
 ## [第二课：Binary_Tree & Divide Conquer 二叉树和分治法](/Data-Structure.py) 
 思想：A divide-and-conquer algorithm works by recursively breaking down a problem into two or more sub-problems of the same or related type, until these become simple enough to be solved directly. 
@@ -529,13 +527,19 @@ Largest Divisible Subset  没懂！！！ 动态规划只能记录一种最优�
 
 2.字符串查找之Rabin Karp算法
 
-3.Algorithm-search a 2DMatrix II
+3.Algorithm-search a 2DMatrix II   
+related search a 2DMatrix (Binary search) 
 
-4.三步翻转法
+4.三步翻转法 
 
-5.Merge sort 归并排序算法：分治法，分别拍好序再合并成一个数组    - [0912.Sort an Array](Solutions/0912.Sort_an_Array.java)   merge two sorted array/list可以做 很类似的  
+5.Merge sort   
+归并排序算法：分治法，分别拍好序再合并成一个数组     
+- [0912.Sort an Array](Solutions/0912.Sort_an_Array.java)   
+merge two sorted array/list可以做 很类似的  
 
-6.Quick Sort 为什么<= 和 >=，因为为了避免极端情况下不均分，例如11111112切点容易不均分  - [0912.Sort an Array](Solutions/0912.Sort_an_Array.java)
+6.Quick Sort 
+为什么<= 和 >=，因为为了避免极端情况下不均分，例如11111112切点容易不均分  
+- [0912.Sort an Array](Solutions/0912.Sort_an_Array.java)
 
 7.Quick Sort vs Merge sort   
 时间复杂度：Quick Sort  快排平均时间复杂度O(nlogn) 最坏O(n2)   Merge：最好最坏都是O(nlogn)  
@@ -543,11 +547,13 @@ Largest Divisible Subset  没懂！！！ 动态规划只能记录一种最优�
 稳定排序：Quick 不稳定  Merge 稳定
 都是分治算法，有点细微差别，quick先整体有序，再局部有序 merge先局部有序，再整体有序
 
-8.Quick Select   快排的引申题目 T(n) = T(n/2) + O(n)  平均O(n) 最坏O(n2)
+8.Quick Select   
+快排的引申题目 T(n) = T(n/2) + O(n)  平均O(n) 最坏O(n2)
 median Kth of 
 //smallest
 
 9.Heap   done
+参考第8次课程
 
 10.Subarray子数组问题
 
