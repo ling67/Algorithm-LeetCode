@@ -44,24 +44,14 @@ The number of the nodes in the tree is in the range [0, 100].
 
 //version 1:divide & conque
 class Solution {
-    public ArrayList<Integer> postorderTraversal(TreeNode root) {
-        
-        ArrayList<Integer> result = new ArrayList<Integer>();
-        
-        //null or leaf
+    public List<Integer> postorderTraversal(TreeNode root) {
+        List<Integer> result = new LinkedList<>();
         if (root == null) {
             return result;
         }
-        
-        //divide
-        ArrayList<Integer> left = postorderTraversal(root.left);
-        ArrayList<Integer> right = postorderTraversal(root.right);
-
-        //conque
-        result.addAll(left);
-        result.addAll(right);
+        result.addAll(postorderTraversal(root.left));
+        result.addAll(postorderTraversal(root.right));
         result.add(root.val);
-
         return result;
     }
 }
