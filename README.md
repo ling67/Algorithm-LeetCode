@@ -1,9 +1,11 @@
 # leetCode-java
 ## 二刷目标：复习之前自己刷过的题，Easy都刷掉，重要的Medium也刷掉！
-### 01/12 - 完成7题
-先刷老丁专题的！！的题目
-再刷自己写过的
-最后刷老丁的Easy都刷掉
+### 01/15 - 完成7题
+101, pre-order traversal, in-order traversal, post-order traversal
+104, 226, 617, 596 (Lintcode),597 (Lintcode)112, 257, 
+
+655, 687, 298, 549
+110, 543, 236, 235, 250, 563, 1026
 
 第一课：二分搜索 Binary_Search <br>
 第二课：二叉树和分治法 Binary_Tree & Divide Conquer <br>
@@ -104,17 +106,24 @@ If the 2D matrix is not sorted at all, then the time is MN.
 思想：A divide-and-conquer algorithm works by recursively breaking down a problem into two or more sub-problems of the same or related type, until these become simple enough to be solved directly. 
 The solutions to the sub-problems are then combined to give a solution to the original problem.
 
-模板(背诵)：<br>
-解法：
+解法：<br>
 1.Non-Recursion 
 2.Recursion：Traverse 
 3.Recursion：Divide & Conquer 
 4.Recursion：Traverse + Divide & Conquer  <br>
-递归三要素：定义-拆解-结束条件 <br>
+
+写代码牢记：<br>
+递归三要素：定义-拆解-结束条件 
+1.definition: return revert binary tree
+2.divide && conquer
+3.exit
 
 ### [classic binary tree & divide conquer]() 
 - [0226.Invert Binary Tree](Solutions/0226.Invert_Binary_Tree.java) (E)
 - [0100.Same Tree](Solutions/0100.Same_Tree.java) (E)
+- [0101.Symmetric_Tree](Solutions/0101.Symmetric_Tree.java) (E)
+- [0617.Merge Two Binary Trees](Solutions/0617.Merge_Two_Binary_Trees.java) (E)
+- 597 · Subtree with Maximum Average
 
 time complexity training II <br>
 O(n)的时间，把n的问题，变成了2个n/2的问题，复杂度是多少？  nlogn: merge sort//quick sort <br>
@@ -126,7 +135,7 @@ O(1)的时间，把n的问题，变成了2个n/2的问题，复杂度是多少�
 ### [二叉树前序-中序-后序算法]() 
 非递归的 前序-中序-后序算法要背诵   TODO： <br>
 - [0144.Binary Tree Preorder Traversal](Solutions/0144.Binary_Tree_Preorder_Traversal.java) (M) memorize the iterative version using stack<br>
-preorder前序遍历: 1.非递归算法 (recommend) 2.递归算法：分治法 3.递归算法：遍历法  TODO :只写了一个方法 <br>
+preorder前序遍历: **1.非递归算法 (recommend) 2.递归算法：分治法 3.递归算法：遍历法**  TODO :只写了一个方法 <br>
 分治法和遍历法的区别，遍历法用了全局变量
 - [0094.Binary Tree Inorder Traversal.java](Solutions/0094.Binary_Tree_Inorder_Traversal.java)(M) memorize the iterative version using stack solution 2: in order traversal of BST (iteratively) - O(k+H) where H is height of tree. solution 1: trivial - in order traversal of BST - O(N), O(N).<br>
 inorder中序遍历: 1.非递归算法 (recommend) 2.递归算法：分治法 3.递归算法：遍历法   TODO :只写了一个方法 <br>
@@ -143,9 +152,10 @@ Divide and Conquer的方法输出以root为根的subTree的subSum，然后每次
 - [0110.Balanced Binary Tree.java](Solutions/0110.Balanced_Binary_Tree.java)(E) <br>
 helper function return (if the tree is balanced, maxDepth); rootIsBalan = leftIsBalan and rightIsBalan and abs(leftMaxDepth - rightMaxDepth) <= 1
 - [1120.Maximum Average Subtree](Solutions/1120.Maximum_Average_Subtree)(E) <br>
-总结：二叉树的通用时间复杂度计算公式  =O(二叉树的节点个数N * 每个节点的处理时间)
-
+- [0597.Subtree with Maximum Average](Solutions/0597.Subtree_with_Maximum_Average.java)(E) <br>
 - [0114.Flatten Binary Tree to Linked List](Solutions/0114.Flatten_Binary_Tree_to_Linked_List.java)<br>
+
+总结：二叉树的通用时间复杂度计算公式  =O(二叉树的节点个数N * 每个节点的处理时间)
 
 ### [最近公共祖先 Lowest Common Ancestor]() 
 situation1: has parent note 
