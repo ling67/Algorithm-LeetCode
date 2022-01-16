@@ -45,21 +45,14 @@ The number of nodes in the tree is in the range [0, 100].
    
 //version 1:Divide & Conquer 
 class Solution {
-    public ArrayList<Integer> preorderTraversal(TreeNode root) {
-     
-        ArrayList<Integer> result = new ArrayList<Integer>();
-        if(root == null) {
+    public List<Integer> preorderTraversal(TreeNode root) {
+        List<Integer> result = new LinkedList<>();
+        if (root == null) {
             return result;
         }
-        
-        ArrayList<Integer> left = preorderTraversal(root.left);
-        ArrayList<Integer> right = preorderTraversal(root.right);
-        
-        //merge
         result.add(root.val);
-        result.addAll(left);
-        result.addAll(right);
-            
+        result.addAll(preorderTraversal(root.left));   //加入链表时用addAll()
+        result.addAll(preorderTraversal(root.right));
         return result;
     }
 }
