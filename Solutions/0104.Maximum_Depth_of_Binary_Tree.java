@@ -43,15 +43,9 @@ The number of nodes in the tree is in the range [0, 104].
 //version 1: divide
 class Solution {
     public int maxDepth(TreeNode root) {
-        
         if (root == null) {
             return 0;
         }
-        
-        int left = maxDepth(root.left);
-        int right = maxDepth(root.right);
-        
-        return Math.max(left, right) + 1;
-        
+        return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
     }
 }
