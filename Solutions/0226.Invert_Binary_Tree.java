@@ -47,11 +47,11 @@ class Solution {
         if (root == null) return null;
         
         //2.divide 
-        TreeNode left = invertTree(root.left);
+        TreeNode left = invertTree(root.left);   
         TreeNode right = invertTree(root.right);
         
         //conquer
-        root.left = right;
+        root.left = right;   //注意这里容易错，不用temp
         root.right = left;
         
         return root;
