@@ -61,8 +61,40 @@ class Solution {
 
 
 
-//version 3:Non-recursion
-
+//version 3:Non-recursion  
+//先放入root，再放左节点，再放右节点，最后翻转
+class Solution {
+    public List<Integer> postorderTraversal(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        Stack<TreeNode> stack = new Stack<>();
+        
+        if (root == null) {
+            return result;
+        }
+        
+        stack.push(root);
+        while (!stack.empty()) {
+            TreeNode node = stack.pop();
+            result.add(node.val);
+            if (node.left != null) {
+                stack.push(node.left);
+            }    
+            if (node.right != null) {
+                stack.push(node.right);
+            }
+        }
+        
+        int i = 0, j = result.size() - 1;
+        while (i < j) {
+            int temp = result.get(i);
+            result.set(i, result.get(j));
+            result.set(j, temp);
+            i++;
+            j--;
+        }
+        return result;
+    }
+}
 
 
 
