@@ -4,8 +4,8 @@
 101, pre-order traversal, in-order traversal, post-order traversal
 104, 226, 617, 596 (Lintcode),597 (Lintcode)112, 257, 
 
-655, 687, 298, 549
-110, 543, 236, 235, 250, 563, 1026
+655, 298, 549(放弃), 687, 
+110, 543, 236, 235, 250, , 1026
 
 第一课：二分搜索 Binary_Search <br>
 第二课：二叉树和分治法 Binary_Tree & Divide Conquer <br>
@@ -94,14 +94,6 @@ If the 2D matrix is not sorted at all, then the time is MN.
 - [0008.Rotate String](Solutions/0008.Rotate_String.java)(E Lintcode) <br>
 三步翻转法: [4,5,1,2,3] → [5,4,1,2,3] → [5,4,3,2,1] → [1,2,3,4,5]
 
-1552
-0792
-524
-392
-1055
-0941
-0911
-
 ## [第二课：Binary_Tree & Divide Conquer 二叉树和分治法](/Data-Structure.py) 
 思想：A divide-and-conquer algorithm works by recursively breaking down a problem into two or more sub-problems of the same or related type, until these become simple enough to be solved directly. 
 The solutions to the sub-problems are then combined to give a solution to the original problem.
@@ -123,7 +115,8 @@ The solutions to the sub-problems are then combined to give a solution to the or
 - [0100.Same Tree](Solutions/0100.Same_Tree.java) (E)
 - [0101.Symmetric_Tree](Solutions/0101.Symmetric_Tree.java) (E)
 - [0617.Merge Two Binary Trees](Solutions/0617.Merge_Two_Binary_Trees.java) (E)
-- 597 · Subtree with Maximum Average
+- [0597.Subtree with Maximum Average](Solutions/0597.Subtree_with_Maximum_Average.java) (E)
+- [0655.Print Binary Tree](Solutions/0655.Print_Binary_Tree.java) (E)
 
 time complexity training II <br>
 O(n)的时间，把n的问题，变成了2个n/2的问题，复杂度是多少？  nlogn: merge sort//quick sort <br>
@@ -133,14 +126,12 @@ O(1)的时间，把n的问题，变成了2个n/2的问题，复杂度是多少�
 区别：全局变量和局部变量 <br>
 
 ### [二叉树前序-中序-后序算法]() 
-非递归的 前序-中序-后序算法要背诵   TODO： <br>
+前序-中序-后序算法要背诵 
+解法：1.非递归算法 (recommend) 2.递归算法：分治法 3.递归算法：遍历法**  TODO:遍历法 <br>
 - [0144.Binary Tree Preorder Traversal](Solutions/0144.Binary_Tree_Preorder_Traversal.java) (M) memorize the iterative version using stack<br>
-preorder前序遍历: **1.非递归算法 (recommend) 2.递归算法：分治法 3.递归算法：遍历法**  TODO :只写了一个方法 <br>
-分治法和遍历法的区别，遍历法用了全局变量
-- [0094.Binary Tree Inorder Traversal.java](Solutions/0094.Binary_Tree_Inorder_Traversal.java)(M) memorize the iterative version using stack solution 2: in order traversal of BST (iteratively) - O(k+H) where H is height of tree. solution 1: trivial - in order traversal of BST - O(N), O(N).<br>
-inorder中序遍历: 1.非递归算法 (recommend) 2.递归算法：分治法 3.递归算法：遍历法   TODO :只写了一个方法 <br>
-- [0145.Binary Tree Postorder Traversal](Solutions/0145.Binary_Tree_Postorder_Traversal.java) (M) memorize the iterative version using stack<br>
-postorder后序遍历: 1.非递归算法 (recommend) 2.递归算法：分治法 3.递归算法：遍历法 TODO :只写了一个方法 <br>
+分治法和遍历法的区别，遍历法用了全局变量 <br>
+- [0094.Binary Tree Inorder Traversal.java](Solutions/0094.Binary_Tree_Inorder_Traversal.java)(M) memorize the iterative version using stack solution 2: in order traversal of BST (iteratively) - O(k+H) where H is height of tree. solution 1: trivial - in order traversal of BST - O(N), O(N). <br>
+- [0145.Binary Tree Postorder Traversal](Solutions/0145.Binary_Tree_Postorder_Traversal.java) (M) memorize the iterative version using stack <br>
 碰到二叉树的问题，就想想整棵树在该问题上的结果；和左右儿子在该问题上的结果之间的联系是什么
 
 ### [二叉树深度、路径、子树]() 
@@ -168,15 +159,23 @@ situation4: binary search tree example:0235
  
 ### [最长连续序列 Binary Tree Longest Consecutive Sequence]() 
 situation1: 二叉树不可转弯 example:0298
-situation2: 可转弯 example:0549
-situation3: 多叉树   所有子树最长递增和最长递减
+situation2: 可转弯 example:0
+situation3: 多叉树 所有子树最长递增和最长递减
+总结：
+在binary tree里求longest path问题，如果任何path都算数的话，那么我们在divide and conquer的时候要分成两种情况讨论：
+case 1. path ended with root; 
+case 2: path not ended with root
+我们往往需要在helper函数中返回end_w和end_wo两种情况的值
+有时候也可以将case 2细分为: I. path pass the root, and II. path without the root.
+
+- [0687.Longest Univalue Path](Solutions/0687.Longest_Univalue_Path.java)()<br>
 - [0298.Binary Tree Longest Consecutive Sequence](Solutions/0298.Binary_Tree_Longest_Consecutive_Sequence.java)(!!M)<br>
 helper function returns (the LCS ended with root, without root)
-- [0549.Binary Tree Longest Consecutive Sequence II](Solutions/0549.Binary_Tree_Longest_Consecutive_Sequence_II.java)(!!M)<br>
+- [0549.Binary Tree Longest Consecutive Sequence II](Solutions/0549.Binary_Tree_Longest_Consecutive_Sequence_II.java)(!!M)   (TODO) <br>
 helper function returns (the LCS ended with root decreasing, increasing, without root, pass root)
 follow up: BT LCS II & III
- 
-TODO：https://leetcode.com/problems/binary-tree-longest-consecutive-sequence-ii/  <br>
+- [0687.Longest Univalue Path](Solutions/0687.Longest_Univalue_Path.java)(!!M)<br> 
+- [0543.Diameter of Binary Tree](Solutions/0543.Diameter_of_Binary_Tree.java)(M)<br> 
 
 ### [路径相关的题目]() 
 二叉树的路径和:Binary Tree Path Sum I && II && III
@@ -189,34 +188,55 @@ situation3: any to any can make a turn
 Solution 1: 碰到打印所有路径的问题，第一反应就是带backtracking the dfs
 - [0437.Path Sum III](Solutions/0437.Path_Sum III)(!!M)  TODO<br>
 不需要从根节点出发，solution 1: dfs every node in the tree. at each node, do a backtrack to find how many root-to-any_node paths are there. solution 2: dfs + memorization. 用 HashMap 来建立路径之和跟其个数之间的映射，即路径之和为 curSum 的个数为 m[curSum].
+- [0257.Binary Tree Paths](Solutions/0257.Binary_Tree_Paths.java)(E)<br>
+- [0655.Print Binary Tree](Solutions/0655.Print_Binary_Tree.java)(E)<br>
+
 TODO:
 1.https://leetcode.com/problems/path-sum-iii/ 
 2.binary tree maximum path sum  还有一个相关的题  <br>
 
+### [Balanced BinaryTree 平衡二叉树]() 
+- [0110.Balanced_Binary_Tree.java](Solutions/0110.Balanced_Binary_Tree.java)(M)<br>
+- [0543.Diameter of Binary Tree](Solutions/0543.Diameter_of_Binary_Tree.java)(M)<br>
+- [0235.Lowest Common Ancestor of a Binary Search Tree](Solutions/0235.Lowest_Common_Ancestor_of_a_Binary_Search_Tree.java)(M)<br> 
+- [0236.Lowest Common Ancestor of a Binary Search Tree II](Solutions/0236.Lowest_Common_Ancestor_of_a_Binary_Search_Tree_II.java)(M)<br> 
+- [0250.Count_Univalue_Subtrees.java](Solution/0250.Count_Univalue_Subtrees.java)<br>
+- [0563.Binary Tree Tilt](Solutions/0563.Binary_Tree_Tilt.java)(M)<br> 
+- [1026.Maximum Difference Between Node and Ancestor](Solutions/1026.Maximum_Difference_Between_Node_and_Ancestor.java)(M)<br>
 
-### [BST]() 
-
+### [BST 二叉查找树]()
+解决办法：二分查找的思想，递归实现
 TODO:思考LCA建立在BST的基础之上
-- [0098.Validate Binary Search Tree.java](Solutions/0098.Validate_Binary_Search_Tree.java)(M)<br>
+- [0700.Search in a Binary Search Tree](Solutions/0700.Search_in_a_Binary_Search_Tree.java)(E)<br>
+- [0669.Trim a_Binary_Search_Tree.java](Solutions/0669.Trim_a_Binary_Search_Tree.java)(E)<br>
+- [0938.Range_Sum_of_BST.java](Solutions/0938.Range_Sum_of_BST.java)(E).   解法同0669 <br>
+- [270.Closest Binary Search Tree Value](Solutions/270.Closest_Binary_Search_Tree_Value.java)(E)<br>
+- [0108.Convert_Sorted_Array_to_Binary_Search_Tree.java](Solutions/0108.Convert_Sorted_Array_to_Binary_Search_Tree.java)(E)<br>
+
+
 注意判断条件不仅仅是left.val<root.val<right.val而是max of left < root < min of right; helper函数返回以root为根的树(是不是BST，max and min value in the tree); if (isLeftBST and isRightBST and maxLeft < root.val < minRight): return True
 
 TODO:运行失败convert binary search tree to doubly linked list:https://leetcode.com/problems/convert-binary-search-tree-to-sorted-doubly-linked-list/ <br>
- TODO ：Question:全局变量---变量
 
 ### [Related Questions]() 
  Binary Search Tree Iterator
 • http://www.lintcode.com/problem/binary-search-tree-iterator
-• http://www.jiuzhang.com/solutions/binary-search-tree-iterator • In-order Successor in Binary Search Tree
+• http://www.jiuzhang.com/solutions/binary-search-tree-iterator
+
+In-order Successor in Binary Search Tree
 • http://www.lintcode.com/problem/inorder-successor-in-binary-search-tree/ 
-• http://www.jiuzhang.com/solutions/inorder-successor-in-binary-search-tree/ • Search Range in Binary Search Tree
+• http://www.jiuzhang.com/solutions/inorder-successor-in-binary-search-tree/ 
+
+Search Range in Binary Search Tree
 • http://www.lintcode.com/problem/search-range-in-binary-search-tree/
-• Insert Node in a Binary Search Tree
+• 
+Insert Node in a Binary Search Tree
 • http://www.lintcode.com/problem/insert-node-in-a-binary-search-tree/
-• Remove Node in a Binary Search Tree
+• 
+Remove Node in a Binary Search Tree
 • http://www.lintcode.com/problem/remove-node-in-binary-search-tree/
 • http://www.mathcs.emory.edu/~cheung/Courses/171/Syllabus/9-BinTree/BST-delete.html
  
-
 ## [第三课：Breadth First Search 宽度优先搜索](/Data-Structure.py) 
 使用场景：求最短的路径就可以用BFS
 模板：
