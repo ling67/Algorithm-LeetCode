@@ -212,11 +212,15 @@ TODO:思考LCA建立在BST的基础之上
 - [0938.Range_Sum_of_BST.java](Solutions/0938.Range_Sum_of_BST.java)(E).   解法同0669 <br>
 - [270.Closest Binary Search Tree Value](Solutions/270.Closest_Binary_Search_Tree_Value.java)(E)<br>
 - [0108.Convert_Sorted_Array_to_Binary_Search_Tree.java](Solutions/0108.Convert_Sorted_Array_to_Binary_Search_Tree.java)(E)<br>
-
+- [0109.Convert_Sorted_List_to_Binary_Search_Tree.java](Solutions/0109.Convert_Sorted_List_to_Binary_Search_Tree.java)(E)<br>
+- [0230.Kth_Smallest_Element_in_a_BST.java](Solutions/0230.Kth_Smallest_Element_in_a_BST.java)(E)<br>
+- [0098.Validate_Binary_Search_Tree.java](Solutions/0098.Validate_Binary_Search_Tree.java)(E)<br>
+- [0897.Increasing_Order_Search_Tree.java](Solutions/0897.Increasing_Order_Search_Tree.java)(E)<br>
 
 注意判断条件不仅仅是left.val<root.val<right.val而是max of left < root < min of right; helper函数返回以root为根的树(是不是BST，max and min value in the tree); if (isLeftBST and isRightBST and maxLeft < root.val < minRight): return True
 
-TODO:运行失败convert binary search tree to doubly linked list:https://leetcode.com/problems/convert-binary-search-tree-to-sorted-doubly-linked-list/ <br>
+TODO:运行失败
+convert binary search tree to doubly linked list:https://leetcode.com/problems/convert-binary-search-tree-to-sorted-doubly-linked-list/ <br>
 
 ### [Related Questions]() 
  Binary Search Tree Iterator
