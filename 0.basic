@@ -1,0 +1,36 @@
+## [0.小视频]()
+1.SubsetII  done
+
+2.字符串查找之Rabin Karp算法
+
+3.Algorithm-search a 2DMatrix II   
+related search a 2DMatrix (Binary search) 
+
+4.三步翻转法 
+
+5.Merge sort   
+归并排序算法：分治法，分别拍好序再合并成一个数组     
+- [0912.Sort an Array](Solutions/0912.Sort_an_Array.java)   
+merge two sorted array/list可以做 很类似的  
+
+6.Quick Sort 
+为什么<= 和 >=，因为为了避免极端情况下不均分，例如11111112切点容易不均分  
+- [0912.Sort an Array](Solutions/0912.Sort_an_Array.java)
+
+7.Quick Sort vs Merge sort   
+时间复杂度：Quick Sort  快排平均时间复杂度O(nlogn) 最坏O(n2)   Merge：最好最坏都是O(nlogn)  
+空间复杂度：Quick:O(1)  Merge:O(n）
+稳定排序：Quick 不稳定  Merge 稳定
+都是分治算法，有点细微差别，quick先整体有序，再局部有序 merge先局部有序，再整体有序
+
+8.Quick Select   
+快排的引申题目 T(n) = T(n/2) + O(n)  平均O(n) 最坏O(n2)
+median Kth of 
+//smallest
+
+9.Heap   done
+参考第8次课程
+
+10.Subarray子数组问题
+
+11.Merge K Sorted Lists
