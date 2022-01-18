@@ -47,7 +47,7 @@ class Solution {
     
     private class ResultType {
         boolean isBST;
-        TreeNode minNode;
+        TreeNode minNode;   //注意记录的是最小值好最大值的节点
         TreeNode maxNode;
         
         public ResultType(boolean isBST) {
