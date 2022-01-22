@@ -30,29 +30,22 @@ There are no self-loops or repeated edges.
 class Solution {
     public boolean validTree(int n, int[][] edges) {
         
-        if (n == 0) {
-            return false;
-        }
+        if (n == 0) return false;
         
-        //1.边的个数为点的个数-1
-        if (edges.length != n-1) {
-            return false;
-        }
+        // condition 1.边的个数为点的个数减去1
+        if (edges.length != n - 1) return false;
         
         Map<Integer, Set<Integer>> graph = initializeGraph(n, edges);
         
-        //2.判断连通性，就是通过一个点把其他的点都能找到
-        //bfs
+        // condition 2.通过一个点能把其他的点都找到 bfs
         Queue<Integer> queue = new LinkedList<>();
         Set<Integer> hash = new HashSet<>();
         
         queue.offer(0);
         hash.add(0);
         
-        int visit = 0;
         while (!queue.isEmpty()) {
             int node = queue.poll();
-            visit++;
             for (Integer neighbor : graph.get(node)) {
                 if (hash.contains(neighbor)) {
                     continue;
@@ -61,10 +54,11 @@ class Solution {
                 queue.offer(neighbor);
             }
         }
-        return visit == n;
+        return hash.size() == n;    
     }
     
-    private Map<Integer, Set<Integer>> initializeGraph(int n, int[][] edges) {
+    //初始化图，使用结构Map<Integer, HashSet<Integer>>
+    private Map<Integer, Set<Integer>> initializeGraph(int n, int[][] edges) {    //初始化容易忘记
         Map<Integer, Set<Integer>> graph = new HashMap<>();
         for (int i = 0; i < n; i++) {
             graph.put(i, new HashSet<Integer>());
@@ -78,6 +72,6 @@ class Solution {
         }
         
         return graph;
-        
     }
+    
 }
