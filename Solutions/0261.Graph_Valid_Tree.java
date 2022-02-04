@@ -27,6 +27,8 @@ ai != bi
 There are no self-loops or repeated edges.
 */
 
+//method 1: BFS
+
 class Solution {
     public boolean validTree(int n, int[][] edges) {
         
@@ -74,4 +76,81 @@ class Solution {
         return graph;
     }
     
+}
+
+//method 2: DFS   实现：非递归
+class Solution {
+    public boolean validTree(int n, int[][] edges) {
+        
+        int m = edges.length;
+        if (m != n - 1)
+            return false;
+    
+        //create graph
+        List<List<Integer>> adjacencyList = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            adjacencyList.add(new ArrayList<>());
+        }
+        for (int[] edge : edges) {
+            adjacencyList.get(edge[0]).add(edge[1]);
+            adjacencyList.get(edge[1]).add(edge[0]);
+        }
+        
+        Set<Integer> visited = new HashSet<Integer>();
+        Stack<Integer> stack = new Stack<>();
+        stack.push(0);
+        visited.add(0);
+        
+        while (!stack.isEmpty()) {
+            int curr = stack.pop();
+            for (int neighbor : adjacencyList.get(curr)) {
+                if (visited.contains(neighbor)) {
+                    continue;
+                }
+                stack.push(neighbor);
+                visited.add(neighbor);
+            }
+        }
+        return visited.size() == n;
+    }
+}
+
+//method 3: DFS   实现：递归
+class Solution {
+    public boolean validTree(int n, int[][] edges) {
+        
+        int m = edges.length;
+        if (m != n - 1)
+            return false;
+    
+        //create graph
+        List<List<Integer>> adjacencyList = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            adjacencyList.add(new ArrayList<>());
+        }
+        for (int[] edge : edges) {
+            adjacencyList.get(edge[0]).add(edge[1]);
+            adjacencyList.get(edge[1]).add(edge[0]);
+        }
+        
+        Set<Integer> visited = new HashSet<Integer>();
+        visited.add(0);
+        dfs(adjacencyList, 0, visited);
+        return visited.size() == n;
+    }
+    
+    
+    //递归定义：
+    public void dfs(List<List<Integer>> adjacencyList, int curr, Set<Integer> visited) {
+        visited.add(curr);
+        
+        //递归的拆解：
+        for(int neighbor : adjacencyList.get(curr)) {
+            if (visited.contains(neighbor)) {
+                continue;
+            }
+            dfs(adjacencyList, neighbor, visited);
+        }
+    }
+    //递归的出口
 }
