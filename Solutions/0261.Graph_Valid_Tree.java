@@ -116,6 +116,17 @@ class Solution {
 }
 
 //method 3: DFS   实现：递归
+
+/*
+dfs的模板（递归实现）： 
+
+def dfs(curr):
+ visited.add(curr)
+ for next in neighbors(curr):
+     if next not in visited:
+        dfs(next)
+*/
+
 class Solution {
     public boolean validTree(int n, int[][] edges) {
         
