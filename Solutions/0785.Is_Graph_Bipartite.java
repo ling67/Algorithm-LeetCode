@@ -36,3 +36,5 @@ class Solution {
         return true;
     }
 }
+
+dfs:返回这个子图是不是合格的子图
