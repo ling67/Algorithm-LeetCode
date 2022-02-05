@@ -66,9 +66,18 @@ class Node {
 
 //java 对象之间不能直接用“=”赋值，两对象之间使用“=”是将引用所指地址进行赋值，而不是内存块的内容。
 
-//
-
 //写题的流程：不一定把细节都实现的特别完美，所以要先把主干先实现出来：主函数调用子函数，先把主函数写出来
+
+/*version 1: 
+算法1：
+step1:先BFS找到所有的node
+step2:复制新的node放入mapping
+step3:复制边
+
+算法2：
+边遍历边新建新的node，再复制边对应的关系
+*/
+
 class Solution {
     
     public Node cloneGraph(Node node) {
@@ -118,7 +127,32 @@ class Solution {
     
 }
 
-
-
-
-
+//version2: dfs
+//用一个mapping 保存node-->node_copy. 然后一边dfs一边新建copied nodes
+class Solution {
+    
+    public Node cloneGraph(Node node) {
+        if (node == null) {
+            return node;
+        }
+        Map<Node, Node> mapping = new HashMap<>();
+        Node newNode = new Node(node.val);
+        mapping.put(node, newNode);
+        dfs(node, mapping);
+        return mapping.get(node);
+    }
+    
+    public void dfs(Node curr, Map<Node, Node> mapping) {
+        for (Node nei : curr.neighbors) {
+            if (mapping.containsKey(nei)) {
+                mapping.get(curr).neighbors.add(mapping.get(nei));
+                continue;
+            }
+            Node newNeighbor = new Node(nei.val);
+            mapping.put(nei, newNeighbor);
+            mapping.get(curr).neighbors.add(newNeighbor);
+            dfs(nei, mapping);
+        }  
+    }
+    
+}
