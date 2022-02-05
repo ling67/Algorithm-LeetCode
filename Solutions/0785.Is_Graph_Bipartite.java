@@ -11,30 +11,47 @@ Return true if and only if it is bipartite.
 
 */
 
-// 用visit记录访问过的点，True表示red color, False表示blue color，用DFS一边遍历一边检查相邻的点是不是跟当前点颜色不一样
+/*
+Our goal is trying to use two colors to color the graph and see if there are any adjacent nodes having the same color.
+Initialize a color[] array for each node. Here are three states for colors[] array:
+0: Haven't been colored yet.
+1: Blue.
+-1: Red.
+For each node,
 
+If it hasn't been colored, use a color to color it. Then use the other color to color all its adjacent nodes (DFS).
+If it has been colored, check if the current color is the same as the color that is going to be used to color it. (Please forgive my english... Hope you can understand it.)
+*/ 
+//version : DFS
 class Solution {
-    public boolean isBipartite(int[][] graph) {
-        int m = graph.length;
-        Map<Integer, Boolean> visited = new HashMap<>();
+    public boolean isBipartite(int[][] graph) {  
+        int n = graph.length;
+        int[] colors = new int[n];
         
-        for (int i = 0; i < m; i++) {
-            if(!visited.containsKey(i)) {
-                visited.put(i, true);
+        //为了遍历到所有的点，有可能图不连通
+        for (int i = 0; i < n; i++) {
+            if (colors[i] == 0) {
+                if (!validColor(graph, colors, 1, i)) return false;
             }
-            for(int j = 0; j < graph[i].length; j++) {
-                if (visited.containsKey(graph[i][j])) {
-                    if(visited.get(graph[i][j]) == visited.get(i)) {
-                        return false;
-                    }
-                    continue;
-                } else {
-                    visited.put(graph[i][j], !visited.get(i));
-                }
-            }
-        }    
+        }
         return true;
     }
+    
+    //验证node开始的连通的图满不满足条件    
+    public boolean validColor(int[][] graph, int[] colors, int color, int node){
+        //If it has been colored, check if the current color is the same as the color that is going to be used to color it.
+        if (colors[node] != 0) {
+            return colors[node] == color;
+        } 
+        
+        //If it hasn't been colored, use a color to color it.
+        colors[node] = color;
+        for (int next : graph[node]) {
+            if (!validColor(graph, colors, -color, next)) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
 }
-
-dfs:返回这个子图是不是合格的子图
