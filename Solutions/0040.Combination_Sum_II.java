@@ -30,40 +30,39 @@ Output:
 
 class Solution {
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
-        List<List<Integer>> results = new ArrayList<>();
-        if (candidates == null || candidates.length == 0) {
-            return results;
-        }
-        //先排序
-        Arrays.sort(candidates);    
-        help(candidates, 0, new ArrayList<Integer>(), target, results);
-        return results;
+        List<List<Integer>> result = new ArrayList<>();
+        Arrays.sort(candidates);
+        help(candidates, 0, new ArrayList<Integer>(), target,  result);
+        return result;
     }
     
-    //
-    private void help(int[] nums,
-                      int startIndex,
-                      List<Integer> combination,
-                      int target,
-                      List<List<Integer>> results) {
+    //得到以startIndex为起点的所有满足sum = target的放入result中
+    private void help(int nums[], 
+                     int startIndex,
+                     List<Integer> combination,
+                     int target,
+                     List<List<Integer>> result) {
         
+        //exit;
         if (target == 0) {
-            results.add(new ArrayList<>(combination));
+            result.add(new ArrayList<>(combination));
         }
         
         for (int i = startIndex; i < nums.length; i++) {
+            
+            //exit;
             if (nums[i] > target) {
                 break;
             }
+            
+            //没有选择startInde的时候，后面如果相等就不应该选择
             if (i != startIndex && nums[i] == nums[i-1]) {
                 continue;
-            } 
+            }
+            //splid
             combination.add(nums[i]);
-            help(nums, i + 1, combination, target - nums[i], results);
+            help(nums, i + 1, combination, target - nums[i], result);
             combination.remove(combination.size() - 1);
         }
-        
     }
-    
 }
-
