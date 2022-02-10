@@ -42,7 +42,7 @@ class Solution {
         ListNode second_node = head.next;
         ListNode reversed_head = reverseList(second_node);  // 递归调用，返回的是已经revere好了的head
         second_node.next = head;
-        head.next = null;
+        head.next = null;   //要注意断开链表
         return reversed_head;
     }
 }
