@@ -54,19 +54,19 @@ public class Solution {
         if (head == null || head.next == null) {
             return false;
         }
-        ListNode slowNode = head;
-        ListNode quickNode = head.next;
         
-        while (slowNode != quickNode) {
-            if (slowNode == null || quickNode == null || quickNode.next == null) {
-                return false;
-            }
+        ListNode slowNode = head;
+        ListNode quickNode = head;
+        
+        while (quickNode != null && quickNode.next != null) {
             slowNode = slowNode.next;
             quickNode = quickNode.next.next;
+            if (slowNode == quickNode) {
+                return true;
+            }
         }
-        return true;
+        return false;
     }
 }
-
 
 
