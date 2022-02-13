@@ -50,4 +50,31 @@ class Solution:
         
         return True
 
-            
+       
+#version2:reverse
+class Solution:
+    def isPalindrome(self, head: Optional[ListNode]) -> bool:
+        prev, curr, fast = None, head, head
+        
+        while fast and fast.next:
+            fast = fast.next.next
+
+            #reverse the left part of the linked list
+            temp = curr.next
+            curr.next = prev
+            prev = curr
+            curr = temp
+                
+        if not fast:        # even number of nodes
+            left, right = prev, curr
+        else:               # odd number of nodes
+            left, right = prev, curr.next
+        
+        #compare
+        while left and right:
+            if left.val != right.val:
+                return False
+            left = left.next
+            right = right.next
+        
+        return True
