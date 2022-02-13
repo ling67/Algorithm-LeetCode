@@ -21,42 +21,53 @@ Note that the linked lists must retain their original structure after the functi
  *     }
  * }
  */
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
 public class Solution {
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-        ListNode curt = headA;
         if (headA == null || headB == null) {
             return null;
         }
+        
+        //将B的头尾相连
+        ListNode curt = headB;
         while (curt.next != null) {
             curt = curt.next;
         }
         curt.next = headB;
+        
         ListNode result = listCycleII(headA);
         curt.next = null;
         return result;
     }
-    
-    private ListNode listCycleII(ListNode head) {
-        ListNode slow = head, fast = head.next;
-        
-        //判断是都有环，即是否相交
-        while (slow != fast) {
-            if (fast == null || fast.next == null) {
-                return null;
-            }
-            slow = slow.next;
-            fast = fast.next.next;
-        }
-        
-        //求相交的点
-        slow = head;
-        fast = fast.next;
-        while (slow != fast) {
-            slow = slow.next;
-            fast = fast.next;
-        }
-        return slow;
-    }
-    
-}
 
+    private ListNode listCycleII(ListNode head) {
+        
+        ListNode slow = head;
+        ListNode quick = head;
+        
+        while (quick != null && quick.next != null) {
+            slow = slow.next;
+            quick = quick.next.next;
+            if (slow == quick) {                
+                //求相交的点
+                ListNode curr = head;
+                while (curr != slow) {
+                    curr = curr.next;
+                    slow = slow.next;
+                }
+                return curr;                   
+            }
+        }
+        return null;
+    }
+}
