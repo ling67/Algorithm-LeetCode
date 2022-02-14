@@ -20,6 +20,43 @@ Output: []
 
 */
 
+
+//python 版本
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        if not nums or len(nums) < 3:
+            return []
+        
+        nums.sort()   #step 1:sort the arr
+        
+        res = []
+        lens = len(nums)
+        
+        #setp 2: for 虚幻nums[i],然后双指针解决twosum问题
+        for i in range(lens - 2):
+            if i > 0 and nums[i] == nums[i -1]:   # 注意点一：对i去重
+                continue
+                
+            left, right = i + 1, lens - 1    # 注意点二：left 和 right 的初始值
+            while left < right:
+                threeSum = nums[left] + nums[right] + nums[i]
+                if threeSum < 0:
+                    left += 1
+                elif threeSum > 0:
+                    right -= 1
+                else:
+                    res.append([nums[i], nums[left], nums[right]])
+                    left += 1
+                    right -= 1
+                    while left < right and nums[left] == nums[left-1]: # 注意点三：对 left 和 right 去重!!!!!!!
+                        left += 1
+                    while left < right and nums[right] == nums[right+1]: # 注意点三：对 left 和 right 去重!!!!!!!
+                        right -= 1
+        return res
+            
+       
+
+
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> results = new ArrayList<>();
