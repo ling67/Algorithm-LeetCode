@@ -30,8 +30,8 @@ class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
         word_dict = collections.defaultdict(list)
         for word in strs:
-            char_word = list(word)
-            char_word.sort()
-            word_dict[tuple(char_word)].append(word)
+            char_word = list(word)   #变成char[]
+            char_word.sort()    #排序
+            word_dict[tuple(char_word)].append(word)    #hashmap存进去
             
-        return word_dict.values()
+        return word_dict.values()   #返回hashmap的值
