@@ -92,4 +92,37 @@ class MyQueue {
  */
 
 
+//python 版本
+class MyQueue:
 
+    def __init__(self):
+        self.st1 = []    #store element
+        self.st2 = []      # help space
+
+    def push(self, x: int) -> None:
+        while self.st1:         # 把大象装冰箱分三步：1. move all items from st1 to st2
+            self.st2.append(self.st1.pop())
+        self.st1.append(x)
+        while self.st2:
+            self.st1.append(self.st2.pop())
+
+    def pop(self) -> int:
+        if len(self.st1) == 0:
+            raise IndexError("The queue is empty")
+        return self.st1.pop()
+        
+    def peek(self) -> int:
+        if len(self.st1) == 0:
+            raise IndexError("The queue is empty")
+        return self.st1[-1]
+        
+    def empty(self) -> bool:
+        return len(self.st1) == 0        
+
+
+# Your MyQueue object will be instantiated and called as such:
+# obj = MyQueue()
+# obj.push(x)
+# param_2 = obj.pop()
+# param_3 = obj.peek()
+# param_4 = obj.empty()
