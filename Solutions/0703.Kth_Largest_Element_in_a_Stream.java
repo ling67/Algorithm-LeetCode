@@ -24,6 +24,27 @@ kthLargest.add(9);   // return 8
 kthLargest.add(4);   // return 8
 */
 
+class KthLargest:
+
+    def __init__(self, k: int, nums: List[int]):
+        self.nums = nums
+        self.k = k
+        heapify(self.nums)     #要创建一个堆，可以使用list来初始化为 [] ，或者你可以通过一个函数 heapify() ，来把一个list转换成堆
+        while len(self.nums) > k:
+            heappop(self.nums)   #heapq.heappop(heap)弹出并返回 heap 的最小的元素，保持堆的不变性。如果堆为空，抛出 IndexError 。使用 heap[0] ，可以只访问最小的元素而不弹出它。
+
+    def add(self, val: int) -> int:
+        heappush(self.nums, val)    #将 item 的值加入 heap 中，保持堆的不变性。
+        if len(self.nums) > self.k:
+            heappop(self.nums)
+        return self.nums[0]
+
+
+# Your KthLargest object will be instantiated and called as such:
+# obj = KthLargest(k, nums)
+# param_1 = obj.add(val)
+
+
 class KthLargest {
     
     private static int k;
