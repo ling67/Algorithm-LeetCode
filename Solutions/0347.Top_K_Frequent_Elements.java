@@ -21,7 +21,17 @@ It is guaranteed that the answer is unique.
 
 */
 
-
+//python version
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        #先转成计数器
+        q = []
+        for num, freq in Counter(nums).items():
+            if len(q) < k:
+                heappush(q, (freq, num))
+            else:
+                heappushpop(q, (freq, num))
+        return [x[1] for x in q]
 
 class Solution {
     public int[] topKFrequent(int[] nums, int k) {
