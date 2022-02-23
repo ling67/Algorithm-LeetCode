@@ -16,6 +16,15 @@ Output: 4
 
 */
 
+//python version
+class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        heapify(nums)    #初始化成最小堆
+        while len(nums) > k:
+            heappop(nums)
+        return nums[0]
+        
+
 class Solution {
     public int findKthLargest(int[] nums, int k) {
         int n = nums.length;
@@ -34,5 +43,6 @@ class Solution {
         return heap.peek();
     }
 }
+
 
 
