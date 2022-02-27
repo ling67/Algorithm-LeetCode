@@ -24,6 +24,9 @@ Constraints:
 arr is sorted in ascending order.
 -104 <= arr[i], x <= 104
 """
+#方法一：heapQ
+
+#方法二：binary search
 
 class Solution:
     def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
