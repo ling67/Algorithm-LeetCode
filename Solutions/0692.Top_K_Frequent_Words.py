@@ -32,6 +32,7 @@ Follow-up: Could you solve it in O(n log(k)) time and O(n) extra space?
 """
 Heapify will work with lists of tuples such that the first element of each tuple is the value, For example truple is (distance, node), range it by distance
 
+O（N + klogN）
 """
 class Solution:
     def topKFrequent(self, words: List[str], k: int) -> List[str]:
@@ -42,7 +43,7 @@ class Solution:
         heapify(hq)    #按照-freq排序，若相同再按照word排序，时间复杂度O(n)
         
         res = []
-        for _ in range(k):
-            res.append(heappop(hq)[1])
+        for _ in range(k):    #O(klogN)
+            res.append(heappop(hq)[1]) 
 
         return res;
