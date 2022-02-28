@@ -3,14 +3,16 @@
 2.字符串查找之Rabin Karp算法
 3.Algorithm-search a 2DMatrix II   
 related search a 2DMatrix (Binary search) 
+
 4.三步翻转法 
 
 5.Merge sort   done
 6.Quick Sort  done
 7.Quick Sort vs Merge sort   done
 8.Quick Select   done
+9.Heap done  所有父亲节点比儿子节点来得小，儿子节点之间没有关系
 
-9.Heap   done
 参考第8次课程
 10.Subarray子数组问题
-11.Merge K Sorted Lists
+
+11.Merge K Sorted Lists   归并算法
