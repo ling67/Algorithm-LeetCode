@@ -2,10 +2,9 @@
 1.SubsetII  done
 2.字符串查找之Rabin Karp算法
 
-3.Algorithm-search a 2DMatrix II   
+3.Algorithm-search a 2DMatrix II    Done
 related search a 2DMatrix (Binary search) 
-
-4.三步翻转法  时间复杂度O(n)是下线
+4.三步翻转法  时间复杂度O(n)是下线    Done
 [4 5 1 2 3]
 [4,5]翻转[5,4]
 [1 2 3]翻转[3 2 1]
