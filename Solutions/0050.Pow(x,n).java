@@ -18,6 +18,8 @@ Output: 0.25000
 Explanation: 2-2 = 1/22 = 1/4 = 0.25
 */
 
+//recursion solution: O(logN)
+
 class Solution {
     public double myPow(double x, int n) {
         if (n == 0) return 1;
