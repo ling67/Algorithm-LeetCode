@@ -19,7 +19,7 @@ Output: false
 
 /*
 method 1:brute force
-method 2:binary search  
+method 2:binary search     更像是一道智力题，这题的时间复杂度是不可能到log的，时间复杂度：O(M+N)
 */
 class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
