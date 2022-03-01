@@ -18,7 +18,7 @@ Output: false
 */
 
 /*
-method 1.row = index // n and col = idx % n;
+method 1.row = index // n and col = idx % n;   O(log(M*N)), O(1)
 method 2.先竖向搜索确定行，再横向收索确定列
 */
 class Solution {
