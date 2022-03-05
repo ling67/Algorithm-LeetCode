@@ -19,6 +19,7 @@ Output: 12
 2.求 dp[m-1][n-1]
 3.初始化 dp[0][0] = grid[0][0]
 4.递推公式 dp[m-1][n-1] = grid[m-1][n-1] + min{dp[m-2][n-1], dp[m-1][n-2]}
+time o(m*n) space: o(m*n)
 """
 class Solution:
     def minPathSum(self, grid: List[List[int]]) -> int:
