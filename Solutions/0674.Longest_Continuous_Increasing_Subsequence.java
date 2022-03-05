@@ -21,6 +21,29 @@ increasing.
 */
 
 
+"""
+1.dp[i]以i结尾的最长子序列长度
+2.求dp[n-1]
+3.初始条件：dp[0] = 1
+4.dp[i] = max{1, dp[i-1] + 1(if nums[i] > nums[i-1])}
+"""
+class Solution:
+    def findLengthOfLCIS(self, nums: List[int]) -> int:
+        n = len(nums)
+        dp = [1] * n
+        
+        dp[0] = 1
+        
+        for i in range(1, n):
+            if nums[i] > nums[i-1]:
+                dp[i] = dp[i-1] + 1
+                
+        res = 1
+        for i in range(n):
+            res = max(res, dp[i])
+        
+        return res
+        
 /*
 1.definition dp[i] represent the longest continuous increasing subsequence end with i
 2.we require max(dp[j]) j from 0 to n-1
