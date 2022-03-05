@@ -19,20 +19,22 @@ Explanation: You will always arrive at index 3 no matter what. Its maximum jump 
 */
 
 """
-1.确定状态dp[i] 能不能跳到i
+1.确定状态dp[j] 能不能跳到j
 2.求dp[n-1]
 3.初始化：dp[0] = true
-4.递推公式 dp[i] = (0<j<i)dp[j] + a[j] > i
+4.递推公式 dp[j] = (0<i<j) i + a[i] > i
+"""O(N^2), O(N)"""
 """
 class Solution:
     def canJump(self, nums: List[int]) -> bool:
-        dp = [False] * len(nums)
-        dp[0] = True
-        for i in range(1, len(nums)):
-            for j in range(i):
-                if dp[j] + nums[j] >= i:
-                    dp[i] = True
+        dp = [False] * len(nums)    # 确定状态：dp[j]表示能不能跳到位置j
+        dp[0] = True                # 初始条件
+        for j in range(1, len(nums)):
+            for i in range(j):
+                if dp[i] and i + nums[i] >= j:  # 转移方程：只要在dp[j]之前存在一个dp[i]=True且从这个i位置够得着j位置，那么dp[j]就为True
+                    dp[j] = True
                     break
+        
         return dp[-1]
 
 
