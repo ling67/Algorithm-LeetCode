@@ -20,6 +20,24 @@ Explanation: From the top-left corner, there are a total of 3 ways to reach the 
 
 */
 
+"""
+1.确定状态 dp[i][j] 从[0][0]到[i][j]的路径
+2.求dp[m-1][n-1]
+3.初始化 dp[0][0]=1 dp[i][0]=1 dp[0][j]=1
+4.递推公式：dp[i][j] = dp[i-1][j]+dp[i][j-1]
+"""
+class Solution:
+    def uniquePaths(self, m: int, n: int) -> int:
+        dp = [[0] * n for _ in range(m)]   #注意二维数组初始化
+        dp[0][0] = 1
+        for i in range(m):
+            for j in range(n):
+                if i == 0 or j == 0:    ## 初始条件：只有一种方法走到行为0或者列为0的地方，因为不能往左走也不能往上走
+                    dp[i][j] = 1
+                else:
+                    dp[i][j] = dp[i-1][j] + dp[i][j-1]
+        return dp[m-1][n-1]
+
 
 //1.状态定义 dp[i][j] 代表从（0，0）出发到（i,j）总共的路径数
 //2.求dp[m-1][n-1]
