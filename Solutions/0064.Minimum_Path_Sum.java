@@ -80,8 +80,13 @@ class Solution:
                         dp[0][j] = min(dp[1][j], dp[0][j - 1]) + grid[i][j]                
                 
         return dp[1][-1] if m % 2 == 0 else dp[0][-1]
+        
+//怎么记录路径
+    pi[i][j] = 0:up
+    pi[i][j] = 1:left
+    int [][] pi = new int[m][n]
+    从最后一个往前推
  
-
 //1.状态定义 dp[i][j] = 从（0，0）出发到（i, j）的最短距离和
 //2.求dp[m-1][n-1];
 //3.初始化：dp[0][0] = A[0][0]; dp[i][0] = dp[i-1][0] + A[i][0]; dp[0][j] = dp[0][j-1] + A[0][j]
