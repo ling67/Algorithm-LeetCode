@@ -34,7 +34,7 @@ if (i,j) 是空地：up[i][j] = 0; up[i][j] += up[i-1][j]
 if (i,j) 是敌人：up[i][j] = 1; up[i][j] += up[i-1][j] 
 同理算出down[i][j], left[i][j], right[i][j]
 然后能炸的敌人数目为up+down+left+right
-O(M*N)
+time O(M*N)  space O(M*N)
 """
 class Solution:
     def maxKilledEnemies(self, grid: List[List[str]]) -> int:
