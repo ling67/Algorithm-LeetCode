@@ -21,6 +21,26 @@ Output: 1
 
 */
 
+"""
+1.状态定义：dp[i]以i结尾的最长子序列
+2.求：dp[i]最大值
+3.初始化：dp[0] = 1
+4.递推公式：dp[i] = max(dp[j]+1) for j < i && nums[j] < nums[i];
+"""
+class Solution:
+    def lengthOfLIS(self, nums: List[int]) -> int:
+        n = len(nums)
+        dp = [1] * n
+        for i in range(1, n):
+            for j in range(i):
+                if nums[j] < nums[i]:
+                    dp[i] = max(dp[i], dp[j] + 1)
+        
+        res = dp[0]
+        for i in range(1, n):
+            res = max(res, dp[i])
+        
+        return res
 
 //1.定义dp[i] 代表严格以i结尾的最长子序列的长度
 //2.求dp[i]最大值
