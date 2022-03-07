@@ -25,6 +25,8 @@
 时间复杂度 O(nk)
 */
 
+
+//version 1: 二分答案
 public class Solution {
     /**
      * @param pages: an array of integers
@@ -88,3 +90,16 @@ public class Solution {
         return peopleNeeded;
     }
 }
+
+//version 2: 划分性动态规划
+
+需要找到一种分段方式，是的所有短的数字之和的最大值最小
+f[k][i] =前K个（不包含k）抄写员最多需要多长时间抄完前i本书（不包括i）
+
+
+
+
+
+
+
+
