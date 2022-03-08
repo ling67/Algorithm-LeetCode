@@ -25,8 +25,40 @@
 时间复杂度 O(nk)
 */
 
+//version 1: 二分答案 python version
+class Solution:
+    """
+    @param pages: an array of integers
+    @param k: An integer
+    @return: an integer
+    """
+    def copy_books(self, pages: List[int], k: int) -> int:
+        # write your code here
+        if not pages:
+            return 0
 
-//version 1: 二分答案
+        start, end = max(pages), sum(pages)
+        while start + 1 < end:
+            mid = start + (end - start) // 2
+            if self.is_possible(pages, mid, k):
+                end = mid
+            else:
+                start = mid
+        return start if self.is_possible(pages, start, k) else end
+
+    def is_possible(self, pages, threshold, k):
+        people_needed = 1
+        curr_time = 0
+        for page in pages:
+            if curr_time + page > threshold:
+                people_needed += 1
+                curr_time = 0
+            curr_time += page
+        return people_needed <= k
+
+
+
+//version 1: 二分答案 java version
 public class Solution {
     /**
      * @param pages: an array of integers
