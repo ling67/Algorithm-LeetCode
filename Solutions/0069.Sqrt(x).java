@@ -27,6 +27,23 @@ Submissions
 2,472,427
 */
 
+solution: python version
+class Solution:
+    def mySqrt(self, x: int) -> int:
+        start, end = 0, x
+        
+        while start + 1 < end:
+            mid = start + (end - start) // 2
+            if mid * mid == x:
+                return mid
+            elif mid * mid > x:
+                end = mid
+            else:
+                start = mid
+        
+        return end if end * end <= x else start
+
+
 /*
 we know the maximum value of sqrt(x) is x, so we can make sure the result is between 0 to x.
 use a loop to find result
