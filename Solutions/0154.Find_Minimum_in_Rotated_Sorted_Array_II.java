@@ -29,6 +29,22 @@ n == nums.length
 nums is sorted and rotated between 1 and n times.
 */
 
+class Solution:
+    def findMin(self, nums: List[int]) -> int:
+        n = len(nums)
+        start, end = 0, n-1
+    
+        while start + 1 < end:
+            mid = start + (end - start) // 2
+            if nums[mid] < nums[end]:
+                end = mid
+            elif nums[mid] > nums[end]:
+                start = mid
+            else:
+                end -= 1
+        return min(nums[start], nums[end])
+            
+                 
 
 class Solution {
     public int findMin(int[] nums) {
