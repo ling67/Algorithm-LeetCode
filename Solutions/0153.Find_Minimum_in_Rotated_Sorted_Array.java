@@ -37,6 +37,22 @@ All the integers of nums are unique.
 nums is sorted and rotated between 1 and n times.
 */
 
+class Solution:
+    def findMin(self, nums: List[int]) -> int:
+        n = len(nums)
+        if nums[-1] > nums[0]:  # 如果已经排好序了，那minimum就是第一个数
+            return nums[0]
+        start, end = 0, n -1
+        while start + 1 < end:
+            mid = start + (end - start) // 2
+            if nums[mid] < nums[end]:
+                end = mid
+            elif nums[mid] > nums[end]:
+                start = mid
+        return min(nums[start], nums[end])
+                
+
+
 class Solution {
     public int findMin(int[] nums) {
         int start = 0, end = nums.length - 1;
