@@ -24,6 +24,39 @@ The number of nodes in the tree is in the range [0, 2000].
 -1000 <= Node.val <= 1000
 */
 
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        if not root:
+            return []
+
+        # 下面是非常typical的BFS解binary tree的模板
+        res = []
+        q = collections.deque()
+        q.append(root)   # 注意进q的永远是node, 而不是node.val，永远永远！
+        
+        while len(q) > 0:
+            size = len(q)   # important, 注意这里定义一个lens而不是在59行里直接用len(q)是因为每次q.popleft()之后q的长度会变!
+            level = []   # level 记录每一层的信息
+            for _ in range(size):
+                # 在这一层要做两件事情：
+                # 1. 处理这一层：将该层的所有的node.val依次放入level中
+                cur = q.popleft()
+                level.append(cur.val)
+                # 2. 处理下一层：将该层所有的node的左右子节点依次入队列
+                if cur.left:
+                    q.append(cur.left)
+                if cur.right:
+                    q.append(cur.right)   
+            res.append(level)
+        return res
+
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
