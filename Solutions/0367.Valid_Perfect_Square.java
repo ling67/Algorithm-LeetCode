@@ -16,6 +16,23 @@ Output: false
 
 */
 
+solution python version
+class Solution:
+    def isPerfectSquare(self, num: int) -> bool:
+        start, end = 0, num
+        while start + 1 < end:
+            mid = start + (end - start) // 2
+            if mid * mid == num:
+                return True
+            elif mid * mid < num:
+                start = mid
+            else:
+                end = mid
+        if start * start == num or end * end == num:
+            return True
+        else:
+            return False
+
 class Solution {
     public boolean isPerfectSquare(int num) {
         int start = 1, end = num;
