@@ -19,6 +19,36 @@ Output: 5
 
 */
 
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def minDepth(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return 0
+        
+        depth = 1
+        q = collections.deque()
+        q.append(root)
+        
+        while len(q) > 0:
+            size = len(q)
+            for _ in range(size):
+                cur = q.popleft()
+                if not cur.left and not cur.right:
+                    return depth
+                if cur.left:
+                    q.append(cur.left)
+                if cur.right:
+                    q.append(cur.right)    
+            depth += 1
+        
+        return depth
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
