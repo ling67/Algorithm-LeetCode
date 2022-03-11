@@ -44,6 +44,31 @@ The number of nodes in both trees is in the range [0, 100].
  *     }
  * }
  */
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+#定义-拆解-结束条件
+
+class Solution:
+    def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
+        #exit
+        if not p and not q:
+            return True
+        
+        if not p or not q:
+            return False
+        
+        #deivide
+        left = self.isSameTree(p.left, q.left)
+        right = self.isSameTree(p.right, q.right)
+        
+        #conque
+        if left and right and p.val == q.val:
+            return True
+
 
 
 class Solution {
