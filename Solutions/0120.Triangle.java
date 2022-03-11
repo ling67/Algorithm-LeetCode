@@ -41,12 +41,12 @@ class Solution {
 
 
 //version 2
-
 /*
 1.状态定义: dp[i][j] = 从坐标(0,0)出发，到达坐标（i, j）的最小路径和
 2.求dp[n-1][j]中最小的一个;
 3.初始条件 dp[0][0] = A[0][0]
 4.递推公式： dp[i][j] = A[i][j] + min(dp[i-1][j-1], dp[i-1][j])
+O(m*m)
 */
 
 class Solution {
