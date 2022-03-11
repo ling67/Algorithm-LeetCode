@@ -27,6 +27,7 @@ Explanation: There are three ways to climb to the top.
 //2.求dp[n]
 //3.初始化 dp[1] = 1 dp[2] = 2
 //4.递推公式 dp[n] = dp[n-1] + dp[n-2]
+//time complexity O(n)
 class Solution {
     public int climbStairs(int n) {
         if (n == 1) {
