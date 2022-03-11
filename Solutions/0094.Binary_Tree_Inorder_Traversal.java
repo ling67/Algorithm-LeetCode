@@ -55,6 +55,20 @@ class Solution {
     }
 }
 
+class Solution:
+    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        #exit
+        if not root:
+            return []
+        
+        #divide
+        result = []
+        result.extend(self.inorderTraversal(root.left))
+        result.append(root.val)
+        result.extend(self.inorderTraversal(root.right))
+        #conquer
+        return result
+
 //version 2:Traverse
 
 
