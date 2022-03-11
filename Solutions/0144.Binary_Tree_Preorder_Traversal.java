@@ -41,15 +41,16 @@ The number of nodes in the tree is in the range [0, 100].
  * }
  */
    
-   
-   
 //version 1:Divide & Conquer 
 class Solution {
     public List<Integer> preorderTraversal(TreeNode root) {
         List<Integer> result = new LinkedList<>();
+        //exit
         if (root == null) {
             return result;
         }
+        
+        //divide + conquer
         result.add(root.val);
         result.addAll(preorderTraversal(root.left));   //加入链表时用addAll()
         result.addAll(preorderTraversal(root.right));
@@ -58,12 +59,41 @@ class Solution {
 }
 
 //version 2:Travers 
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public List<Integer> preorderTraversal(TreeNode root) {
+        ArrayList<Integer> result = new ArrayList<Integer>();
+        traverse(root, result);
+        return result;
+    }
+    
+    //把root为跟的preorder加入result里面
+    private void traverse(TreeNode root, ArrayList<Integer> result) {
+        if (root == null) {
+            return;
+        }
+        
+        result.add(root.val);
+        traverse(root.left, result);
+        traverse(root.right, result);
+    }
+}
 
-
-
-
-
-//version 3:Non-Recursion 
+//version 3:Non-Recursion  用栈
 class Solution {
     public List<Integer> preorderTraversal(TreeNode root) {
         Stack<TreeNode> stack = new Stack<TreeNode>();
