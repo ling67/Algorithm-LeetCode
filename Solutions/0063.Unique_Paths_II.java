@@ -31,6 +31,7 @@ Output: 1
 2.求dp[m-1][n-1]
 3.初始化 dp[0][0] = 1
 4.dp[i][j] = 1, 如果有障碍， dp[i-1][j]+dp[i][j-1]
+time complexity: m*n
 """
 class Solution:
     def uniquePathsWithObstacles(self, obstacleGrid: List[List[int]]) -> int:
@@ -63,10 +64,6 @@ class Solution:
                     dp[i][j] = dp[i-1][j] + dp[i][j-1]
                     
         return dp[m-1][n-1]
-                
-        
-        
-
 
 /*
 1.状态定义dp[i][j]代表从（0，0）出发到达（i，j）的路径条数
