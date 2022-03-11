@@ -94,6 +94,30 @@ class Solution {
 }
 
 //version 3:Non-Recursion  用栈
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        if not root:
+            return []
+        
+        stack = [root]
+        res = []
+        while stack:
+            currNode = stack.pop()
+            res.append(currNode.val)
+            if currNode.right:
+                stack.append(currNode.right)
+            if currNode.left:
+                stack.append(currNode.left)
+        return res
+
+
 class Solution {
     public List<Integer> preorderTraversal(TreeNode root) {
         Stack<TreeNode> stack = new Stack<TreeNode>();
@@ -116,4 +140,6 @@ class Solution {
         return preorder;
     }
 }
+
+
 
