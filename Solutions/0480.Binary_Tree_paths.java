@@ -37,6 +37,48 @@
  */
 
 //Version 1: divide
+   
+"""
+Definition of TreeNode:
+class TreeNode:
+    def __init__(self, val):
+        self.val = val
+        self.left, self.right = None, None
+"""
+
+class Solution:
+    """
+    @param root: the root of the binary tree
+    @return: all root-to-leaf paths
+    """
+    def binary_tree_paths(self, root: TreeNode) -> List[str]:
+        # write your code here
+        
+        res = []
+        
+        #exit
+        if not root:
+            return []
+        
+        if not root.left and not root.right:
+            res.append(str(root.val))
+            return res
+
+        #divide
+        left = self.binary_tree_paths(root.left)
+        right = self.binary_tree_paths(root.right)
+
+        #conquer
+        for l in left:
+            res.append(str(root.val) + "->" + l)
+        for r in right:
+            res.append(str(root.val) + "->" + r)   
+
+        return res 
+
+
+
+//java version   
 public class Solution {
     /**
      * @param root: the root of the binary tree
