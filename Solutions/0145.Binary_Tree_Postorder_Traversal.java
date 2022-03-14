@@ -43,6 +43,26 @@ The number of the nodes in the tree is in the range [0, 100].
 
 
 //version 1:divide & conque
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        if not root:
+            return []
+        
+        result = []
+        
+        result.extend(self.postorderTraversal(root.left))
+        result.extend(self.postorderTraversal(root.right))
+        result.append(root.val)
+        
+        return result
+
 class Solution {
     public List<Integer> postorderTraversal(TreeNode root) {
         List<Integer> result = new LinkedList<>();
