@@ -30,6 +30,37 @@ The number of nodes in the tree is in the range [0, 5000].
 
 */
 
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def isBalanced(self, root: Optional[TreeNode]) -> bool:
+        if not root:
+            return True
+        
+        height, isBalance = self.helper(root)
+        return isBalance
+        
+    def helper(self, root):
+        isbalance = False
+        #exit
+        if not root:
+            return 0, True
+        
+        #divide
+        lheight, lBalance = self.helper(root.left)
+        rheight, rBalance = self.helper(root.right)
+        
+        #conquer
+        if lBalance and rBalance and abs(lheight - rheight) <= 1:
+            return max(lheight, rheight) + 1, True
+        else:
+            return max(lheight, rheight) + 1, False
+        
+
 
 /**
  * Definition for a binary tree node.
