@@ -47,6 +47,53 @@ The average of subtree of 1,-5,11 is 2.333,-5,11. So the subtree of 11 is the ma
  */
 
 
+from lintcode import (
+    TreeNode,
+)
+
+"""
+Definition of TreeNode:
+class TreeNode:
+    def __init__(self, val):
+        self.val = val
+        self.left, self.right = None, None
+"""
+
+class Solution:
+    """
+    @param root: the root of binary tree
+    @return: the root of the maximum average of subtree
+    """
+    def find_subtree2(self, root: TreeNode) -> TreeNode:
+        # write your code here
+        if not root:
+            return root
+        self.max_avg = float("-inf")
+        self.max_root = root
+        self.help(root)
+
+        return self.max_root
+
+    #return sum and num
+    def help(self, root: TreeNode):
+        if not root:
+            return 0, 0
+
+        #divide
+        left_cnt, left_sum = self.help(root.left)
+        right_cnt, right_sum = self.help(root.right)
+
+        #conquer
+        cnt = left_cnt + right_cnt + 1
+        sum = left_sum + right_sum + root.val
+        avg = sum / cnt
+        
+        #traverse to compare
+        if avg > self.max_avg:
+            self.max_avg = avg
+            self.max_root = root
+        
+        return cnt, sum
 
 
 
