@@ -22,6 +22,39 @@ The number of nodes in the tree is in the range [1, 104].
 0 <= Node.val <= 105
 */
 
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def maximumAverageSubtree(self, root: Optional[TreeNode]) -> float:
+        self.maxAvg = float("-inf")
+        self.helper(root)
+        return self.maxAvg
+    
+    def helper(self, root):
+        #exit
+        if not root:
+            return 0, 0
+        
+        #divide
+        lsum, lnum = self.helper(root.left)
+        rsum, rnum = self.helper(root.right)
+
+        #conquer
+        rootsum = lsum + rsum + root.val
+        rootnum = lnum + rnum + 1
+        avg = rootsum / rootnum
+        
+        if avg > self.maxAvg:
+            self.maxAvg = avg
+        
+        return rootsum, rootnum
+        
+        
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
