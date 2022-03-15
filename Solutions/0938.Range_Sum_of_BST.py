@@ -18,6 +18,28 @@ Explanation: Nodes 6, 7, and 10 are in the range [6, 10]. 6 + 7 + 10 = 23.
 
 */
 
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def rangeSumBST(self, root: Optional[TreeNode], low: int, high: int) -> int:
+        #exit
+        if not root:
+            return 0
+        
+        #divide
+        if root.val > high:
+            return self.rangeSumBST(root.left, low, high)
+        elif root.val < low:
+            return self.rangeSumBST(root.right, low, high)
+        else:
+            l = self.rangeSumBST(root.left, low, high)
+            r = self.rangeSumBST(root.right, low, high)
+            return l + r + root.val
+
 
 /**
  * Definition for a binary tree node.
