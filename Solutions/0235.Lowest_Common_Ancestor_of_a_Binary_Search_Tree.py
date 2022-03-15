@@ -41,6 +41,56 @@ p and q will exist in the BST.
  * }
  */
 
+//version1: same with 236
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        #exit
+        if not root or root == p or root == q:
+            return root
+        
+        #divide
+        l = self.lowestCommonAncestor(root.left, p, q)
+        r = self.lowestCommonAncestor(root.right, p, q)
+
+        #conquer
+        if l and r:
+            return root
+        if l:
+            return l
+        if r:
+            return r
+        
+//version2: use BFS fature 
+ # Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        #exit
+        if not root or root == p or root == q:
+            return root
+        
+        #divide & conquer
+        if p.val < root.val and q.val < root.val:
+            return self.lowestCommonAncestor(root.left, p, q) 
+        elif p.val > root.val and q.val > root.val:
+            return self.lowestCommonAncestor(root.right, p, q) 
+        else:
+            return root
+               
+
+
 
 //version: divide & conquer
 class Solution {
