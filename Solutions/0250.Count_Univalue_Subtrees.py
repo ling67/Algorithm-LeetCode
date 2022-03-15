@@ -20,6 +20,36 @@ Input: root = [5,5,5,5,5,null,5]
 Output: 6
 */
 
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def countUnivalSubtrees(self, root: Optional[TreeNode]) -> int:
+        self.cnt = 0
+        self.helper(root)
+        return self.cnt
+        
+    #check is root is a uni-value subtrees
+    def helper(self, root):
+        if not root:
+            return True
+        
+        #divide
+        left_is = self.helper(root.left)
+        right_is = self.helper(root.right)
+        
+        #conquer
+        if (not left_is) or (not right_is) or (root.left and root.left.val != root.val) or (root.right and root.right.val != root.val):
+            return False
+        
+        self.cnt += 1
+        return True
+        
+        
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
