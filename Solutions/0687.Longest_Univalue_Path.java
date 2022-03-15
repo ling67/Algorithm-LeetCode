@@ -17,6 +17,50 @@ Input: root = [1,4,5,4,4,5]
 Output: 2
 */
 
+//python version
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def longestUnivaluePath(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return 0
+        return max(self.helper(root)) - 1
+    
+    """
+    return 
+    w  end with
+    wo without
+    p  pass 
+    """
+    def helper(self, root):
+        #exit
+        if not root:
+            return 0,0,0
+        if not root.left and not root.right:
+            return 1, 0, 0
+        
+        #divide 
+        l_w, l_wo, l_p = self.helper(root.left)
+        r_w, r_wo, r_p = self.helper(root.right)
+        
+        #conquer
+        root_wo = max(l_w, l_wo, l_p, r_w, r_wo, r_p)
+        root_w, root_p = 1, 0
+        
+        if root.left and root.left.val == root.val:
+            root_w = max(root_w, l_w + 1)
+        if root.right and root.right.val == root.val:
+            root_w = max(root_w, r_w + 1)   
+            
+        if root.left and root.right and (root.left.val == root.right.val == root.val):
+            root_p = l_w + r_w + 1
+        
+        return root_w, root_wo, root_p
+
 
 /**
  * Definition for a binary tree node.
