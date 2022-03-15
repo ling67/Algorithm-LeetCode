@@ -40,8 +40,10 @@ p and q will exist in the BST.
  *     TreeNode(int x) { val = x; }
  * }
  */
-
-//version1: same with 236
+ 
+#version1: same with 236
+#Time complexity O(N) 
+ 
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, x):
@@ -67,7 +69,9 @@ class Solution:
         if r:
             return r
         
-//version2: use BFS fature 
+#version2: use BFS fature 
+#Time complexity O(N) 
+ 
  # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, x):
@@ -89,9 +93,6 @@ class Solution:
         else:
             return root
                
-
-
-
 //version: divide & conquer
 class Solution {
     
