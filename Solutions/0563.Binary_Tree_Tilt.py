@@ -36,6 +36,36 @@ Output: 9
 */
 
 
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def findTilt(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return 0
+        
+        return self.helper(root)[0]
+        
+    def helper(self, root):
+        #exit
+        if not root:
+            return 0, 0    #return the tilt and the sum
+        
+        #divide
+        left_tilt, left_sum = self.helper(root.left)
+        right_tilt, right_sum = self.helper(root.right)
+        
+        #conquer
+        root_sum = left_sum + root.val + right_sum
+        root_tilt = abs(left_sum - right_sum) + left_tilt + right_tilt
+        
+        return root_tilt, root_sum
+   
+
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
