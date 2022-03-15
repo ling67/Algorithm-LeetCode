@@ -25,6 +25,38 @@ The number of nodes in the tree is in the range [1, 3 * 104].
 -3 * 104 <= Node.val <= 3 * 104
 */
 
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def longestConsecutive(self, root: TreeNode) -> int:
+        return max(self._helper(root))
+    
+    def _helper(self, root):
+        """
+        returns (the LCS ended with root, without root)
+        """
+        if not root:
+            return 0, 0
+        if not root.left and not root.right:
+            return 1, 0
+        
+        # divide
+        left_w, left_wo = self._helper(root.left)  #w 以root结尾  wo不以root结尾
+        right_w, right_wo = self._helper(root.right)
+        
+        # conquer
+        root_wo = max(left_w, left_wo, right_w, right_wo)
+        root_w = 1
+        if root.left and root.left.val == root.val + 1:
+            root_w = max(root_w, 1 + left_w)
+        if root.right and root.right.val == root.val + 1:
+            root_w = max(root_w, 1 + right_w)
+            
+        return root_w, root_wo
 
 
 //version divide
@@ -43,7 +75,6 @@ The number of nodes in the tree is in the range [1, 3 * 104].
  *     }
  * }
  */
-
 //verision 3:divide conquer
 class Solution {
     
