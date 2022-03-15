@@ -29,6 +29,34 @@ Output: 1
  *     }
  * }
  */
+ 
+"""
+recursion版本
+"""
+ 
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def closestValue(self, root: Optional[TreeNode], target: float) -> int:
+        self.closest = root.val
+        self.helper(root, target)
+        return self.closest
+    
+    def helper(self, root, target):
+        if not root:
+            return
+        
+        if abs(root.val - target) < abs(self.closest - target): #打擂台
+            self.closest = root.val
+        if target < root.val:
+            self.helper(root.left, target)
+        else:
+            self.helper(root.right, target)
+        
 
 //non-recurtion
 class Solution {
