@@ -34,6 +34,32 @@ The number of nodes in the tree is in the range [0, 5000].
 -1000 <= targetSum <= 1000
 */
 
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
+        
+        #exit
+        if not root:
+            return False
+        
+        if not root.left and not root.right:
+            return root.val == targetSum
+        
+        #divide
+        l = self.hasPathSum(root.left, targetSum - root.val)
+        r = self.hasPathSum(root.right, targetSum - root.val)
+
+        #conquer
+        return l or r
+        
+
+
 //version:divide & conquer
 
 /**
