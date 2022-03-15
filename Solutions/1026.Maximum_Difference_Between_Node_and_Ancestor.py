@@ -23,7 +23,42 @@ Input: root = [1,null,2,null,0,3]
 Output: 3
 */
 
-
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def maxAncestorDiff(self, root: Optional[TreeNode]) -> int:
+        self.max_diff = float("-inf")
+        self.helper(root)
+        return self.max_diff
+        
+    #return max, min
+    def helper(self, root):
+        
+        #exit
+        if not root.left and not root.right:
+            return root.val, root.val
+        
+        root_min, root_max = root.val, root.val
+        
+        #divide
+        if root.left:
+            left_min,left_max = self.helper(root.left)
+            root_min = min(root_min, left_min)
+            root_max = max(root_max, left_max)
+        if root.right:
+            right_min,right_max = self.helper(root.right)
+            root_min = min(root_min, right_min)
+            root_max = max(root_max, right_max)
+        #conquer
+        
+        self.max_diff = max(self.max_diff, abs(root.val - root_max), abs(root.val - root_min))
+        
+        return root_min, root_max
+        
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
