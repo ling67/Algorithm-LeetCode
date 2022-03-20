@@ -21,6 +21,43 @@ Input: root = [989,null,10250,98693,-89388,null,null,null,-32127]
 Output: 2
 */
 
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def maxLevelSum(self, root: Optional[TreeNode]) -> int:
+        max_sum = root.val
+        q = collections.deque()
+        q.append(root)
+        level = 0
+        res = 1
+        while q:
+            level += 1
+            size = len(q)
+            row_sum = 0
+            for _ in range(size):
+                cur = q.popleft()
+                row_sum += cur.val
+                if cur.left:     #这里总是写成root.left
+                    q.append(cur.left)    
+                if cur.right:
+                    q.append(cur.right)
+            
+            if row_sum > max_sum:
+                max_sum = row_sum
+                res = level
+                
+        return res        
+            
 
 /**
  * Definition for a binary tree node.
