@@ -10,6 +10,37 @@ Input: root = [1,2,3]
 Output: [1,3]
 */
 
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def largestValues(self, root: Optional[TreeNode]) -> List[int]:
+        if not root:
+            return []
+        
+        q = collections.deque()
+        q.append(root)
+        res = [] 
+        
+        while q:
+            size = len(q)
+            maxValue = float("-inf")
+            for _ in range(size):
+                cur = q.popleft()
+                maxValue = max(maxValue, cur.val)
+                
+                if cur.left:
+                    q.append(cur.left)
+                if cur.right:
+                    q.append(cur.right)
+            res.append(maxValue)
+            
+        return res
+        
+        
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
