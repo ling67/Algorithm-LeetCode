@@ -30,6 +30,38 @@ Output: []
  * }
  */
 
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def levelOrderBottom(self, root: Optional[TreeNode]) -> List[List[int]]:
+        if not root:
+            return[]
+        
+        res = []
+        q = collections.deque()
+        q.append(root)
+        
+        while q:
+            size = len(q)
+            level = []
+            for _ in range(size):
+                cur = q.popleft()
+                level.append(cur.val)
+                
+                if cur.left:
+                    q.append(cur.left)
+                if cur.right:
+                    q.append(cur.right)
+            res.append(level)
+        
+        return res[::-1]
+            
+    
+
 //按照I的方法，然后翻转一下
 class Solution {
     public List<List<Integer>> levelOrderBottom(TreeNode root) {
