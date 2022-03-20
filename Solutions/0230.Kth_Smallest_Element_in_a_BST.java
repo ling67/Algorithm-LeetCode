@@ -16,7 +16,34 @@ Output: 3
 
 
 */
-
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
+        if not root:
+            return None
+        
+        res = self._inorder(root)
+        return res[k-1]
+    
+    def _inorder(self, root) -> list:
+        #exit
+        if not root:
+            return None
+        
+        #divide
+        res = []
+        if root.left:
+            res.extend(self._inorder(root.left))
+        res.append(root.val)
+        if root.right:
+            res.extend(self._inorder(root.right))
+        # conquer
+        return res
 
 /**
  * Definition for a binary tree node.
