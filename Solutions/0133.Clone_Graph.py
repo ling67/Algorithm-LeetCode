@@ -74,6 +74,57 @@ step1:先BFS找到所有的node
 step2:复制新的node放入mapping
 step3:复制边
 
+"""
+# Definition for a Node.
+class Node:
+    def __init__(self, val = 0, neighbors = None):
+        self.val = val
+        self.neighbors = neighbors if neighbors is not None else []
+"""
+
+class Solution:
+    def cloneGraph(self, node: 'Node') -> 'Node':
+        #1.copy all nodes
+        #2.copy all edges
+        
+        if not node:
+            return None
+        
+        root = node
+        
+        # Step 1：找到所有的original_nodes，存到一个set里面，用BFS实现
+        original_nodes = self.getAllNodes(node)
+        
+        # Step 2: 复制所有原有的node，存到mapping中，这样就建立了一个new_node和original_node的一一映射
+        mapping = collections.defaultdict(None)
+        for original_node in original_nodes:
+            mapping[original_node] = Node(original_node.val, [])
+        
+        # Step 3: 复制所有original_node对应的neighbors 到 new_node里面
+        for original_node in original_nodes:
+            new_node = mapping[original_node]
+            for original_neighbor in original_node.neighbors:
+                new_neighbor = mapping[original_neighbor]
+                new_node.neighbors.append(new_neighbor)
+        
+        return mapping[root]
+    
+    def getAllNodes(self, node):
+        dq = collections.deque()
+        dq.append(node)
+        nodesSet = set()
+        nodesSet.add(node)
+        
+        while dq:
+            cur = dq.popleft()
+            
+            for neighbor in cur.neighbors:
+                if neighbor not in nodesSet:
+                    dq.append(neighbor)
+                    nodesSet.add(neighbor)
+        return nodesSet
+
+
 算法2：
 边遍历边新建新的node，再复制边对应的关系
 */
