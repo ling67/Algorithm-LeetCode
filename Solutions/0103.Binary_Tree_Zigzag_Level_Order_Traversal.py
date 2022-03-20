@@ -14,6 +14,43 @@ Input: root = []
 Output: []
 */
 
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def zigzagLevelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        if not root:
+            return []
+        
+        res = []
+        q = collections.deque()
+        q.append(root)
+        layer = 0
+        
+        while q:
+            size = len(q)
+            level = []
+            layer += 1
+            for _ in range(size):
+                cur = q.popleft()
+                level.append(cur.val)
+                
+                if cur.left:
+                    q.append(cur.left)
+                if cur.right:
+                    q.append(cur.right)
+                    
+            if (layer%2 == 1):
+                res.append(level)
+            else:
+                res.append(level[::-1])
+        
+        return res
+                
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
