@@ -30,7 +30,41 @@ Follow up: Can you flatten the tree in-place (with O(1) extra space)?
 */
 
 
-//recusion
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def flatten(self, root: Optional[TreeNode]) -> None:
+        """
+        Do not return anything, modify root in-place instead.
+        """
+        self.helper(root)
+        
+    def helper(self, root):
+        #exit
+        if not root:
+            return None
+        if not root.left:
+            root.right = self.helper(root.right)
+            return root
+        
+        #divide
+        left_tree = self.helper(root.left)
+        right_tree = self.helper(root.right)
+        
+        left_tail = left_tree
+        while left_tail and left_tail.right:
+            left_tail = left_tail.right
+            
+        root.left = None
+        root.right = left_tree
+        left_tail.right = right_tree
+        
+        return root
+        
 
 /**
  * Definition for a binary tree node.
