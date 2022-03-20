@@ -35,6 +35,48 @@ picture
 能否分别用BFS和DFS完成？
 */
 
+1.BFS - Python
+"""
+class DirectedGraphNode:
+     def __init__(self, x):
+         self.label = x
+         self.neighbors = []
+"""
+
+class Solution:
+    """
+    @param graph: A list of Directed graph node
+    @return: Any topological order for the given graph.
+    """
+    def topSort(self, graph):
+        # write your code here
+
+        # 1. collect indgree information of each node an store in a dict
+        in_degree = collections.defaultdict(int)
+        for node in graph:
+            if node not in in_degree:
+                in_degree[node] = 0
+            for n in node.neighbors:
+                in_degree[n] += 1
+
+        #2. topological sorting -bfs
+        q = collections.deque()
+        for node in graph:
+            if in_degree[node] == 0:
+                q.append(node)
+        res = []        
+        while q:
+            curr = q.popleft()
+            res.append(curr)
+            for next_node in curr.neighbors:
+                in_degree[next_node] -= 1
+                if in_degree[next_node] == 0:
+                    q.append(next_node)
+        return res
+
+
+
+
 /**
  * Definition for Directed graph.
  * class DirectedGraphNode {
