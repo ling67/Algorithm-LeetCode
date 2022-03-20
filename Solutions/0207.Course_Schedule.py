@@ -29,6 +29,45 @@ prerequisites[i].length == 2
 All the pairs prerequisites[i] are unique.
 */
 
+class Solution:
+    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+        if len(prerequisites) == 0:
+            True 
+        
+        # 1. construct a dictoinary of adjacency list for the graph
+        graph = collections.defaultdict(list)
+        for u, v in prerequisites: 
+            graph[v].append(u)
+        
+        # 2. get in_degree information for all nodes
+        in_degree = collections.defaultdict(int)
+        for n in range(numCourses):
+            in_degree[n] = 0
+        for u, v in prerequisites: 
+            in_degree[u] += 1
+            
+        # 3. topological sort - bfs
+        # step I: initialze q by putting all in_degree = 0 into q        q = collections.deque()
+        q = collections.deque()
+        for node, i in in_degree.items():
+            if i == 0:
+                q.append(node)
+                
+        # step II: keep adding in_degree = 0 node into q and pop out while updating res
+        res = []
+        while q:
+            curr = q.popleft()
+            res.append(curr)
+            for next_node in graph[curr]:
+                in_degree[next_node] -= 1
+                if in_degree[next_node] == 0:
+                    q.append(next_node)
+                    
+        return len(res) == numCourses
+            
+    
+        
+
 class Solution {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
         int[][] matrix = new int[numCourses][numCourses];
