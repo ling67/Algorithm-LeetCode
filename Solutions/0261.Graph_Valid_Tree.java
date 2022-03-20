@@ -27,6 +27,42 @@ ai != bi
 There are no self-loops or repeated edges.
 */
 
+//BFS: python version
+class Solution:
+    def validTree(self, n: int, edges: List[List[int]]) -> bool:
+        if n == 0:
+            return True
+        
+        #edge = n - 1
+        if n != len(edges) + 1:
+            return False
+        
+        #not exist circle
+        # 图的实现方法是使用a dictionary of adjacency nodes，key是int表示节点, value是set(int)表示该节点所连接的相邻节点。
+        graph = collections.defaultdict(list)  # 这里必须声明是一个list, 否则后面append会报错
+        for u, v in edges:
+            graph[u].append(v)
+            graph[v].append(u)
+            
+        visited = set()   # 与二叉树的BFS相比多加了一行visited
+        self._bfs(graph, visited)
+        
+        return len(visited) == n  # 每个节点都被访问过且都被访问过一次
+    
+    def _bfs(self, graph, visited):
+        q = collections.deque()
+        q.append(0)
+        visited.add(0)  
+        
+        while q:
+            cur = q.popleft()
+            for node in graph[cur]:
+                if node not in visited:
+                    q.append(node)
+                    visited.add(node)
+        
+        
+
 //method 1: BFS
 
 class Solution {
