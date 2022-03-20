@@ -15,6 +15,39 @@ Input: root = [5,1,7]
 Output: [1,null,5,null,7]
 */
 
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def increasingBST(self, root: TreeNode) -> TreeNode:
+        
+        #exit
+        if not root:
+            return None
+        
+        #divide
+        left_tree = self.increasingBST(root.left)
+        right_tree = self.increasingBST(root.right)
+        
+        #conquer
+        if not left_tree:
+            root.left = None
+            root.right = right_tree
+            return root
+        
+        else:
+            curr = left_tree
+            while curr.right:
+                curr = curr.right
+            
+            curr.right = root
+            root.left = None
+            root.right = right_tree
+            return left_tree
+            
 
 /**
  * Definition for a binary tree node.
