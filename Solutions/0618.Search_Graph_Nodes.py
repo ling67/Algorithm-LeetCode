@@ -43,6 +43,42 @@ Return node 4
 2
 */
 
+"""
+Definition for a undirected graph node
+class UndirectedGraphNode:
+    def __init__(self, x):
+        self.label = x
+        self.neighbors = []
+"""
+
+
+class Solution:
+    """
+    @param: graph: a list of Undirected graph node
+    @param: values: a hash mapping, <UndirectedGraphNode, (int)value>
+    @param: node: an Undirected graph node
+    @param: target: An integer
+    @return: a node
+    """
+    def searchNode(self, graph, values, node, target):
+        # write your code here
+        graph = collections.defaultdict(list)
+        
+        q = collections.deque()
+        q.append(node)
+        visited = set()
+        visited.add(node)
+
+        while q:
+            cur = q.popleft()
+            if values[cur] == target:
+                return cur
+            for neighbor in cur.neighbors:
+                if neighbor not in visited:
+                    visited.add(neighbor)
+                    q.append(neighbor)
+        return None
+
 /**
  * Definition for graph node.
  * class UndirectedGraphNode {
