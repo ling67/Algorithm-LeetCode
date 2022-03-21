@@ -62,7 +62,6 @@ class Solution:
     """
     def searchNode(self, graph, values, node, target):
         # write your code here
-        graph = collections.defaultdict(list)
         
         q = collections.deque()
         q.append(node)
