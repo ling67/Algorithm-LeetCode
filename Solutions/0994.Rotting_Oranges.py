@@ -27,6 +27,40 @@ Output: 0
 Explanation: Since there are already no fresh oranges at minute 0, the answer is just 0.
 */
 
+//python bfs 
+class Solution:
+    
+    EMPTY = 0
+    FRESH = 1
+    ROTTEN = 2
+    
+    def orangesRotting(self, grid: List[List[int]]) -> int:
+        m, n = len(grid), len(grid[0])
+        q = collections.deque()
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j] == self.ROTTEN:
+                    q.append((i,j))
+        
+        minutes = -1
+        while q:
+            minutes += 1
+            size = len(q)
+            for _ in range(size):
+                cur_i, cur_j = q.popleft()
+                for delta_i, delta_j in [(1,0),(-1,0),(0,-1),(0,1)]:
+                    nei_i, nei_j = cur_i + delta_i, cur_j + delta_j
+                    if 0 <= nei_i < m and 0 <= nei_j < n:
+                        if grid[nei_i][nei_j] == self.FRESH:
+                            q.append((nei_i, nei_j))
+                            grid[nei_i][nei_j] = self.ROTTEN
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j] == self.FRESH:    # 如果还有访问不到的FRESH, 那就return -1
+                    return -1
+        return 0 if minutes == -1 else minutes  # 如果minutes=-1, 那说明最开始就没有ROTTEN的进q里去
+            
+
 //Coordinate可以改成pair做
 class Solution {
     
