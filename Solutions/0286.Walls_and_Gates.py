@@ -28,6 +28,34 @@ rooms[i][j] is -1, 0, or 231 - 1.
 
 */
 
+//BFS PYTHON
+class Solution:
+    def wallsAndGates(self, rooms: List[List[int]]) -> None:
+        """
+        Do not return anything, modify rooms in-place instead.
+        """
+        q = deque()
+        m, n = len(rooms), len(rooms[0])
+        for i in range(m):
+            for j in range(n):
+                if rooms[i][j] == 0:
+                    q.append((i, j))
+        
+        layer = 0
+        while q:
+            layer += 1 
+            size = len(q)
+            for _ in range(size):
+                cur_i, cur_j = q.popleft()
+                for delta_i, delta_j in [(1,0), (-1,0), (0,1), (0,-1)]:
+                    nei_i, nei_j = cur_i + delta_i, cur_j + delta_j
+                    if 0 <= nei_i < m and 0 <= nei_j < n:
+                        if rooms[nei_i][nei_j] == 2147483647:
+                            rooms[nei_i][nei_j] = layer
+                            q.append((nei_i, nei_j))
+        
+            
+
 /*
 1.暴力搜索，对每一个empty room都做BFS
 2.从gate开始，BFS收索empty room 记录最短路径，只需要一次BFS
