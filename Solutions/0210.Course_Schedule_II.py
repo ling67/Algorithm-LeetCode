@@ -24,6 +24,46 @@ Output: [0]
 
 */
 
+class Solution:
+    def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
+        if not prerequisites:
+            return [i for i in range(numCourses)]
+        
+        #1.construct a dictionary of adjancency list for the graph
+        graph = collections.defaultdict(list)
+        for u, v in prerequisites:
+            graph[v].append(u)
+        
+        #2.construct all indegree 
+        in_degree = collections.defaultdict(int)
+        for n in range(numCourses):
+            in_degree[n] = 0
+        for u, v in prerequisites:
+            in_degree[u] += 1
+        
+        #3.bfs visite
+        q = collections.deque()
+        res = []
+        for u, v in in_degree.items():
+            if v == 0:
+                q.append(u)
+        
+        while q:
+            curr = q.popleft()
+            res.append(curr)
+            for node in graph[curr]:
+                in_degree[node] -= 1
+                if in_degree[node] == 0:
+                    q.append(node)
+                    
+        if len(res) == numCourses:
+            return res
+        else:
+            return []
+            
+        
+
+
 class Solution {
     public int[] findOrder(int numCourses, int[][] prerequisites) {
         int[][] matrix = new int[numCourses][numCourses];
