@@ -22,6 +22,47 @@
 */
 
 
+//python version bfs O(mn)
+from typing import (
+    List,
+)
+
+class Solution:
+    """
+    @param grid: a 2D integer grid
+    @return: an integer
+    """
+    def zombie(self, grid: List[List[int]]) -> int:
+        # write your code here
+        m, n = len(grid), len(grid[0])
+        q = collections.deque()
+        visited = set()
+        cnt = 0
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j] == 1:
+                    q.append((i,j))
+                if grid[i][j] == 0:
+                    cnt += 1
+        layer = -1
+        while q:
+            layer += 1
+            size = len(q)
+            for _ in range(size):
+                curr_i, curr_j = q.popleft()
+                for delta_i, delta_j in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
+                    nei_i = curr_i + delta_i
+                    nei_j = curr_j + delta_j
+                    if 0 <= nei_i < m and 0 <= nei_j < n and grid[nei_i][nei_j] == 0 and (nei_i, nei_j) not in visited:
+                        q.append((nei_i,nei_j))
+                        visited.add((nei_i, nei_j))
+        if len(visited) == cnt:
+            return layer
+        else:
+            return -1
+
+//java version bfs O(mn)
+
 class Coordinate {
     int x, y;
     public Coordinate(int x, int y) {
