@@ -33,6 +33,46 @@ prevCoursei != nextCoursei
 All the pairs [prevCoursei, nextCoursei] are unique.
 */
 
+class Solution:
+    def minimumSemesters(self, n: int, relations: List[List[int]]) -> int:
+        #step1: build the graph
+        graph = defaultdict(list)
+        for u, v in relations:
+            graph[u].append(v)
+        
+        #step2: get in_degree for each node
+        in_degrees = defaultdict(int)
+        for node in range(1, n+1):
+            in_degrees[node] = 0
+        for u, v in relations:
+            in_degrees[v] += 1
+            
+        #step3: put all in_degree == 0 node into q
+        q = deque()
+        for node, in_degree in in_degrees.items():
+            if in_degree == 0:
+                q.append(node)
+        
+        #step4: peel the onion
+        steps = 0
+        visited = set()
+        
+        while q:
+            steps += 1
+            lens = len(q)
+            for _ in range(lens):
+                curr = q.popleft()
+                visited.add(curr)
+                for next_node in graph[curr]:
+                    in_degrees[next_node] -= 1
+                    if in_degrees[next_node] == 0:
+                        q.append(next_node)
+        if len(visited) == n:
+            return steps
+        else:
+            return -1
+        
+
 class Solution {
     public int minimumSemesters(int n, int[][] relations) {
         int[][] matrix = new int[n+1][n+1];
