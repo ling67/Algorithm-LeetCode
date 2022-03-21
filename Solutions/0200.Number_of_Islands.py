@@ -34,6 +34,36 @@ grid[i][j] is '0' or '1'.
 
 */
 
+//BFS : Python
+class Solution:
+    def numIslands(self, grid: List[List[str]]) -> int:
+        if not grid:
+            return 0
+        
+        m, n = len(grid), len(grid[0])
+        cnt = 0
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j] == "1":
+                    self.bfs(grid, i, j)
+                    cnt += 1
+        return cnt
+        
+    def bfs(self, grid, x, y):
+        m, n = len(grid), len(grid[0])
+        
+        q = collections.deque()
+        q.append((x, y))
+
+        while q:
+            (x, y) = q.popleft()
+            for delta_x, delta_y in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
+                adj_x, adj_y = x+delta_x, y+delta_y
+                if 0 <= adj_x < m and 0 <= adj_y < n and grid[adj_x][adj_y] == "1":
+                    q.append((adj_x, adj_y))
+                    grid[adj_x][adj_y] = "0"
+        
+                        
 
 //标定坐标点
 class Coordinate {
