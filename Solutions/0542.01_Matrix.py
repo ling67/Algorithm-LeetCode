@@ -27,6 +27,40 @@ mat[i][j] is either 0 or 1.
 There is at least one 0 in mat.
 */
 
+class Solution:
+    ADJACENT = [(1, 0), (-1, 0), (0, 1), (0, -1)]
+    
+    def updateMatrix(self, matrix: List[List[int]]) -> List[List[int]]:
+        if not matrix or not matrix[0]:
+            return matrix
+        
+        m, n = len(matrix), len(matrix[0])
+        
+        q = collections.deque()
+        visited = set()
+        for i in range(m):
+            for j in range(n):
+                if matrix[i][j] == 0:
+                    q.append((i, j))
+                    visited.add((i, j))
+                  
+        level = 0
+        while q:
+            level += 1
+            lens = len(q)
+            
+            for _ in range(len(q)):
+                curr_x, curr_y = q.popleft()
+                
+                for delta_x, delta_y in self.ADJACENT:
+                    next_x, next_y = curr_x + delta_x, curr_y + delta_y
+                    
+                    if 0 <= next_x < m and 0 <= next_y < n and (next_x, next_y) not in visited:
+                        matrix[next_x][next_y] = level
+                        q.append((next_x, next_y))
+                        visited.add((next_x, next_y))
+                        
+        return matrix
 
 //version1 暴力法：时间复杂度高，case过不了
 class Solution {
