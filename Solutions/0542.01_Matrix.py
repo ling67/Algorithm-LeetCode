@@ -27,6 +27,9 @@ mat[i][j] is either 0 or 1.
 There is at least one 0 in mat.
 */
 
+
+#方法是先把所有0放入q的第一层，然后一层层遍历，同时更新遇到的1为当前的层数，层数就是1离0的距离 - O(MN)
+
 class Solution:
     ADJACENT = [(1, 0), (-1, 0), (0, 1), (0, -1)]
     
