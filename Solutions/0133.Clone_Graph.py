@@ -44,29 +44,6 @@ Output: []
 Explanation: This an empty graph, it does not have any nodes.
 */
 
-/*
-// Definition for a Node.
-class Node {
-    public int val;
-    public List<Node> neighbors;
-    public Node() {
-        val = 0;
-        neighbors = new ArrayList<Node>();
-    }
-    public Node(int _val) {
-        val = _val;
-        neighbors = new ArrayList<Node>();
-    }
-    public Node(int _val, ArrayList<Node> _neighbors) {
-        val = _val;
-        neighbors = _neighbors;
-    }
-}
-*/
-
-//java 对象之间不能直接用“=”赋值，两对象之间使用“=”是将引用所指地址进行赋值，而不是内存块的内容。
-
-//写题的流程：不一定把细节都实现的特别完美，所以要先把主干先实现出来：主函数调用子函数，先把主函数写出来
 
 /*version 1: 
 算法1：
@@ -124,6 +101,31 @@ class Solution:
                     nodesSet.add(neighbor)
         return nodesSet
 
+
+
+/*
+// Definition for a Node.
+class Node {
+    public int val;
+    public List<Node> neighbors;
+    public Node() {
+        val = 0;
+        neighbors = new ArrayList<Node>();
+    }
+    public Node(int _val) {
+        val = _val;
+        neighbors = new ArrayList<Node>();
+    }
+    public Node(int _val, ArrayList<Node> _neighbors) {
+        val = _val;
+        neighbors = _neighbors;
+    }
+}
+*/
+
+//java 对象之间不能直接用“=”赋值，两对象之间使用“=”是将引用所指地址进行赋值，而不是内存块的内容。
+
+//写题的流程：不一定把细节都实现的特别完美，所以要先把主干先实现出来：主函数调用子函数，先把主函数写出来
 
 算法2：
 边遍历边新建新的node，再复制边对应的关系
