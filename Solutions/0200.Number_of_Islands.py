@@ -35,6 +35,10 @@ grid[i][j] is '0' or '1'.
 */
 
 //BFS : Python
+#Complexity Analysis
+#Time complexity : O(M \times N)O(M×N) where MM is the number of rows and NN is the number of columns.
+#Space complexity : O(min(M, N))O(min(M,N)) because in worst case where the grid is filled with lands, the size of queue can grow up to min(M,NM,N).
+ 
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
         if not grid:
