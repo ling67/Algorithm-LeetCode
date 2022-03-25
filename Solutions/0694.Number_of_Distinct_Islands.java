@@ -28,6 +28,30 @@ grid[i][j] is either 0 or 1.
 
 */
 
+class Solution:
+    def numDistinctIslands(self, grid: List[List[int]]) -> int:
+        def dfs(org_i, org_j, curr_i, curr_j):
+            shape.append((curr_i-org_i, curr_j-org_j))  # append the relative lacation into shape
+            for delta_i, delta_j in [(1,0), (-1,0), (0,1), (0,-1)]:
+                next_i, next_j = curr_i + delta_i, curr_j + delta_j
+                if 0 <= next_i < m and 0 <= next_j < n:
+                    if grid[next_i][next_j] == 1 and (next_i, next_j) not in visited:
+                        visited.add((next_i, next_j))
+                        dfs(org_i, org_j, next_i, next_j)
+        
+        shapes = []
+        visited = set()
+        m, n = len(grid), len(grid[0])
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j] == 1 and (i, j) not in visited:
+                    shape = []
+                    visited.add((i, j))
+                    dfs(i,j,i,j)
+                    shapes.append(tuple(shape))
+        return len(set(shapes))
+    
+
 
 /*
 从1开始遍历，记录下每个独立小岛的符号，用string记录小岛的符号
