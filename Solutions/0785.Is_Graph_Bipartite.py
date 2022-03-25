@@ -11,6 +11,31 @@ Return true if and only if it is bipartite.
 
 */
 
+//DFS python 
+class Solution:
+    def isBipartite(self, graph: List[List[int]]) -> bool:
+        def dfs(curr_node, curr_color):
+            visited[curr_node] = curr_color
+            
+            for next_node in graph[curr_node]:
+                if next_node in visited:
+                    if visited[next_node] == curr_color:
+                        return False
+                else: 
+                    if not dfs(next_node, not curr_color):
+                        return False
+            return True
+        
+        # have to do dfs for every node cuz it could be a non-biparitite even if 
+        # there are lots of dis-connected components in the graph
+        visited = defaultdict(bool)# True表示red color, False表示blue color
+        for node in range(len(graph)):   # for loop保证可以访问到所有的nodes
+            if node not in visited:      # 注意这里要check in visited
+                if not dfs(node, True):
+                    return False
+        return True
+
+
 /*
 Our goal is trying to use two colors to color the graph and see if there are any adjacent nodes having the same color.
 Initialize a color[] array for each node. Here are three states for colors[] array:
