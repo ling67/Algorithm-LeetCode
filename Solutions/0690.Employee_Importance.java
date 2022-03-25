@@ -47,6 +47,35 @@ class Employee {
 };
 */
 
+//version1: 直接递归
+class Solution:
+    def getImportance(self, employees: List['Employee'], id: int) -> int:
+        importance = 0
+        for employee in employees:
+            if employee.id == id:
+                importance = employee.importance
+                for subordinate_id in employee.subordinates:
+                    importance += self.getImportance(employees, subordinate_id)
+        return importance
+        
+//version2: Python DFS
+class Solution:
+    def getImportance(self, employees: List['Employee'], id: int) -> int:
+        def dfs(emp_id):
+            total_impt = emp_impt[emp_id]
+            for next_emp in graph[emp_id]:
+                total_impt += dfs(next_emp)
+            return total_impt
+
+        emp_impt = defaultdict(int)
+        graph = defaultdict(int)
+        for emp in employees:
+            emp_impt[emp.id] = emp.importance
+            graph[emp.id] = emp.subordinates
+
+        return dfs(id)
+
+//             
 class Solution {
     public int getImportance(List<Employee> employees, int id) {
         HashMap<Integer, Employee> map = new HashMap<Integer, Employee>();
