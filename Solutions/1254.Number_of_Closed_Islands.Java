@@ -32,6 +32,39 @@ Output: 2
 */
 
 
+//version: python dfs
+"""
+solution 1: two pass soluton: 1st pass 先从border land出发，做dfs去标记touching border的land, 这些land一定不是closed land. 然后2nd pass 做dfs去count closed island.
+soluton 2: one pass solution: 做dfs的时候用一个boolean self.touch_border来标记这个island是不是touching border的
+"""
+class Solution:
+    LAND, WATER = 0, 1
+    def closedIsland(self, grid: List[List[int]]) -> int:
+        #判断是不是接触到了边界
+        def dfs(curr_i, curr_j):
+            visited.add((curr_i, curr_j))
+            if curr_i == 0 or curr_i == m-1 or curr_j == 0 or curr_j == n-1:
+                self.touch_border = True
+            for delta_i, delta_j in [(1,0),(-1,0),(0,1),(0,-1)]:
+                next_i, next_j = delta_i + curr_i, delta_j + curr_j
+                if 0 <= next_i < m and 0 <= next_j < n and grid[next_i][next_j] == self.LAND:
+                    if (next_i, next_j) not in visited:
+                        dfs(next_i, next_j)
+        
+        m, n = len(grid), len(grid[0])
+        cnt = 0
+        visited = set()
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j] == self.LAND and (i, j) not in visited:
+                    self.touch_border = False
+                    dfs(i, j)
+                    if not self.touch_border:
+                        cnt += 1
+        return cnt
+                    
+            
+
 /*
 "&" will evaluate both side even the left part is false
 "&&" will ignore the right part if the left part is false
