@@ -45,12 +45,11 @@ Explanation: This an empty graph, it does not have any nodes.
 */
 
 
-/*version 1: 
+/*version 1:  BFS PYTHON 
 算法1：
 step1:先BFS找到所有的node
 step2:复制新的node放入mapping
 step3:复制边
-
 """
 # Definition for a Node.
 class Node:
@@ -101,7 +100,32 @@ class Solution:
                     nodesSet.add(neighbor)
         return nodesSet
 
+//version 2 DFS python
+"""
+# Definition for a Node.
+class Node:
+    def __init__(self, val = 0, neighbors = None):
+        self.val = val
+        self.neighbors = neighbors if neighbors is not None else []
+"""
 
+class Solution:
+    def cloneGraph(self, node: 'Node') -> 'Node':
+        if not node:
+            return None
+        mapping = defaultdict(Node)
+        mapping[node] = Node(node.val, [])
+        self.dfs(node, mapping)
+        return mapping[node]
+        
+    def dfs(self, curr_node, mapping):
+        for neib_node in curr_node.neighbors:
+            if neib_node in mapping:   #相当于visited
+                mapping[curr_node].neighbors.append(mapping[neib_node])
+                continue
+            mapping[neib_node] = Node(neib_node.val, [])
+            mapping[curr_node].neighbors.append(mapping[neib_node])
+            self.dfs(neib_node, mapping)
 
 /*
 // Definition for a Node.
@@ -124,12 +148,10 @@ class Node {
 */
 
 //java 对象之间不能直接用“=”赋值，两对象之间使用“=”是将引用所指地址进行赋值，而不是内存块的内容。
-
 //写题的流程：不一定把细节都实现的特别完美，所以要先把主干先实现出来：主函数调用子函数，先把主函数写出来
 
-算法2：
-边遍历边新建新的node，再复制边对应的关系
-*/
+//version 3:  BFS JAVA 
+//边遍历边新建新的node，再复制边对应的关系
 
 class Solution {
     
@@ -180,7 +202,7 @@ class Solution {
     
 }
 
-//version2: dfs
+// version 4:  DFS JAVA  
 //用一个mapping 保存node-->node_copy. 然后一边dfs一边新建copied nodes
 class Solution {
     
