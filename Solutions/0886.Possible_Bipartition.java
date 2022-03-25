@@ -21,6 +21,33 @@ Input: n = 5, dislikes = [[1,2],[2,3],[3,4],[4,5],[1,5]]
 Output: false
 */
 
+//DFS python
+class Solution:
+    def possibleBipartition(self, n: int, dislikes: List[List[int]]) -> bool:
+        def dfs(curr_node, curr_color):
+            visited[curr_node] = curr_color
+            for next_node in dis_graph[curr_node]:
+                if next_node in visited:
+                    if visited[next_node] == curr_color:
+                        return False
+                else:
+                    if not dfs(next_node, not curr_color):
+                        return False
+            return True
+        
+        dis_graph = defaultdict(list)
+        for u, v in dislikes:
+            dis_graph[u].append(v)
+            dis_graph[v].append(u)
+        
+        visited = defaultdict(bool)
+        for node in range(1, n+1):
+            if node not in visited:
+                if not dfs(node, True):
+                    return False
+        return True
+                
+
 /*
 group[i] = 0 means node i hasn't been visited.
 group[i] = 1 means node i has been grouped to 1.
