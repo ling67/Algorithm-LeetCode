@@ -61,6 +61,32 @@ class Solution:
                     q.append(node)
                     visited.add(node)
         
+//DFS Python version
+class Solution:
+    def validTree(self, n: int, edges: List[List[int]]) -> bool:
+        #节点和边数 
+        m = len(edges)
+        if m != n - 1:
+            return False
+        
+        graph = collections.defaultdict(list)
+        
+        for u, v in edges:
+            graph[u].append(v)
+            graph[v].append(u)
+            
+        visited = set()
+        self._dfs(graph, 0, visited)
+        
+        return len(visited) == n #每个节点都被访问过
+    
+    def _dfs(self, graph, cur_node, visited):
+        visited.add(cur_node)
+        
+        for next_node in graph[cur_node]:
+            if next_node not in visited:
+                self._dfs(graph, next_node, visited)
+        
         
 
 //method 1: BFS
