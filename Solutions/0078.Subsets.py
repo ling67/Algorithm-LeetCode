@@ -22,6 +22,28 @@ Constraints:
 All the numbers of nums are unique.
 */
 
+//version python dfs + backtrack
+
+"""C(m, n)：m个里面找出n个的组合问题
+模板的DFS + back tracking求combination问题
+S是solution的个数，这里S=2^N. Copy takes O(N), so overall O(N*S)
+O(N*S) to generate all subsets and then copy them into output list."""
+
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        def backtrack(curr_idx, curr_subsets):
+            res.append(curr_subsets.copy())   # this takes O(N), so overall takes O(NS)  deep copy
+            for next_idx in range(curr_idx + 1, len(nums)):
+                curr_subsets.append(nums[next_idx])
+                backtrack(next_idx, curr_subsets)
+                curr_subsets.pop()
+            
+        res = []
+        backtrack(-1, [])
+        return res
+
+
+
 //通用的深度优先搜索方法
 // 递归：实现方式，一种实现DFS算法的一种方式
 class Solution {
