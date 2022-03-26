@@ -22,6 +22,36 @@ Output: ["a","b","c"]
 
 */
 
+//backtrack python
+class Solution:
+    def letterCombinations(self, digits: str) -> List[str]:
+        def backtrack(curr_idx, curr_comb):
+            if curr_idx == len(digits):
+                res.append("".join(curr_comb))   # string is immutable so don't need deep copy
+                return
+            for ch in phone[digits[curr_idx]]:
+                curr_comb.append(ch)
+                backtrack(curr_idx + 1, curr_comb)
+                curr_comb.pop()
+        
+        if not digits:
+            return[]
+        
+        phone = {
+         '2': ['a', 'b', 'c'],
+         '3': ['d', 'e', 'f'],
+         '4': ['g', 'h', 'i'],
+         '5': ['j', 'k', 'l'],
+         '6': ['m', 'n', 'o'],
+         '7': ['p', 'q', 'r', 's'],
+         '8': ['t', 'u', 'v'],
+         '9': ['w', 'x', 'y', 'z']}
+        
+        res = []
+        backtrack(0, [])
+        return res
+        
+
 //version dfs+backtrack
 class Solution {
     
