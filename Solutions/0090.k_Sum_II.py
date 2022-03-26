@@ -36,6 +36,41 @@ Explanation:
 1+3+4=8
 */
 
+from typing import (
+    List,
+)
+
+class Solution:
+    """
+    @param a: an integer array
+    @param k: a postive integer <= length(A)
+    @param target: an integer
+    @return: A list of lists of integer
+    """
+    def k_sum_i_i(self, a: List[int], k: int, target: int) -> List[List[int]]:
+        def backtrack(curr_idx, curr_comb, curr_sum):
+            #开始的时候要验证是不是满足条件
+            if curr_sum == target and len(curr_comb) == k:
+                res.append(curr_comb.copy())   #注意这里深拷贝，总是忘记
+                return
+            
+            if curr_sum > target or len(curr_comb) >= k:
+                return 
+
+            for next_idx in range(curr_idx + 1, len(a)):
+                #只验证了当前跟target的大小
+                if a[next_idx] > target:
+                    continue
+                curr_comb.append(a[next_idx])
+                backtrack(next_idx, curr_comb, curr_sum + a[next_idx])
+                curr_comb.pop()
+
+        # write your code here
+        res = []
+        backtrack(-1, [], 0)
+        return res
+        
+
 public class Solution {
     /**
      * @param A: an integer array
