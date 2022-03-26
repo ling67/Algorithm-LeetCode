@@ -14,6 +14,29 @@ Input: nums = [1,2,3]
 Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
 */
 
+class Solution:
+    def permuteUnique(self, nums: List[int]) -> List[List[int]]:
+        def backtrack(curr_comb):
+            if len(curr_comb) == len(nums):
+                res.append(curr_comb.copy())
+            for next_idx in range(len(nums)):  
+                if next_idx > 0 and nums[next_idx] == nums[next_idx - 1] and next_idx - 1 not in visited:
+                    continue  #去重第二步， 经典去重判断，第一个2没放进去，第二个2就不要放进去
+                if next_idx in visited:
+                    continue
+                visited.add(next_idx)
+                curr_comb.append(nums[next_idx])
+                backtrack(curr_comb)
+                curr_comb.pop()
+                visited.remove(next_idx)
+        
+        res = []
+        nums.sort()    #去重第一步-sort the list
+        visited = set()
+        backtrack([])
+        return res
+        
+
 class Solution {
     public List<List<Integer>> permuteUnique(int[] nums) {
         List<List<Integer>> results = new ArrayList<>();
