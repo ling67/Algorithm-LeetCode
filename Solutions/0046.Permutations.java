@@ -20,7 +20,7 @@ Output: [[1]]
 //dfs + backtrack
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
-        def backtrack(curr_idx, curr_comb):
+        def backtrack(curr_comb):
             if len(curr_comb) == len(nums):
                 res.append(curr_comb.copy())
                 return
@@ -29,13 +29,13 @@ class Solution:
                 if next_idx not in visited:
                     visited.add(next_idx)
                     curr_comb.append(nums[next_idx])
-                    backtrack(next_idx, curr_comb)
+                    backtrack(curr_comb)
                     curr_comb.pop()
                     visited.remove(next_idx)
         
         res = []
         visited = set()
-        backtrack(0, [])
+        backtrack([])
         return res
 
 
