@@ -36,6 +36,43 @@ Follow up: Could you use search pruning to make your solution faster with a larg
 
 */
 
+"""
+图上的搜索：dfs + backtracking
+这题5min内写出来了才算真正会了图上的dfs + backtracking
+Time Complexity: O(N*3^L) where N is the number of cells in the board and L is the length of the word to be matched.
+"""
+"""
+套用backtrack的模板，backtrack 里面要传入(curr_i, curr_j, curr_idx on word). find solution: if board[next_i][next_j] == word[curr_idx + 1].  
+if find a solution, backtrack函数输出True
+if valid: if board[next_i][next_j] == word[curr_idx + 1]. 需要一个visited set来标记已经走过的路径避免走重复的路径。
+"""
+class Solution:
+    def exist(self, board: List[List[str]], word: str) -> bool:
+        def backtrack(curr_i, curr_j, curr_idx):
+            if curr_idx == len(word) - 1:
+                return True
+            for delta_i, delta_j in [(1,0),(-1,0),(0,1),(0,-1)]:
+                next_i, next_j = curr_i + delta_i, curr_j + delta_j
+                if 0 <= next_i < m and 0 <= next_j < n:
+                    if (next_i, next_j) not in visited:
+                        if board[next_i][next_j] == word[curr_idx+1]:
+                            visited.add((next_i, next_j))
+                            if backtrack(next_i, next_j, curr_idx+1):
+                                return True
+                            visited.remove((next_i, next_j))
+            return False
+        
+        m, n = len(board), len(board[0])
+        for i in range(m):
+            for j in range(n):
+                if board[i][j] == word[0]:
+                    visited = set()
+                    visited.add((i, j))
+                    if backtrack(i, j, 0):
+                        return True
+        return False
+                
+
 //version: pair
 class Solution {
     public boolean exist(char[][] board, String word) {
