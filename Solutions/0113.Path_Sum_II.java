@@ -47,7 +47,39 @@ The number of nodes in the tree is in the range [0, 5000].
  * }
  */
 
-//back-dfs
+//Python back-dfs
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def pathSum(self, root: Optional[TreeNode], targetSum: int) -> List[List[int]]:
+        def backtrack(curr_node, curr_path, curr_sum):
+            if not curr_node.left and not curr_node.right:
+                if curr_sum == targetSum:
+                    res.append(curr_path.copy())
+                    return
+                else:
+                    return
+            
+            for next_node in (curr_node.left, curr_node.right):
+                if not next_node:     #注意：这里不用判断加入next_node后sum是不是比targetSum大，因为后面的node可能为负值
+                    continue
+
+                curr_path.append(next_node.val)
+                backtrack(next_node, curr_path, curr_sum + next_node.val)
+                curr_path.pop()
+        
+        if not root:
+            return []
+        
+        res = []
+        backtrack(root, [root.val], root.val)
+        return res
+
 
 class Solution {
     public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
