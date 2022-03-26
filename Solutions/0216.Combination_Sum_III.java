@@ -31,6 +31,29 @@ Explanation: There are no valid combinations.
 Using 4 different numbers in the range [1,9], the smallest sum we can get is 1+2+3+4 = 10 and since 10 > 1, there are no valid combination.
 */
 
+class Solution:
+    def combinationSum3(self, k: int, n: int) -> List[List[int]]:
+        def backtrack(curr_idx, curr_comb, curr_sum):
+            if curr_sum == n and len(curr_comb) == k:
+                res.append(curr_comb.copy())    #注意：这里是深拷贝
+                return
+            
+            if curr_sum > n or len(curr_comb) >= k:
+                return
+            
+            for next_idx in range(curr_idx + 1, 9):
+                if nums[next_idx] > n:
+                    return
+                curr_comb.append(nums[next_idx])
+                backtrack(next_idx, curr_comb, curr_sum + nums[next_idx])
+                curr_comb.pop()
+        
+        nums = [i for i in range(1, 10)]
+        res = []
+        backtrack(-1, [], 0)
+        return res
+        
+
 class Solution {
     public List<List<Integer>> combinationSum3(int k, int n) {
         List<List<Integer>> result = new ArrayList<>();
