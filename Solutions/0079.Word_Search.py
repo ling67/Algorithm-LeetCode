@@ -57,7 +57,7 @@ class Solution:
                     if (next_i, next_j) not in visited:
                         if board[next_i][next_j] == word[curr_idx+1]:
                             visited.add((next_i, next_j))
-                            if backtrack(next_i, next_j, curr_idx+1):
+                            if backtrack(next_i, next_j, curr_idx+1):     #注意：这里要判断返回！！！
                                 return True
                             visited.remove((next_i, next_j))
             return False
