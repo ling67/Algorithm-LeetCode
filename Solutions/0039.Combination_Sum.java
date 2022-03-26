@@ -25,6 +25,32 @@ Input: candidates = [2], target = 1
 Output: []
 */
 
+"""
+Combination Sum 限制了组合中的数之和
+Subsets 一个数只能选一次，Combination Sum 一个数可以选很多次
+搜索时从 index 开始而不是从 index + 1
+"""
+
+class Solution:
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        def backtrack(curr_idx, curr_comb, curr_sum):
+            if curr_sum == target:
+                res.append(curr_comb.copy())
+                return
+            if curr_sum > target:
+                return
+            
+            for next_idx in range(curr_idx, len(candidates)):
+                if candidates[next_idx] > target:
+                    continue
+                curr_comb.append(candidates[next_idx])
+                backtrack(next_idx, curr_comb, curr_sum + candidates[next_idx])
+                curr_comb.pop()
+        
+        res = []
+        backtrack(0, [], 0)
+        return res
+
 class Solution {
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> results = new ArrayList();
