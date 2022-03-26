@@ -27,6 +27,32 @@ Output:
 ]
 */
 
+class Solution:
+    def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
+        def backtrack(curr_idx, curr_comb, curr_sum):
+            if curr_sum == target:
+                res.append(curr_comb.copy())
+                return 
+            
+            if curr_sum > target:
+                return
+            
+            for next_idx in range(curr_idx + 1, len(candidates)):
+                if next_idx > 0 and candidates[next_idx] == candidates[next_idx - 1] and next_idx - 1 != curr_idx:
+                    continue
+                    
+                if candidates[next_idx] > target:
+                    continue
+                curr_comb.append(candidates[next_idx])   
+                backtrack(next_idx, curr_comb, curr_sum + candidates[next_idx])
+                curr_comb.pop()            
+        
+        candidates.sort()     # 去重第一步是sort   
+        res = []
+        backtrack(-1, [], 0)
+        return res
+        
+        
 
 class Solution {
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
