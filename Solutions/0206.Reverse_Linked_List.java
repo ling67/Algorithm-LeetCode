@@ -17,7 +17,47 @@ Output: [5,4,3,2,1]
  * }
  */
 
-//non-recursion
+
+//1. Non-recursion python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if not head or not head.next:
+            return head
+        
+        prev, curr = None, head
+        while curr:
+            temp = curr.next
+            curr.next = prev
+            prev = curr
+            curr = temp
+        
+        return prev 
+
+//2. recursion python
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if not head or not head.next:
+            return head
+        
+        nextNode = head.next
+        reversedHead = self.reverseList(nextNode)
+        nextNode.next = head
+        head.next = None
+        
+        return reversedHead 
+
+//3. non-recursion java
 class Solution {
     public ListNode reverseList(ListNode head) {
         ListNode prev = null;
@@ -33,7 +73,8 @@ class Solution {
     }
 }
 
-//recursion
+//4. recursion java
+
 class Solution {
     public ListNode reverseList(ListNode head) {
         if (head == null || head.next == null) {
