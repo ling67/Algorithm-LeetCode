@@ -23,6 +23,49 @@ The number of nodes in the list is n.
 
 */
 
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def reverseBetween(self, head: Optional[ListNode], left: int, right: int) -> Optional[ListNode]:
+        if not head.next:
+            return head
+        
+        if left == right:
+            return head
+        
+        dummy = ListNode(0)
+        dummy.next = head
+        
+        #find node_m_minus and mode_m
+        node_m_minus, node_n = dummy, dummy
+        for _ in range(left-1):
+            node_m_minus = node_m_minus.next
+        node_m = node_m_minus.next
+        
+        #find node_n and node_n_plus
+        for _ in range(right):
+            node_n = node_n.next
+        node_n_plus = node_n.next
+        
+        #reverse m to n
+        prev, curr = node_m, node_m.next
+        while curr != node_n_plus:
+            temp = curr.next
+            curr.next = prev
+            
+            prev = curr
+            curr = temp
+            
+        # hook up node_m_minus with node_n, and node_m with node_n_plus
+        node_m_minus.next = node_n
+        node_m.next = node_n_plus
+        
+        return dummy.next
+        
+
 /**
  * Definition for singly-linked list.
  * public class ListNode {
