@@ -8,6 +8,20 @@ Output: 6
 Explanation: [4,-1,2,1] has the largest sum = 6.
 */
 
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        maxSubSum = nums[0]
+        prefixSum = 0       # 一般都是初始化为0
+        minPrefixSum = 0    #只能定义为0，因为初始的prefixSum是0
+        
+        for num in nums:
+            prefixSum += num
+            maxSubSum = max(maxSubSum, prefixSum - minPrefixSum)  # 注意不能更换maxSubSum和minPrefixSum的更新顺序， 比如输入为[-1]
+            minPrefixSum = min(minPrefixSum, prefixSum)  
+            
+        return maxSubSum
+        
+
 class Solution {
     public int maxSubArray(int[] nums) {
         if (nums == null || nums.length == 0) {
