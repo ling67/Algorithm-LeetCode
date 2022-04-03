@@ -44,8 +44,38 @@ class Solution:
                 j += 1
                 k += 1      
         return nums
+ 
+#快速排序
+class Solution:
+    def sortArray(self, nums: List[int]) -> List[int]:
+        self.quickSort(nums, 0, len(nums) - 1)
+        return nums
+    
+    def quickSort(self, nums, start, end):
+        if start >= end:    # the outlet of the recursion is start >= end
+            return 
         
+        # 先整体有序
+        # 注意这里选取pivot原因不能保证recursion tree深度稳定在log(N)，最坏的情况是深度为N.
+        pivot = nums[(start + end) // 2]   # key point 1: pivot is the value, not the index     
+        left, right = start, end
+        while left <= right:
+            while nums[left] < pivot:
+                left += 1
+            while nums[right] > pivot:
+                right -= 1
+            if left <= right:
+                nums[left], nums[right] = nums[right], nums[left]
+                left += 1
+                right -= 1
+        
+        # 再局部有序, 注意出while循环之后right在左边，所以这里是right
+        self.quickSort(nums, start, right) # no return for the quickSort function!
+        self.quickSort(nums, left, end)
 
+
+        
+        
 //归并排序
 class Solution {
     public int[] sortArray(int[] nums) {
