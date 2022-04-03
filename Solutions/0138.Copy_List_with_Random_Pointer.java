@@ -22,6 +22,36 @@ Input: head = [[7,null],[13,0],[11,4],[10,2],[1,0]]
 Output: [[7,null],[13,0],[11,4],[10,2],[1,0]]
 */
 
+"""
+# Definition for a Node.
+class Node:
+    def __init__(self, x: int, next: 'Node' = None, random: 'Node' = None):
+        self.val = int(x)
+        self.next = next
+        self.random = random
+"""
+
+class Solution:
+    def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
+        curr = head
+        dummy = Node(-1)
+        new_curr = dummy
+        mapping = defaultdict(Node)
+        while curr:
+            if curr not in mapping:
+                mapping[curr] = Node(curr.val)
+            new_curr.next = mapping[curr]
+            
+            if curr.random:
+                if curr.random not in mapping:
+                    mapping[curr.random] = Node(curr.random.val)
+                mapping[curr].random = mapping[curr.random]
+                
+            curr = curr.next
+            new_curr = new_curr.next
+        
+        return dummy.next
+        
 
 /*
 // Definition for a Node.
