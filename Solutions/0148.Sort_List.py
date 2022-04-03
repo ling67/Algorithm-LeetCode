@@ -32,6 +32,9 @@ Follow up: Can you sort the linked list in O(n logn) time and O(1) memory (i.e. 
 #     def __init__(self, val=0, next=None):
 #         self.val = val
 #         self.next = next
+
+# O(NlogN), O(1)"""
+
 class Solution:
     def sortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         if not head or not head.next:
