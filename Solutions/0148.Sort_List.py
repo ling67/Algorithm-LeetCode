@@ -33,9 +33,6 @@ Follow up: Can you sort the linked list in O(n logn) time and O(1) memory (i.e. 
 #         self.val = val
 #         self.next = next
 class Solution:
-    
-          
-        
     def sortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         if not head or not head.next:
             return head
@@ -70,14 +67,11 @@ class Solution:
                 curr = curr.next
                 currRight = currRight.next
                 
-        while currLeft:
+        if currLeft:
             curr.next = currLeft
-            curr = curr.next
-            currLeft = currLeft.next
         
-        while currRight:
+        if currRight:
             curr.next = currRight
-            curr = curr.next
-            currRight = currRight.next    
+          
         return dummyNode.next     
         
