@@ -12,6 +12,40 @@ Output: [0,0,1,1,2,5]
 
 */
 
+#归并排序：NlogN
+class Solution:
+    def sortArray(self, nums: List[int]) -> List[int]:
+        if len(nums) <= 1:
+            return nums
+        
+        # ste p1: divide - 由于每次都是稳定取中间进行divide
+        # 所以recursion tree的深度可以稳定在log(N)
+        mid = len(nums) // 2
+        leftArr = self.sortArray(nums[:mid])
+        rightArr = self.sortArray(nums[mid:])
+        
+        #step2: conquer
+        i, j, k = 0, 0, 0
+        while i < len(leftArr) and j < len(rightArr):
+            if leftArr[i] < rightArr[j]:
+                nums[k] = leftArr[i]
+                i += 1
+                k += 1
+            else:
+                nums[k] = rightArr[j]
+                j += 1
+                k += 1
+        while i < len(leftArr):
+                nums[k] = leftArr[i]
+                i += 1
+                k += 1
+        while j < len(rightArr):
+                nums[k] = rightArr[j]
+                j += 1
+                k += 1      
+        return nums
+        
+
 //归并排序
 class Solution {
     public int[] sortArray(int[] nums) {
