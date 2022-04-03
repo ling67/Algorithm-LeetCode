@@ -10,6 +10,45 @@ Note that the linked lists must retain their original structure after the functi
 */
 
 
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+#version1：hashset 做很快
+# version2： connect head and tail
+class Solution:
+    def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> Optional[ListNode]:
+        if not headA or not headA.next or not headB or not headB.next:
+            return None
+        
+        # step 1: hook up head and tail of list B
+        curr = headB;
+        while curr.next:
+            curr = curr.next
+        curr.next = headB
+        
+        slow, fast = headA, headA
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast:
+                break
+                
+        if slow != fast:
+            curr.next = None
+            return None
+        
+        curr1, curr2 = headA, slow
+        while curr1 != curr2:
+            curr1 = curr1.next
+            curr2 = curr2.next
+            
+        curr.next = None
+        
+        return curr1
+
 /**
  * Definition for singly-linked list.
  * public class ListNode {
