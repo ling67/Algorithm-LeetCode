@@ -8,6 +8,36 @@ Input: head = [1,2,3,4,5], k = 2
 Output: [2,1,4,3,5]
 */
 
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+        
+        #step 1: exit of recursion: when less than k elements left, return head directly
+        curr = head
+        for _ in range(k):
+            if not curr:
+                return head
+            curr = curr.next
+        k_node = curr
+        
+        #step 2: reverse the first k elements
+        prev, curr = None, head
+        for _ in range(k):
+            temp = curr.next
+            curr.next = prev
+            prev = curr
+            curr = temp
+            
+        #step 3: recursive find the new head of the reversed list
+        reversed_head = self.reverseKGroup(k_node, k)
+        head.next = reversed_head
+        return prev
+
+
 /**
  * Definition for singly-linked list.
  * public class ListNode {
