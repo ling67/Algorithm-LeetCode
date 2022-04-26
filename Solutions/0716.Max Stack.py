@@ -33,6 +33,53 @@ stk.top();     // return 5, [5] the stack did not change.
  
 */
 
+//version1
+class MaxStack:
+
+    def __init__(self):
+        self.st = []
+
+    def push(self, x: int) -> None:
+        self.st.append(x)        
+
+    def pop(self) -> int:
+        if len(self.st) == 0:
+            raise IndexError("The stack is empty")
+        return self.st.pop() 
+
+    def top(self) -> int:
+        if len(self.st) == 0:
+            raise IndexError("The stack is empty")
+        return self.st[-1]
+
+    def peekMax(self) -> int:
+        if len(self.st) == 0:
+            raise IndexError("The stack is empty")
+        
+        return max(self.st)
+    
+    def popMax(self) -> int:
+        if len(self.st) == 0:
+            raise IndexError("The stack is empty")
+        
+        maxNum = max(self.st)
+        for i in range(len(self.st) - 1, -1, -1):
+            if maxNum == self.st[i]:
+                self.st = self.st[:i] + self.st[i + 1:]
+                break
+                
+        return maxNum
+
+# Your MaxStack object will be instantiated and called as such:
+# obj = MaxStack()
+# obj.push(x)
+# param_2 = obj.pop()
+# param_3 = obj.top()
+# param_4 = obj.peekMax()
+# param_5 = obj.popMax()
+
+
+//version2
 class MaxStack {
     
     Stack<Integer> stack;
