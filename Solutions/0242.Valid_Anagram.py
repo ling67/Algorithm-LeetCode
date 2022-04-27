@@ -19,6 +19,12 @@ Constraints:
 s and t consist of lowercase English letters.
 */
 
+//python version
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        return all(s.count(x) == t.count(x) for x in 'abcdefghijklmnopqrstuvwxyz')
+   
+
 /*
 approach 1:sort
 approach 2:int count[]
