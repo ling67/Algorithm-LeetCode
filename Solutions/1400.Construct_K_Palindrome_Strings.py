@@ -29,6 +29,18 @@ s consists of lowercase English letters.
 
 """
 
+//讲解：https://leetcode-cn.com/problems/construct-k-palindrome-strings/solution/gou-zao-k-ge-hui-wen-zi-fu-chuan-by-leetcode-solut/
+ 
+class Solution:
+    def canConstruct(self, s: str, k: int) -> bool:
+        # 右边界为字符串的长度
+        right = len(s)
+        # 统计每个字符出现的次数
+        occ = collections.Counter(s)
+        # 左边界为出现奇数次字符的个数
+        left = sum(1 for _, v in occ.items() if v % 2 == 1)
+        left = max(left, 1)
+        return left <= k <= right
 
 #从可迭代对象中实例化 Counter
 #b = Counter("chenkc") # string
