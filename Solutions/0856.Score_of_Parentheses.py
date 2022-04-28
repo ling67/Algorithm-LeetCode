@@ -30,20 +30,20 @@ s is a balanced parentheses string.
 """
 
 #stack
+//https://leetcode-cn.com/problems/score-of-parentheses/solution/gua-hao-de-fen-shu-by-leetcode/
 
 class Solution:
     def scoreOfParentheses(self, s: str) -> int:
-        stack = []
-        score = 0
+        stack = [0]
         
-        for a in s:
-            if a == '(':
-                stack.append(score)
-                score = 0
+        for x in s:
+            if x == '(':
+                stack.append(0)
             else:
-                score = stack.pop() + max(score * 2, 1)
+                v = stack.pop()
+                stack[-1] += max(2*v, 1)
         
-        return score
+        return stack.pop()
 
     
 """
