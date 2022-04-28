@@ -23,8 +23,8 @@ class Solution:
         while len(nums) > k:
             heappop(nums)
         return nums[0]
-        
-
+       
+//java version
 class Solution {
     public int findKthLargest(int[] nums, int k) {
         int n = nums.length;
