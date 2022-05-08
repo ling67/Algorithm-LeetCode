@@ -20,6 +20,31 @@ Input: nums = [2,3,0,1,4]
 Output: 2
 */
 
+"""
+ Python
+1.define state: dp[i] the minimum number of jumps
+2.get dp[n-1]
+3.dp[0] = 0 dp[1] = 1
+4.transit function dp[j] = min{dp[i] + 1} 0 < i < j  if i + nums[i] >= j
+"""
+class Solution:
+    def jump(self, nums: List[int]) -> int:
+        
+        n = len(nums)
+        if n == 1:
+            return 0
+        
+        dp = [float('inf')] * n   
+        dp[0] = 0
+        dp[1] = 1
+        
+        for i in range(2, n):
+            for j in range(i):
+                if j + nums[j] >= i:
+                    dp[i] = min(dp[i], dp[j] + 1)
+        return dp[n-1]
+        
+
 /*
 1.definition dp[i] represent the minimum number of jumps to reach the i index 
 2.we require dp[n-1]
