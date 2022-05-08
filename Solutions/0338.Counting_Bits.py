@@ -36,20 +36,15 @@ Can you do it without using any built-in function (i.e., like __builtin_popcount
 """
 
 """
-状态f[i]=i的二进制中有多少个1
-和位操作相关的动态规划一般用值作为状态
-转移方程f[i] = f[i>>1] + i%2
-i>>1表示i往右移动一位，最后一位就撞到墙了就撞没了。
-初始条件为f[0]=0
-O(N)， O（N）
+1.define state: dp[i] represent the number of 1's in the binary representation of i
+2.get dp[n]
+3.initialize dp[0] = 0 dp[1] = 1
+4.dp[i] = dp[i//2] + i%2
 """
 class Solution:
     def countBits(self, n: int) -> List[int]:
-        if n == 0:
-            return [0]
-        dp = [0 for _ in range(n+1)]
-        dp[0] = 0
-        for i in range(1, n + 1):
-            dp[i] = dp[i//2] + i % 2
+        dp = [0] * (n+1)
+        for i in range(1, n+1):
+            dp[i] = dp[i//2] + i%2
         return dp
         
