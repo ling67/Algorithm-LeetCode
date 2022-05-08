@@ -18,6 +18,28 @@ Explanation: 13 = 4 + 9.
 
 */
 
+
+"""
+python
+1.define state dp[i] represent the least number of perfect square numbers that sum to n
+2.get dp[n]
+3.dp[0] = 0 dp[1] = 1
+4.transit function dp[i] = min{dp[j] + 1} if i*i - j*j == 平方
+"""
+class Solution:
+    def numSquares(self, n: int) -> int:
+        square_nums = [i**2 for i in range(0, int(math.sqrt(n))+1)]
+        dp = [float('inf')] * (n+1)
+        dp[0] = 0 
+        
+        for i in range(1, n+1):
+            for square in square_nums:
+                if i < square:
+                    break
+                dp[i] = min(dp[i], dp[i-square] + 1)
+        return dp[-1]
+        
+
 /*
 I think this problem we can use danymic programming to solve it.
 step 1.define dp array, dp[i] represent the least number of perfect square number that sum to i.
