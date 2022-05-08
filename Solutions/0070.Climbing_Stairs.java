@@ -22,6 +22,23 @@ Explanation: There are three ways to climb to the top.
 3. 2 steps + 1 step
 */
 
+"""
+python 版本
+1.define state dp[i] the distinct ways climb to the i step
+2.get result dp[n]
+3.dp[0] = 1 dp[1] = 1 
+4.transit function dp[i] = dp[i-1] + dp[i-2] 
+"""
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        dp = [1]*(n+1)
+        dp[0] = 1
+        dp[1] = 1
+        
+        for i in range(2, n+1):
+            dp[i] = dp[i-1] + dp[i-2]
+        return dp[n]
+
 
 //1.状态定义dp[i] 从下至上到达第i个台阶的时候有的不同的方法
 //2.求dp[n]
