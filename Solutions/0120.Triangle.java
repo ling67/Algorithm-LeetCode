@@ -15,6 +15,31 @@ Explanation: The triangle looks like:
 The minimum path sum from top to bottom is 2 + 3 + 5 + 1 = 11 (underlined above).
 */
 
+//python
+
+"""
+1.define state dp[i][j] represent the minimus path sum to (i, j)
+2.get result min{dp[i][n-1]}
+3.initialize dp[i][0] = dp[i-1][0] + triangle[i][0]
+4.transit function dp[i][j] = dp[i-1][j-1] + dp[i-1][j]
+"""
+class Solution:
+    def minimumTotal(self, triangle: List[List[int]]) -> int:
+        m = len(triangle)
+        dp = [[0] * m for _ in range(m)]
+        dp[0][0] = triangle[0][0]
+        
+        for i in range (1, m):
+            dp[i][0] = dp[i-1][0] + triangle[i][0]
+            dp[i][i] = dp[i-1][i-1] + triangle[i][i]
+            
+        for i in range(1, m):
+            for j in range(1, i):
+                dp[i][j] = min(dp[i-1][j-1], dp[i-1][j]) + triangle[i][j]
+        
+        return min(dp[m-1])
+                
+        
 /*
 1.状态定义: dp[i][j] = 从坐标(i,j)出发，到达最底层的最小路径和
 2.求dp[0][0];
