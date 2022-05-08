@@ -28,11 +28,13 @@ envelopes[i].length == 2
 """
 
 """
-首先按照长度排序，那么能嵌套的只能在前面
-1.确定状态：dp[i]严格以i结尾的信封最多的嵌套层数
-2.求max dp[i]
-3.初始值 dp[0] = 1
-4.递推公式 dp[i] = max(dp[j]+1) j<i 且长宽都小于
+python
+1.define state dp[i] represent the max number of envelopes end with envelopes[i] 
+2.get result dp[n-1]
+3.initialize dp[0] = 1
+4.transit function dp[i] = max{dp[j] + 1} 
+envelopes[j][0]<envelopes[i][0]
+envelopes[j][1]<envelopes[i][1]
 O(nlogn + n2)  超时
 """
 class Solution:
