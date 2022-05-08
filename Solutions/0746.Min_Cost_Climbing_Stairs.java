@@ -29,6 +29,25 @@ The total cost is 6.
 
 */
 
+
+"""
+python
+1.define state dp[i] the minimum cost to reach the ith floor
+2.get dp[n]
+3.initialize dp[0] = cost[0] dp[1] = cost[1]
+4.transit function dp[i] = min(dp[i-1], dp[i-2]) + cost[i]
+"""
+class Solution:
+    def minCostClimbingStairs(self, cost: List[int]) -> int:
+        n = len(cost)
+        dp = [0] * (n+1)
+        dp[0] = 0
+        dp[1] = 0 
+        for i in range(2, n+1):
+            dp[i] = min(dp[i-1] + cost[i-1], dp[i-2] + cost[i-2])
+        return dp[n]
+        
+
 //1.定义状态 dp[i] 代表到达第i staircase需要的最小的cost
 //2.求dp[n]
 //3.初始化 dp[0] = 0; dp[1] = 0; dp[2] = min(A[0], A[1])
