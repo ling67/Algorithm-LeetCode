@@ -26,7 +26,36 @@ Output: 3
 1. 房子1没偷：问题变成了对房子2~N做House robber I的问题
 2. 房子N没偷：问题变成了对房子1~N-1做House robber I的问题
 """
-
+"""
+we can divide the question to two subquestion
+robber donot steal first hourse
+robber steal first hourse and not steal last hourse
+"""
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        n = len(nums)
+        if n == 1:
+            return nums[0]
+        if n == 2:
+            return max(nums)
+        
+        max1 = self.subRob(nums[:n-1])
+        max2 = self.subRob(nums[1:n])
+        return max(max1, max2)
+        
+    def subRob(self, nums):
+        n = len(nums)
+        dp_steal = [0] * n
+        dp_not_steal = [0] * n
+        dp_steal[0], dp_steal[1] = nums[0], nums[1]
+        dp_not_steal[0], dp_not_steal[1] = 0, nums[0]
+        
+        for i in range(2, n):
+            dp_steal[i] = dp_not_steal[i-1] + nums[i]
+            dp_not_steal[i] = max(dp_steal[i-1], dp_not_steal[i-1])
+        return max(dp_steal[n-1], dp_not_steal[n-1])
+            
+            
 class Solution:
     def rob(self, nums: List[int]) -> int:
         
