@@ -45,6 +45,7 @@ when use which one element, pi[n] record the element index
 then print
 
 """NlogN的算法，还是网上的高人讲得好。https://www.youtube.com/watch?v=YoeWZ3ELMEk"""
+                     
 //version2: python
 """
 dp是后退，nlogn选择正推
@@ -53,21 +54,23 @@ dp是后退，nlogn选择正推
 3.初始化：dp[0] = 1
 4.递推公式：dp[i] = max(dp[j]+1) for j < i && nums[j] < nums[i];
 """
+"""
+1.define state: dp[i] represent the longest increasing subsequence end with nums[i]
+2.get max{dp[i]}
+3.dp[0] = 1
+4.transit function: dp[i] = max{dp[j] + 1} for nums[i] > nums[j] and j < i
+"""
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
-        dp = [0] * len(nums)
-        size = 0
+        dp = []
         
         for num in nums:
-            #[40, 60] 10 [10, 60] 20 left side < 20
-        
-            i = bisect.bisect_left(dp, num, 0, size)  #0, 2 val < dp[i]   #i返回的是左边都比index小
-            dp[i] = num
-            if i == size: # 4,5,6
-                size += 1
-            
-        return size
-             
+            if not dp or num > dp[-1]:
+                dp.append(num)
+            else:
+                index = bisect.bisect_left(dp, num)
+                dp[index] = num
+        return len(dp)
              
 //version3: java
 //1.定义dp[i] 代表严格以i结尾的最长子序列的长度
