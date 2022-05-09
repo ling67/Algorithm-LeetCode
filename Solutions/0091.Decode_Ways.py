@@ -48,21 +48,28 @@ s contains only digits and may contain leading zero(s).
 时间复杂度O(n), 空 O(n)
 注意：f[0] = 1, 且要判断i > 1
 """
+"""
+1.define state:dp[i] represent the number of ways to decode it first i string
+2.get dp[n]
+3.dp[0] = 1 dp[1] = 1
+4.dp[i] = dp[i-1] + dp[i-2](if 10 < s[i-2.i-1] < 26)
+"""
 class Solution:
     def numDecodings(self, s: str) -> int:
         n = len(s)
-        f = [0] * (n +1)
-        f[0] = 1
+        dp = [0] * (n+1)
+        dp[0] = 1  #只能初始化dp[0], dp[1]是不确定的
         
         for i in range(1, n+1):
             if s[i-1] >= '1' and s[i-1] <= '9':
-                f[i] += f[i-1]
+                dp[i] += dp[i-1]
             
             if i > 1:
                 j = 10 * int(s[i-2]) + int(s[i-1])
                 if s[i-2] != '0' and j >= 10 and j <= 26:
-                    f[i] += f[i-2]
-                
-        return f[n]
+                    dp[i] += dp[i-2]
+        
+        return dp[n]
+        
         
 
