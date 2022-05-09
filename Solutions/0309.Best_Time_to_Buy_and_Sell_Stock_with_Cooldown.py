@@ -26,6 +26,7 @@ Constraints:
 
 """
 has to rest for one day before buy another stock
+在不在手区分：今天交易完后有没有股票在手上：卖出是不在手，买入是在手
 分两个状态：hold and unhold:
 hold[i]=第i天又股票在手状态下的最大收益
 unhold[i]=第i天没有股票在手状态下的最大收益 
@@ -45,7 +46,7 @@ class Solution:
         unhold[1] = max(0, prices[1] - prices[0])
         
         for i in range(2, len(prices)):
-            hold[i] = max(hold[i-1], unhold[i-2] - prices[i]) 
-            unhold[i] = max(prices[i] + hold[i-1], unhold[i-1])
+            hold[i] = max(hold[i-1], unhold[i-2] - prices[i])  #今天买 或者 有股票
+            unhold[i] = max(prices[i] + hold[i-1], unhold[i-1])  #今天卖 或者 没有股票
         
         return unhold[-1]
