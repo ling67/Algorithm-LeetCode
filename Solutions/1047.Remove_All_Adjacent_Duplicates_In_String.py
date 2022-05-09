@@ -38,5 +38,5 @@ class Solution:
                 st.pop()
             else:
                 st.append(ch)
-        return "".join(st)   
+        return "".join(st)    # always forget it
     
