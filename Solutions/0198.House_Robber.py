@@ -43,17 +43,14 @@ class Solution:
         dp_steal = [0] * n
         dp_not_steal = [0] * n
         
-        dp_steal[0] = nums[0]
-        dp_not_steal[0] = 0
-        dp_steal[1] = nums[1]
-        dp_not_steal[1] = nums[0]
+        dp_steal[0], dp_steal[1] = nums[0], nums[1]
+        dp_not_steal[0], dp_not_steal[1] = 0, nums[0]
         
         for i in range(2, n):
-            dp_steal[i] = max(dp_steal[i-2], dp_not_steal[i-2], dp_not_steal[i-1]) + nums[i]    
+            dp_steal[i] = max(dp_steal[i-2], dp_not_steal[i-2]) + nums[i]    
             dp_not_steal[i] = max(dp_steal[i-1], dp_not_steal[i-1])
             
         return max(dp_steal[n-1], dp_not_steal[n-1])
-
        
 """
 1.状态定义 dp[i][0] 不偷第i+1栋房子的最大金币 dp[i][1] 偷第i+1栋房子的最大金币
