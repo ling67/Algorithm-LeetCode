@@ -29,10 +29,10 @@ costs[i].length == 3
 """
 
 """
-1.确定状态：dp[i][0]  dp[i][1] dp[i][2]  油漆前i+1栋房子，且第i+1栋房子是红色，蓝色，绿色的最小花费
-2.求：min dp[n-1]  油漆前n栋房子的最少花费  
-3.初始化：dp[0][0]  油漆前0栋房子 = costs[][], costs[][], costs[][]
-4.递推公式：dp[n-1][0] = min{dp[n][1], dp[n][2]}
+1.define state dp[i][0] represent the all cost paint the 0,1,2...n-1 and the i house paint by red color
+2.get min{dp[n-1]}
+3.dp[0][0] = costs[0][0] dp[0][1] = costs[0][1] dp[0][2] = costs[0][2]
+4.transit function dp[i][0] = min{dp[i-1][1], dp[i-1][2]} + costs[i][0]
 """
 
 class Solution:
