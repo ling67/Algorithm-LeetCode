@@ -27,15 +27,15 @@ Constraints:
 """
 
 """
-minV = 保存从0到现在的最小值, 可以认为是dp
+maintain a curr_min and a max_prof
+max_prof = max(max_prof, price - curr_min)
 """
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        res = 0
-        minV = prices[0]
+        curr_min = float('inf')
+        max_prof = 0
         
-        for i in range(1, len(prices)):
-            res = max(res, prices[i] - minV)
-            minV = min(prices[i], minV)
-        
-        return res
+        for price in prices:
+            curr_min = min(curr_min, price)
+            max_prof = max(max_prof, price - curr_min)
+        return max_prof
