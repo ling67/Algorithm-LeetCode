@@ -35,6 +35,7 @@ Constraints:
 
 """
 最优策略是把每个上升的曲线之和
+get the sum of all rising part 
 """
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
