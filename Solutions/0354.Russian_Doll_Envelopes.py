@@ -48,3 +48,26 @@ class Solution:
                 if envelopes[i][0] > envelopes[j][0] and envelopes[i][1] > envelopes[j][1]:
                     dp[i] = max(dp[i], 1+dp[j])
         return max(dp)
+
+"""
+python version2 time: n*logn
+# sort width ascendingly以保证后面的width肯定能fit进前面的width,    
+# while sort length descendingly以保证相同的width不同的length不能相互fit进去
+# 这样一来，只要后面来的envelope[j]的length比前面的envelope[i]的length大，那j一定能套住i    
+# 这样我们只需要对length做300. Longest Increasing Subsequence就可以了
+"""
+class Solution:
+    def maxEnvelopes(self, envelopes: List[List[int]]) -> int:
+        envelopes.sort(key = lambda x: (x[0], -x[1]))
+        dp = []
+        
+        height = [h for w,h in envelopes]
+        
+        for h in height:
+            if not dp or h > dp[-1]:
+                dp.append(h)
+            else:
+                index = bisect.bisect_left(dp, h)
+                dp[index] = h
+        return len(dp)
+        
