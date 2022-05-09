@@ -26,6 +26,36 @@ Constraints:
 """
 
 """
+1.define state: dp_steal[i] represent the max profit if steal i
+dp_not_steal[i] represent the max profit if not steal i
+2.get max{dp_steal[n-1], dp_not_steal[n-1]}
+3.dp_steal[0] = nums[0] dp_not_steal[0] = 0
+4.dp_steal[i] = max{dp_steal[i-2], dp_not_steal[i-2], dp_not_steal[i-1]} + nums[i]
+dp_not_steal[i] = max{dp_steal[i-1], dp_not_steal[i-1]}
+"""
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        
+        n = len(nums)
+        if n == 1:
+            return nums[0]
+        
+        dp_steal = [0] * n
+        dp_not_steal = [0] * n
+        
+        dp_steal[0] = nums[0]
+        dp_not_steal[0] = 0
+        dp_steal[1] = nums[1]
+        dp_not_steal[1] = nums[0]
+        
+        for i in range(2, n):
+            dp_steal[i] = max(dp_steal[i-2], dp_not_steal[i-2], dp_not_steal[i-1]) + nums[i]    
+            dp_not_steal[i] = max(dp_steal[i-1], dp_not_steal[i-1])
+            
+        return max(dp_steal[n-1], dp_not_steal[n-1])
+
+       
+"""
 1.状态定义 dp[i][0] 不偷第i+1栋房子的最大金币 dp[i][1] 偷第i+1栋房子的最大金币
 2.求 min(dp[n-1][0], dp[n-1][1])
 3.初始化 dp[0][0] = 0, dp[0][1] = 1
@@ -82,11 +112,4 @@ class Solution:
             prevMax = temp
             
         return currMax
-        
-
-
-
-
-
-
         
