@@ -29,6 +29,8 @@ has to rest for one day before buy another stock
 分两个状态：hold and unhold:
 hold[i]=第i天又股票在手状态下的最大收益
 unhold[i]=第i天没有股票在手状态下的最大收益 
+递推公式 hold[i]
+递推公式 unhold[i]
 """
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
