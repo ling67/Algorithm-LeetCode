@@ -40,7 +40,7 @@ class Solution:
         unhold[0] = 0
         
         for i in range(1, len(prices)):
-            hold[i] = max(hold[i-1], unhold[i-1] - prices[i])
-            unhold[i] = max(unhold[i-1], hold[i-1] + prices[i] - fee)
+            hold[i] = max(hold[i-1], unhold[i-1] - prices[i])   #今天又股票：昨天有股票 或者 昨天没有股票但今天买了股票
+            unhold[i] = max(unhold[i-1], hold[i-1] + prices[i] - fee)   #今天没有股票：昨天没有股票 或者 昨天有股票但是今天卖出了
         
         return unhold[-1]
