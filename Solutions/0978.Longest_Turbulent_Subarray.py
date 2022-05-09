@@ -34,6 +34,42 @@ Constraints:
 0 <= arr[i] <= 109
 """
 
+"""
+1.define state: 
+dp_inc[i] nums[i] > nums[i-1]
+dp_dec[i] nums[i] < nums[i-1]
+2.get max(dp_inc[i], dp_dec[i])
+3.
+dp_inc[0] = 1
+dp_dec[0] = 1
+4.transit function 
+if nums[i] > nums[i-1] 
+dp_inc[i] = dp_dec[i-1] + 1
+else:
+dp_dec[i] = dp_inc[i-1] + 1
+"""
+class Solution:
+    def maxTurbulenceSize(self, arr: List[int]) -> int:
+        n = len(arr)
+        dp_inc = [0] * n
+        dp_dec = [0] * n
+        dp_inc[0], dp_dec[0] = 1, 1
+        
+        for i in range(1, n):
+            if arr[i] > arr[i-1]:
+                dp_inc[i] = dp_dec[i-1] + 1
+                dp_dec[i] = 1
+            elif arr[i] < arr[i-1]:
+                dp_dec[i] = dp_inc[i-1] + 1
+                dp_inc[i] = 1
+            else:
+                dp_dec[i] = 1
+                dp_inc[i] = 1
+                
+        max1 = max(dp_dec)
+        max2 = max(dp_inc)
+            
+        return max1 if max1>max2 else max2
 
 """
 1.状态定义 
