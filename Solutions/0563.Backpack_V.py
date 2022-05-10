@@ -23,6 +23,7 @@ dp[i][j] 前i个数fill重量为J的可能的方式
 dp[0][0] = 0
 dp[size][target]
 dp[i][j] = dp[i-1][j] + dp[i-1][j-num[i-1]]
+空间溢出，需要优化
 """
 class Solution:
     """
@@ -44,3 +45,34 @@ class Solution:
                     dp[i][j] += dp[i-1][j-nums[i-1]]
 
         return dp[size][target]
+
+    from typing import (
+    List,
+)
+"""
+dp[i][j] 前i个数fill重量为J的可能的方式
+dp[0][0] = 0
+dp[size][target]
+dp[i][j] = dp[i-1][j] + dp[i-1][j-num[i-1]]
+空间优化-滚动数组
+"""
+class Solution:
+    """
+    @param nums: an integer array and all positive numbers
+    @param target: An integer
+    @return: An integer
+    """
+    def back_pack_v(self, nums: List[int], target: int) -> int:
+        # write your code here
+        size = len(nums)
+        dp = [[0] * (target+1) for _ in range(2)]
+        for i in range(size+1):
+            dp[i%2][0] = 1
+
+        for i in range(1, size+1):
+            for j in range(1, target+1):
+                dp[i%2][j] = dp[(i-1)%2][j]
+                if j >= nums[i-1]:
+                    dp[i%2][j] += dp[(i-1)%2][j-nums[i-1]]
+
+        return dp[size%2][target]
