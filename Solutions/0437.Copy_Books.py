@@ -56,6 +56,33 @@ class Solution:
             curr_time += page
         return people_needed <= k
 
+"""需要找到一种分段方式，使得所有段的数字之和的最大值最小
+f[k][i]=前k个(不包括k)抄写员最多需要多长时间抄完前i本书(不包括i)
+f[k][j]=min(max(f[k-1][i], i~j所需时间)) for 0<i <j
+初始条件：f[k][0]=0; f[0][0]=0; f[0][i] = inf for i > 0
+O(N^2*K), O(N*K)"""
+class Solution:
+    """
+    @param pages: an array of integers
+    @param k: An integer
+    @return: an integer
+    """
+    def copyBooks(self, pages, k):
+        lens = len(pages)
+        dp = [[float("inf")] * (lens + 1) for _ in range(k + 1)]
+        
+        for m in range(k + 1):
+            dp[m][0] = 0
+            for j in range(1, lens + 1):
+                dp[0][j] = float("inf")
+                
+        for m in range(1, k + 1):
+            for j in range(1, lens + 1):
+                for i in range(j):
+                    tempMax = max(dp[m - 1][i], sum(pages[i:j]))
+                    dp[m][j] = min(dp[m][j], tempMax)
+                    
+        return dp[k][lens]
 
 
 //version 1: 二分答案 java version
