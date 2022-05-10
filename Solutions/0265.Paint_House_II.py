@@ -55,6 +55,45 @@ class Solution:
         return min(dp[-1])
 
 """
+1.define state dp[i][0] represent hourse 0...i-1 has painted and i paint by color 0
+2.get min{dp[n-1][0....k-1]}
+3.initialize dp[0][0]....dp[0][k-1] = cost[0][0]...cost[0][k-1]
+4.dp[i][j] = min{dp[i-1][0]...dp[i-1][j-1]...dp[i-1][j+1]...dp[i-1][k-1]} + cost[i][j]
+
+k*k*n
+"""
+class Solution:
+    def minCostII(self, costs: List[List[int]]) -> int:
+        n, k = len(costs), len(costs[0])
+        dp = [[0] * k for _ in range(n)]
+        for i in range(k):
+            dp[0][i] = costs[0][i]
+        
+        for i in range(1, n):
+            minValue = float('inf')
+            secondMinValue = float('inf')
+            minvalue_j = 0
+            secondMinValue_j = 0
+            for t in range(k):
+                if dp[i-1][t] < minValue:
+                    secondMinValue = minValue
+                    secondMinValue_j = minvalue_j
+                    minValue = dp[i-1][t]
+                    minvalue_j = t
+                elif dp[i-1][t] < secondMinValue:
+                    secondMinValue = dp[i-1][t]
+                    secondMinValue_j = t
+            
+            for j in range(k):
+                if j != minvalue_j:
+                    dp[i][j] =  minValue + costs[i][j]
+                else:
+                    dp[i][j] =  secondMinValue + costs[i][j]
+                
+        return min(dp[-1])
+       
+                
+"""
 python version 2
 跟之前不一样的是变成了K个颜色
 
