@@ -36,16 +36,14 @@ s only contains lower case English letters.
 class Solution:
     def removeDuplicates(self, s: str, k: int) -> str:
         st = []
-        for ch in s:
-            if len(st) == 0:
-                st.append((ch, 1))
+        
+        for i in range(len(s)):
+            if len(st) > 0 and st[-1][0] == s[i] and st[-1][1] == k-1:
+                st.pop()
             else:
-                if ch == st[-1][0]:
-                    if st[-1][1] == k - 1:
-                        st.pop()
-                    else:
-                        cnt = st.pop()[1]
-                        st.append((ch, cnt + 1))
+                if len(st) > 0 and st[-1][0] == s[i]:
+                    cnt = st.pop()[1]   #容易出错
+                    st.append((s[i], cnt + 1))   #容易出错
                 else:
-                    st.append((ch, 1))
-        return "".join(ch * cnt for ch, cnt in st)   #字符串乘以数字，重复输出多次
+                    st.append((s[i], 1))
+        return "".join(ch*cnt for ch, cnt in st)   #容易出错
