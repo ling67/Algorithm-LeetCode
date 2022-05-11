@@ -37,83 +37,31 @@ there are two method to solve this problem
 approch 1: we can use stack store the min value, each time we push number to stack, we store the min value in stack as well
 approch 2: we use two stack, one can be use to store value, the other one can be use to store min value.
 */
-class MinStack {
-    
-    private Stack<Integer> stack;
-    private Stack<Integer> minStack;
-
-    public MinStack() {
-        stack = new Stack<>();
-        minStack = new Stack<>();
-    }
-    
-    public void push(int val) {
-        stack.push(val);
-        if (minStack.isEmpty() || val <= minStack.peek()) {
-            minStack.push(val);
-        }
-    }
-    
-    public void pop() {
-        if (stack.peek().equals(minStack.peek())) {
-            minStack.pop();
-        }
-        stack.pop();
-    }
-    
-    public int top() {
-        return stack.peek();
-    }
-    
-    public int getMin() {
-        return minStack.peek();
-    }
-}
-
-/**
- * Your MinStack object will be instantiated and called as such:
- * MinStack obj = new MinStack();
- * obj.push(val);
- * obj.pop();
- * int param_3 = obj.top();
- * int param_4 = obj.getMin();
- */
-
-
 class MinStack:
 
     def __init__(self):
         self.st = []
-        self.minSt = []
 
     def push(self, val: int) -> None:
         self.st.append(val)
-        
-        if len(self.minSt) == 0 or val <= self.minSt[-1]:
-            self.minSt.append(val)
 
     def pop(self) -> None:
         if len(self.st) == 0:
-            raise IndexError("the stack is empty")
-        else:
-            poppedItem = self.st.pop()
-            if poppedItem == self.minSt[-1]:
-                self.minSt.pop()
-            return poppedItem
+            raise IndexError("The stack is empty!")
+        return self.st.pop()
 
     def top(self) -> int:
         if len(self.st) == 0:
-            raise IndexError("the stack is empty")
-        else:
-            return self.st[-1]
-
-    def getMin(self) -> int:
+            raise IndexError("The stack is empty!")
+        return self.st[-1]
+        
+    def getMin(self) -> int:   #注意没有说删除最小值
         if len(self.st) == 0:
-            raise IndexEroor("the stack is empty")
-        else:
-            return self.minSt[-1]
-
-
+            raise IndexError("The stack is empty!")
+        minValue = min(self.st)
+        return minValue
+        
+            
 # Your MinStack object will be instantiated and called as such:
 # obj = MinStack()
 # obj.push(val)
@@ -121,6 +69,3 @@ class MinStack:
 # param_3 = obj.top()
 # param_4 = obj.getMin()
  
-
-
-
