@@ -30,6 +30,50 @@ myStack.pop(); // return 2
 myStack.empty(); // return False
 */
 
+/**
+ * Your MyStack object will be instantiated and called as such:
+ * MyStack obj = new MyStack();
+ * obj.push(x);
+ * int param_2 = obj.pop();
+ * int param_3 = obj.top();
+ * boolean param_4 = obj.empty();
+ */
+
+class MyStack:
+
+    def __init__(self):
+        self.q1 = collections.deque()   #这里用Q经常忘记
+        self.q2 = collections.deque()
+
+    def push(self, x: int) -> None:
+        while self.q1:
+            self.q2.append(self.q1.popleft())
+        self.q1.append(x)
+        while self.q2:
+            self.q1.append(self.q2.popleft())
+
+    def pop(self) -> int:
+        if len(self.q1) == 0:
+            raise IndexError("The stack is empty!")
+        return self.q1.popleft()
+        
+    def top(self) -> int:
+        if len(self.q1) == 0:
+            raise IndexError("The stack is empty!")
+        return self.q1[0]     #区别于stack, stack实现其实是[], 操作基本为对数组的操作. 取stack为q1[-1]  Q为[0]       
+
+    def empty(self) -> bool:
+        return len(self.q1) == 0
+       
+        
+# Your MyStack object will be instantiated and called as such:
+# obj = MyStack()
+# obj.push(x)
+# param_2 = obj.pop()
+# param_3 = obj.top()
+# param_4 = obj.empty()
+
+
 class MyStack {
     
     private Queue<Integer> queue1;
@@ -78,48 +122,4 @@ class MyStack {
         return queue1.isEmpty() && queue2.isEmpty();
     }
 }
-
-/**
- * Your MyStack object will be instantiated and called as such:
- * MyStack obj = new MyStack();
- * obj.push(x);
- * int param_2 = obj.pop();
- * int param_3 = obj.top();
- * boolean param_4 = obj.empty();
- */
-
-
-class MyStack:
-
-    def __init__(self):
-        self.q1 = collections.deque()    #store element
-        self.q2 = collections.deque()    #help space
-
-    def push(self, x: int) -> None:
-        while self.q1:
-            self.q2.append(self.q1.popleft())
-        self.q1.append(x)
-        while self.q2:
-            self.q1.append(self.q2.popleft())
-
-    def pop(self) -> int:
-        if len(self.q1) == 0:
-            raise IndexError("The stack is empty")
-        return self.q1.popleft()
-
-    def top(self) -> int:
-        if len(self.q1) == 0:
-            raise IndexError("The stack is empty")
-        return self.q1[0]
-        
-    def empty(self) -> bool:
-        return len(self.q1) == 0
-        
-# Your MyStack object will be instantiated and called as such:
-# obj = MyStack()
-# obj.push(x)
-# param_2 = obj.pop()
-# param_3 = obj.top()
-# param_4 = obj.empty()
-
 
