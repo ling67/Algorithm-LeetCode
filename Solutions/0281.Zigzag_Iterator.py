@@ -28,30 +28,32 @@ Constraints:
 1 <= v1.length + v2.length <= 2000
 -231 <= v1[i], v2[i] <= 231 - 1
 
-
-
 #1.two point
 #2.Queue
 class ZigzagIterator:
     def __init__(self, v1: List[int], v2: List[int]):
-        self.vectors = [v1, v2]
-        self.queue = deque()
-        for index, vector in enumerate(self.vectors):
-            if len(vector) > 0:
-                self.queue.append((index, 0))
+        self.idx1 = 0
+        self.idx2 = 0
+        self.flag = True   #flag = True means take from v1
+        self.v1 = v1
+        self.v2 = v2
 
     def next(self) -> int:
-        if self.queue:
-            vec_index, elem_index = self.queue.popleft()
-            next_elem_index = elem_index + 1
-            if next_elem_index < len(self.vectors[vec_index]):
-            # append the pointer for the next round
-            # if there are some elements left
-                self.queue.append((vec_index, next_elem_index))
-        return self.vectors[vec_index][elem_index]
+        if self.hasNext():
+            if self.idx2 >= len(self.v2) or (self.flag and self.idx1 < len(self.v1)):
+                res = self.v1[self.idx1]
+                self.idx1 += 1
+                self.flag = not self.flag
+            elif self.idx1 >= len(self.v1) or (not self.flag and self.idx2 < len(self.v2)):
+                res = self.v2[self.idx2]
+                self.idx2 += 1
+                self.flag = not self.flag
+            return res
 
     def hasNext(self) -> bool:
-        return len(self.queue) > 0
+        if self.idx1 >= len(self.v1) and self.idx2 >= len(self.v2):
+            return False
+        return True
 
 # Your ZigzagIterator object will be instantiated and called as such:
 # i, v = ZigzagIterator(v1, v2), []
