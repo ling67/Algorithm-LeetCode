@@ -33,7 +33,7 @@ class Solution:
         for s in strings:
             ch_lst = []
             for ch in s:
-                ch_lst.append((ord(ch) - ord(s[0])) % 26)    #"ZA会形成环，所以take mod of 26
+                ch_lst.append((ord(ch) - ord(s[0])) % 26)    #注意容易忘记：ZA会形成环，所以take mod of 26
             str_dict[tuple(ch_lst)].append(s)
             
         return str_dict.values()
