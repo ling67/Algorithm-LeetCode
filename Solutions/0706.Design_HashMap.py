@@ -43,7 +43,7 @@ class ListNode:    #新建class,用于存储 key, value
 
 class MyHashMap:
 
-    SIZE = 100007 #为什么是这个数目
+    SIZE = 100 #为什么是这个数目，随意填的一个，大一些hash冲突会小一下
     
     def __init__(self):
         #store linked list head in the ListNode(-1, -1)是一个dummy node
