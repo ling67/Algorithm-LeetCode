@@ -108,7 +108,37 @@ class BSTIterator:
 # param_1 = obj.next()
 # param_2 = obj.hasNext()
   
-  
+//java version
+class BSTIterator {
 
-  
-  
+    List<Integer> list;
+    int index;
+    
+    public BSTIterator(TreeNode root) {
+        list = new ArrayList<Integer>();
+        inOrder(root, list);
+    }
+    
+    private void inOrder(TreeNode root, List<Integer> list) {
+        if (root == null) return;
+        inOrder(root.left, list);
+        list.add(root.val);
+        inOrder(root.right, list);
+    }
+    
+    public int next() {
+        if (hasNext()) {
+            int num = list.get(index);
+            index++;
+            return num;
+        }
+        return -1;
+    }
+    
+    public boolean hasNext() {
+        if (index < list.size()) {
+            return true;
+        }
+        return false;
+    }
+}
