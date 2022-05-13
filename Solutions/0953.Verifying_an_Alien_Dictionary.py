@@ -33,8 +33,8 @@ class Solution:
             prev = words[i-1]
             curr = words[i]
             for j in range(len(prev)):
-                if j > len(curr) - 1:
-                    return False
+                if j > len(curr) - 1:     
+                    return False  #注意这里容易忘记，这是如果前j个字符都相等的话，prev长度大于nxt就会返回FALSE
                 if ch_pos[prev[j]] < ch_pos[curr[j]]:
                     break
                 if ch_pos[prev[j]] > ch_pos[curr[j]]:
