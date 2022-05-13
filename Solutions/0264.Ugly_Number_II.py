@@ -24,7 +24,7 @@ Constraints:
 
 class Solution:
     def nthUglyNumber(self, n: int) -> int:
-        added = set()
+        added = set()    #容易忘记
         added.add(1)
         hq = [1]
         for _ in range(n):
