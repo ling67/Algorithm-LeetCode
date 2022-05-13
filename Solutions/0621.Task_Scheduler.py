@@ -40,6 +40,43 @@ tasks[i] is upper-case English letter.
 The integer n is in the range [0, 100].
 """
 
+
+"""
+间隔k个位置安排座位的问题，都是task schedule的做法！
+我们按频率从大到小去坐n个位置，pop出来之后需要将freq-=1然后push回去, pop出来再add back回去的思想很重要！!
+"""
+class Solution:
+    def leastInterval(self, tasks: List[str], n: int) -> int:
+        freqs = collections.Counter(tasks)
+        hq = []
+        for task, freq in freqs.items():
+            heappush(hq, (-freq, task))     # 以freq维护一个最大堆
+            
+        cnt = 0         # record how many seats were taken
+        addback = []    # 没执行完的任务需要重新放回hq里面去
+        while len(hq) > 0:
+            
+            # 先预设有n + 1个座位，eg: n = 3， 那就先预设四个座位: _ _ _ _
+            # 每进一次循环代表占领一个座位的位置，让高频的去占领那4个座位
+            # 同时将高频的那四个的freq分别减1
+            for _ in range(n + 1):
+                cnt += 1            # update cnt wheather or not(idle) a task is seated
+                
+                if len(hq) > 0:     # 遍历一遍hq的所有元素，这些元素分别freq分别减1
+                    freq, task = heappop(hq)
+                    freq = -freq
+                    freq -= 1
+                    if freq > 0:    # 没执行完的任务需要重新放回hq里面去
+                        addback.append((-freq, task))
+                        
+                if len(hq) == 0 and len(addback) == 0:
+                    return cnt      # if all tasks are seated, 就不要再继续cnt+1了，必须在这个for loop里面停止
+            
+            # 没执行完的任务现在不在hq里面，把他们放到hq里去
+            while len(addback) > 0:
+                heappush(hq, addback.pop())
+        
+
 """
 https://www.youtube.com/watch?v=s8p8ukTyA2I
 """
