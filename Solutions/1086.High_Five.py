@@ -32,14 +32,12 @@ class Solution:
     def highFive(self, items: List[List[int]]) -> List[List[int]]:
         scores = defaultdict(list)
         for sid, score in items:
-            if not scores[sid]:
-                heapq.heapify(scores[sid])
             heapq.heappush(scores[sid], score)
             if len(scores[sid]) > 5:
-                heapq.heappop(scores[sid])
+                heappop(scores[sid])
                 
-        ans = []
+        res = []
         for sid, heap in scores.items():
-            ans.append([sid, sum(heap) // 5])
+            res.append([sid, sum(heap) // 5])
         
-        return sorted(ans)
+        return sorted(res)
