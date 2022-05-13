@@ -49,7 +49,7 @@ class Solution:
         hq = []
         added = set()    #store the idx that has already been added into hq
         heappush(hq, (matrix[0][0], (0,0)))  #(i, j)也要放进hq
-        added.add((0, 0)) #注意这里的visited不能存储matrix[i][j], 因为不同的地方可能存在相同的数
+        added.add((0, 0)) #注意这里的visited不能存储matrix[i][j], 因为不同的地方可能存在相同的数, 容易错，set增加应该用add()
         
         m, n = len(matrix), len(matrix[0])
         res = matrix[0][0]
