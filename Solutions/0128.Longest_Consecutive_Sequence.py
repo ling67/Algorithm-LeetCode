@@ -25,22 +25,36 @@ Output: 9
 */
 
 //version3 python版本
+"""
+使用一个集合hashset存入所有的数字，然后遍历数组中的每个数字，如果其在集合中存在，那就将其移除，然后分别用两个变量pre
+和next算出其前一个跟后一个数。
+注意：找到后要删除set中的数，因为没有必要再重复的寻找最大的连续序列，例如4231，找了4的最大连续序列，就不用再找了
+"""
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
-        longest_streak = 0
-        num_set = set(nums)
-        
-        for num in num_set:
-            if num - 1 not in num_set:
-                curr_num = num
-                curr_streak = 1
+        numset = set(nums)
+        max_cnt = 0
+        for num in nums:
+            if num in numset:  
+                numset.remove(num)   #注意这里，找到后要删除set中的数，因为没有必要再重复的寻找最大的连续序列，例如4231，找了4的最大连续序列，就不用再找了
+                cnt = 1
                 
-                while curr_num + 1 in num_set:
-                    curr_num += 1
-                    curr_streak += 1
+                prev = num - 1
+                while prev in numset:
+                    numset.remove(prev)
+                    cnt += 1
+                    prev -= 1
                     
-                longest_streak = max(longest_streak, curr_streak)
-        return longest_streak
+                nxt = num + 1
+                while nxt in numset:
+                    numset.remove(nxt)
+                    cnt += 1
+                    nxt += 1
+                    
+                max_cnt = max(max_cnt, cnt)
+            
+        return max_cnt
+            
        
 
 //version3 有时间可以做下V1和V2
