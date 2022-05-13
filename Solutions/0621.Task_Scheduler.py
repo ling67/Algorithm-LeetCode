@@ -53,14 +53,14 @@ class Solution:
         heapify(maxHeap)
         
         time = 0
-        q = deque()    # pairs of [-cnt, idleTime]
+        q = deque()    # pairs of (-cnt, idleTime)
         while maxHeap or q:
             time += 1
             if maxHeap:
                 cnt = 1 + heappop(maxHeap)
                 if cnt:
                     q.append([cnt, time + n])
-            if q and q[0][1] == time:
+            if q and q[0][1] == time:   #注意这里，后进入Q的值肯定idletime更长，所以取第一个元素就可以
                 heappush(maxHeap, q.popleft()[0])
                 
         return time
