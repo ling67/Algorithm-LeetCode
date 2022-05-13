@@ -34,7 +34,7 @@ class Codec:
         """Encodes a URL to a shortened URL.
         """
         self.mapping = defaultdict(str)   #声明value的类型是str
-        hash_code = hash(longUrl)
+        hash_code = hash(longUrl)    #hash后返回的结果是int
         self.mapping[hash_code] = longUrl
         stortUrl = "http://tinyurl.com/" + str(hash_code)
         return stortUrl 
