@@ -35,6 +35,12 @@ lRUCache.get(4);    // return 4
 
 
 #use a queue to store the time-linear data and dictionary to store the cache number, very straighr forward.
+"""
+1. 使用queue去存储最近访问过的key
+2. cache去存储key, value
+3. get后要更新q
+4. put时如果capacity已经不足，要删除最近最久没使用的值
+"""
 
 class LRUCache:
 
