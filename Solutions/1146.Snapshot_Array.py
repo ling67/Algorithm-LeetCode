@@ -39,7 +39,7 @@ class SnapshotArray:
         self.idx_to_val[index] = val
 
     def snap(self) -> int:
-        self.snapshots.append(self.idx_to_val.copy())     #now it is O(N), which is << O(L) if sparse
+        self.snapshots.append(self.idx_to_val.copy())     #now it is O(N), which is << O(L) if sparse，这里容易忘记是深拷贝
         return len(self.snapshots) - 1
 
     def get(self, index: int, snap_id: int) -> int:
