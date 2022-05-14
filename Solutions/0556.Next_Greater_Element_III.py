@@ -24,6 +24,8 @@ class Solution:
     def nextGreaterElement(self, n: int) -> int:
         BOUND =  2147483647
         arr = []
+        
+        #将整数转成数组
         while n // 10 != 0:
             arr.append(n % 10)
             n //= 10
@@ -35,11 +37,14 @@ class Solution:
             i += 1
             j -= 1
         
+        #从右向左转找到第一个递减的点，记录为left_pos
         for i in range(len(arr) - 1, 0, -1):
             if arr[i-1] < arr[i]:
                 break
 
         left_pos = i-1
+        
+        #从left_pos出发从左向右找到最后一个将将递增的pos
         dis = float('inf')
         right_pos = left_pos
         for j in range(i, len(arr)):
@@ -47,14 +52,17 @@ class Solution:
                 right_pos = j
                 dis = arr[j] - arr[left_pos]
         
+        #交换两个位置
         if right_pos != left_pos:
             arr[left_pos], arr[right_pos] = arr[right_pos], arr[left_pos]
+            #交换后要将left_pos右边的数变成单调递增，才能保证是最小的值。交换后是单调递减的，所以交换变成递增的。
             i, j = left_pos + 1, len(arr) - 1
             while i < j:
                 arr[i], arr[j] = arr[j], arr[i]
                 i += 1
                 j -= 1
                 
+            #
             res = 0
             for num in arr:
                 if 10*res + num <= BOUND:
@@ -65,3 +73,4 @@ class Solution:
         
         else:
             return -1
+            
