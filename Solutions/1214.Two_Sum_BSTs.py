@@ -30,9 +30,36 @@ The number of nodes in each tree is in the range [1, 5000].
 #         self.right = right
 
 # 1. hashset
-# 2. in-order-traversal + 反向双指针
-# 3. brutal force
 
+class Solution:
+    def twoSumBSTs(self, root1: Optional[TreeNode], root2: Optional[TreeNode], target: int) -> bool:
+        root1_inorder = self.inorder(root1)
+        root2_inorder = self.inorder(root2)
+        
+        idx_1, idx_2 = 0, len(root2_inorder)-1
+        while idx_1 < len(root1_inorder) and idx_2 >= 0:
+            if root1_inorder[idx_1] + root2_inorder[idx_2] == target:
+                return True
+            elif root1_inorder[idx_1] + root2_inorder[idx_2] > target:
+                idx_2 -= 1
+            else:
+                idx_1 += 1
+        return False
+    
+    def inorder(self, root):
+        if not root:
+            return []
+        
+        res = []
+        if root.left: 
+            res += self.inorder(root.left)  #注意容易出错，append是append一个num.要直接+
+        res.append(root.val)
+        if root.right:
+            res += self.inorder(root.right)
+        
+        return res
+
+# 2. in-order-traversal + 反向双指针
 class Solution:
     def twoSumBSTs(self, root1: Optional[TreeNode], root2: Optional[TreeNode], target: int) -> bool:
         # step 1:put the node of 1st tree into a hash set
@@ -59,6 +86,8 @@ class Solution:
                 return True
             curr = curr.right
         return False
+
+ # 3. brutal force  TODO
 
        
 /**
