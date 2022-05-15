@@ -19,6 +19,28 @@ Output: 0
 
 */
 
+class Solution:
+    def threeSumClosest(self, nums: List[int], target: int) -> int:
+        lens = len(nums)
+        closet_sum = nums[0] + nums[1] + nums[2]
+        nums.sort()
+        for i in range(lens - 2):
+            l, r = i + 1, lens - 1
+            while l < r:
+                three_sum = nums[i] + nums[l] + nums[r]
+                #check if we need update closet_sum
+                if abs(three_sum - target) < abs(closet_sum - target):
+                    closet_sum = three_sum
+                
+                #check how to move point
+                if three_sum > target:
+                    r -= 1
+                else: 
+                    l += 1
+                
+        return closet_sum
+            
+                
 
 class Solution {
     public int threeSumClosest(int[] nums, int target) { 
