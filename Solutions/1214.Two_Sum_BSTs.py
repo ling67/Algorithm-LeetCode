@@ -59,3 +59,46 @@ class Solution:
                 return True
             curr = curr.right
         return False
+
+       
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+
+/*
+1.hashset
+2.traversal
+*/
+class Solution {
+    public boolean twoSumBSTs(TreeNode root1, TreeNode root2, int target) {
+        Set<Integer> s = inHashset(root1, target, new HashSet());
+        return inCheck(root2, s);
+    }
+    
+    //store the target minus each node in binary tree r
+    public Set<Integer> inHashset(TreeNode r, int target, Set<Integer> s) {
+        if (r == null) return s;
+        inHashset(r.left, target, s);
+        s.add(target - r.val);
+        inHashset(r.right, target, s);
+        return s;
+    }
+    
+    //check each node in root2, exist in hashset s
+    private boolean inCheck(TreeNode r, Set<Integer> s) {
+        if (r == null) return false;
+        return inCheck(r.left, s) || s.contains(r.val) || inCheck(r.right, s);
+    }
+}
