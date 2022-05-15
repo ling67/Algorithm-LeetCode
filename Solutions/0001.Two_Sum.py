@@ -24,6 +24,18 @@ Output: [0,1]
 */
 
 //version 1 : hashmap
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        num_index = defaultdict(int)    #store [num, index]
+        
+        for idx, num in enumerate(nums):
+            if target - num in num_index:
+                return [num_index[target - num], idx]
+            
+            num_index[num] = idx
+        return [-1, -1]
+
+
 class Solution {
     public int[] twoSum(int[] nums, int target) {
         HashMap<Integer, Integer> map = new HashMap();
