@@ -25,6 +25,38 @@ twoSum.find(4);  // 1 + 3 = 4, return true
 twoSum.find(7);  // No two integers sum up to 7, return false
 */
 
+#python version
+class TwoSum(object):
+    
+    def __init__(self):
+        self.nums = []
+
+    def add(self, number):
+        """
+        :type number: int
+        :rtype: None
+        """
+        self.nums.append(number)
+
+    def find(self, value):
+        """
+        :type value: int
+        :rtype: bool
+        """
+        num_set = set()
+        for i, num in enumerate(self.nums):
+            if value - num in num_set:
+                return True
+            num_set.add(num)
+        return False
+        
+
+
+# Your TwoSum object will be instantiated and called as such:
+# obj = TwoSum()
+# obj.add(number)
+# param_2 = obj.find(value)
+
 
 class TwoSum {
     HashMap<Integer, Integer> num_cnts;
