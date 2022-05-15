@@ -20,6 +20,23 @@ Explanation: The sum of 2 and 4 is 6. Therefore index1 = 1, index2 = 3. We retur
 
 */
 
+#python version
+
+class Solution:
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        n = len(numbers)
+        i, j = 0, n-1
+        
+        while i < j:
+            two_sum = numbers[i] + numbers[j]
+            if two_sum == target:
+                return [i + 1, j + 1]
+            elif two_sum > target:
+                j -= 1
+            else:
+                i += 1
+            
+
 class Solution {
     public int[] twoSum(int[] numbers, int target) {
         int result[] = new int[2];
