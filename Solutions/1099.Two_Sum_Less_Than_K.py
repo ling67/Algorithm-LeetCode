@@ -25,22 +25,18 @@ Constraints:
 
 class Solution:
     def twoSumLessThanK(self, nums: List[int], k: int) -> int:
-        nums.sort() # O(nlogn)
-        lens = len(nums)
-        i, j = 0, lens - 1
-        max_sum = float("-inf")
-        
+        nums.sort()
+        min_dis = float('inf')
+        i, j = 0, len(nums) - 1
         while i < j:
-            sums = nums[i] + nums[j]
-            if sums < k:
-                max_sum = max(max_sum, sums)
-                i += 1
-            elif sums > k:
+            two_sum = nums[i] + nums[j]
+            if two_sum == k:
                 j -= 1
+            elif two_sum < k:
+                min_dis = min(min_dis, k - two_sum)
+                i += 1
             else:
                 j -= 1
                 
-        if max_sum != float("-inf"):
-            return max_sum
-        else:
-            return -1
+        return -1 if min_dis == float('inf') else k - min_dis
+            
