@@ -45,7 +45,7 @@ class Solution:
                 k += 1      
         return nums
  
-#快速排序
+#快速排序 NlogN
 class Solution:
     def sortArray(self, nums: List[int]) -> List[int]:
         self.quickSort(nums, 0, len(nums) - 1)
@@ -60,9 +60,9 @@ class Solution:
         pivot = nums[(start + end) // 2]   # key point 1: pivot is the value, not the index     
         left, right = start, end
         while left <= right:
-            while nums[left] < pivot:
+            while left <= right and nums[left] < pivot:   # nums[left] < pivot
                 left += 1
-            while nums[right] > pivot:
+            while left <= right and nums[right] > pivot:  # nums[left] > pivot 可以将pivot均匀分到两边。
                 right -= 1
             if left <= right:
                 nums[left], nums[right] = nums[right], nums[left]
@@ -73,9 +73,6 @@ class Solution:
         self.quickSort(nums, start, right) # no return for the quickSort function!
         self.quickSort(nums, left, end)
 
-
-        
-        
 //归并排序
 class Solution {
     public int[] sortArray(int[] nums) {
@@ -130,7 +127,6 @@ class Solution {
     }
 }
 
-
 //快速排序
 class Solution {
     public int[] sortArray(int[] nums) {
@@ -173,8 +169,3 @@ class Solution {
         quickSort(nums, left, end);
     }
 }
-
-
-
-
-
