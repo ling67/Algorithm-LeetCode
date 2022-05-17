@@ -10,16 +10,18 @@ Explanation: [4,-1,2,1] has the largest sum = 6.
 
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
-        maxSubSum = nums[0]
-        prefixSum = 0       # 一般都是初始化为0
-        minPrefixSum = 0    #只能定义为0，因为初始的prefixSum是0
+        #step1:构造前缀和pre_sum
+        pre_sum = [0 for _ in range(len(nums) + 1)]
+        for i, num in enumerate(nums):
+            pre_sum[i + 1] = pre_sum[i] + num
         
-        for num in nums:
-            prefixSum += num
-            maxSubSum = max(maxSubSum, prefixSum - minPrefixSum)  # 注意不能更换maxSubSum和minPrefixSum的更新顺序， 比如输入为[-1]
-            minPrefixSum = min(minPrefixSum, prefixSum)  
-            
-        return maxSubSum
+        #step2:the same as 127.best time to buy and sell stock
+        min_pre = float("inf")
+        max_sum = float("-inf")
+        for pre in pre_sum:
+            max_sum = max(max_sum, pre - min_pre)     # 注意不能更换maxSubSum和minPrefixSum的更新顺序,why， 比如输入为[-1]
+            min_pre = min(min_pre, pre)
+        return max_sum
         
 
 class Solution {
