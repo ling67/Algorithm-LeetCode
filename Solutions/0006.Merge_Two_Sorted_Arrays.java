@@ -31,6 +31,41 @@ Challenge
 How can you optimize your algorithm if one array is very large and the other is very small?
 
 """
+
+class Solution:
+    """
+    @param A: sorted integer array A
+    @param B: sorted integer array B
+    @return: A new sorted integer array
+    """
+    def mergeSortedArray(self, A, B):
+        # write your code here
+        res = [0 for _ in range(len(A) + len(B))]
+        i, j, k = 0, 0, 0
+        while i < len(A) and j < len(B):
+            if A[i] < B[j]:
+                res[k] = A[i]
+                i += 1
+                k += 1
+            else:
+                res[k] = B[j]
+                j += 1
+                k += 1
+
+        while i < len(A):
+            res[k] = A[i]
+            i += 1
+            k += 1
+        
+        while j < len(B):
+            res[k] = B[j]
+            j += 1
+            k += 1
+
+        return res
+        
+        
+    
 class Solution {
     /**
      * @param A and B: sorted integer array A and B.
