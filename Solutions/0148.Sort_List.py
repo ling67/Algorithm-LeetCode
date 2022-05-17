@@ -41,7 +41,7 @@ class Solution:
             return head
         
         # step 1: find the mid of the list
-        slow, fast = head, head.next
+        slow, fast = head, head.next    #注意这里slow, fast，不同于找环的快慢指针, 一定要记住不能写成slow = fast = head
         while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
