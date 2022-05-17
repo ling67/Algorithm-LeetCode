@@ -57,12 +57,12 @@ class Solution:
         
         # 先整体有序
         # 注意这里选取pivot原因不能保证recursion tree深度稳定在log(N)，最坏的情况是深度为N.
-        pivot = nums[(start + end) // 2]   # key point 1: pivot is the value, not the index     
+        pivot = nums[(start + end) // 2]   # key point 1: pivot is the value, not the index，一定要在while循环外面取值  
         left, right = start, end
         while left <= right:
-            while left <= right and nums[left] < pivot:   # nums[left] < pivot
+            while left <= right and nums[left] < pivot:   # 注意点nums[left] < pivot，一定要使用pivot，而不是nums[mid]，因为当nums[i] nums[j]交换之后，数组变了，所以nums[mid]也可能变了
                 left += 1
-            while left <= right and nums[right] > pivot:  # nums[left] > pivot 可以将pivot均匀分到两边。
+            while left <= right and nums[right] > pivot:  # 注意点nums[left] > pivot 可以将pivot均匀分到两边。
                 right -= 1
             if left <= right:
                 nums[left], nums[right] = nums[right], nums[left]
