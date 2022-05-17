@@ -51,8 +51,49 @@ class Solution:
             new_curr = new_curr.next
         
         return dummy.next
-        
+   
+  """
+# Definition for a Node.
+class Node:
+    def __init__(self, x: int, next: 'Node' = None, random: 'Node' = None):
+        self.val = int(x)
+        self.next = next
+        self.random = random
+"""
 
+class Solution:
+    def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
+        if not head:
+            return None
+        
+        #step1: create new node and interleave new node into original node
+        curr = head
+        while curr:
+            curr_copy = Node(curr.val)
+            curr_copy.next = curr.next
+            curr.next = curr_copy
+            curr = curr.next.next
+            
+        #step2: copy random node
+        curr = head
+        while curr:
+            new_curr = curr.next
+            if curr.random:
+                new_curr.random = curr.random.next
+            curr = new_curr.next
+            
+        #step3: seperate listnode
+        dummy = Node(-1)
+        curr, curr1 = head, dummy
+        while curr:
+            curr1.next = curr.next
+            curr.next = curr.next.next
+            curr = curr.next
+            curr1 = curr1.next
+            
+        return dummy.next
+        
+        
 /*
 // Definition for a Node.
 class Node {
