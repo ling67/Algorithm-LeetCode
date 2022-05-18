@@ -20,6 +20,9 @@ Constraints:
 0 <= nums1[i], nums2[i] <= 1000
 """
 
+"""
+Intersection不要求是连续的，所以直接output公共的元素就行
+"""
 //python version: set
 class Solution:
     def intersection(self, nums1: List[int], nums2: List[int]) -> List[int]:
@@ -31,6 +34,17 @@ class Solution:
         return set(res)
 
 //python: space O(1) time nlogn
+ """
+ """
+This is a Facebook interview question.
+They ask for the intersection, which has a trivial solution using a hash or a set.
+Then they ask you to solve it under these constraints:
+O(n) time and O(1) space (the resulting array of intersections is not taken into consideration) if the lists are sorted.
+Cases to take into consideration include:
+duplicates, negative values, single value lists, 0's, and empty list arguments.
+Other considerations might include sparse arrays.
+"""
+ """
  class Solution:
     def intersection(self, nums1: List[int], nums2: List[int]) -> List[int]:
         nums1.sort()
