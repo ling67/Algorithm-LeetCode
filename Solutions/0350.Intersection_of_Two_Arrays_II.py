@@ -20,6 +20,29 @@ Constraints:
 0 <= nums1[i], nums2[i] <= 1000
 """
 
+"""
+Approach 1: hashmap to store the frequency of each num.
+O(min(m, n))
+"""
+class Solution:
+    def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        num_to_cnt = Counter(nums1)
+        res = []
+        for num in nums2:
+            if num in num_to_cnt:
+                res.append(num)
+                num_to_cnt[num] -= 1
+                if num_to_cnt[num] == 0:
+                    del num_to_cnt[num]
+        return res
+
+"""
+Facebook follow ups:
+follow up 1: What if the given array is already sorted? How would you optimize your algorithm?
+"""
+"""
+Approach 2 - O(m+n), O(1)
+"""
 class Solution:
     def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
         nums1.sort()
