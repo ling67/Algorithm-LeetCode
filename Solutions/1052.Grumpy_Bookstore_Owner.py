@@ -31,6 +31,13 @@ n == customers.length == grumpy.length
 grumpy[i] is either 0 or 1.
 """
 
+"""
+The first intuition is to find the larget lens in arr grumpy with at most X 0s.
+Then realized we need to find the largest number of customers with at most X 0s.
+Since the window size is fixed, the problem is easier to implement. We only need to update the max_gain,
+which represents how man ymore people can be satisfied if the owner use X minites magic card
+"""
+
 class Solution:
     def maxSatisfied(self, customers: List[int], grumpy: List[int], minutes: int) -> int:
         satisfy = sum(customers[i] for i in range(len(customers)) if grumpy[i] == 0) #how many customer could be satisfy
