@@ -44,3 +44,22 @@ class Solution:
             s += cardPoints[i] - cardPoints[i-windowSize] 
             minSum = min(minSum, s)
         return sum(cardPoints) - minSum
+
+ #滑动窗口:模板
+ class Solution:
+    def maxScore(self, cardPoints: List[int], k: int) -> int:
+        n = len(cardPoints)
+        size = n - k
+        total = sum(cardPoints)
+        min_points = total
+        points = 0
+        for i in range(len(cardPoints)):
+            points += cardPoints[i]
+            
+            if i >= size:
+                points -= cardPoints[i - size]
+                
+            if i >= size - 1:
+                min_points = min(min_points, points)
+        
+        return total - min_points
