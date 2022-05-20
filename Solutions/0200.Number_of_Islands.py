@@ -83,7 +83,7 @@ class Solution:
         visited = set()
         for i in range(m):
             for j in range(n):
-                if grid[i][j] == "1" and (i, j) not in visited:
+                if grid[i][j] == "1" and (i, j) not in visited:   #注意这里是（i，j）not in visited
                     dfs(i, j)
                     cnt += 1
         return cnt
