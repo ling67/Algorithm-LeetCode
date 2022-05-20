@@ -45,10 +45,10 @@ class Solution:
         for i in range(m):
             for j in range(n):
                 if grid[i][j] == 1 and (i, j) not in visited:
-                    shape = []
+                    shape = []    #shape必须在外面，不能在dfs里面
                     visited.add((i, j))
                     dfs(i,j,i,j)
-                    shapes.append(tuple(shape))
+                    shapes.append(tuple(shape))    
         return len(set(shapes))
     
 
