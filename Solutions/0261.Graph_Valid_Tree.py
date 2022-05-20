@@ -62,6 +62,11 @@ class Solution:
                     visited.add(node)
         
 //DFS Python version
+"""
+Solution: 判断图是不是一棵树（不一定非要是二叉树）需要满足两点：
+1. 首先点的数目一定比边的数目多一个
+2. 然后要确保no isolated node and no cycle，也即是保证每个点都能被访问且只被访问了一次，也就是visited的数目要等于节点数目!
+"""
 class Solution:
     def validTree(self, n: int, edges: List[List[int]]) -> bool:
         #节点和边数 
