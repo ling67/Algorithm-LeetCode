@@ -35,14 +35,14 @@ class Solution:
             #获取当前节点的所以邻接节点的颜色
             existing_c = set()
             for next_node in graph[curr]:
-                if colors[next_node] != 0:
+                if colors[next_node] != 0:   #容易忘记
                     existing_c.add(colors[next_node])
             
             #给当前节点复制
             for c in range(1, 5):
                 if c not in existing_c:
                     colors[curr] = c
-                    break
+                    break       #注意容易忘记
             
             #继续判断邻接节点是否满足条件
             for next_node in graph[curr]:
@@ -56,7 +56,7 @@ class Solution:
         
         colors = [0] * (n+1)   #每个人花园应该上的颜色
         
-        for i in range(1, n+1):  #从第一个花园开始
+        for i in range(1, n+1):  #从第一个花园开始，注意容易出错
             if colors[i] == 0:
                 dfs(i)
         return colors[1:]
