@@ -61,8 +61,8 @@ class Solution:
 //version2: Python DFS
 class Solution:
     def getImportance(self, employees: List['Employee'], id: int) -> int:
-        def dfs(emp_id):
-            total_impt = emp_impt[emp_id]
+        def dfs(emp_id):    #返回emp_id的所有重要性
+            total_impt = emp_impt[emp_id]    
             for next_emp in graph[emp_id]:
                 total_impt += dfs(next_emp)
             return total_impt
