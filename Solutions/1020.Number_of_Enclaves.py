@@ -42,7 +42,7 @@ class Solution:
         for i in range(m):
             for j in range(n):
                 if grid[i][j] == 1 and (i,j) not in visited:
-                    self.touching_border = False
+                    self.touching_border = False    #对象的变量，这样dfs函数也可以使用了
                     self.cnt = 0
                     dfs(i,j)
                     if not self.touching_border:
