@@ -37,7 +37,10 @@ informTime.length == n
 informTime[i] == 0 if employee i has no subordinates.
 It is guaranteed that all the employees can be informed.
 """
-
+"""
+可以问问面试官公司结构会不会有环，我们的理解应该是没环的，就是一个N-arr tree
+由于我们各个manager是并行往下通知的，所以我们return的是花费时间最长的那条路径 
+"""
 class Solution:
     def numOfMinutes(self, n: int, headID: int, manager: List[int], informTime: List[int]) -> int:
         def dfs(curr_node, curr_time):    #curr_time record the current time
