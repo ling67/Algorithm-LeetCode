@@ -38,7 +38,7 @@ class Solution:
                 return
             
             for next_idx in range(curr_idx + 1, len(candidates)):
-                if next_idx > 0 and candidates[next_idx] == candidates[next_idx - 1] and next_idx - 1 != curr_idx:
+                if next_idx > 0 and candidates[next_idx] == candidates[next_idx - 1] and next_idx - 1 != curr_idx:   #注意去重
                     continue
                     
                 if candidates[next_idx] > target:
