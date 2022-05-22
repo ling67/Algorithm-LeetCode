@@ -40,11 +40,11 @@ class Solution:
             if curr_sum > target:
                 return
             
-            for next_idx in range(curr_idx, len(candidates)):
+            for next_idx in range(curr_idx, len(candidates)):    #一个数可以选多次，所以从curr_idx开始
                 if candidates[next_idx] > target:
                     continue
                 curr_comb.append(candidates[next_idx])
-                backtrack(next_idx, curr_comb, curr_sum + candidates[next_idx])
+                backtrack(next_idx, curr_comb, curr_sum + candidates[next_idx])      #一个数可以选多次，所以从开始
                 curr_comb.pop()
         
         res = []
