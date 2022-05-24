@@ -30,6 +30,27 @@ Output: 1
 
 */
 
+"""
+1.定义状态dp[i] = how many ways get i
+2.求dp[amount]
+3.初始条件dp[0] = 1
+4.递推公式 dp[i] = dp[i-coins[1]] + dp[i-coins[2]] +...
+"""
+class Solution:
+    def change(self, amount: int, coins: List[int]) -> int:
+        dp = [0] * (amount + 1)         # dp[i] = how many ways get i
+        dp[0] = 1
+        
+        # 这样写可以保证避开(1,3)和(3,1)的问题，因为当coin遍历到coin=1的时候，dp[4]+=d[3]此时的dp[3]=0所以dp[4]实际上加的是0
+        # 而当coin遍历到coin=3的时候，dp[4]+=d[1]，此时d[1]被更新过一次。所以真个过程dp[4]只被更新一次，不会重复更新。
+        for coin in coins:      
+            for num in range(1, amount + 1):
+                if num - coin >= 0:
+                    dp[num] += dp[num - coin]
+
+        return dp[amount]  
+            
+        
 //version 1: dfs not work 超时
 class Solution {
     public int change(int amount, int[] coins) {
