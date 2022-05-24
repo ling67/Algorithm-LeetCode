@@ -58,6 +58,27 @@ class Solution {
     }
 }
 
+
+# 方法一：用递归实现 time complexity is O(N)
+class Solution:
+    def preorderTraversal(self, root: TreeNode) -> List[int]:
+        # 递归的出口（结束条件）
+        if not root:
+            return []
+        
+        res = []
+        res.append(root.val)
+        
+        # divide
+        leftRes = self.preorderTraversal(root.left)     # # 注意不要用append. [1,2]+[3,4]=[1,2,3,4], [1,2].append([3,4])=[[1,2], [3,4]]
+        rightRes = self.preorderTraversal(root.right)
+        
+        # conquer
+        res += leftRes
+        res += rightRes
+        
+        return res
+
 //version 2:Travers 
 /**
  * Definition for a binary tree node.
