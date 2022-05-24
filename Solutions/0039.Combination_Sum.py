@@ -33,22 +33,24 @@ Subsets 一个数只能选一次，Combination Sum 一个数可以选很多次
 
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
-        def backtrack(curr_idx, curr_comb, curr_sum):
+        
+        def backtrack(curr_node, curr_com, curr_sum):
             if curr_sum == target:
-                res.append(curr_comb.copy())
+                res.append(curr_com.copy())
                 return
+            
             if curr_sum > target:
                 return
             
-            for next_idx in range(curr_idx, len(candidates)):    #一个数可以选多次，所以从curr_idx开始
-                if candidates[next_idx] > target:
-                    continue
-                curr_comb.append(candidates[next_idx])
-                backtrack(next_idx, curr_comb, curr_sum + candidates[next_idx])      #一个数可以选多次，所以从开始
-                curr_comb.pop()
-        
+            for next_node in range(curr_node, len(candidates)):     # 一个数可以取多次，所以从curr_node开始
+                if candidates[next_node] > target:
+                    continue 
+                curr_com.append(candidates[next_node])
+                backtrack(next_node, curr_com, curr_sum + candidates[next_node])
+                curr_com.pop()
+                
         res = []
-        backtrack(0, [], 0)
+        backtrack(0, [], 0)   #这里从0开始，因为上面从curr_node开始
         return res
 
 
