@@ -22,9 +22,9 @@ class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
         def backtrack(left_cnt, right_cnt, curr_comb):
             if left_cnt == right_cnt == n:
-                res.append(curr_comb)
+                res.append(curr_comb)   # string doesn't need deep copy because it is immutable
                 return
-            if right_cnt > left_cnt:
+            if right_cnt > left_cnt:    # 这个判断尤为关键 - strong pruning
                 return
             if left_cnt < n:
                 backtrack(left_cnt + 1, right_cnt, curr_comb + "(")
