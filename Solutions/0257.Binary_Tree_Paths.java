@@ -39,8 +39,35 @@ The number of nodes in the tree is in the range [1, 100].
  * }
  */
 
+// version backtrack
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def binaryTreePaths(self, root: Optional[TreeNode]) -> List[str]:
+    
+        def backtrack(curr_node, curr_comb):
+            if not curr_node.left and not curr_node.right:
+                res.append("".join(curr_comb))   
 
-//version 1:divide
+            for next_node in [curr_node.left, curr_node.right]:
+                if next_node:
+                    curr_comb.append("->" + str(next_node.val))    #讲路径上的所有节点保存在comb中
+                    backtrack(next_node, curr_comb)
+                    curr_comb.pop()
+        
+        if not root:
+            return []
+        res = []
+        backtrack(root, [str(root.val)])
+        return res
+                
+        
+
+//version 2:divide
 
 //return all root-to-leaf paths
 class Solution {
