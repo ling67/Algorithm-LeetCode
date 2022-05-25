@@ -41,6 +41,9 @@ The number of nodes in the tree is in the range [0, 5000].
 #         self.val = val
 #         self.left = left
 #         self.right = right
+
+//version:divide & conquer
+
 class Solution:
     def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
         
@@ -58,9 +61,18 @@ class Solution:
         #conquer
         return l or r
         
-
-
-//version:divide & conquer
+//version: DFS
+class Solution:
+    def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
+        
+        if not root:
+            return False
+        if not root.left and not root.right:
+            return root.val == targetSum
+        
+        for next_node in [root.left, root.right]:
+            if self.hasPathSum(next_node, targetSum - root.val):
+                return True
 
 /**
  * Definition for a binary tree node.
