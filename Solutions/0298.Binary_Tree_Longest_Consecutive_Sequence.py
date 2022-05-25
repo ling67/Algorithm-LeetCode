@@ -32,31 +32,25 @@ The number of nodes in the tree is in the range [1, 3 * 104].
 #         self.left = left
 #         self.right = right
 class Solution:
-    def longestConsecutive(self, root: TreeNode) -> int:
-        return max(self._helper(root))
+    def longestConsecutive(self, root: Optional[TreeNode]) -> int:
+        return max(self.helper(root))
     
-    def _helper(self, root):
-        """
-        returns (the LCS ended with root, without root)
-        """
+    def helper(self, root):
         if not root:
             return 0, 0
-        if not root.left and not root.right:
-            return 1, 0
         
-        # divide
-        left_w, left_wo = self._helper(root.left)  #w 以root结尾  wo不以root结尾
-        right_w, right_wo = self._helper(root.right)
+        l_end, l_wend = self.helper(root.left)
+        r_end, r_wend = self.helper(root.right)
         
-        # conquer
-        root_wo = max(left_w, left_wo, right_w, right_wo)
-        root_w = 1
+        root_wend = max(l_end, l_wend, r_end, r_wend)
+        root_end = 1
+        
         if root.left and root.left.val == root.val + 1:
-            root_w = max(root_w, 1 + left_w)
+            root_end = max(root_end, l_end + 1)
         if root.right and root.right.val == root.val + 1:
-            root_w = max(root_w, 1 + right_w)
-            
-        return root_w, root_wo
+            root_end = max(root_end, r_end + 1)     
+        
+        return root_end, root_wend
 
 
 //version divide
