@@ -34,7 +34,7 @@ class Solution:
     return 
     w  end with
     wo without
-    p  pass 
+    p  pass  严格穿过，不能是1，至少是3
     """
     def helper(self, root):
         #exit
