@@ -70,9 +70,9 @@ class Solution:
 
         #conquer
         for l in left:
-            res.append(str(root.val) + "->" + l)
+            res.append(str(root.val) + "->" + l)    #对于每一条path都要接上root
         for r in right:
-            res.append(str(root.val) + "->" + r)   
+            res.append(str(root.val) + "->" + r)   #对于每一条path都要接上root
 
         return res 
 
