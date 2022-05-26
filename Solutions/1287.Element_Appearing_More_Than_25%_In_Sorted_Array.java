@@ -32,7 +32,7 @@ class Solution:
         
         first1 = self.binary_search_first(arr, num1)
         last1 = self.binary_search_last(arr, num1)
-        if last1 - first1 >= n // 4:
+        if last1 - first1 >= n // 4:     #大于25%，别忘记等号
             return num1
         
         first2 = self.binary_search_first(arr, num2)
@@ -60,7 +60,6 @@ class Solution:
             else:
                 end = mid
         return end if arr[end] == num else start
-        
 
 
 class Solution {
