@@ -36,6 +36,24 @@ A[mid] ==, <, >  mid
 A[start] A[end] ? target
 */
 
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        start, end = 0, len(nums) - 1
+        while start + 1 < end:
+            mid = start + (end - start) // 2
+            if nums[mid] == target:
+                return mid
+            elif nums[mid] > target:
+                end = mid
+            else:
+                start = mid
+        if nums[start] == target:
+            return start
+        if nums[end] == target:
+            return end
+        return -1
+
+       
 /*
 we can use binary search to solve this problem.
 each time we compare the mid value between start and end to target, 
