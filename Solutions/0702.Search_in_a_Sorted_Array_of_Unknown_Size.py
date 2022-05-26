@@ -41,6 +41,37 @@ secret is sorted in a strictly increasing order.
  */
 
 
+ # """
+# This is ArrayReader's API interface.
+# You should not implement it, or speculate about its implementation
+# """
+#class ArrayReader:
+#    def get(self, index: int) -> int:
+
+class Solution:
+    def search(self, reader: 'ArrayReader', target: int) -> int:
+        start, end = 0, self._get_max_size(reader, target)
+        while start + 1 < end:
+            mid = start + (end - start) // 2
+            if reader.get(mid) == target:
+                return mid
+            elif reader.get(mid) > target:
+                end = mid
+            else:
+                start = mid
+        if reader.get(start) == target:
+            return start
+        if reader.get(end) == target:
+            return end
+        return -1
+        
+    def _get_max_size(self, reader, target):
+        end = 1
+        while reader.get(end) < target:
+            end *= 2
+        return end
+    
+ 
 /*
 I think we can use binary search, but the main point is we can not make sure end of array
 1. we need to find the right border where the target located.
