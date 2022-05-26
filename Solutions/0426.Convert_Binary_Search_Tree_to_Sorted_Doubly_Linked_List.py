@@ -45,6 +45,56 @@ class Node {
     }
 };
 */
+
+"""
+# Definition for a Node.
+class Node:
+    def __init__(self, val, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+"""
+
+class Solution:
+    def treeToDoublyList(self, root: 'Node') -> 'Node':
+        if not root:
+            return
+        
+        self.head, self.curr = None, None   # 定义两个全局变量head和curr，head记录最小的节点，curr一直往后遍历到最大的节点
+        self.inOrder(root)
+        
+        # 将最小节点和最大节点hook up起来，完成闭环
+        self.head.left = self.curr
+        self.curr.right = self.head
+        
+        return self.head
+    
+    def inOrder(self, root):
+        """in order traversal the tree without return, update the DLL"""
+        if not root:
+            return
+        
+        # 中序遍历，先遍历左边
+        self.inOrder(root.left)
+        
+        # 中序遍历，遍历中间，在这里update DLL
+        if not self.head:
+            # 此时如果 first 为空的话，说明当前就是最左结点，赋值给 first
+            # 也许使用dummy node可以省掉这一步
+            self.head = root
+            self.curr = root
+            
+        else:
+            # curr 代表相邻两个节点中靠前的节点，root代表靠后的节点，将两个节点hook up起来即可
+            self.curr.right = root
+            root.left = self.curr
+            self.curr = root    # curr 往前遍历
+        
+        # 中序遍历，遍历右边
+        self.inOrder(root.right)
+        
+        
+
 class ResultType {
     public Node first, last;
     public ResultType(Node first, Node last) {
