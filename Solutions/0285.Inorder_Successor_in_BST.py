@@ -20,6 +20,25 @@ Explanation: There is no in-order successor of the current node, so the answer i
 
 */
 
+//version divide and conquer
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def inorderSuccessor(self, root: TreeNode, p: TreeNode) -> Optional[TreeNode]:
+        if not root:
+            return None
+        
+        if root.val > p.val:
+            left = self.inorderSuccessor(root.left, p)
+            return left if left else root
+        else:
+            return self.inorderSuccessor(root.right, p)
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
