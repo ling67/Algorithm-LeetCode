@@ -27,6 +27,30 @@ nums is guaranteed to be rotated at some pivot.
 -104 <= target <= 104
 */
 
+class Solution:
+    def search(self, nums: List[int], target: int) -> bool:
+        start, end = 0, len(nums) - 1
+            
+        while end > 0 and nums[end] == nums[0]:
+            end -= 1
+            
+        while start + 1 < end:
+            mid = start + (end - start) // 2
+            if nums[mid] == target or nums[start] == target or nums[end] == target:
+                return True
+            if nums[start] <= nums[mid]:
+                if nums[start] < target < nums[mid]:
+                    end = mid
+                else:
+                    start = mid
+            else:
+                if nums[mid] < target < nums[end]:
+                    start = mid
+                else:
+                    end = mid
+        return True if (nums[start] == target or nums[end] == target) else False
+       
+
 class Solution {
     public boolean search(int[] nums, int target) {
         
