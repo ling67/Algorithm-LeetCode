@@ -23,7 +23,20 @@ Input: arr = [0,10,5,2]
 Output: 1
 
 */
-
+class Solution:
+    def peakIndexInMountainArray(self, arr: List[int]) -> int:
+        start, end = 0, len(arr) - 1
+        while start + 1 < end:
+            mid = start + (end - start) // 2
+            if arr[mid-1] < arr[mid] and arr[mid+1] < arr[mid]:
+                return mid
+            elif arr[mid-1] < arr[mid] < arr[mid+1]:
+                start = mid
+            else:
+                end = mid
+        return start if arr[start] > arr[end] else end
+        
+        
 class Solution {
     public int peakIndexInMountainArray(int[] arr) {
         int start = 0, end = arr.length - 1;
