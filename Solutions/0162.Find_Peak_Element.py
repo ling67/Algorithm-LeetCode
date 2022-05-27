@@ -35,6 +35,20 @@ nums[0] < nums[1] nums[n] > nums[n-1] n is the peak index
 nums[0] < nums[1] nums[n] < nums[n-1] keep consider 3 situation
 **/
 
+class Solution:
+    def findPeakElement(self, nums: List[int]) -> int:
+        start, end = 0, len(nums) - 1
+        while start + 1 < end:
+            mid = start + (end - start) // 2
+            if nums[mid-1] < nums[mid] and nums[mid] > nums[mid+1]:
+                return mid
+            elif nums[mid-1] < nums[mid] < nums[mid+1]:
+                start = mid
+            else:
+                end = mid
+        return start if nums[start] > nums[end] else end
+            
+
 class Solution {
     public int findPeakElement(int[] nums) {
         if (nums == null || nums.length == 0 || nums.length == 1){
