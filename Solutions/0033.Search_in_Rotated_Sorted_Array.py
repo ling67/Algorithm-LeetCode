@@ -32,6 +32,32 @@ nums is an ascending array that is possibly rotated.
 -104 <= target <= 104
 */
 
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        start, end = 0, len(nums) - 1
+        while start + 1 < end:
+            mid = start + (end - start) // 2
+            if nums[mid] == target:
+                return mid
+            if target >= nums[0]:
+                if nums[0] <= nums[mid] < target:
+                    start = mid
+                else:
+                    end = mid
+            else:
+                if target <= nums[mid] <= nums[-1]:
+                    end = mid
+                else:
+                    start = mid
+        
+        if nums[start] == target:
+            return start
+        if nums[end] == target:
+            return end
+    
+        return -1
+            
+
 class Solution {
     public int search(int[] nums, int target) {
         
