@@ -58,6 +58,36 @@ class Node:
         self.neighbors = neighbors if neighbors is not None else []
 """
 
+"""
+# Definition for a Node.
+class Node:
+    def __init__(self, val = 0, neighbors = None):
+        self.val = val
+        self.neighbors = neighbors if neighbors is not None else []
+"""
+
+#why not work????
+class Solution:
+    def cloneGraph(self, node: 'Node') -> 'Node':
+        mapping = collections.defaultdict(None)
+        q = collections.deque()
+        q.append(node)
+        visited = set()
+        visited.add(node)
+        
+        while len(q) > 0:
+            curr = q.popleft()
+            mapping[curr] = Node(curr.val)
+            for neib in node.neighbors:
+                if neib not in visited:
+                    q.append(neib)
+                    visited.add(neib)
+                    mapping[neib] = Node(neib.val)
+                    mapping[curr].neighbors.append(mapping[neib])
+        
+        return mapping[node]
+    
+
 class Solution:
     def cloneGraph(self, node: 'Node') -> 'Node':
         #1.copy all nodes
