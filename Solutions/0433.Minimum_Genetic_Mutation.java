@@ -26,6 +26,46 @@ Input: start = "AAAAACCC", end = "AACCCCCC", bank = ["AAAACCCC","AAACCCCC","AACC
 Output: 3
 */
 
+class Solution:
+    def minMutation(self, start: str, end: str, bank: List[str]) -> int:
+        if start == end:
+            return 0
+        
+        bank_set = set(bank)
+        if end not in bank_set:
+            return -1
+        
+        q = collections.deque()
+        visited = set()
+        q.append(start)
+        visited.add(start)
+        
+        layer = -1 
+        while q:
+            layer += 1
+            size = len(q)
+            for _ in range(size):
+                curr = q.popleft()
+                if curr == end:
+                    return layer
+                for next_str in self.getNext(curr, bank_set):
+                    if next_str not in visited:
+                        q.append(next_str)
+                        visited.add(next_str)
+        return -1
+                
+    def getNext(self, curr, bank_set):
+        res = []
+        for i in range(len(curr)):
+            for ch in ['A', 'C', 'G', 'T']:
+                if curr[i] == ch:
+                    continue
+                next_possible = curr[:i] + ch + curr[i+1:]
+                if next_possible in bank_set:
+                    res.append(next_possible)
+        return res
+            
+
 class Solution {
     public int minMutation(String start, String end, String[] bank) {
         
