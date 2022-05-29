@@ -48,6 +48,59 @@ source = [2, 0] destination = [2, 2]
  * }
  */
 
+from typing import (
+    List,
+)
+from lintcode import (
+    Point,
+)
+
+"""
+Definition for a point:
+class Point:
+    def __init__(self, x=0, y=0):
+        self.x = x
+        self.y = y
+"""
+
+class Solution:
+    """
+    @param grid: a chessboard included 0 (false) and 1 (true)
+    @param source: a point
+    @param destination: a point
+    @return: the shortest path 
+    """
+    def shortest_path(self, grid: List[List[bool]], source: Point, destination: Point) -> int:
+        # write your code here
+        if not grid:
+            return 0
+
+        m, n = len(grid), len(grid[0])
+        q = collections.deque()
+        visited = set()
+        q.append((source.x, source.y))
+        visited.add((source.x, source.y))
+        layer = -1
+
+        while len(q) > 0:
+            size = len(q)
+            layer += 1
+            for _ in range(size):
+                curr_x, curr_y = q.popleft()
+                if curr_x == destination.x and curr_y == destination.y:
+                    return layer
+                for delta_x, delta_y in [(1,2),(1,-2),(-1,2),(-1,-2),(2,1),(2,-1),(-2,1),(-2,-1)]:
+                    next_x, next_y = curr_x + delta_x, curr_y + delta_y
+                    if 0 <= next_x < m and 0 <= next_y < n:
+                        if grid[next_x][next_y] == 1:
+                            continue
+                        if (next_x, next_y) not in visited:
+                            q.append((next_x, next_y))
+                            visited.add((next_x, next_y))
+        return -1
+            
+
+                             
 public class Solution {
     /**
      * @param grid: a chessboard included 0 (false) and 1 (true)
