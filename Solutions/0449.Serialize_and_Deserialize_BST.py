@@ -9,6 +9,72 @@ The encoded string should be as compact as possible.
 */
 
 
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Codec:
+
+    def serialize(self, root: Optional[TreeNode]) -> str:
+        """Encodes a tree to a single string.
+        """
+        if not root:
+            return ""
+        
+        res = ""
+        q = collections.deque()
+        q.append(root)
+        
+        while q:
+            curr = q.popleft()
+            if curr:
+                res += str(curr.val) + ","
+                q.append(curr.left)
+                q.append(curr.right)
+            else:
+                res += "None,"
+        print(res)
+        return res
+                
+    def deserialize(self, data: str) -> Optional[TreeNode]:
+        """Decodes your encoded data to tree.
+        """
+        if not data:
+            return None
+        
+        vals = data.split(",")
+        idx = 0
+        
+        root = TreeNode(int(vals[idx]))
+        idx += 1
+        q = collections.deque()
+        q.append(root)
+        
+        while q and idx < len(vals):
+            curr = q.popleft()
+            if vals[idx] != "None":
+                curr.left = TreeNode(int(vals[idx]))
+                q.append(curr.left)
+            idx += 1
+            if vals[idx] != "None":
+                curr.right = TreeNode(int(vals[idx]))
+                q.append(curr.right)
+            idx += 1
+        return root
+        
+
+# Your Codec object will be instantiated and called as such:
+# Your Codec object will be instantiated and called as such:
+# ser = Codec()
+# deser = Codec()
+# tree = ser.serialize(root)
+# ans = deser.deserialize(tree)
+# return ans
+
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
