@@ -25,6 +25,14 @@ Constraints:
 1 <= nums[i] <= 105
 """
 
+"""
+method 1.i从[0, n] j[i,n] k连续K个sum so, the O(T) n^3
+method 2.use sum to record the k arr[] sum   O(T) n^2
+method 3.use prefix, also n^2
+method 4.when arr[i] + .. arr[] > k, j stop forward, directly stop it.  O(T) n^2
+method 5. ~~~当前方法 O(T) = n i and j will not back.
+"""
+
 class Solution:
     def minSubArrayLen(self, target: int, nums: List[int]) -> int:
         lens = len(nums)
