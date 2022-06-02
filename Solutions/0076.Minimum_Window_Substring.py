@@ -34,7 +34,9 @@ s and t consist of uppercase and lowercase English letters.
 
 Follow up: Could you find an algorithm that runs in O(m + n) time?
   
-  
+"""
+time complexity, O(mn) m is the time to check is_valid()
+"""
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
         cnter_t = Counter(t)    #store string t ch_num
