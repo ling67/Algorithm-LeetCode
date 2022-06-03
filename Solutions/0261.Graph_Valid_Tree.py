@@ -27,6 +27,44 @@ ai != bi
 There are no self-loops or repeated edges.
 */
 
+"""
+Solution 1: union find: 两个判断标准: 1. 无环, if uf.connected(i, j): return False. 
+2. 整张图只有一个disjoint_cnt, return self.disjoint_cnt == 1.
+"""
+class UnionFind:
+    
+    def __init__(self, n):
+        self.father = collections.defaultdict(int)
+        self.cnt = 0
+        
+        for i in range(n):
+            self.father[i] = i
+            self.cnt += 1
+            
+    def find(self, x):
+        if self.father[x] == x:
+            return x
+        self.father[x] = self.find(self.father[x])
+        return self.father[x]
+        
+    def union(self, a, b):
+        root_a, root_b = self.find(a), self.find(b)
+        if root_a != root_b:
+            self.father[root_a] = root_b
+            self.cnt -= 1
+            
+    def connected(self, a, b):
+        return self.find(a) == self.find(b)
+
+class Solution:
+    def validTree(self, n: int, edges: List[List[int]]) -> bool:
+        uf = UnionFind(n)
+        for i, j in edges:
+            if uf.connected(i, j):
+                return False
+            uf.union(i, j)
+        return uf.cnt == 1
+
 //BFS: python version
 class Solution:
     def validTree(self, n: int, edges: List[List[int]]) -> bool:
