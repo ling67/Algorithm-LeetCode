@@ -87,7 +87,51 @@ class Solution:
                     dfs(i, j)
                     cnt += 1
         return cnt
-                        
+
+#UnionFind
+class UnionFind:
+    
+    def __init__(self, grid):
+        self.father = collections.defaultdict(int)
+        self.cnt = 0    # total # of isolated components in the graph
+        
+        for i in range(len(grid)):
+            for j in range(len(grid[0])):
+                if grid[i][j] == "1":
+                    self.father[(i, j)] = (i, j)
+                    self.cnt += 1
+    
+    def find(self, x):
+        if self.father[x] == x:
+            return x
+        self.father[x] = self.find(self.father[x])
+        return self.father[x]
+        
+    def connect(self, a, b):
+        root_a = self.find(a)
+        root_b = self.find(b)
+        if root_a != root_b:
+            self.father[root_a] = root_b
+            self.cnt -= 1     
+
+class Solution:
+    def numIslands(self, grid: List[List[str]]) -> int:
+        if not grid or not grid[0]:
+            return 0
+        
+        uf = UnionFind(grid)        # instantiate a UnionFind object
+        
+        m, n = len(grid), len(grid[0])
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j] == "1":
+                    for delta_i, delta_j in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
+                        next_i, next_j = i + delta_i, j + delta_j
+                        if 0 <= next_i < m and 0 <= next_j < n and grid[next_i][next_j] == "1":
+                            uf.connect((i, j), (next_i, next_j))   
+                            # union method include: 1. find the root of a and b; 2. connect a and b; 3. reduce cnt
+        return uf.cnt
+        
 
 //java version        
 //标定坐标点
