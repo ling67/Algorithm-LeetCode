@@ -22,6 +22,32 @@ n == height.length
 0 <= height[i] <= 105
 """
 
+
+"""
+从最左边和最右边两根柱子入手。
+里面灌水的高度只会高于这两个柱子。
+2个指针，并且同时保存left和right的最大值。
+"""
+class Solution:
+    def trap(self, height: List[int]) -> int:
+        if not height:
+            return 0
+        
+        left, right = 0, len(height) - 1
+        left_max, right_max = height[left], height[right]
+        water = 0
+        while left <= right:
+            if left_max < right_max:
+                left_max = max(left_max, height[left])
+                water += left_max - height[left]
+                left += 1
+            else:
+                right_max = max(right_max, height[right])
+                water += right_max - height[right]
+                right -= 1
+        return water
+       
+
 """
 山景城一姐de讲解：首先找到最高highestBar的位置。然后从左边往最高的位置扫，同时maintain一个指针记录leftHighest的高度，如果扫到的地方i小于这个leftHighest的高度，
 则说明i这个地方可以蓄水，可蓄水量为leftHighest的高度减去i的高度；如果扫到的地方i大于这个leftHighest的高度，则说明i这个地方不可以蓄水，
