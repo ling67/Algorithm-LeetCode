@@ -23,6 +23,27 @@ Output: 4
 2.栈解法：固定h，向左右扩散，向左边如果高度大于等于当前h，就加入这个面积，如果高度小于当前的高度就不加入，那此时的面积就是h*(j-i).
 向左/右寻找第一个比自己小的位置可以用两次单调栈实现，我们可以把向左和向右第一个比自己小的位置存到起来，然后再来计算面积。
 """
+
+"""
+更省空间的解法，一次遍历求最大值
+"""
+class Solution:
+    def largestRectangleArea(self, heights: List[int]) -> int:
+        # save index in the monoStack, as height may have the same value
+        # based on the heights, maintain an increasing stack (相等也可以)
+        monoStack = [-1]        # 最左边放一个dummy height
+        heights.append(-1)
+        res = 0
+        
+        for idx, val in enumerate(heights):
+            while heights[monoStack[-1]] > val:
+                height = heights[monoStack.pop()]
+                res = max(res, height * (idx - monoStack[-1] - 1))
+                
+            monoStack.append(idx)
+        
+        return res
+
 class Solution:
     def largestRectangleArea(self, heights: List[int]) -> int:
         n = len(heights)
