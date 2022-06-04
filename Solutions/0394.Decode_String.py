@@ -30,7 +30,27 @@ s consists of lowercase English letters, digits, and square brackets '[]'.
 s is guaranteed to be a valid input.
 All the integers in s are in the range [1, 300].
 """
-
+class Solution:
+    def decodeString(self, s: str) -> str:
+        stack = []
+        for ch in s:
+            if ch == ']':
+                strs = []
+                while stack and stack[-1] != '[':
+                    strs.append(stack.pop())
+                    
+                stack.pop()
+                
+                repeats = 0
+                base = 1
+                while stack and stack[-1].isdigit():
+                    repeats += (ord(stack.pop()) - ord('0')) * base
+                    base *= 10
+                stack.append(''.join(reversed(strs)) * repeats)
+            else:
+                stack.append(ch)
+        return ''.join(stack)
+       
 class Solution:
     def decodeString(self, s: str) -> str:
         nums_st = []    #staore num in s
