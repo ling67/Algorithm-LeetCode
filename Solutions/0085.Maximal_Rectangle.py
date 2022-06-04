@@ -19,6 +19,34 @@ Input: matrix = [["1"]]
 Output: 1
 """
 
+class Solution:
+    def maximalRectangle(self, matrix: List[List[str]]) -> int:
+        m, n = len(matrix), len(matrix[0])
+        heights = [0 for _ in range(n)]
+        max_area = 0
+        
+        for i in range(m):
+            for j in range(n):
+                if matrix[i][j] == "0":
+                    heights[j] = 0
+                else:
+                    heights[j] += 1
+            max_area = max(max_area, self.get_max_area(heights))
+        return max_area
+
+    def get_max_area(self, heights):
+        n = len(heights)
+        monostack = [-1]
+        heights.append(-1)
+        res = 0
+        
+        for idx, h in enumerate(heights):
+            while heights[monostack[-1]] > h:
+                height = heights[monostack.pop()]
+                res = max(res, height * (idx - monostack[-1] - 1))
+            monostack.append(idx)
+        return res
+
 
 class Solution:
     def maximalRectangle(self, matrix: List[List[str]]) -> int:
