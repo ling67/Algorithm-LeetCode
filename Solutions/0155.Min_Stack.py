@@ -37,6 +37,46 @@ there are two method to solve this problem
 approch 1: we can use stack store the min value, each time we push number to stack, we store the min value in stack as well
 approch 2: we use two stack, one can be use to store value, the other one can be use to store min value.
 */
+
+#approach 2
+class MinStack:
+
+    def __init__(self):
+        self.st = []
+        self.min_st = []
+
+    def push(self, val: int) -> None:
+        self.st.append(val)
+        if len(self.min_st) == 0 or val <= self.min_st[-1]:
+            self.min_st.append(val)
+        
+    def pop(self) -> None:
+        if len(self.st) == 0:
+            raise IndexError("The stack is empty")
+        else:
+            val = self.st.pop()
+            if val == self.min_st[-1]:
+                self.min_st.pop()
+        return val
+
+    def top(self) -> int:
+        if len(self.st) == 0:
+            raise IndexError("The stack is empty")
+        return self.st[-1]
+
+    def getMin(self) -> int:
+        if len(self.st) == 0:
+            raise IndexError("The stack is empty")
+        return self.min_st[-1]
+
+
+# Your MinStack object will be instantiated and called as such:
+# obj = MinStack()
+# obj.push(val)
+# obj.pop()
+# param_3 = obj.top()
+# param_4 = obj.getMin()
+
 class MinStack:
 
     def __init__(self):
