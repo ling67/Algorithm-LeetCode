@@ -57,17 +57,19 @@ Trie直接实现   <br>
 解题方法：通过猜值判断是否满足题意不对去搜索可能解 1.找到可行解范围 2.猜答案 3.检验条件 4.调整搜索范围
  
 8.扫描线  Sweep-Line
-0391.Number_of_Airplanes_in_the_Sky.py
 扫描问题的思路: 1.事件往往是以区间的形式存在 2.区间两端代表事件的开始和结束 3.需要排序
 • 见到区间需要排序就可以考虑扫描线
  
+0391.Number_of_Airplanes_in_the_Sky.py
+扫描线做法：碰到interval的start，也就是起飞一架飞机，当前天上的飞机数++。碰到interval的end，也就是降落一架飞机，当前天上的飞机数--。 Step 1: 我们分别把所有的start和所有的end放进两个数组，并排序。Step 2: 然后从第一个start开始统计，碰到start较小就加一，碰到end较小就减一。并且同时维护一个最大飞机数的max。
+
 线性数据结构：queue stack deque
 O(n) stack(monostack) queue deque
 
 9.双端队列 deque
 • 只用掌握sliding windows maximum这一道题目 • 维护一个候选可能的最大值集合
 0239.Sliding_Window_Maximum.py
-
+heapq的方法是O(NK); deque O(N): Iterate over the array. At each step: I. Clean the deque: 1. Keep only the indexes of elements from the current sliding window; 2. Remove indexes of all elements smaller than the current one, since they will not be the maximum ones. eg: [1,2,7,3,5,4], k = 3, because of 7, 1 and 2 will never be in res; II. Append the current element to the deque. Append deque[0] to the output.
 
 
  
