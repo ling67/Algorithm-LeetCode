@@ -72,6 +72,7 @@ class Solution:
             
         return max(dp[n-1])
       
+      
 #version2:
 """
 1.状态定义 f[i]=the max profit when reaching ith house
@@ -90,6 +91,7 @@ class Solution:
             dp[i] = max(dp[i-1], dp[i-2] + nums[i]) 
             
         return dp[-1]
+        
         
 #version3：改成滚动数组
 """空间优化：dp[i] 之和 dp[i-2]与dp[i-1]有关，所以可以用prevMax和currMax来代表dp[i-2]与dp[i-1]"""
@@ -110,3 +112,22 @@ class Solution:
             
         return currMax
         
+#滚动数组优化
+"""
+1.define state dp[i] represent stole ith house the max money
+2.dp[n]
+3.dp[0] = 0 dp[1] = nums[0]
+4.recurtion function dp[i] = nums[i-1]+dp[i-2] or dp[i-1] 
+
+"""
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        if len(nums) == 1:
+            return nums[0]
+        
+        dp = [0] * 2
+        dp[0], dp[1] = 0, nums[0]
+        
+        for i in range(2, len(nums) + 1):
+            dp[i%2] = max(nums[i-1]+dp[(i-2)%2], dp[(i-1)%2])
+        return max(dp)
