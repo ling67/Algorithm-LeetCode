@@ -38,7 +38,22 @@ class Solution:
                     dp[i][j] = dp[i-1][j] + dp[i][j-1]
         return dp[m-1][n-1]
 
-
+"""
+滚动数组优化
+"""
+class Solution:
+    def uniquePaths(self, m: int, n: int) -> int:
+        dp = [[0] * n for _ in range(2)]
+        dp[0][0], dp[1][0] = 1, 1
+        for j in range(n):
+            dp[0][j] = 1
+            
+        for i in range(1, m):
+            for j in range(1, n):
+                dp[i%2][j] = dp[(i-1)%2][j] + dp[i%2][j-1]
+        return max(dp[0][n-1], dp[1][n-1])
+       
+       
 //1.状态定义 dp[i][j] 代表从（0，0）出发到（i,j）总共的路径数
 //2.求dp[m-1][n-1]
 //3.初始化 dp[0][0] = 1, dp[i][0]=1, dp[0][j]=1;
