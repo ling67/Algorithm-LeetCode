@@ -71,5 +71,7 @@ O(n) stack(monostack) queue deque
 0239.Sliding_Window_Maximum.py
 heapq的方法是O(NK); deque O(N): Iterate over the array. At each step: I. Clean the deque: 1. Keep only the indexes of elements from the current sliding window; 2. Remove indexes of all elements smaller than the current one, since they will not be the maximum ones. eg: [1,2,7,3,5,4], k = 3, because of 7, 1 and 2 will never be in res; II. Append the current element to the deque. Append deque[0] to the output.
 
-
+10.动态规划滚动数组  
+滚动数组
+ 
  
