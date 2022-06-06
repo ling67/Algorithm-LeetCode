@@ -51,3 +51,23 @@ Trie直接实现   <br>
  栈优化dfs，变成非递归   <br>
  单调栈：Monotonous stack 找每个元素左边或者右边 第一个比它自身小/大的元素 用单调栈来维护   <br>
  
+7.二分法深入
+找满足某个条件最大值/最小值：二分性
+二分法——二分答案：Binary Search on Result.往往没有给你一个数组让你二分,同样是找到满足某个条件的最大或者最小值
+解题方法：通过猜值判断是否满足题意不对去搜索可能解 1.找到可行解范围 2.猜答案 3.检验条件 4.调整搜索范围
+ 
+8.扫描线  Sweep-Line
+0391.Number_of_Airplanes_in_the_Sky.py
+扫描问题的思路: 1.事件往往是以区间的形式存在 2.区间两端代表事件的开始和结束 3.需要排序
+• 见到区间需要排序就可以考虑扫描线
+ 
+线性数据结构：queue stack deque
+O(n) stack(monostack) queue deque
+
+9.双端队列 deque
+• 只用掌握sliding windows maximum这一道题目 • 维护一个候选可能的最大值集合
+0239.Sliding_Window_Maximum.py
+
+
+
+ 
