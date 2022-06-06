@@ -109,3 +109,26 @@ class Solution:
             prevMax = temp
         
         return currMax
+
+ #version3 滚动数组优化
+ class Solution:
+    def rob(self, nums: List[int]) -> int:
+        n = len(nums)
+        if n == 1:
+            return nums[0]
+        return max(self.getMoney(nums[:n-1]), self.getMoney(nums[1:]))
+        
+    def getMoney(self, array):
+        if len(array) == 1:
+            return array[0]
+        
+        dp = [0] * 2
+        dp[1] = array[0]
+        
+        for i in range(2, len(array) + 1):
+            dp[i%2] = max(array[i-1] + dp[(i-2)%2], dp[(i-1)%2])
+        return max(dp)
+ 
+ 
+ 
+ 
