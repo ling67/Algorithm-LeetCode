@@ -74,4 +74,4 @@ heapq的方法是O(NK); deque O(N): Iterate over the array. At each step: I. Cle
 10.动态规划滚动数组  
 滚动数组
  
- 
+记忆化搜索，当思路是从大的往小的推的时候，用记忆化搜索.当思路从小往大的推就用普通的for循环，从小往大计算。
