@@ -47,7 +47,10 @@ The number of nodes in the tree is in the range [0, 5000].
  * }
  */
 
-//Python back-dfs
+"""
+backtrack
+
+"""
 
 # Definition for a binary tree node.
 # class TreeNode:
@@ -69,7 +72,7 @@ class Solution:
                 if not next_node:     #注意：这里不用判断加入next_node后sum是不是比targetSum大，因为后面的node可能为负值
                     continue
 
-                curr_path.append(next_node.val)
+                curr_path.append(next_node.val)   #这一行不能加入到73行，为什么啊？？？
                 backtrack(next_node, curr_path, curr_sum + next_node.val)
                 curr_path.pop()
         
@@ -80,6 +83,45 @@ class Solution:
         backtrack(root, [root.val], root.val)
         return res
 
+"""
+Solution 2: Divide and conquer
+similar with 257 and 112, we just find all the possible paths. 
+"""
+class Solution:
+    def pathSum(self, root: TreeNode, sum: int) -> List[List[int]]:
+        if not root:
+            return []
+        
+        def helper(root):
+            """
+            return all the paths for a tree rooted as root, and their sums
+            """
+            if not root:
+                return [([], float("inf"))]
+            
+            if not root.left and not root.right:
+                return [([root.val], root.val)]
+            
+            leftPaths = helper(root.left)
+            rightPaths = helper(root.right)
+            
+            rootPaths = []
+            for leftPath, leftSum in leftPaths:
+                rootPath = [root.val] + leftPath
+                rootPaths.append((rootPath, leftSum + root.val))
+            for rightPath, rightSum in rightPaths:
+                rootPath = [root.val] + rightPath
+                rootPaths.append((rootPath, rightSum + root.val))
+                
+            return rootPaths
+        
+        res = []
+        for path, pathSum in helper(root):
+            if pathSum == sum:
+                res.append(path)
+                
+        return res
+       
 
 class Solution {
     public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
