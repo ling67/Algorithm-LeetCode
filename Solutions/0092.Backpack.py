@@ -76,3 +76,39 @@ class Solution:
             if dp[lens][i]:
                 return i
         
+
+#滚动数组优化
+from typing import (
+    List,
+)
+
+"""
+dp[i][j] represent first i array number can compose j backpack
+dp[n][m]
+dp[i][0] = true
+dp[0][j] = False
+dp[i][j] = dp[i-1][j] or dp[i-1][j-nums[i]]
+"""
+class Solution:
+    """
+    @param m: An integer m denotes the size of a backpack
+    @param a: Given n items with size A[i]
+    @return: The maximum size
+    """
+    def back_pack(self, size: int, nums: List[int]) -> int:
+        # write your code here
+        n = len(nums)
+        dp = [[False] * (size + 1) for _ in range(2)]
+        for i in range(2):
+            dp[i][0] = True
+
+        for i in range(1, n + 1):
+            for j in range(1, size + 1):
+                dp[i % 2][j] = dp[(i - 1) % 2][j] 
+                if j >= nums[i - 1]:
+                    dp[i % 2][j] = dp[i % 2][j] or dp[(i - 1) % 2][j - nums[i - 1]] 
+
+        for i in range(size, -1, -1):
+            if dp[n % 2][i]:
+                return i
+        
