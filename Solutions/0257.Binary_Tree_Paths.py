@@ -64,11 +64,57 @@ class Solution:
         res = []
         backtrack(root, [str(root.val)])
         return res
-                
+          
         
+// version backtrack 优化
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def binaryTreePaths(self, root: Optional[TreeNode]) -> List[str]:
+        def backtrack(curr_node, curr_path):
+            if not curr_node.left and not curr_node.right:
+                res.append(curr_path)
+                return
+            
+            for next_node in [curr_node.left, curr_node.right]:
+                if next_node:
+                    backtrack(next_node, curr_path + "->" + str(next_node.val))    #这里为什么没有回退是因为str是不可改变了，多以下次循环时，本质上curr_path是没有变的
+        
+        res = []
+        backtrack(root, str(root.val))
+        return res
+       
 
 //version 2:divide
+"""
+return all the binary paths for a tree rooted as root
+""" 
+class Solution:
+    def binaryTreePaths(self, root: Optional[TreeNode]) -> List[str]:
+        # 3. 递归的出口（结束条件）
+        if not root:
+            return []
+        if not root.left and not root.right:   # 注意这里往往需要判断之后根节点没有左右节点的特殊的情况，养成好习惯，尤其是本题，没有这个判断无法输出正确结果
+            return [str(root.val)]
+        
+        # 1. 递归的拆解之divide：无脑divide 成左右两边
+        leftPaths = self.binaryTreePaths(root.left)
+        rightPaths = self.binaryTreePaths(root.right)
+        
+        # 2. 递归的拆解之conquer/merge：这时候要想整棵树在该问题上的结果和左右儿子在该问题上的结果之间的联系是什么，是root.val加上左节点的path，然后root.val加上右节点的path
+        rootPaths = []
+        for leftPath in leftPaths:
+            rootPaths.append(str(root.val) + "->" + leftPath)
+        for rightPath in rightPaths:
+            rootPaths.append(str(root.val) + "->" + rightPath)
+        
+        return rootPaths
 
+       
 //return all root-to-leaf paths
 class Solution {
     public List<String> binaryTreePaths(TreeNode root) {
