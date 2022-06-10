@@ -49,7 +49,8 @@ The number of nodes in the tree is in the range [0, 5000].
 
 """
 backtrack
-
+time complexity O(nlogn) n present max 2/n result and each result we need copy to res, the average path length is logn
+space complexity O(n) the extra space record the path.
 """
 
 # Definition for a binary tree node.
