@@ -51,12 +51,12 @@ class Solution:
         root_wo = max(l_w, l_wo, l_p, r_w, r_wo, r_p)
         root_w, root_p = 1, 0
         
-        if root.left and root.left.val == root.val:
+        if root.left and root.left.val == root.val:   #这里容易忘记做判断
             root_w = max(root_w, l_w + 1)
-        if root.right and root.right.val == root.val:
+        if root.right and root.right.val == root.val:  #这里容易忘记做判断
             root_w = max(root_w, r_w + 1)   
             
-        if root.left and root.right and (root.left.val == root.right.val == root.val):
+        if root.left and root.right and (root.left.val == root.right.val == root.val):   #这里容易忘记做判断
             root_p = l_w + r_w + 1
         
         return root_w, root_wo, root_p
