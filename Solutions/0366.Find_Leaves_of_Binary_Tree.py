@@ -44,4 +44,4 @@ class Solution:
         
         res = collections.defaultdict(list)
         dfs(root)
-        return res.values()
+        return res.values()   #always forget
