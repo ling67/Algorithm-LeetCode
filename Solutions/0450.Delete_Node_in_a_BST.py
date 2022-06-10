@@ -47,7 +47,7 @@ class Solution:
             return None
         
         if root.val > key:
-            root.left = self.deleteNode(root.left, key)
+            root.left = self.deleteNode(root.left, key)   #别忘记删除后的值要赋值给root.left
         elif root.val < key:
             root.right = self.deleteNode(root.right, key)
         else:
