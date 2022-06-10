@@ -44,6 +44,7 @@ class Solution:
         return 1 + self.countNodes(root.left) + self.countNodes(root.right)
       
 #version use the BST feature, use the property of complete Tree - O(logN*logN)
+#T(n) = T(n/2) + O(logn)   logn * logn
 
 # Definition for a binary tree node.
 # class TreeNode:
