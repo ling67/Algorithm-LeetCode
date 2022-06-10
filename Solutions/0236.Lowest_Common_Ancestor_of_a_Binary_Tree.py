@@ -32,7 +32,12 @@ p != q
 p and q will exist in the tree.
 */  
 
-//python version: divide & conquer
+ """
+ python version: divide & conquer
+ Time Complexity: O(N), where N is the number of nodes in the binary tree. 
+ In the worst case we might be visiting all the nodes of the binary tree.
+ Space Complexity: O(1)
+ """
 
 # Definition for a binary tree node.
 # class TreeNode:
@@ -62,9 +67,6 @@ class Solution:
             return l
         if r:
             return r
-        
-        
-        
 
 /**
  * Definition for a binary tree node.
