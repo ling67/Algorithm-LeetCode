@@ -43,3 +43,32 @@ class Solution:
         root.right = self.buildTree(preorder, inorder[idx+1:])
         
         return root
+
+"""
+solution 1中需要O(N^2)的原因是1. preorder.pop(0) takes O(N). We can convert preorder into a q and popleft.
+2. finding the idx in inorder list takes O(N). We can use a hash table to store num-to-idx pair in advance.
+This leads to solution 2, which takes O(N) instead of O(N^2).
+"""
+class Solution:
+    def buildTree(self, preorder: List[int], inorder: List[int]) -> TreeNode:
+        def helper(preorder_q, start, end):
+            if start >= end:
+                return None
+            
+            root = TreeNode(preorder_q.popleft())   # now this takes O(1)
+            idx = inorder_idx[root.val]             # now this takes O(1)
+            
+            # 注意此时必须把start和idx都传进helper function, 因为如果传inorder[:idx]的话，
+            # 会导致后面找inorder[:idx]这个subarray中的idx的时候和hash table中的不一样
+            root.left = helper(preorder_q, start, idx)  
+            root.right = helper(preorder_q, idx + 1, end)
+            
+            return root
+        
+        
+        preorder_q = collections.deque(preorder)    # use a queue to store preorder list
+        inorder_idx = collections.defaultdict(int)  # use a hash table to store num-to-idx pair
+        for i, num in enumerate(inorder):
+            inorder_idx[num] = i
+            
+        return helper(preorder_q, 0, len(inorder))
