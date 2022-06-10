@@ -40,6 +40,12 @@ The number of nodes in the tree is in the range [1, 100].
  */
 
 // version backtrack
+
+"""
+Time complexity : we visit each node exactly once, thus the time complexity is O(N), where N is the number of nodes.
+Space complexity : O(1)
+"""
+
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
