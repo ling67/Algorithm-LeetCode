@@ -25,6 +25,11 @@ The number of nodes in the subRoot tree is in the range [1, 1000].
 -104 <= subRoot.val <= 104
 """
 
+"""
+solution 1: brutal force: dfs to visit every node, at each node, stop and check if the subtree rooted
+as that node is the same as t - O(MN)
+"""
+
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -58,3 +63,9 @@ class Solution:
         if helper(root, subRoot) or self.isSubtree(root.left, subRoot) or self.isSubtree(root.right, subRoot):
             return True
         
+        
+"""
+solution 2: O(M+N).  we can in order traversal the two trees and turn them into two strings s and t. 
+Then the problem becomes exactly the same as finding a substring in s that equals t, which is 28. Implement strStr().
+Use rolling hash, we can realize O(M+N) solution.
+"""
