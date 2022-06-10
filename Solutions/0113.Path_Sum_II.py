@@ -72,7 +72,7 @@ class Solution:
                 if not next_node:     #注意：这里不用判断加入next_node后sum是不是比targetSum大，因为后面的node可能为负值
                     continue
 
-                curr_path.append(next_node.val)   #这一行不能加入到73行，为什么啊？？？
+                curr_path.append(next_node.val)   #这里不能放进下一行为啥？curr_pat.append()没有返回值，下一行需要一个数组
                 backtrack(next_node, curr_path, curr_sum + next_node.val)
                 curr_path.pop()
         
