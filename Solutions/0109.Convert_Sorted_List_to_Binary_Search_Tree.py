@@ -35,32 +35,24 @@ class Solution:
             return None
         if not head.next:
             return TreeNode(head.val)
-        if not head.next.next:
-            return TreeNode(head.val, None, TreeNode(head.next.val))
-        if not head.next.next.next:
-            return TreeNode(head.next.val, TreeNode(head.val), TreeNode(head.next.next.val))
         
-        #找中间节点
-        dummy = ListNode(0)
-        dummy.next = head
-        prev, slow, fast = dummy, dummy.next, dummy.next.next
+        dummy = ListNode(-1, head)
+        pre, slow, fast = dummy, head, head     #写法2：slow=head fast=head.next 长度为奇数个时，中间节点是一样。长度为偶数个时，中间节点偏左，写法2中间节点偏右
         while fast and fast.next:
-            prev = prev.next
             slow = slow.next
             fast = fast.next.next
-            
-        #based on middle element, divide to left side and right side
-        prev.next = None
-        righthead = slow.next
-        slow.next = None 
-
+            pre = pre.next
+        
+        pre.next = None
+        right_head = slow.next
+        slow.next = None
+        
         root = TreeNode(slow.val)
         root.left = self.sortedListToBST(head)
-        root.right = self.sortedListToBST(righthead)
-            
-        return root;
-    
+        root.right = self.sortedListToBST(right_head)
         
+        return root
+                       
 
 
 /**
