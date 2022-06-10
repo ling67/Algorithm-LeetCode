@@ -71,7 +71,7 @@ class Solution:
                 root.right = self.constructFromPrePost(preorder, postorder[idx + 1:])
             return root
         
-        self.num_idx = collections.defaultdict(int)
+        self.num_idx = collections.defaultdict(int)   #this is class variable
         for idx, val in enumerate(postorder):
             self.num_idx[val] = idx
             
