@@ -40,6 +40,7 @@ The depth of the tree will not exceed 10.
 
 """
 backtrack 1 更简便
+Time complexity: O(N). Space complexity: O(1). each node only visited once
 """
 
 # Definition for a binary tree node.
