@@ -49,7 +49,7 @@ class Solution:
         
         #exit
         if not root:
-            return False
+            return False    #只要是root为空就返回FALSE，因为已经没有path了
         
         if not root.left and not root.right:
             return root.val == targetSum
