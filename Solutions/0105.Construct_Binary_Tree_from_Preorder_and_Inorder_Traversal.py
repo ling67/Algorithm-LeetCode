@@ -60,6 +60,7 @@ class Solution:
             
             # 注意此时必须把start和idx都传进helper function, 因为如果传inorder[:idx]的话，
             # 会导致后面找inorder[:idx]这个subarray中的idx的时候和hash table中的不一样
+            #array transfer address not val, but inorder[:idx] opreator will copy a new string, so the index has change, cause in main function, we already calculator the mapping[val:idx]
             root.left = helper(preorder_q, start, idx)  
             root.right = helper(preorder_q, idx + 1, end)
             
