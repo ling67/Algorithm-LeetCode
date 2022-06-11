@@ -27,7 +27,7 @@ Constraints:
 #         self.right = right
 class Solution:
     def generateTrees(self, n: int) -> List[Optional[TreeNode]]:
-        def helper(start, end):
+        def helper(start, end):   #from 1 to n, return all the structurally unique BST's. what we want is helper(1, n)
             if start > end:
                 return [None]
             if start == end:
@@ -39,7 +39,7 @@ class Solution:
                 right_tree = helper(mid + 1, end)
                 for left in left_tree:
                     for right in right_tree:
-                        root = TreeNode(mid)
+                        root = TreeNode(mid)   #build new root should put inside for loop
                         root.left = left
                         root.right = right
                         res.append(root)
