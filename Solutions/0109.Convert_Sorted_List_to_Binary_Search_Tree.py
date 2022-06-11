@@ -37,7 +37,7 @@ class Solution:
             return TreeNode(head.val)
         
         dummy = ListNode(-1, head)
-        pre, slow, fast = dummy, head, head     #写法2：slow=head fast=head.next 长度为奇数个时，中间节点是一样。长度为偶数个时，中间节点偏左，写法2中间节点偏右
+        pre, slow, fast = dummy, head, head     #写法2：slow=head fast=head.next 长度为奇数个时，中间节点是一样。长度为偶数个时，slow=fast=head中间节点偏左，slow=head, fast=head.head中间节点偏右
         while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
