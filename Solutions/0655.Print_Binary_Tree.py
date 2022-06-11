@@ -28,6 +28,35 @@ Output:
  ["","","4","","","",""]]
 */
 
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def printTree(self, root: Optional[TreeNode]) -> List[List[str]]:
+        def helper(root, depth, pos):
+            res[-(depth + 1)][pos] = str(root.val)
+            if root.left:
+                helper(root.left, depth - 1, pos - 2**(depth - 1))
+            if root.right:
+                helper(root.right, depth - 1, pos + 2**(depth - 1))
+        
+        depth = self._find_depth(root)
+        m, n = depth, 2 ** depth - 1
+        res = [["" for _ in range(n)] for _ in range(m)]
+        
+        helper(root, depth - 1, 2 ** (depth - 1) - 1)
+        return res
+    
+    def _find_depth(self, root):
+        if not root:
+            return 0
+        return 1 + max(self._find_depth(root.left), self._find_depth(root.right))
+
+
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
