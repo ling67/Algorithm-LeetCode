@@ -44,3 +44,7 @@ class Solution:
         res += self._find_leafs(root.right)
         return res        
         
+"""
+follow up: 这一题是求最后一层的Leaf nodes, 如果需要求最后两层的leaf nodes呢？如果是求最后k层的呢？
+那就需要像366那样用dict存level-nodes pair
+"""
