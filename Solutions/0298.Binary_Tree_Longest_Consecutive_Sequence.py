@@ -52,7 +52,39 @@ class Solution:
         
         return root_end, root_wend
 
-
+       
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def longestConsecutive(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return 0
+        self.max_length = 0
+        self.helper(root)
+        return self.max_length
+        
+    #return the max end with root   
+    def helper(self, root):
+        if not root:
+            return 0
+        
+        l = self.helper(root.left)
+        r = self.helper(root.right)
+        root_max = 1
+        
+        if root.left and root.left.val == root.val + 1:
+            root_max = max(root_max, l + 1)
+        if root.right and root.right.val == root.val + 1:
+            root_max = max(root_max, r + 1)
+            
+        self.max_length = max(self.max_length, root_max)
+            
+        return root_max
+       
 //version divide
 /**
  * Definition for a binary tree node.
