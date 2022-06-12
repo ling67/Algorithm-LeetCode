@@ -51,25 +51,23 @@ This leads to solution 2, which takes O(N) instead of O(N^2).
 """
 class Solution:
     def buildTree(self, preorder: List[int], inorder: List[int]) -> TreeNode:
-        def helper(preorder_q, start, end):
-            if start >= end:
+        def build(in_start, in_end):
+            if in_start >= in_end:
                 return None
             
-            root = TreeNode(preorder_q.popleft())   # now this takes O(1)
-            idx = inorder_idx[root.val]             # now this takes O(1)
+            root = TreeNode(preorder[self.pre_idx])
+            self.pre_idx += 1
+            in_idx = num_idx[root.val]
             
-            # 注意此时必须把start和idx都传进helper function, 因为如果传inorder[:idx]的话，
-            # 会导致后面找inorder[:idx]这个subarray中的idx的时候和hash table中的不一样
-            #array transfer address not val, but inorder[:idx] opreator will copy a new string, so the index has change, cause in main function, we already calculator the mapping[val:idx]
-            root.left = helper(preorder_q, start, idx)  
-            root.right = helper(preorder_q, idx + 1, end)
+            root.left = build(in_start, in_idx)
+            root.right = build(in_idx + 1, in_end)
             
             return root
         
         
-        preorder_q = collections.deque(preorder)    # use a queue to store preorder list
-        inorder_idx = collections.defaultdict(int)  # use a hash table to store num-to-idx pair
-        for i, num in enumerate(inorder):
-            inorder_idx[num] = i
-            
-        return helper(preorder_q, 0, len(inorder))
+        num_idx = defaultdict(int)
+        for idx, num in enumerate(inorder):
+            num_idx[num] = idx
+        
+        self.pre_idx = 0
+        return build(0, len(inorder))
