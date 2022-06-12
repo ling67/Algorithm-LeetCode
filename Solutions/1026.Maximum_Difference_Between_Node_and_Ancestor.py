@@ -35,29 +35,27 @@ class Solution:
         self.helper(root)
         return self.max_diff
         
-    #return max, min
+    #return the max and min value in root subtree    
     def helper(self, root):
-        
-        #exit
         if not root.left and not root.right:
             return root.val, root.val
         
         root_min, root_max = root.val, root.val
         
-        #divide
         if root.left:
-            left_min,left_max = self.helper(root.left)
-            root_min = min(root_min, left_min)
-            root_max = max(root_max, left_max)
+            l_min, l_max = self.helper(root.left)
+            self.max_diff = max(self.max_diff, abs(l_min - root.val), abs(l_max - root.val))
+            root_min = min(l_min, root_min)
+            root_max = max(l_max, root_max)
+            
         if root.right:
-            right_min,right_max = self.helper(root.right)
-            root_min = min(root_min, right_min)
-            root_max = max(root_max, right_max)
-        #conquer
-        
-        self.max_diff = max(self.max_diff, abs(root.val - root_max), abs(root.val - root_min))
-        
-        return root_min, root_max
+            r_min, r_max = self.helper(root.right)
+            self.max_diff = max(self.max_diff, abs(r_min - root.val), abs(r_max - root.val))
+            root_min = min(r_min, root_min)
+            root_max = max(r_max, root_max)
+            
+        return  root_min, root_max
+       
         
 /**
  * Definition for a binary tree node.
