@@ -42,6 +42,6 @@ class Solution:
             res[root_level].append(root.val)
             return root_level
         
-        res = collections.defaultdict(list)
+        res = collections.defaultdict(list)   #if the helper function is internal function, we can directly use res, otherwise, we need use self.res
         dfs(root)
-        return res.values()   #always forget
+        return res.values()   #always forget, derectly return array.
