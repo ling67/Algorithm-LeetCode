@@ -48,3 +48,27 @@ class Solution:
                     res.append(root)
             
         return res
+
+       
+class Solution:
+    def allPossibleFBT(self, N: int) -> List[TreeNode]:
+        def dfs(n):
+            if n % 2 != 1:
+                return []
+            if n in self.memo:
+                return self.memo[n]
+            
+            res = []
+            for i in range(1, n, 2):
+                for left in self.allPossibleFBT(i):
+                    for right in self.allPossibleFBT(n-1-i):
+                        root = TreeNode(0)
+                        root.left = left
+                        root.right = right
+                        res.append(root)
+            self.memo[n] = res
+            return self.memo[n]
+            
+        self.memo = collections.defaultdict(list)
+        self.memo[1] = [TreeNode(0)]
+        return dfs(N)
