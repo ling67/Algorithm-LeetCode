@@ -90,6 +90,12 @@ we just need to do in order traversal of the tree.
 O(N), O(1)
 """
 
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
 class Solution:
     def findMode(self, root: TreeNode) -> List[int]:
         if not root:
@@ -104,13 +110,13 @@ class Solution:
         return self.res
         
     def inorder(self, root):    
-    """ in order traversal the BST and update the res, just like doing everything in a sorted arr """
         if not root:
             return 
         
         self.inorder(root.left)
         
-        self.curr_cnt = self.curr_cnt + 1 if root.val == self.prev.val else 1   # 如果不相等就reset curr_cnt=1
+        if self.prev:
+            self.curr_cnt = self.curr_cnt + 1 if root.val == self.prev.val else 1   # 如果不相等就reset curr_cnt=1
         if self.curr_cnt == self.max_cnt:
             self.res.append(root.val)
         elif self.curr_cnt > self.max_cnt:
