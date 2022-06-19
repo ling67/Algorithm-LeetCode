@@ -38,8 +38,40 @@ class Solution:
                     break
                 dp[i] = min(dp[i], dp[i-square] + 1)
         return dp[-1]
-        
+   
 
+"""
+BFS
+每当每一层只剩下完全平方数了就不用往下拆分了
+https://www.youtube.com/watch?v=a7AjjNa0iHM
+"""
+class Solution:
+    def numSquares(self, n: int) -> int:
+        squre_nums = [i**2 for i in range(1, int(math.sqrt(n)) + 1)]
+        
+        q = collections.deque()
+        q.append(n)
+        visited = set()
+        visited.add(n)
+        
+        level = 0
+        while q:
+            size = len(q)
+            level += 1
+            for _ in range(size):
+                curr = q.popleft()
+                for sq in squre_nums:
+                    remain = curr - sq
+                    if remain == 0:
+                        return level
+                    if remain < 0:
+                        break
+                    if remain in visited:
+                        continue
+                    q.append(remain)
+                    visited.add(remain)
+            
+            
 /*
 I think this problem we can use danymic programming to solve it.
 step 1.define dp array, dp[i] represent the least number of perfect square number that sum to i.
