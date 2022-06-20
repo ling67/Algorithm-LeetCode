@@ -73,4 +73,29 @@ class Solution:
                 return -1
         return max(dist[1:])
 
+"""
+Bellman Ford algorithm(更正确的代码)
+"""
+class Solution:
+    def networkDelayTime(self, times: List[List[int]], N: int, K: int) -> int:
+        #store the distance from K to current node
+        dist = [float("inf")] * (N + 1)   
+        dist[K] = 0  
+        
+        # update n - 1 times
+        for _ in range(N - 1):  
+            for u, v, w in times:
+                dist[v] = min(dist[u] + w, dist[v])
+        
+        # check for negative-weight cycles. after n-1 time update, if there is a node which still need update. which means it exist a cycle.
+        for u, v, w in times:
+            if dist[u] != float("inf") and dist[u] + w < dist[v]:
+                return -1
+        
+        #check if there is any node can not reached.
+        for i in range(1, N + 1):
+            if dist[i] == float("inf"):    
+                return -1
+            
+        return max(dist[1:])
 
