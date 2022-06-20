@@ -52,6 +52,7 @@ lst.reverse() directly modifies the original list // lst[::-1]: a new copy list.
 list.sort(reverse=True|False, key=myFunc) ascending 不返回任何东西, modifies the order of elements in the list.
 self.position.sort(key = lambda x:(x[1], x[0], x[2]))
 b = sorted(arr) 排序，但是不改变原有数组
+res == arr : 判断两个数组是否相等
 ```
 
 * Maps  
