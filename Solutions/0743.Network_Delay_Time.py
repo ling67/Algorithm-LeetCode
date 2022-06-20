@@ -31,6 +31,10 @@ ui != vi
 All the pairs (ui, vi) are unique. (i.e., no multiple edges.)
 """
 
+"""
+Dijkstra 算法 
+"""
+
 class Solution:
     def networkDelayTime(self, times: List[List[int]], N: int, K: int) -> int:
         # 1. construct a graph represented by a dictionary of adjaency list
@@ -53,3 +57,20 @@ class Solution:
                 heappush(hq, (curr_dist + next_dist, next_node))    # 千万不要在这里更新distance, 
                                             # 因为不能保证哪个neighbor是low cost的选择，只有push进去之后再pop出来的才是最low cost的
         return max(dist for dist in distance.values()) if len(distance) == N else -1  # len(distance) == N 判断每个点都能访问到
+
+"""
+Bellman Ford algorithm
+"""
+class Solution:
+    def networkDelayTime(self, times: List[List[int]], N: int, K: int) -> int:
+        dist = [float("inf")] * (N + 1)   #store the distance from K to current node
+        dist[K] = 0  #souce node distance 0
+        for _ in range(1, N):  # update n - 1 times
+            for u, v, w in times:
+                dist[v] = min(dist[u] + w, dist[v])
+        for i in range(1, N + 1):
+            if dist[i] == float("inf"):
+                return -1
+        return max(dist[1:])
+
+
