@@ -31,6 +31,12 @@ Constraints:
 words[i] consists of only lowercase English letters.
 """
 
+"""理解题目关键在于理解words are sorted lexicographically的意思。举个例子: ["wrt","wrf"]这个例子中，"wrt"排在"wrf"前面，
+这是因为在外星文中"t"排在"f"的前面。想想我们地球文中"abc"排在"abd"前面是因为"c"排在"d"前面，或者说ord("c") < ord("d")。
+在外星文中，他们认为ord("t") < ord("f")。
+理解了这个，我们进行比较的时候只需要比较word[i]与word[i+1]即可得到inDegree的关系以及neighbors的关系了。
+"""
+
 class Solution:
     def alienOrder(self, words: List[str]) -> str:
         # 1. construct the adjacency list representation
