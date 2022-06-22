@@ -55,6 +55,52 @@ class Solution:
             
         return max_cnt
             
+"""
+Follow up question: what if we can add a number into the nums list, 
+and each time we add a number, we need to query the longest consecutive seqence?
+Answer: we need to realize dynamic connection.  We can choose UnionFind.
+需要query 点a所在集合的元素个数，所以需要用一个dictionary self.size 用来记录每个father节点所在集合的点的个数，
+在union i 和 j 的时候: father[i] = j, sz[j] += sz[i].  
+算法是我们遍历nums, 对于每一个num, 我们connect num and num-  1, also connect num and num + 1
+"""       
+class UnionFind:
+        def __init__(self, nums):
+            self.father = collections.defaultdict(int)
+            self.size = collections.defaultdict(int)
+            
+            for num in nums:
+                self.add(num)
+                
+        def add(self, x):
+            self.father[x] = x
+            self.size[x] = 1
+            
+        def find(self, x):
+            if self.father[x] == x:
+                return x
+            else:
+                self.father[x] = self.find(self.father[x])
+                return self.father[x]
+        
+        def union(self, a, b):
+            root_a, root_b = self.find(a), self.find(b)
+            if root_a != root_b:
+                self.father[root_a] = root_b
+                self.size[root_b] += self.size[root_a]  # 更新root_b的size
+        
+class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+        if not nums:
+            return 0
+        
+        uf = UnionFind(nums)
+        for num in nums:
+            if num - 1 in uf.father:
+                uf.union(num, num - 1)
+            if num + 1 in uf.father:
+                uf.union(num, num + 1)
+        return max(sz for _, sz in uf.size.items())
+    
        
 
 //version3 有时间可以做下V1和V2
