@@ -39,6 +39,14 @@ Else
 * Map/Set for O(1) time & O(n) space
 * Sort input for O(nlogn) time and O(1) space
 
+DFS vs Backtrack:
+    x
+A   W   Y
+   E F I Z
+If we want searcg XYI, the visited sequence:   
+* DFS: XAWEFYI
+* Backtrack: XAXWXYI
+
 ## [Data structure](/Data-Structure.py) 
 
 > 不可变数据（3 个）：Number（数字）、String（字符串）、Tuple（元组）；
@@ -113,7 +121,6 @@ heapq.heappop(li)
 binary search tree: 同样解题思路，要注意怎么运用它的特点      <br>
 q: deque(), append(), popleft() 头部元素        <br> 
 array.pop(0) first element array.pop() last element      <br>
-
 
 ## [0.小视频]()
 1.SubsetII  done
