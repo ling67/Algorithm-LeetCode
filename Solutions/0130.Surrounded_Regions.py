@@ -60,3 +60,41 @@ class Solution:
                     board[i][j] = 'X'
         return board
                 
+"""
+Solutino 1: Union Find
+Step 1: Union all the "O" that are neighborign with each other. We do a weighted union, meaning when we union, we also choose to point to the one that is on the border.
+Step 2: 2nd pass, we change to "X" tha "O" that has a root not on border.
+"""
+
+def on_border(i, j, grid):
+    m, n = len(grid), len(grid[0])
+    if i == 0 or i == m - 1 or j == 0 or j == n - 1:
+        return True
+
+    return False
+
+"""
+UnionFind
+"""
+class UnionFind:
+
+    def __init__(self, grid):
+        self.father = collections.defaultdict()
+        for i in range(len(grid)):
+            for j in range(len(grid[0])):
+                if grid[i][j] == "O":
+                    self.father[(i, j)] = (i, j)
+
+    def find(self, x):
+        if self.father[x] == x:
+            return x
+        self.father[x] = self.find(self.father[x])
+        return self.father[x]
+
+    def union(self, a, b, grid):
+        root_a, root_b = self.find(a), self.find(b)
+        if root_a != root_b:
+            if on_border(root_b[0], root_b[1], grid):       # debug了好久发现这里应该是判断root_b的位置而不是b
+                self.father[root_a] = root_b
+            else:
+                self.father[root_b] = root_a
