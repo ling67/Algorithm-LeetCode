@@ -107,6 +107,12 @@ Solution: 判断图是不是一棵树（不一定非要是二叉树）需要满�
 """
 class Solution:
     def validTree(self, n: int, edges: List[List[int]]) -> bool:
+        def dfs(cur_node):
+            visited.add(cur_node)
+            for next_node in graph[cur_node]:
+                if next_node not in visited:
+                    dfs(next_node)
+                
         #节点和边数 
         m = len(edges)
         if m != n - 1:
@@ -119,17 +125,9 @@ class Solution:
             graph[v].append(u)
             
         visited = set()
-        self._dfs(graph, 0, visited)
+        dfs(0)
         
         return len(visited) == n #每个节点都被访问过
-    
-    def _dfs(self, graph, cur_node, visited):
-        visited.add(cur_node)
-        
-        for next_node in graph[cur_node]:
-            if next_node not in visited:
-                self._dfs(graph, next_node, visited)
-        
         
 
 //method 1: BFS
