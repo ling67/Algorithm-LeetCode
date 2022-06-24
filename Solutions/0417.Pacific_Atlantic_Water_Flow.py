@@ -36,9 +36,7 @@ step 2: 同样的方法记录atlantic ocean water可以达到的pos.  然后用2
 """
 class Solution:
     def pacificAtlantic(self, heights: List[List[int]]) -> List[List[int]]:
-        
         def dfs(curr_i, curr_j, visited):
-            m, n = len(heights), len(heights[0])
             visited.add((curr_i, curr_j))
             for delta_i, delta_j in [(0, 1), (0, -1), (1, 0), (-1, 0)]:
                 next_i, next_j = curr_i + delta_i, curr_j + delta_j
@@ -68,4 +66,3 @@ class Solution:
                 if (i, j) in pacific_visited and (i, j) in atlantic_visited:
                     res.append([i, j])
         return res
-    
