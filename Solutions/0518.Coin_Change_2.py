@@ -31,6 +31,26 @@ Output: 1
 */
 
 """
+backtrack-dfs 超时
+"""
+class Solution:
+    def change(self, amount: int, coins: List[int]) -> int:
+        def backtrack(curr_idx, curr_sum):
+            if curr_sum == amount:
+                self.res += 1
+                return
+            if curr_sum > amount:
+                return
+            for next_idx in range(curr_idx, len(coins)):
+                if coins[next_idx] > amount:
+                    return
+                backtrack(next_idx, curr_sum + coins[next_idx])
+                
+        self.res = 0
+        backtrack(0, 0)
+        return self.res
+
+"""
 1.定义状态dp[i] = how many ways get i
 2.求dp[amount]
 3.初始条件dp[0] = 1
