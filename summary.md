@@ -47,12 +47,76 @@ If we want searcg XYI, the visited sequence:
 * DFS: XAWEFYI
 * Backtrack: XAXWXYI
 
+## [variable](/Data-Structure.py) 
+
+```python
+1. 变量是否可变：
+Immutable Objects : booleans, integers, floats, strings, and tuples
+Mutable Objects : list, dict, set . Custom classes are generally mutable.
+python中的不可变数据类型，不允许变量的值发生变化，如果改变了变量的值，相当于是新建了一个对象，而对于相同的值的对象，在内存中则只有一个对象，内部会有一个引用计数来记录有多少个变量引用这个对象；
+eg. a = 1 a= 2 其实是新建了2个变量
+可变数据类型，允许变量的值发生变化，即如果对变量进行append、+=等这种操作后，只是改变了变量的值，而不会新建一个对象，变量引用的对象的地址也不会变化，不过对于相同的值的不同对象，在内存中则会存在不同的对象，即每个对象都有自己的地址，相当于内存中对于同值的对象保存了多份，这里不存在引用计数，是实实在在的对象。”
+eg. arr = [1, 2, 3] arr.append(4) 其实只有一个变量
+
+2. 变量作用域：
+
+全局变量 vs 局部变量：
+Python中函数就是一个作用域, 局部变量放置在其作用域中。
+函数内部变量从内向外找, 如果内部不存在，会找上一层.
+如何在函数里修改全局变量？global，使用时加上global声明。
+
+self.count = 0 # 类变量，大家都可以看到，也都可以修改
+g_count = 0  # 全局作用域，大家都可以看到，在函数内部使用时，若已经有同名的局部变量，优先用同名的局部变量
+def outer():
+    o_count = 1  # 闭包函数外的函数中
+    def inner():
+        i_count = 2  # 局部作用域
+
+Example:
+def a():
+    def b():
+        shape.append(1)    #嵌套函数里面是可以修改上层变量的，
+        val = 2             #只是如果变量是immutable的话，是新建了一个变量，所以在外面会还是原来的值
+    shape = []      
+    val = 0
+    b()
+    print(shape)    # [1]
+    print(val)      # 2
+a()
+
+3. Python肯定是传引用，只是根据传递是否是可变对象，分别实现了传值和传地址
+python不允许程序员选择采用传值还是传引用。Python参数传递采用的肯定是“传对象引用”的方式。
+这种方式相当于传值和传引用的一种综合。
+如果函数收到的是一个可变对象（比如字典或者列表）的引用，就能修改对象的原始值－－相当于通过“传引用”来传递对象。
+如果函数收到的是一个不可变对象（比如数字、字符或者元组）的引用，就不能直接修改原始对象－－相当于通过“传值'来传递对象。
+
+```
+
+def A():
+    def B():
+        能访问 visited, m, shape, 不能访问flag
+    visited = []
+    m = 1
+    for i in range(m):
+        flag = False
+        shape = []
+内部function，可以访问函数中全局变量，不能访问for loop里面的变量： visited = set()
+外部function，需要self访问另外一个function中的变量，或者传进去
+
 ## [Data structure](/Data-Structure.py) 
 
 > 不可变数据（3 个）：Number（数字）、String（字符串）、Tuple（元组）；
 > 可变数据（3 个）：List（列表）、Dictionary（字典）、Set（集合）。
 
 > data structures and their operations:
+
+* String:
+```python
+split() method in Python split a string into a list of strings after breaking the given string by the specified separator.
+txt = "http://leetcode.com/problem"
+x = txt.split("http://")   -> x = ['', 'leetcode.com/problem']
+
+```
 
 * Arrays:
 ```python
