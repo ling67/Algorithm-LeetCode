@@ -130,6 +130,7 @@ class Solution:
                     nodesSet.add(neighbor)
         return nodesSet
 
+    
 //version 2 DFS python
 """
 # Definition for a Node.
@@ -141,21 +142,23 @@ class Node:
 
 class Solution:
     def cloneGraph(self, node: 'Node') -> 'Node':
+        def dfs(curr_node):
+            for neib_node in curr_node.neighbors:
+                if neib_node in mapping:   #相当于visited
+                    mapping[curr_node].neighbors.append(mapping[neib_node])
+                    continue
+                mapping[neib_node] = Node(neib_node.val, [])
+                mapping[curr_node].neighbors.append(mapping[neib_node])
+                dfs(neib_node)
+        
         if not node:
             return None
         mapping = defaultdict(Node)
-        mapping[node] = Node(node.val, [])
-        self.dfs(node, mapping)
+        mapping[node] = Node(node.val, [])   #这里不能直接写成模板的形式，因为对next节点要判断在不在mapping中，还要建立联系
+        dfs(node)
         return mapping[node]
         
-    def dfs(self, curr_node, mapping):
-        for neib_node in curr_node.neighbors:
-            if neib_node in mapping:   #相当于visited
-                mapping[curr_node].neighbors.append(mapping[neib_node])
-                continue
-            mapping[neib_node] = Node(neib_node.val, [])
-            mapping[curr_node].neighbors.append(mapping[neib_node])
-            self.dfs(neib_node, mapping)
+
 
 /*
 // Definition for a Node.
