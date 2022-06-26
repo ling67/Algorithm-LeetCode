@@ -115,16 +115,17 @@ def A():
 split() method in Python split a string into a list of strings after breaking the given string by the specified separator.
 txt = "http://leetcode.com/problem"
 x = txt.split("http://")   -> x = ['', 'leetcode.com/problem']
-
+string sort:  sorted(tiles)     # 去重第一步sort, string只能用sorted
 ```
 
 * Arrays:
 ```python
 lst.reverse() directly modifies the original list // lst[::-1]: a new copy list. 
-list.sort(reverse=True|False, key=myFunc) ascending 不返回任何东西, modifies the order of elements in the list.
-self.position.sort(key = lambda x:(x[1], x[0], x[2]))
-b = sorted(arr) 排序，但是不改变原有数组
+1.list.sort(reverse=True|False, key=myFunc) ascending 不返回任何东西, modifies the order of elements in the list.
+    eg:self.position.sort(key = lambda x:(x[1], x[0], x[2]))
+2.b = sorted(arr) 排序，但是不改变原有数组
 res == arr : 判断两个数组是否相等
+curr_comb.pop()  pop出最后加入的元素
 ```
 
 * Maps  
