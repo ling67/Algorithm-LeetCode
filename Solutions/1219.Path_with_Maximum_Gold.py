@@ -41,18 +41,24 @@ n == grid[i].length
 There are at most 25 cells containing gold.
 """
 
+"""
+尝试每一个pos出发backtrack所有可能的path比较哪一条path能得到最多的gold - O( (MN)* 3^(MN) ).
+每个位置都有3种选择，所以时间复杂度是3^(MN)
+注意backtrack遍历得到的是每一条path的curr_sum, 而不是像普通dfs那样得遍历的是整个区域的
+"""
 class Solution:
     def getMaximumGold(self, grid: List[List[int]]) -> int:
         def backtrack(curr_i, curr_j, curr_sum):
-            self.max_gold = max(self.max_gold, curr_sum)
-            for delta_i, delta_j in [(1,0),(-1,0),(0,1),(0,-1)]:
+            self.max_gold = max(self.max_gold, curr_sum)    # 注意backtrack遍历得到的是每一条path的curr_sum, 而不是像普通dfs那样得遍历的是整个区域的
+            for delta_i, delta_j in [(0, 1), (0, -1), (1, 0), (-1, 0)]:
                 next_i, next_j = curr_i + delta_i, curr_j + delta_j
-                if 0 <= next_i < m and 0 <= next_j < n and grid[next_i][next_j] != 0:
-                    if (next_i, next_j) not in visited:
-                        visited.add((next_i, next_j))
-                        backtrack(next_i, next_j, curr_sum + grid[next_i][next_j])
-                        visited.remove((next_i, next_j))
-        
+                if 0 <= next_i < m and 0 <= next_j < n:
+                    if grid[next_i][next_j] != 0:
+                        if (next_i, next_j) not in visited:
+                            visited.add((next_i, next_j))
+                            backtrack(next_i, next_j, curr_sum + grid[next_i][next_j])
+                            visited.remove((next_i, next_j))  # 就这一句remove使得backtrack遍历得到的是每一条path的curr_sum, 而不是像普通dfs那样得遍历的是整个区域的
+                                                              # 对比200. Number of island, 就这一个地方不一样
         self.max_gold = 0
         m, n = len(grid), len(grid[0])
         for i in range(m):
@@ -60,6 +66,5 @@ class Solution:
                 if grid[i][j] != 0:
                     visited = set()
                     visited.add((i, j))
-                    backtrack(i, j, grid[i][j])
+                    backtrack(i, j, grid[i][j])     # 这个backtrack从(i, j)开始，所以path里一定是包含(i, j)的
         return self.max_gold
-
