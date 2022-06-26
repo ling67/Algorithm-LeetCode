@@ -33,7 +33,7 @@ class Solution:
                 res.append(".".join(curr_comb.copy()))
                 return
             for next_idx in range(curr_idx + 1, len(s)):
-                next_num = s[curr_idx + 1 : next_idx + 1]
+                next_num = s[curr_idx + 1 : next_idx + 1]    #这里说明将next_idx放入了next_num中，所以以curr_idx == len(s)为判断条件
                 if len(next_num) > 1 and next_num[0] == '0':
                     continue
                 if 0 <= int(next_num) <= 255:
