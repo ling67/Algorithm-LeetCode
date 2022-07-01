@@ -46,6 +46,15 @@ n == grid[i].length
 There is exactly one starting cell and one ending cell.
 """
 
+"""
+套用backtrack模板就可以了. 每一个位置都有3种可能，所以time complexity O(3^N). 
+"""
+"""
+backtrack结束条件：every non-obstacle squares are already visited (len(visited) == empty_cnt) and (curr_i, curr_j) == destination
+constraints on next_candidates: can go to 4 neighbors
+arguments pass into backtrack function: curr_i, curr_j
+"""
+
 class Solution:
     def uniquePathsIII(self, grid: List[List[int]]) -> int:
         def backtrack(curr_i, curr_j):   #curr position and how many cell we need go 
