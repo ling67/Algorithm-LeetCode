@@ -57,3 +57,68 @@ class Solution:
         for word in words:
             backtrack(1, [word], res)
         return res
+
+       
+"""
+Brutal force takes O(K) time to query the word with a certain prefix, and it takes O(1) space.
+Hashmap realized O(1) time to query the word with a certain prefix, but it takes way more space: O(KL).
+Trie data structure provides a compact and yet still fast way to retrieve words with a given prefix.
+It takes O(L) time to query the word, where L is the lens of the word, which is much faster than the Brutal force,
+especially in real world, there could be millions of words in a book, but the lens of each words are within 20.
+It takes O(KL) space in worst case, but in real world, it is much less than that, cuz lots of words share the same prefix.
+"""
+class TrieNode:
+    
+    def __init__(self):
+        self.child = defaultdict(TrieNode)
+        self.words = []
+        
+
+class Trie:
+    
+    def __init__(self):
+        self.root = TrieNode()
+        
+    def insert(self, word):
+        curr_node = self.root
+        for ch in word:
+            curr_node = curr_node.child[ch]
+            curr_node.words.append(word)
+
+    def start_with(self, prefix):
+        """
+        return a list of words that starts with prefix
+        """
+        curr_node = self.root
+        for ch in prefix:
+            curr_node = curr_node.child[ch]
+            
+        return curr_node.words
+    
+
+class Solution:
+    def wordSquares(self, words: List[str]) -> List[List[str]]:
+        def backtrack(row, curr_comb):
+            if row == n - 1:
+                res.append(curr_comb.copy())
+                return
+            
+            # find next_possible_words
+            prefix = ""
+            for i in range(row + 1):    # 我们想加在第五行加单词，那这个单词必须满足prefix是前4行的第四列组成的
+                prefix += curr_comb[i][row + 1]
+            for next_word in trie.start_with(prefix):
+                curr_comb.append(next_word)
+                backtrack(row + 1, curr_comb)
+                curr_comb.pop()            
+        
+        
+        trie = Trie()
+        for word in words:
+            trie.insert(word)
+        
+        m, n = len(words), len(words[0])
+        res = []
+        for word in words:
+            backtrack(0, [word])
+        return res 
