@@ -20,6 +20,20 @@ Constraints:
 1 <= n <= 14
 """
 
+"""
+once the left half of the valid string s is fixed, then we can find the right half.
+so we can find all combinations for n//2 lens, using backtrack.
+"""
+"""
+O(5^(n//2))
+"""
+"""
+find all possible permutation with of n//2 long that are composed of [0, 1, 6, 8, 9].
+backtrack结束条件：len(curr_comb) == n // 2
+constraint on next_candidate: cannot have leading "0"
+arguments pass into backtrack function: curr_comb
+"""
+
 class Solution:
     def findStrobogrammatic(self, n: int) -> List[str]:
         def backtrack(curr_comb):
