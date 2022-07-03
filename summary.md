@@ -112,10 +112,14 @@ def A():
 
 * String:
 ```python
-split() method in Python split a string into a list of strings after breaking the given string by the specified separator.
+1. split() method in Python split a string into a list of strings after breaking the given string by the specified separator.
 txt = "http://leetcode.com/problem"
 x = txt.split("http://")   -> x = ['', 'leetcode.com/problem']
-string sort:  sorted(tiles)     # 去重第一步sort, string只能用sorted
+2. string sort:  sorted(tiles)     # 去重第一步sort, string只能用sorted
+3.startswith() method
+txt = "Hello, welcome to my world."
+x = txt.startswith("Hello")
+print(x)
 ```
 
 * Arrays:
