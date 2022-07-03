@@ -30,6 +30,12 @@ Constraints:
 pattern and s consist of only lowercase English letters.
 """
 
+"""
+backtrack传入参数(curr_s_idx, curr_p_idx, ch_to_str, str_to_ch).
+backtrack结束条件: if curr_s_idx == len(s) - 1 and curr_p_idx == len(pattern) - 1.
+is valid: if ch_to_str[next_ch] == next_word and str_to_ch[next_word] == next_ch.
+"""
+
 class Solution:
     def wordPatternMatch(self, pattern: str, s: str) -> bool:
         def backtrack(curr_s_idx, curr_p_idx):
