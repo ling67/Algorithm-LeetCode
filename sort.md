@@ -7,6 +7,7 @@
 Solution: step 1: cut the list into two halves; step 2: reverse the 2nd half; step 3: connect the 1st and 2nd half
 - [0061.Rotate_List.py](Solutions/0061.Rotate_List.py) （M） <br>
 Solution:先求出长度，在根据lens - k % lens得到第几个元素是新的head
+- [0561.Array_Partition_I.py](Solutions/0561.Array_Partition_I.py) （E） <br>
 
 ## Quick select
 
