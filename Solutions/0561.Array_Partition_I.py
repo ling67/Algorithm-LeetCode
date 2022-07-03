@@ -26,13 +26,13 @@ nums.length == 2 * n
 -104 <= nums[i] <= 104
 """
 
-
+#内置sort
 class Solution:
     def arrayPairSum(self, nums: List[int]) -> int:
         nums.sort()
         return sum(nums[i] for i in range(0, len(nums), 2))
 
-    
+#counting sort
 class Solution:
     def arrayPairSum(self, nums: List[int]) -> int:
         K = 10000
