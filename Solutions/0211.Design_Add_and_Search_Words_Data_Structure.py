@@ -39,7 +39,7 @@ At most 104 calls will be made to addWord and search.
 class TrieNode:
     def __init__(self):
         self.child = defaultdict(TrieNode)
-        self.is_end = False
+        self.isEnd = False
         
 class WordDictionary:
 
@@ -49,13 +49,15 @@ class WordDictionary:
     def addWord(self, word: str) -> None:
         curr = self.root
         for ch in word:
+            if ch not in curr.child:
+                curr.child[ch] = TrieNode()
             curr = curr.child[ch]
-        curr.is_end = True
+        curr.isEnd = True
 
     def search(self, word: str) -> bool:
         def backtrack(curr_node, curr_idx):
             if curr_idx == len(word) - 1:
-                if curr_node.is_end:
+                if curr_node.isEnd:
                     return True
                 return False
             
@@ -63,6 +65,7 @@ class WordDictionary:
                 if word[curr_idx + 1] in curr_node.child:
                     if backtrack(curr_node.child[word[curr_idx + 1]], curr_idx + 1):
                         return True
+                    
             else:
                 for next_ch in curr_node.child:
                     if backtrack(curr_node.child[next_ch], curr_idx + 1):
@@ -70,6 +73,7 @@ class WordDictionary:
             return False
         
         return backtrack(self.root, -1)
+        
 
 # Your WordDictionary object will be instantiated and called as such:
 # obj = WordDictionary()
