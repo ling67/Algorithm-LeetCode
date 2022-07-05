@@ -30,7 +30,7 @@ Constraints:
 words[i] consists of only lowercase letters.
 """
 
-#method 1: string
+#method 1: string  Time O(NlogN)  space: O(Length of All words)
 class Solution:
     def minimumLengthEncoding(self, words: List[str]) -> int:
         words.sort(key = lambda x: -len(x))  
@@ -40,3 +40,38 @@ class Solution:
                 res += (s + "#")
         return len(res)
         
+#method 2: trie
+
+class Trie:
+    
+    def __init__(self):
+        self.root = TrieNode()
+        
+    def is_suffix(self, word):  # return True if word is a suffix of the Trie
+        curr = self.root
+        for ch in word[::-1]:   # 注意要search in the reverse order
+            if ch not in curr.child:
+                return False
+            curr = curr.child[ch]
+        return True
+    
+    def insert(self, word):
+        curr = self.root
+        for ch in word[::-1]:    # 注意要insert in the reverse order才能与上面的is_suffix对应
+            curr = curr.child[ch]
+            
+
+class Solution:
+    def minimumLengthEncoding(self, words: List[str]) -> int:
+        words.sort(key = lambda x: -len(x))     # 注意要sort in the reversed order
+                                                #这样才能search for suffix
+        trie = Trie()
+        
+        res = []
+        for word in words:
+            if not trie.is_suffix(word):
+                trie.insert(word)
+                res.append(word + "#")
+                
+        return sum(len(word) for word in res)
+    
