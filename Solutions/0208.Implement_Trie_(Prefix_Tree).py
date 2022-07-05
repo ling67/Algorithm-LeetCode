@@ -36,36 +36,46 @@ At most 3 * 104 calls in total will be made to insert, search, and startsWith.
 
 class TrieNode:
     def __init__(self):
+        # use a defaultdict to represent a TrieNode, there could be multiple key-value pairs in a TrieNode
+        # key is one of the children' char, value is TrieNode corresponding to the char
         self.child = defaultdict(TrieNode)
-        self.isEnd = False
+        self.isEnd = False    # return True if the self node is the end of the Trie
     
 class Trie:
 
     def __init__(self):
         self.root = TrieNode()
-        
+
     def insert(self, word: str) -> None:
-        currNode = self.root
-        for char in word:
-            currNode = currNode.child[char]
-        currNode.isEnd = True
+        curr_node = self.root
+        for ch in word:
+            if ch not in curr_node.child:
+                curr_node.child[ch] = TrieNode()   #build a new node
+            curr_node = curr_node.child[ch]
+        curr_node.isEnd = True
 
     def search(self, word: str) -> bool:
-        currNode = self.root
+        curr_node = self.root
         for ch in word:
-            if ch not in currNode.child:
+            if ch not in curr_node.child:
                 return False
-            currNode = currNode.child[ch]
-        return currNode.isEnd
+            curr_node = curr_node.child[ch]
+        return curr_node.isEnd
 
     def startsWith(self, prefix: str) -> bool:
-        currNode = self.root
+        curr_node = self.root
         for ch in prefix:
-            if ch not in currNode.child:
+            if ch not in curr_node.child:
                 return False
-            currNode = currNode.child[ch]
-            
+            curr_node = curr_node.child[ch]
         return True
+
+
+# Your Trie object will be instantiated and called as such:
+# obj = Trie()
+# obj.insert(word)
+# param_2 = obj.search(word)
+# param_3 = obj.startsWith(prefix)
 
 
 # Your Trie object will be instantiated and called as such:
