@@ -42,47 +42,41 @@ searchWord consists of lowercase English letters.
 """
 
 class TrieNode:
+    def __init__(self):
+        self.child = collections.defaultdict(TrieNode)
+        self.match_word = []
     
-    def __init__(self):
-        self.child = defaultdict(TrieNode)
-        self.words = []
-        
-        
 class Trie:
-    def __init__(self):
+    def __init__(self, words):
         self.root = TrieNode()
-        
-    def search(self, prefix):
-        """
-        Given prefix, return a list of suggested words.
-        """
-        curr_node = self.root
-        for ch in prefix:
-            if ch not in curr_node.child:
-                return []
-            curr_node = curr_node.child[ch]
-        return curr_node.words
+        for word in words:
+            self.insert(word)
         
     def insert(self, word):
-        """
-        Insert the word into the Trie.
-        """
-        curr_node = self.root
+        curr = self.root
         for ch in word:
-            curr_node = curr_node.child[ch]
-            curr_node.words.append(word)
-        
+            if ch not in curr.child:
+                curr.child[ch] = TrieNode()
+            curr.match_word.append(word)
+            curr = curr.child[ch]
+        curr.match_word.append(word)   # end of the word, donot forget
+    
+    def search(self, prefix):
+        curr = self.root
+        for ch in prefix:
+            if ch not in curr.child:
+                return []
+            else:
+                curr = curr.child[ch]
+        return sorted(curr.match_word)[:3]
+            
 class Solution:
     def suggestedProducts(self, products: List[str], searchWord: str) -> List[List[str]]:
-        trie = Trie()
-        for word in products:
-            trie.insert(word)
-        
+        trie = Trie(products)
         res = []
-        prefix = ""
-        for ch in searchWord:
-            prefix += ch
-            res.append(sorted(trie.search(prefix))[:3])
-        
+        for i in range(len(searchWord)):
+            prex = searchWord[:i+1]
+            res.append(trie.search(prex))
         return res
+            
             
