@@ -40,26 +40,9 @@ The number of nodes in the tree is in the range [0, 100].
  *     }
  * }
  */
-   
-//version 1:Divide & Conquer 
-class Solution {
-    public List<Integer> preorderTraversal(TreeNode root) {
-        List<Integer> result = new LinkedList<>();
-        //exit
-        if (root == null) {
-            return result;
-        }
-        
-        //divide + conquer
-        result.add(root.val);
-        result.addAll(preorderTraversal(root.left));   //加入链表时用addAll()
-        result.addAll(preorderTraversal(root.right));
-        return result;
-    }
-}
-
-
-# 方法一：用递归实现 time complexity is O(N)
+ 
+ 
+// version 1：用递归实现 time complexity is O(N)
 class Solution:
     def preorderTraversal(self, root: TreeNode) -> List[int]:
         # 递归的出口（结束条件）
@@ -78,6 +61,50 @@ class Solution:
         res += rightRes
         
         return res
+       
+//version 2:Non-Recursion  用栈
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        if not root:
+            return []
+        
+        stack = [root]
+        res = []
+        while stack:
+            currNode = stack.pop()
+            res.append(currNode.val)
+            if currNode.right:
+                stack.append(currNode.right)
+            if currNode.left:
+                stack.append(currNode.left)
+        return res
+ 
+ 
+/**********************************java version**************************************/ 
+  
+//version 1:Divide & Conquer 
+class Solution {
+    public List<Integer> preorderTraversal(TreeNode root) {
+        List<Integer> result = new LinkedList<>();
+        //exit
+        if (root == null) {
+            return result;
+        }
+        
+        //divide + conquer
+        result.add(root.val);
+        result.addAll(preorderTraversal(root.left));   //加入链表时用addAll()
+        result.addAll(preorderTraversal(root.right));
+        return result;
+    }
+}
 
 //version 2:Travers 
 /**
@@ -114,30 +141,8 @@ class Solution {
     }
 }
 
-//version 3:Non-Recursion  用栈
 
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
-class Solution:
-    def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
-        if not root:
-            return []
-        
-        stack = [root]
-        res = []
-        while stack:
-            currNode = stack.pop()
-            res.append(currNode.val)
-            if currNode.right:
-                stack.append(currNode.right)
-            if currNode.left:
-                stack.append(currNode.left)
-        return res
-
+//version: java stack
 
 class Solution {
     public List<Integer> preorderTraversal(TreeNode root) {
