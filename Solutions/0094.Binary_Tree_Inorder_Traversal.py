@@ -41,6 +41,49 @@ The number of nodes in the tree is in the range [0, 100].
  * }
  */
 
+
+class Solution:
+    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        #exit
+        if not root:
+            return []
+        
+        #divide
+        result = []
+        result += self.inorderTraversal(root.left)
+        result.append(root.val)
+        result += self.inorderTraversal(root.right)
+        #conquer
+        return result
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+
+class Solution:
+    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        if not root:
+            return []
+        
+        stack, result = [], []
+        
+        curr = root
+        
+        while curr or stack:
+            while curr:
+                stack.append(curr)
+                curr = curr.left
+            curr = stack.pop()
+            result.append(curr.val)
+            curr = curr.right
+        
+        return result
+        
+/***********************************java******************************************/
+
 //version 1:divide & conque
 class Solution {
     public List<Integer> inorderTraversal(TreeNode root) {
@@ -55,23 +98,7 @@ class Solution {
     }
 }
 
-class Solution:
-    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
-        #exit
-        if not root:
-            return []
-        
-        #divide
-        result = []
-        result.extend(self.inorderTraversal(root.left))
-        result.append(root.val)
-        result.extend(self.inorderTraversal(root.right))
-        #conquer
-        return result
-
 //version 2:Traverse
-
-
 
 
 //version 3:Non-recursion
@@ -108,31 +135,6 @@ class Solution {
     }
 }
 
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
 
-class Solution:
-    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
-        if not root:
-            return []
-        
-        stack, result = [], []
-        
-        curr = root
-        
-        while curr or stack:
-            while curr:
-                stack.append(curr)
-                curr = curr.left
-            curr = stack.pop()
-            result.append(curr.val)
-            curr = curr.right
-        
-        return result
-        
         
 
