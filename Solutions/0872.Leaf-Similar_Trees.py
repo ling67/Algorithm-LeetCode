@@ -31,18 +31,17 @@ Output: false
 #         self.right = right
 class Solution:
     def leafSimilar(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
-        return self._find_leafs(root1) == self._find_leafs(root2)
-        
-    def _find_leafs(self, root):
+        return self.find_leaf(root1) == self.find_leaf(root2)
+    
+    def find_leaf(self, root):
         if not root:
             return []
-        
-        res = []
-        res += self._find_leafs(root.left)
         if not root.left and not root.right:
-            res.append(root.val)
-        res += self._find_leafs(root.right)
-        return res        
+            return [root.val]
+        res = []
+        res += self.find_leaf(root.left)
+        res += self.find_leaf(root.right)
+        return res
         
 """
 follow up: 这一题是求最后一层的Leaf nodes, 如果需要求最后两层的leaf nodes呢？如果是求最后k层的呢？
