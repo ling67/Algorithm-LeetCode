@@ -17,6 +17,38 @@ Input: root = [1,4,5,4,4,5]
 Output: 2
 */
 
+class Solution:
+    def longestUnivaluePath(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return 0
+        return max(self.helper(root)) - 1
+        
+    # r_end, r_pass, r_not 
+    def helper(self, root):
+        if not root:
+            return 0, 0, 0
+        
+        l_end, l_pass, l_not = self.helper(root.left)
+        r_end, r_pass, r_not = self.helper(root.right)
+        
+        root_end, root_pass, root_not = 1, 0, 0
+        
+        if root.left:
+            if root.left.val == root.val:
+                root_end = max(root_end, l_end + 1)
+                
+        if root.right:        
+            if root.right.val == root.val:
+                root_end = max(root_end, r_end + 1)
+        
+        if root.left and root.right:
+            if root.left.val == root.right.val == root.val:
+                root_pass = l_end + 1 + r_end
+        
+        root_not = max(l_end, l_pass, l_not, r_end, r_pass, r_not)
+        
+        return root_end, root_pass, root_not
+
 //python version
 # Definition for a binary tree node.
 # class TreeNode:
@@ -61,7 +93,7 @@ class Solution:
         
         return root_w, root_wo, root_p
 
-
+/***********************************java version*****************************/
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
