@@ -41,9 +41,7 @@ The number of the nodes in the tree is in the range [0, 100].
  * }
  */
 
-
-//version 1:divide & conque
-
+// 1. Recursive:version 1:divide & conque
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -57,12 +55,37 @@ class Solution:
         
         result = []
         
-        result.extend(self.postorderTraversal(root.left))
-        result.extend(self.postorderTraversal(root.right))
+        result += self.postorderTraversal(root.left)
+        result += self.postorderTraversal(root.right)
         result.append(root.val)
         
         return result
 
+// 2. Non-recursive: stack 
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        if not root:
+            return []
+        
+        res = []
+        st = [root]
+        while len(st) > 0:
+            curr = st.pop()
+            res.append(curr.val)
+            if curr.left:
+                st.append(curr.left)
+            if curr.right:
+                st.append(curr.right)
+        return res[::-1]
+
+
+//version java
 class Solution {
     public List<Integer> postorderTraversal(TreeNode root) {
         List<Integer> result = new LinkedList<>();
@@ -77,8 +100,6 @@ class Solution {
 }
 
 //version 2:Travese
-
-
 
 
 //version 3:Non-recursion  
