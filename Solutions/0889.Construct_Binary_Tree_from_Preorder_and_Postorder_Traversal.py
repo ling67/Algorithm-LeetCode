@@ -32,15 +32,19 @@ class Solution:
     def constructFromPrePost(self, preorder: List[int], postorder: List[int]) -> Optional[TreeNode]:
         if not preorder or not postorder:
             return None
+        
         root = TreeNode(preorder.pop(0))   #the first element in preprder is the root
         postorder.pop()   #the last element in postorder is the root
+        
         idx = 0 
         for i, val in enumerate(postorder):  
             if postorder[i] == preorder[0]:   #the element follow the root is the subtree root
                 idx = i
                 break
+                
         root.left = self.constructFromPrePost(preorder, postorder[:idx + 1])
         root.right = self.constructFromPrePost(preorder, postorder[idx + 1:])
+        
         return root
       
 """
