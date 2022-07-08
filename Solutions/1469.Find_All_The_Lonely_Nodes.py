@@ -45,21 +45,20 @@ The number of nodes in the tree is in the range [1, 1000].
 class Solution:
     def getLonelyNodes(self, root: Optional[TreeNode]) -> List[int]:
         self.res = []
-        self.helper(root)
+        self.dfs(root)
         return self.res
 
-    def helper(self, root):
+    def dfs(self, root):
         if not root:
-            return []
+            return
         
         if not root.left and not root.right:
-            return []
+            return
         
         if not root.left:
             self.res.append(root.right.val)
         if not root.right:
             self.res.append(root.left.val)
         
-        self.res += self.getLonelyNodes(root.left)
-        self.res += self.getLonelyNodes(root.right)
-        
+        self.dfs(root.right)
+        self.dfs(root.left)
