@@ -25,26 +25,7 @@ Output: [1,2,3]
 
 */
 
-/*
-// Definition for a Node.
-class Node {
-    public int val;
-    public Node left;
-    public Node right;
 
-    public Node() {}
-
-    public Node(int _val) {
-        val = _val;
-    }
-
-    public Node(int _val,Node _left,Node _right) {
-        val = _val;
-        left = _left;
-        right = _right;
-    }
-};
-*/
 
 """
 # Definition for a Node.
@@ -92,8 +73,29 @@ class Solution:
         
         # 中序遍历，遍历右边
         self.inOrder(root.right)
+
+/*****************************************Java Version*****************************************/
         
-        
+/*
+// Definition for a Node.
+class Node {
+    public int val;
+    public Node left;
+    public Node right;
+
+    public Node() {}
+
+    public Node(int _val) {
+        val = _val;
+    }
+
+    public Node(int _val,Node _left,Node _right) {
+        val = _val;
+        left = _left;
+        right = _right;
+    }
+};
+*/     
 
 class ResultType {
     public Node first, last;
