@@ -46,7 +46,7 @@ class Solution:
         
         return root       
     
-            # idx = 0
+        # idx = 0
         # for i, num in enumerate(inorder):
         #     if num == root.val:
         #         idx = i
