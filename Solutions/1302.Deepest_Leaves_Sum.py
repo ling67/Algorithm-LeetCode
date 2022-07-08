@@ -71,9 +71,8 @@ class Solution:
             for _ in range(size):
                 curr = q.popleft()
                 sum_val += curr.val
-                if curr.right:
-                    q.append(curr.right)
                 if curr.left:
                     q.append(curr.left)
-
+                if curr.right:
+                    q.append(curr.right)
         return sum_val
