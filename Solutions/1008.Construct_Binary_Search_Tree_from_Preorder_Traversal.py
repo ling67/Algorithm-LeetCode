@@ -48,7 +48,7 @@ class Solution:
         while idx < len(preorder) and preorder[idx] < root.val:
             idx += 1
             
-        root.left = self.bstFromPreorder(preorder[:idx])
+        root.left = self.bstFromPreorder(preorder[:idx])   #new a new array will nor change original preorder array
         root.right = self.bstFromPreorder(preorder[idx:])
         
         return root
