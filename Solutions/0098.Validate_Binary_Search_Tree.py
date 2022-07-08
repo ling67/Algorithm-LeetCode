@@ -53,8 +53,40 @@ class Solution:
 
         return (rootMax, rootMin, rootIsValid)
     
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        return self.helper(root)[2]
+        
+    def helper(self, root):
+        if not root.left and not root.right:
+            return root.val, root.val, True
+        
+        root_min, root_max, root_valid = root.val, root.val, True
+        
+        if root.left:
+            l_min, l_max, l_valid = self.helper(root.left)
+            root_min = min(root_min, l_min)
+            root_max = max(root_max, l_max)
+            if not l_valid or l_max >= root.val:
+                root_valid = False
+            
+        if root.right:
+            r_min, r_max, r_valid = self.helper(root.right)
+            root_min = min(root_min, r_min)
+            root_max = max(root_max, r_max)
+            if not r_valid or r_min <= root.val:
+                root_valid = False
+                
+        return root_min, root_max, root_valid
         
         
+/**********************************************Java version******************************************/
 
 /**
  * Definition for a binary tree node.
