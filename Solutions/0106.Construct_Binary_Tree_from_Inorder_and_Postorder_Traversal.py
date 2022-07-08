@@ -27,32 +27,31 @@ postorder is guaranteed to be the postorder traversal of the tree.
 """
 solution 1: O(N^2)
 """
-class Solution:
-    def buildTree(self, inorder: List[int], postorder: List[int]) -> TreeNode:
-        if not inorder or not postorder:
-            return None
-        
-        root = TreeNode()
-        root.val = postorder.pop()  #delete the last element in array, use pop()
-        
-        idx = 0
-        for i, num in enumerate(inorder):
-            if num == root.val:
-                idx = i
-                break
-        
-        root.right = self.buildTree(inorder[idx+1:], postorder) # 注意要先更新right, 这是因为我们需要对postorder做pop
-        root.left = self.buildTree(inorder[:idx], postorder)    # 只有先把后面的pop出来才能去pop前面的，而postorder后面的对应的是right部分
-        
-        return root
-      
-   # Definition for a binary tree node.
+# Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
 #         self.val = val
 #         self.left = left
 #         self.right = right
-
+class Solution:
+    def buildTree(self, inorder: List[int], postorder: List[int]) -> TreeNode:
+        if not inorder or not postorder:
+            return None
+        
+        root = TreeNode(postorder.pop())  #delete the last element in array, use pop()
+        idx = inorder.index(root.val)
+        
+        root.right = self.buildTree(inorder[idx+1:], postorder) # 注意要先更新right, 这是因为我们需要对postorder做pop
+        root.left = self.buildTree(inorder[:idx], postorder)    # 只有先把后面的pop出来才能去pop前面的，而postorder后面的对应的是right部分
+        
+        return root       
+    
+            # idx = 0
+        # for i, num in enumerate(inorder):
+        #     if num == root.val:
+        #         idx = i
+        #         break
+      
 """
 solution 1 takes O(N^2) because each time we find idx in inorder, it takes O(N).
 We can use a hash table to store the num-to-idx pair in advance.
