@@ -130,6 +130,9 @@ lst.reverse() directly modifies the original list // lst[::-1]: a new copy list.
 2.b = sorted(arr) 排序，但是不改变原有数组
 res == arr : 判断两个数组是否相等
 curr_comb.pop()  pop出最后加入的元素
+3.
+removing front element: using pop(0)
+removing last element: using pop()
 ```
 
 * Maps  
