@@ -36,16 +36,17 @@ class Solution:
         root = TreeNode(preorder.pop(0))   #the first element in preprder is the root
         postorder.pop()   #the last element in postorder is the root
         
-        idx = 0 
-        for i, val in enumerate(postorder):  
-            if postorder[i] == preorder[0]:   #the element follow the root is the subtree root
-                idx = i
-                break
+        idx = postorder.index(preorder[0])
                 
         root.left = self.constructFromPrePost(preorder, postorder[:idx + 1])
         root.right = self.constructFromPrePost(preorder, postorder[idx + 1:])
         
         return root
+        
+ #for i, val in enumerate(postorder):  
+ #    if postorder[i] == preorder[0]:   #the element follow the root is the subtree root
+ #        idx = i
+ #        break
       
 """
 solution 2: O(N)
