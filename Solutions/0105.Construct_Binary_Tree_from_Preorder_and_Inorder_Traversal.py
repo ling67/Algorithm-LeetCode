@@ -55,8 +55,7 @@ class Solution:
             if in_start >= in_end:
                 return None
             
-            root = TreeNode(preorder[self.pre_idx])
-            self.pre_idx += 1
+            root = TreeNode(preorder.pop(0))
             in_idx = num_idx[root.val]
             
             root.left = build(in_start, in_idx)
@@ -64,10 +63,8 @@ class Solution:
             
             return root
         
-        
         num_idx = defaultdict(int)
         for idx, num in enumerate(inorder):
             num_idx[num] = idx
         
-        self.pre_idx = 0
         return build(0, len(inorder))
