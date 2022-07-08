@@ -43,7 +43,8 @@ class Solution:
         
         return end if end * end <= x else start
 
-
+/*******************************************java version**************************************************/
+       
 /*
 we know the maximum value of sqrt(x) is x, so we can make sure the result is between 0 to x.
 use a loop to find result
