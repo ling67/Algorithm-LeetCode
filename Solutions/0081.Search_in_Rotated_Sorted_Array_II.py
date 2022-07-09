@@ -30,6 +30,27 @@ nums is guaranteed to be rotated at some pivot.
 class Solution:
     def search(self, nums: List[int], target: int) -> bool:
         start, end = 0, len(nums) - 1
+        while end > 0 and nums[end] == nums[start]:
+            end -= 1
+        
+        while start + 1 < end:
+            mid = start + (end - start) // 2
+            if nums[mid] == target:
+                return True
+            elif nums[start] <= nums[mid] < target or target < nums[start] <= nums[mid] or nums[mid] < target < nums[start]:
+                start = mid
+            else:
+                end = mid
+        
+        if nums[start] == target or nums[end] == target:
+            return True
+        
+        return False
+            
+
+class Solution:
+    def search(self, nums: List[int], target: int) -> bool:
+        start, end = 0, len(nums) - 1
             
         while end > 0 and nums[end] == nums[0]:
             end -= 1
