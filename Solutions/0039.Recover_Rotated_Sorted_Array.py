@@ -33,6 +33,46 @@ Explanation:
 Restore the rotated sorted array.
 */
 
+from typing import (
+    List,
+)
+
+class Solution:
+    """
+    @param nums: An integer array
+    @return: nothing
+    """
+    def recoverRotatedSortedArray(self, nums):
+        if len(nums) == 1: return nums
+        if nums[0] < nums[-1]: return nums
+        
+        min_idx = self._find_min_idx(nums)
+        self._swap(nums, 0, min_idx - 1)    # 三步反转法: reverse the left part
+        self._swap(nums, min_idx, len(nums) - 1)    # reverse the right part
+        self._swap(nums, 0, len(nums) - 1)  # reverse for the 3rd time
+        
+    def _find_min_idx(self, nums):  # 注意如果有重复的元素就要跟nums[end]比较
+        start, end = 0, len(nums) - 1
+        while start + 1 < end:
+            mid = start + (end - start) // 2
+            if nums[mid] < nums[end]:   # 跟nums[end]比较
+                end = mid
+            elif nums[mid] > nums[end]:
+                start = mid
+            else:       # in case there is duplicates, we decreament end by 1
+                end -= 1
+        return start if nums[start] <= nums[end] else end
+    
+    def _swap(self, nums, start, end):
+        i, j = start, end
+        while i < j:
+            nums[i], nums[j] = nums[j], nums[i]
+            i += 1
+            j -= 1
+
+
+/******************************************java version********************************************/           
+
 public class Solution {
     /**
      * @param nums: An integer array
