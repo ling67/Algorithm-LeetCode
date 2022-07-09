@@ -34,6 +34,26 @@ nums is an ascending array that is possibly rotated.
 
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
+        l, r = 0, len(nums) - 1
+        while l + 1 < r:
+            m = l + (r - l) // 2
+            if nums[m] == target:
+                return m
+            #无论哪种情况我们只考虑什么时候l要向中间移动
+            elif nums[l] <= nums[m] < target or target < nums[l] <= nums[m] or nums[m] < target < nums[l]:   
+                l = m
+            else:
+                r = m
+                
+        if nums[l] == target:
+            return l
+        if nums[r] == target:
+            return r
+        
+        return -1
+
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
         start, end = 0, len(nums) - 1
         while start + 1 < end:
             mid = start + (end - start) // 2
@@ -57,6 +77,7 @@ class Solution:
     
         return -1
             
+/*************************************java version*****************************************/
 
 class Solution {
     public int search(int[] nums, int target) {
