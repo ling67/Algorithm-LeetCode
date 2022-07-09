@@ -38,6 +38,7 @@ The start point of each interval is unique.
 """
 先按左节点排序，加入排序的序号
 然后用二分依次搜索每一个range的右边区间
+使用自带二分收索算法
 参考: https://www.youtube.com/watch?v=fEVyHmO-KF8
 """
 class Solution:
@@ -50,3 +51,32 @@ class Solution:
             res[e[1]] = intervals[r][1] if r < l else -1
         return res
 
+"""
+先按左节点排序，加入排序的序号
+然后用二分依次搜索每一个range的右边区间
+"""
+class Solution:
+    def findRightInterval(self, intervals: List[List[int]]) -> List[int]:
+        info = []
+        for i, (start, end) in enumerate(intervals):
+            info.append((start, end, i))
+        info.sort(key = lambda x: x[0])
+        
+        res = [-1 for _ in range(len(intervals))]
+        for start, end, i in info:
+            res[i] = self.binary_search(info, end)
+        return res
+    
+    def binary_search(self, info, target):
+        left, right = 0, len(info) - 1
+        while left + 1 < right:
+            mid = left + (right - left) // 2
+            if info[mid][0] >= target:
+                right = mid
+            else:
+                left = mid
+        if info[left][0] >= target:
+            return info[left][2]
+        if info[right][0] >= target:
+            return info[right][2]
+        return -1
