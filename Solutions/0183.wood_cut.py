@@ -23,6 +23,42 @@ Explanation: It is obvious we can't make it.
 O(n log Len), where Len is the longest length of the wood.
 */
 
+from typing import (
+    List,
+)
+
+class Solution:
+    """
+    @param l: Given n pieces of wood with length L[i]
+    @param k: An integer
+    @return: The maximum length of the small pieces
+    """
+
+    def wood_cut(self, l: List[int], k: int) -> int:
+        if not l:
+            return 0
+        start, end = 1, max(l)
+        while start + 1 < end:
+            mid = start + (end - start) // 2
+            if self.getcnt(l, mid, k):
+                start = mid
+            else:
+                end = mid
+        if self.getcnt(l, end, k):
+            return end
+        if self.getcnt(l, start, k):
+            return start
+        return 0
+    
+    def getcnt(self, l, length, k):
+        cnt = 0
+        for wood in l:
+            cnt += wood // length
+        return True if cnt >= k else False 
+
+
+/********************************************java version*******************************************/
+
 public class Solution {
     /**
      * @param L: Given n pieces of wood with length L[i]
