@@ -40,6 +40,27 @@ Constraints:
 piles.length <= h <= 109
 1 <= piles[i] <= 109
 */
+
+class Solution:
+    def minEatingSpeed(self, piles: List[int], h: int) -> int:
+        start, end = 1, max(piles)
+        while start + 1 < end:
+            mid = start + (end - start) // 2
+            if self.can_finish(piles, mid, h):
+                end = mid
+            else:
+                start = mid
+        return start if self.can_finish(piles, start, h) else end
+            
+    def can_finish(self, piles, speed, h):
+        hrs = 0
+        for pile in piles:
+            hrs += ((pile - 1) // speed + 1)
+        return True if hrs <= h else False
+
+       
+/***************************************Java version******************************************/
+
 class Solution {
     public int minEatingSpeed(int[] piles, int h) {
         
