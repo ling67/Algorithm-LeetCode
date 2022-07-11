@@ -41,3 +41,30 @@ class Solution:
             else:
                 i += 1
         return True if j == n else False
+
+       
+class Solution:
+    def findLongestWord(self, s: str, dictionary: List[str]) -> str:
+        dictionary.sort(key = lambda x:(-len(x), x)) # 按word的长度排序，按word的字母顺序排序O(n*k*logn)
+        for t in dictionary:
+            if len(t) > len(s):
+                continue
+            if self.is_valid(t, s):
+                return t
+        return ""
+    
+    def is_valid(self, s, t):
+        dic = collections.defaultdict(list)
+        for i, c in enumerate(t):
+            dic[c].append(i)
+
+        cur = -1
+        for c in s:
+            if c not in dic:
+                return False
+            l = dic[c]
+            p = bisect.bisect_left(l, cur)
+            if p == len(l):
+                return False
+            cur = l[p] + 1
+        return True
