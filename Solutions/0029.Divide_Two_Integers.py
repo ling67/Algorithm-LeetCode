@@ -38,4 +38,21 @@ class Solution:
             output = -output
         
         return output
+       
+// time complexity logn       
+class Solution:
+    def divide(self, dividend: int, divisor: int) -> int:
+        sign = (dividend < 0) == (divisor < 0)
+        a, b = abs(dividend), abs(divisor)
+        
+        res = 0
+        while a >= b:
+            shift = 0   #shift多少次就是乘以多少次2
+            while a >= (b << (shift + 1)):   #b往左移动shift+1位，就是乘以2^(shift + 1)
+                shift += 1    #知道找到最大的shift
+            res += 1 << shift   #提取除数
+            a -= b << shift  #提取余数
+        
+        return min(res if sign else -res, 2**31-1)
+      
 
