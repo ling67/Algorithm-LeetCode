@@ -38,8 +38,11 @@ times is sorted in a strictly increasing order.
 times[0] <= t <= 109
 At most 104 calls will be made to q.
 """
+
 """
 refer:https://www.youtube.com/watch?v=_HDRtskOT_U
+Precomputed Answer + Binary Search.
+Constructor: O(N). each query: O(logN)
 """
 class TopVotedCandidate:
 
