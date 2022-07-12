@@ -23,19 +23,43 @@ Output: [0,1]
 
 */
 
-//version 1 : hashmap
+//version 1: brute force
+class Solution:
+   def twoSum(self, nums: List[int], target: int) -> List[int]:
+       n = len(nums)
+       for i in range(n - 1):
+           for j in range(i + 1, n):
+               if nums[i] + nums[j] == target:
+                   return [i, j]
+       return [-1, -1]
+
+// version 2: two pointer, 如果要返回index，就有问题~
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        num_index = defaultdict(int)    #store [num, index]
-        
+        nums.sort()
+        i, j = 0, len(nums) - 1
+        while i < j:
+            sum = nums[i] + nums[j]
+            if sum == target:
+                return [i, j]
+            elif sum > target:
+                j -= 1
+            else:
+                i += 1
+        return [-1, -1]
+      
+//version 3 : hashmap
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        num_idx = defaultdict(int)  #store [num, index]
         for idx, num in enumerate(nums):
-            if target - num in num_index:
-                return [num_index[target - num], idx]
-            
-            num_index[num] = idx
+            if target - num in num_idx:
+                return [num_idx[target - num], idx]
+            else:
+                num_idx[num] = idx
         return [-1, -1]
 
-
+/*****************************************Java version**************************************/       
 class Solution {
     public int[] twoSum(int[] nums, int target) {
         HashMap<Integer, Integer> map = new HashMap();
