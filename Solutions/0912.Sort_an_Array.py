@@ -73,6 +73,23 @@ class Solution:
         self.quickSort(nums, start, right) # no return for the quickSort function!
         self.quickSort(nums, left, end)
 
+        
+# 冒泡排序 O(n^2)
+class Solution:
+    def sortArray(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+        for i in range(n):   #优化1:i代表需要排序的轮数,其实只需要n-1轮就可以
+            id_made_swap = False  ## 设置标志位，若本身已经有序，则直接break
+            for j in range(n - i - 1):  #j+1为每次能确定的位置 from n - i - 1 = n - 1
+                if nums[j] > nums[j + 1]:
+                    nums[j], nums[j + 1] = nums[j + 1], nums[j]
+                    is_made_swap = True    #交换过就设置为true
+            if not is_made_swap:
+                break
+        return nums
+    
+/******************************************jave version***************************************/
+        
 //归并排序
 class Solution {
     public int[] sortArray(int[] nums) {
