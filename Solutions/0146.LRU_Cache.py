@@ -29,12 +29,10 @@ lRUCache.put(4, 4); // LRU key was 1, evicts key 1, cache is {4=4, 3=3}
 lRUCache.get(1);    // return -1 (not found)
 lRUCache.get(3);    // return 3
 lRUCache.get(4);    // return 4
-
 */
 
 
-
-#use a queue to store the time-linear data and dictionary to store the cache number, very straighr forward.
+#Solution 1: use a queue to store the time-linear data and dictionary to store the cache number, very straighr forward.
 """
 1. 使用queue去存储最近访问过的key
 2. cache去存储key, value
@@ -74,6 +72,44 @@ class LRUCache:
 # param_1 = obj.get(key)
 # obj.put(key,value)
 
+
+#Solution 2: OrderedDict解法
+"""
+OrderedDict:有顺序的dict, 先加进来的在前面，后加进来的在后面，按照加的顺序来排的。
+popitem(last=True)   True的话会把字典的最后返回删除， False的话会把字典的第一个元素返回删除
+move_to_end(key, last=True)  True移动到队尾，False移动到队首
+"""
+class LRUCache:
+
+    def __init__(self, capacity: int):
+        self.capacity = capacity
+        self.dict = collections.OrderedDict()
+        self.size = 0
+        
+    def get(self, key: int) -> int:
+        if key in self.dict:
+            self.dict.move_to_end(key)
+            return self.dict[key]
+        else:
+            return -1
+
+    def put(self, key: int, value: int) -> None:
+        if key in self.dict:
+            self.dict[key] = value
+            self.dict.move_to_end(key)   #移动到队尾
+        else:
+            if self.size < self.capacity:
+                self.dict[key] = value     #orderedDict一定要放在队尾
+                self.size += 1
+            else:
+                self.dict.popitem(False)   #pop队首的元素，
+                self.dict[key] = value
+                
+
+# Your LRUCache object will be instantiated and called as such:
+# obj = LRUCache(capacity)
+# param_1 = obj.get(key)
+# obj.put(key,value)
  
 
 /*
