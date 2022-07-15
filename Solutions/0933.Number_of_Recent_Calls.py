@@ -31,6 +31,11 @@ Constraints:
 Each test case will call ping with strictly increasing values of t.
 At most 104 calls will be made to ping.
 """
+"""
+维护一个双端队列
+refer:https://www.youtube.com/watch?v=UqSHAksYYPI&t=118s
+复杂度：O（1）
+"""
 
 class RecentCounter:
 
