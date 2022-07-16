@@ -37,24 +37,20 @@ s[i] is either'(' , ')', or lowercase English letter.
 
 class Solution:
     def minRemoveToMakeValid(self, s: str) -> str:
-        indexes_to_remove = set()
-        stack = []
-        for i, c in enumerate(s):
-            if c not in "()":
+        st = []
+        for i, ch in enumerate(s):
+            if ch not in "()":
                 continue
-            if c == "(":
-                stack.append(i)
-            elif not stack:
-                indexes_to_remove.add(i)
+            if len(st) > 0 and st[-1][0] == '(' and ch == ')':
+                st.pop()
             else:
-                stack.pop()
-        indexes_to_remove = indexes_to_remove.union(set(stack))
-        string_builder = []
-        for i, c in enumerate(s):
-            if i not in indexes_to_remove:
-                string_builder.append(c)
-                
-        return "".join(string_builder)
+                st.append((ch, i))
+        remove = [i for ch, i in st]
+        remain_ch = []
+        for i, ch in enumerate(s):
+            if i not in remove:
+                remain_ch.append(ch)
+        return "".join(remain_ch)
             
 
 class Solution:
