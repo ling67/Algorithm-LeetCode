@@ -27,6 +27,12 @@ The number of nodes in the tree is in the range [1, 3 * 104].
 -1000 <= Node.val <= 1000
 """
 
+"""
+思路：
+递归：经过这个点最大的路径和是多少，遍历整个树，比较经过每个点的路径的和，最后得到肯定是最大的
+递归的时候我们需要什么：我们需要以左子树结尾的最大的路径是多少，右子树结尾的最大的路径是多少
+"""
+
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
