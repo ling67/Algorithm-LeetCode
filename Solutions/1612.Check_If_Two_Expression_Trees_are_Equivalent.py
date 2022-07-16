@@ -63,3 +63,35 @@ class Solution:
         dfs(root1, cnter1)
         dfs(root2, cnter2)
         return cnter1 == cnter2
+       
+"""
+Solution 2:it should be support the - sign
+"""
+
+# Definition for a binary tree node.
+# class Node(object):
+#     def __init__(self, val=" ", left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def checkEquivalence(self, root1: 'Node', root2: 'Node') -> bool:
+        
+        values = collections.defaultdict(int)
+        
+        def helper(node, operator):
+            
+            if not node: return None
+            
+            helper(node.left, operator)
+            helper(node.right, operator)
+            
+            if operator == "+":
+                values[node.val] += 1
+            elif operator == "-":
+                values[node.val] -= 1
+        
+        helper(root1, "+")
+        helper(root2, "-")
+        
+        return all(values[key] == 0 for key in values if key != "+")
