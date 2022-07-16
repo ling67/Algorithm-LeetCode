@@ -31,7 +31,7 @@ class Solution:
     def minAddToMakeValid(self, s: str) -> int:
         st = []
         for ch in s:
-            if len(st) != 0 and ch == ")" and st[-1] == "(":
+            if len(st) > 0 and ch == ")" and st[-1] == "(":
                 st.pop()
             else:
                 st.append(ch)
