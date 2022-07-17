@@ -13,7 +13,30 @@ Output: [0,0,1,1,2,2]
 
 */
 
-//version 1：2次partition
+"""
+version 1 : 3 pointer
+O(n)
+"""
+class Solution:
+    def sortColors(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        p0, p1, p2 = 0, 0, len(nums) - 1
+        while p1 <= p2:
+            if nums[p1] == 0:
+                nums[p0], nums[p1] = nums[p1], nums[p0]
+                p0 += 1
+                p1 += 1
+            elif nums[p1] == 2:
+                nums[p1], nums[p2] = nums[p2], nums[p1]
+                p2 -= 1
+            else:
+                p1 += 1
+            
+
+
+//version 2：2 times partition
 class Solution:
     def sortColors(self, nums: List[int]) -> None:
         """
