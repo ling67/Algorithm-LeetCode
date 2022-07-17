@@ -35,6 +35,28 @@ Constraints:
 At most 104 calls will be made to next.
 """
 
+"""
+连续最高的用栈，递减栈
+复杂度O(n)
+refer:https://www.youtube.com/watch?v=ZTelsIrE11w&t=222s
+"""
+class StockSpanner:
+
+    def __init__(self):
+        self.st = [(0, float("inf"))]
+
+    def next(self, price: int) -> int:
+        res = 1
+        while price >= self.st[-1][1]:
+            res += self.st.pop()[0]
+        self.st.append((res, price))
+        return res
+
+# Your StockSpanner object will be instantiated and called as such:
+# obj = StockSpanner()
+# param_1 = obj.next(price)
+
+
 class StockSpanner:
 
     def __init__(self):
