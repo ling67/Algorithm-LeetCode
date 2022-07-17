@@ -20,6 +20,39 @@ Constraints:
 1 <= n <= 231 - 1
 """
 
+"""
+2 4 3 2 1
+step1:从末尾向前找到第一个升序：2
+step2:从后向前找到第一个比它大的数：3
+step3:交换2， 3 ： 34221
+step4:让后面的4221排序形成1224
+"""
+
+class Solution:
+    def nextGreaterElement(self, n: int) -> int:
+        s = list(str(n))
+        l = len(s)
+        i = l - 2
+        
+        #step1:
+        while i >= 0:
+            if s[i] < s[i + 1]:
+                break
+            i -= 1
+        if i < 0:   #means all number decrease
+            return -1 
+    
+        #step2:
+        for j in range(l - 1, i, -1):
+            if s[j] > s[i]:
+                s[i], s[j] = s[j], s[i]   #step 3
+                break
+        
+        #step3: 倒序
+        s[i + 1:] = s[i + 1:][::-1]
+        res = ''.join(s)
+        return res if int(res) <= 2 ** 31 - 1 else -1
+
 class Solution:
     def nextGreaterElement(self, n: int) -> int:
         BOUND =  2147483647
