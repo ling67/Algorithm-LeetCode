@@ -15,7 +15,7 @@ Output: [0,0,1,1,2,5]
 #归并排序：NlogN
 class Solution:
     def sortArray(self, nums: List[int]) -> List[int]:
-        if len(nums) <= 1:
+        if len(nums) <= 1:    #易错点：递归结束条件不要忘记
             return nums
         
         # ste p1: divide - 由于每次都是稳定取中间进行divide
@@ -35,7 +35,7 @@ class Solution:
                 nums[k] = rightArr[j]
                 j += 1
                 k += 1
-        while i < len(leftArr):
+        while i < len(leftArr):   #易错点：这里是while
                 nums[k] = leftArr[i]
                 i += 1
                 k += 1
@@ -52,10 +52,10 @@ class Solution:
         return nums
     
     def quickSort(self, nums, start, end):
-        if start >= end:    # the outlet of the recursion is start >= end
+        if start >= end:    # the outlet of the recursion is start >= end 
             return 
         
-        # 先整体有序
+        # 先整体有序, left <= right， l一定是小于等于，这样right一定大于left，下面递归就知道
         # 注意这里选取pivot原因不能保证recursion tree深度稳定在log(N)，最坏的情况是深度为N.
         pivot = nums[(start + end) // 2]   # key point 1: pivot is the value, not the index，一定要在while循环外面取值  
         left, right = start, end
