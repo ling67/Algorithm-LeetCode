@@ -34,15 +34,15 @@ class Solution:
         if not head:
             return None
         
-        dummy = ListNode(0, head)
-        achor, curr = dummy, head
+        dummyNode = ListNode(-1, head)
+        prev, curr = dummyNode, head
         while curr:
-            if curr.val != val:
-                achor = curr
+            if curr.val == val:    #这里不能加上prev = prev.next 因为后面一个curr也有可能是val
+                prev.next = curr.next
                 curr = curr.next
             else:
+                prev = prev.next
                 curr = curr.next
-                achor.next = curr
-
-                return dummy.next
+                
+        return dummyNode.next
             
