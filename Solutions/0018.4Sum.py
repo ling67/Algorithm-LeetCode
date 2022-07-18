@@ -38,7 +38,7 @@ class Solution:
         lens = len(nums)
         
         for i in range(lens-3):
-            if i > 0 and nums[i] == nums[i-1]:  #去重
+            if i > 0 and nums[i] == nums[i-1]:  #去重 易错点
                 continue
             
             if nums[i] * 4 > target:  #优化
@@ -50,7 +50,7 @@ class Solution:
                 if j > i + 1 and nums[j] == nums[j-1]:  
                     continue
                     
-                if nums[i] + nums[j] * 3 > target: #优化
+                if nums[i] + nums[j] * 3 > target: #优化  易错点：记得加上nums[i]
                     break
                 
                 left, right = j + 1, lens - 1
@@ -62,7 +62,7 @@ class Solution:
                         left += 1
                     else:
                         res.append([nums[i], nums[j], nums[left], nums[right]])
-                        left += 1
+                        left += 1              #易错点：记得先处理left and right 再去重
                         right -= 1
                         while left < right and nums[left] == nums[left - 1]:  #去重
                             left += 1 
