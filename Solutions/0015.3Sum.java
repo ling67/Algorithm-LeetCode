@@ -21,7 +21,7 @@ Output: []
 */
 
 
-//python 版本
+//Solution 1: two pointer
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         if not nums or len(nums) < 3:
@@ -53,9 +53,33 @@ class Solution:
                     while left < right and nums[right] == nums[right+1]: # 注意点三：对 left 和 right 去重!!!!!!!
                         right -= 1
         return res
-            
-       
+ 
+ //Solution 2: hashset
+ 
+ class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        res = []
+        nums.sort()
+        for i in range(len(nums)):
+            if nums[i] > 0:
+                break
+            if i == 0 or nums[i - 1] != nums[i]:    #i 去重
+                self.twoSum(nums, i, res)
+        return res
 
+    def twoSum(self, nums: List[int], i: int, res: List[List[int]]):
+        seen = set()
+        j = i + 1
+        while j < len(nums):
+            complement = -nums[i] - nums[j]
+            if complement in seen:
+                res.append([nums[i], nums[j], complement])
+                while j + 1 < len(nums) and nums[j] == nums[j + 1]:   #j 去重
+                    j += 1
+            seen.add(nums[j])
+            j += 1
+                        
+/****************************************java version****************************************/
 
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
