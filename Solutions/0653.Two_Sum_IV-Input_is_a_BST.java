@@ -63,3 +63,27 @@ class Solution:
             res += self.inorder(root.right)
             
         return res
+
+"""
+一边遍历，一边check，遍历：递归，栈
+"""
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def findTarget(self, root: Optional[TreeNode], k: int) -> bool:
+        nums = set()
+        st = [root]    #栈
+        while st:
+            cur = st.pop()
+            if k - cur.val in nums:
+                return True
+            nums.add(cur.val)
+            if cur.left:
+                st.append(cur.left)
+            if cur.right:
+                st.append(cur.right)
+        return False
