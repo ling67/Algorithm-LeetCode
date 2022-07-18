@@ -29,7 +29,7 @@ The number of nodes in each tree is in the range [1, 5000].
 #         self.left = left
 #         self.right = right
 
-# 1. hashset
+# 1. two pointer 反向双指针
 
 class Solution:
     def twoSumBSTs(self, root1: Optional[TreeNode], root2: Optional[TreeNode], target: int) -> bool:
@@ -59,7 +59,7 @@ class Solution:
         
         return res
 
-# 2. in-order-traversal + 反向双指针
+# 2. hashset 边遍历边check
 class Solution:
     def twoSumBSTs(self, root1: Optional[TreeNode], root2: Optional[TreeNode], target: int) -> bool:
         # step 1:put the node of 1st tree into a hash set
@@ -105,7 +105,8 @@ class Solution:
         else:
             return True
          
-       
+/*******************************************java version**************************************************/
+         
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
