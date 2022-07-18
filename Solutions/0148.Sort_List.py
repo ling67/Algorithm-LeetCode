@@ -27,6 +27,51 @@ The number of nodes in the list is in the range [0, 5 * 104].
 
 Follow up: Can you sort the linked list in O(n logn) time and O(1) memory (i.e. constant space)?
 """
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def sortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if not head or not head.next:
+            return head
+        
+        #step1: find mid value
+        dummy = ListNode(head)
+        slow, fast = head, head.next
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+        
+        rightHead = slow.next    #易错点，slow偏左，所以rightHead = slow.next
+        slow.next = None
+        
+        #step2: divide
+        l1 = self.sortList(head)
+        l2 = self.sortList(rightHead)
+        
+        #step3: conquer
+        new_dummy = curr = ListNode()
+        while l1 and l2:
+            if l1.val <= l2.val:
+                curr.next = l1
+                curr = curr.next
+                l1 = l1.next
+            else:
+                curr.next = l2
+                curr = curr.next
+                l2 = l2.next
+        if l1:
+            curr.next = l1
+        if l2:
+            curr.next = l2
+            
+        return new_dummy.next
+
+
+//version 2 同version 1 就是分成了2个函数       
 # Definition for singly-linked list.
 # class ListNode:
 #     def __init__(self, val=0, next=None):
