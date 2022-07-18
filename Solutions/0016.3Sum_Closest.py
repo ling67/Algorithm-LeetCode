@@ -25,7 +25,7 @@ class Solution:
         closet_sum = nums[0] + nums[1] + nums[2]
         nums.sort()
         for i in range(lens - 2):
-            l, r = i + 1, lens - 1
+            l, r = i + 1, lens - 1   #易错点l from i+1
             while l < r:
                 three_sum = nums[i] + nums[l] + nums[r]
                 #check if we need update closet_sum
@@ -40,7 +40,7 @@ class Solution:
                 
         return closet_sum
             
-                
+/*******************************************java version*****************************************************/              
 
 class Solution {
     public int threeSumClosest(int[] nums, int target) { 
