@@ -34,6 +34,8 @@ class Solution:
         
         #setp 2: for 虚幻nums[i],然后双指针解决twosum问题
         for i in range(lens - 2):
+            if nums[i] > 0:    #优化点
+                break
             if i > 0 and nums[i] == nums[i -1]:   # 注意点一：对i去重
                 continue
                 
