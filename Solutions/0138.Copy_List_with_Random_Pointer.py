@@ -22,6 +22,8 @@ Input: head = [[7,null],[13,0],[11,4],[10,2],[1,0]]
 Output: [[7,null],[13,0],[11,4],[10,2],[1,0]]
 */
 
+#Solution 1 : hashmap + recursion
+
 """
 # Definition for a Node.
 class Node:
@@ -31,6 +33,21 @@ class Node:
         self.random = random
 """
 
+class Solution:
+    def __init__(self):
+        self.visit = {None: None}
+    
+    # return the copylist
+    def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
+        if head in self.visit:
+            return self.visit[head]
+        node = Node(head.val, None, None)
+        self.visit[head] = node
+        node.next = self.copyRandomList(head.next)
+        node.random = self.copyRandomList(head.random)
+        return node
+
+#Solution 2 : hashmap + traverse
 class Solution:
     def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
         curr = head
@@ -52,7 +69,9 @@ class Solution:
         
         return dummy.next
    
-  """
+#Solution 3 : copy node in original list
+
+"""
 # Definition for a Node.
 class Node:
     def __init__(self, x: int, next: 'Node' = None, random: 'Node' = None):
