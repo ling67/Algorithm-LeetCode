@@ -48,22 +48,22 @@ class Solution:
         return None
  
  #3.Two point   O(N+M) O(1)
- class Solution:
-    def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> ListNode:
-        pA = headA
-        pB = headB
-
-        while pA != pB:
-            pA = headB if pA is None else pA.next
-            pB = headA if pB is None else pB.next
-
-        return pA
+#refer: https://www.youtube.com/watch?v=Dk2-0A8soHw&t=173s
+class Solution:
+    def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> Optional[ListNode]:
+        if not headA or not headB:
+            return None
+        pa, pb = headA, headB
+        while pa != pb:
+            pa = headB if pa is None else pa.next
+            pb = headA if pb is None else pb.next
+        return pa
+    
         # Note: In the case lists do not intersect, the pointers for A and B
         # will still line up in the 2nd iteration, just that here won't be
         # a common node down the list and both will reach their respective ends
         # at the same time. So pA will be NULL in that case.
  
-
 # 4.version connect head and tail 舍弃
 class Solution:
     def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> Optional[ListNode]:
@@ -95,6 +95,9 @@ class Solution:
         curr.next = None
         
         return curr1
+
+    
+/****************************************************java version**************************************************/ 
 
 /**
  * Definition for singly-linked list.
