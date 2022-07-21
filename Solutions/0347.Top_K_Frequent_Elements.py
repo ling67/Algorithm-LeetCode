@@ -33,6 +33,8 @@ class Solution:
                 heappushpop(q, (freq, num))
         return [x[1] for x in q]
 
+       
+/****************************************************java version****************************************************8/       
 class Solution {
     public int[] topKFrequent(int[] nums, int k) {
         //Prioraty
