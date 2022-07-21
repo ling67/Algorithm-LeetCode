@@ -30,6 +30,8 @@ class Solution:
             
         return False
 
+ /************************************java version*******************************************/   
+    
 //version1:hash
 /**
  * Definition for singly-linked list.
