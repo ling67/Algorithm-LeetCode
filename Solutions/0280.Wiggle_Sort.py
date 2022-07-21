@@ -41,8 +41,8 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        preShouldBeLessThanCur = True
+        pre_smaller = True
         for i in range(1, len(nums)):
-            if nums[i - 1] >= nums[i] and preShouldBeLessThanCur or (nums[i - 1] <= nums[i] and not preShouldBeLessThanCur):
+            if nums[i - 1] >= nums[i] and pre_smaller or (nums[i - 1] <= nums[i] and not pre_smaller):
                 nums[i - 1], nums[i] = nums[i], nums[i - 1]
-            preShouldBeLessThanCur = not preShouldBeLessThanCur
+            pre_smaller = not pre_smaller
