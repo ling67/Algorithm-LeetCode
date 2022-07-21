@@ -48,3 +48,20 @@ class Solution:
                     st1.append(ch)
         return st1
 
+# Solution 2: O(1) memery space     
+class Solution:
+    def backspaceCompare(self, s: str, t: str) -> bool:
+        return self.construct(s) == self.construct(t)
+    
+    def construct(self, s):
+        backspace_cnt = 0
+        res = ""
+        for i in range(len(s) - 1, -1, -1):
+            if s[i] == "#":
+                backspace_cnt += 1
+            else:
+                if backspace_cnt > 0:
+                    backspace_cnt -= 1
+                else:
+                    res += s[i]
+        return res[::-1]
