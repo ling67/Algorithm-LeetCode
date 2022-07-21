@@ -52,7 +52,7 @@ class Solution:
         return nums
     
     def quickSort(self, nums, start, end):
-        if start >= end:    # the outlet of the recursion is start >= end 
+        if start >= end:    # 易错点：容易忘记 the outlet of the recursion is start >= end 
             return 
         
         # 先整体有序, left <= right， l一定是小于等于，这样right一定大于left，下面递归就知道
