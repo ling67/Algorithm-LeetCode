@@ -23,35 +23,32 @@ class Solution:
     先把正负数 partition 开，然后再相向双指针进行交换。
     """
     def rerange(self, A):
-        # write your code here
-        pos, neg = 0, 0
-        for num in A:
-            if num > 0:
-                pos += 1
-            else:
-                neg += 1
-        self.partition(A, pos > neg)
-        self.interleave(A, pos == neg)
+        if A is None or len(A) <= 1:
+            return
 
-    def partition(self, A, start_positive):
-        flag = 1 if start_positive else -1
-        left, right = 0, len(A) - 1
-        while left < right:
-            while left < right and A[left] * flag > 0:
-                left += 1
-            while left < right and A[right] * flag < 0:
-                right -= 1
-            if left < right:
-                A[left], A[right] = A[right], A[left]
-                left += 1
-                right -= 1
+        # Assume A does not contain 0
+        l, r = 0, len(A) - 1
+        while l <= r:
+            while l <= r and A[l] < 0:
+                l += 1
+            while l <= r and A[r] > 0:
+                r -= 1    
+            if l <= r:
+                A[l], A[r] = A[r], A[l]
+                l += 1
+                r -= 1
 
-    def interleave(self, A, has_same_length):
-        left, right = 1, len(A) - 1
-        if has_same_length:
-            right = len(A) - 2
-        while left < right:
-            A[left], A[right] = A[right], A[left]
-            left, right = left + 2, right - 2
+        neg_count = l
+        pos_count = len(A) - l
 
+        # the amount of pos and neg number should at most diff by one
+        if abs(neg_count - pos_count) > 1:
+            return
 
+        l = 1 if neg_count >= pos_count else 0
+        r = len(A) - 2 if pos_count >= neg_count else len(A) - 1
+
+        while l < r:
+            A[l], A[r] = A[r], A[l]
+            l += 2
+            r -= 2
