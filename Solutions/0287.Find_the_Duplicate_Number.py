@@ -66,7 +66,7 @@ class Solution:
 class Solution:
     def findDuplicate(self, nums: List[int]) -> int:
         # step 1: 快慢指针找到相遇的点
-        slowNum, fastNum = 0, 0
+        slowNum, fastNum = nums[0], nums[0]
         while True:
             slowNum = nums[slowNum]
             fastNum = nums[nums[fastNum]]
@@ -74,9 +74,9 @@ class Solution:
                 break
             
         # step 2: 重新定义两个指针p1, p2分别从head和上面相遇的点出发，p1, p2相遇的点就是环的入口
-        currNum = 0
-        while True:
+        currNum = nums[0]
+        while currNum != slowNum:    #易错点：要先判断curr和slow否则有错
             currNum = nums[currNum]
             slowNum = nums[slowNum]
-            if currNum == slowNum:
-                return currNum
+            
+        return currNum
