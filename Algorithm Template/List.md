@@ -43,7 +43,7 @@ Then check if equal.
 
 ```
 
-## check cycle
+## 判断是否有环
 ```python
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
@@ -57,9 +57,38 @@ class Solution:
                 return True
         return False
 ```
-## get intersection point
-```python
 
+## 得到环的入口
+```python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if not head or not head.next:
+            return None
+        
+        #快慢指针找到相遇的点
+        slow, fast = head, head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast:
+                break
+                
+        #如果没有相遇，那就return None
+        if slow != fast:
+            return None
+        
+        #定义两根指针分别从head和上面相遇的点出发，然后p1, p2相遇的地方就是环的入口
+        curr = head
+        while curr != slow:     #易错点：一定要先判断curr! = slow
+            curr = curr.next
+            slow = slow.next
+        return curr
 ```
 
 
