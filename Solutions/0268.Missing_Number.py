@@ -27,6 +27,37 @@ All the numbers of nums are unique.
 
 """
 
+"""
+solution 3: add every num together and compare with n(n+1)/2
+O(1)
+"""
 class Solution:
     def missingNumber(self, nums: List[int]) -> int:
         return (len(nums) + 1) * len(nums) // 2 - sum(nums) 
+
+   
+"""
+solution 1: 448类似的做法，我们通过nums[i] += 1来get rid of the 0s.
+"""
+class Solution:
+    def missingNumber(self, nums: List[int]) -> int:
+        n = len(nums)
+        
+        for i in range(n):
+            nums[i] += 1    # get rid of 0, cuz -0 = 0, which is not good for us to tell if it has been marked as negative or not
+        
+        # 1st pass: change num to negative 
+        for num in nums:
+            idx = abs(num) - 1
+            if idx == n:
+                continue
+            nums[idx] = -abs(nums[idx])
+            
+        # 2nd pass: find the positive number, then the corresponding idx is the missing number
+        for i, num in enumerate(nums):
+            if num > 0:
+                return i
+            
+        return n
+   
+   
