@@ -45,3 +45,17 @@ class Solution:
         for _ in range(n // 2):
             res += heapq.heappop(q)
         return res
+
+       
+class Solution:
+    def twoCitySchedCost(self, costs: List[List[int]]) -> int:
+        # 排序标准：去city A比去city B多用多少钱
+        # 这样一来去排在前面的就是去city A能省下最多钱的人
+        # 让前N个人都去A就能省下最多的钱
+        costs.sort(key = lambda x: (x[0] - x[1]))   
+        N = len(costs) // 2
+        total_cost = 0
+        for i, [cost_A, cost_B] in enumerate(costs):
+            total_cost = total_cost + cost_A if i < N else total_cost + cost_B
+        return total_cost       
+       
