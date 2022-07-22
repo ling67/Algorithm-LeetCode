@@ -58,7 +58,7 @@ class Solution:
         return False
 ```
 
-## 得到环的入口
+## 求环的入口
 ```python
 # Definition for singly-linked list.
 # class ListNode:
