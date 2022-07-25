@@ -33,6 +33,21 @@ t.length == s.length
 s and t consist of only lowercase English letters.
 """
 
+class Solution:
+    def equalSubstring(self, s: str, t: str, maxCost: int) -> int:
+        i = 0
+        sums = 0
+        max_lens = 0
+        for j in range(len(s)):
+            sums += abs(ord(t[j]) - ord(s[j]))
+            if sums <= maxCost:
+                max_lens = max(max_lens, j - i + 1)
+            else:
+                sums -= abs(ord(t[i]) - ord(s[i]))
+                i += 1
+        return max_lens
+
+       
 """
 step 1: construct a cost arr; step 2: sliding window to solve the problem of 
 finding the max lens of subarry with sum at most target
