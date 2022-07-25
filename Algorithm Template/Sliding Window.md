@@ -1,9 +1,12 @@
-## Sliding Window 第一种模板：Find Min_Window_Size for At Least Problem  
- 
-只能用于全是正数的数组，要保证窗口移动过程中的单调性。 有负数可以使用prefix sum
- 
+* A subarray is a contiguous part of the array.
+* 只能用于全是正数的数组，要保证窗口移动过程中的单调性。 有负数可以使用prefix sum
+
+## Sliding Window 第一种模板：Find Min_Window_Size for At Least Problem  （）
+
+* 和大于等于target的最小size
+* i不变，j往前走直到满足条件，i往前走一步，j继续往前走直到满足条件
+
 ```python
-写法是while loop里让后面的指针逐渐远离前面的指针!
 
 for i in range(lens):
     while j < lens and 满足条件:
@@ -12,8 +15,8 @@ for i in range(lens):
     更新 res if 满足条件
     更新带有 i 的信息
 
-
 Leetcode: 209
+
 class Solution:
     def minSubArrayLen(self, target: int, nums: List[int]) -> int:
         lens = len(nums)
@@ -36,7 +39,8 @@ class Solution:
 ## Sliding Window 第二种模板：Find Max_Window_Size for At Most Problem   
 
 ```python
-写法是while loop里让前面的指针去追后面的指针. 模板：
+
+* 和小于target的最小size
 
 for j in range(lens):
     更新带有 j 的信息
@@ -46,6 +50,7 @@ for j in range(lens):
     更新 res if 满足条件
 
 Leetcode: 930
+
 class Solution:
     def numSubarraysWithSum(self, nums: List[int], goal: int) -> int:
         return self._at_most(nums, goal) - self._at_most(nums, goal - 1)
