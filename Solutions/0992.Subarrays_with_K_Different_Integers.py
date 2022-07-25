@@ -34,20 +34,17 @@ class Solution:
             for j in range(len(nums)):
                 ch_to_freq[nums[j]] += 1
                 
-                # 不满足条件
+                # 不满足条件, 更新i
                 while i <= j and len(ch_to_freq) > k:
                     ch_to_freq[nums[i]] -= 1
                     if ch_to_freq[nums[i]] == 0:
                         del ch_to_freq[nums[i]] 
                     i += 1
                 
-                # 满足条件
-                if i <= j:
+                # 满足条件, 更新res
+                if len(ch_to_freq) <= k:
                     res += j - i + 1
             return res
         
         return atMost(k) - atMost(k-1)
                 
-                
-
-
