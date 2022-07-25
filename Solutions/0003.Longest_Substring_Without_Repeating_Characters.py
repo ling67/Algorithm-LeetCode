@@ -29,6 +29,27 @@ s consists of English letters, digits, symbols and spaces.
 
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
+        ch_to_cnt = defaultdict(int)
+        max_len = 0
+        i = 0
+        for j, ch in enumerate(s):
+            ch_to_cnt[ch] += 1
+            
+            while i <= j and j - i + 1 > len(ch_to_cnt):    #判断每个字符只出现了一次
+                ch_to_cnt[s[i]] -= 1
+                if ch_to_cnt[s[i]] == 0:
+                    del ch_to_cnt[s[i]]
+                i += 1
+            
+            if j - i + 1 == len(ch_to_cnt):
+                max_len = max(max_len, j - i + 1)
+        
+        return max_len
+       
+       
+
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
         visited = set()
         j = 0
         max_len = 0
