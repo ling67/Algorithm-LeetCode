@@ -28,21 +28,6 @@ Constraints:
 1 <= k <= nums.length
 """
 
-class Solution:
-    def numberOfSubarrays(self, nums: List[int], k: int) -> int:
-        def atMostK(k):
-            res = i = 0
-            for j in range(len(nums)):
-                k -= nums[j] % 2
-                while k < 0:
-                    k += nums[i] % 2
-                    i += 1
-                res += j - i + 1        #以j结尾的,小于等于k的个数
-            return res
-        return atMostK(k) - atMostK(k - 1)
-        
-    
-
 """
 exactly(K) = atMost(K) - atMost(K-1); 第二种模板：find max subarray size for at most problem. 写法是while loop里让前面的指针去追后面的指针
 """
@@ -68,4 +53,17 @@ class Solution:
                 j += 1
                 
         return res
-            
+
+       
+class Solution:
+    def numberOfSubarrays(self, nums: List[int], k: int) -> int:
+        def atMostK(k):
+            res = i = 0
+            for j in range(len(nums)):
+                k -= nums[j] % 2
+                while k < 0:
+                    k += nums[i] % 2
+                    i += 1
+                res += j - i + 1        #以j结尾的,小于等于k的个数
+            return res
+        return atMostK(k) - atMostK(k - 1)
