@@ -40,21 +40,21 @@ class Solution:
         i = 0
         res = 0
         for j in range(len(nums)):
-            if nums[j] % 2 == 1:
-                odd_cnt += 1
-                
+            odd_cnt += nums[j] % 2
+
+            #不满足条件
             while i <= j and odd_cnt > k:
-                if nums[i] % 2 != 0:
-                    odd_cnt -= 1
+                odd_cnt -= nums[i] % 2
                 i += 1
             
+            #满足条件
             if odd_cnt <= k:
                 res += j - i + 1 
-                j += 1
                 
         return res
 
        
+/********************************************舍弃***************************************/
 class Solution:
     def numberOfSubarrays(self, nums: List[int], k: int) -> int:
         def atMostK(k):
