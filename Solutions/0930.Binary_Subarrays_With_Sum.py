@@ -27,6 +27,23 @@ nums[i] is either 0 or 1.
 0 <= goal <= nums.length
 """
 
+class Solution:
+    def numSubarraysWithSum(self, nums: List[int], goal: int) -> int:
+        def atMost(goal):
+            if goal < 0:   #注意这里不要忘记判断
+                return 0
+            res = 0
+            i = 0
+            for j in range(len(nums)):
+                goal -= nums[j]
+                while goal < 0:
+                    goal += nums[i]
+                    i += 1
+                res += j - i + 1
+            return res    
+            
+        return atMost(goal) - atMost(goal - 1)
+
 """
 求和为goal的连续字串个数 = 和小于等于goal的连续字串个数 - 和小于等于goal-1的连续字串个数. 
 注意nums[i] is either 0 or 1.所以当 nums[i] + ... nums[j] <= target时，cnt = j - i + 1
