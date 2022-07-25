@@ -29,6 +29,28 @@ s only consists of a, b or c characters.
 
 class Solution:
     def numberOfSubstrings(self, s: str) -> int:
+        ch_to_freq = collections.defaultdict(int)
+        res = 0
+        i = 0
+        for j, ch in enumerate(s):
+            ch_to_freq[ch] += 1
+            
+            #满足条件
+            while i <= j and len(ch_to_freq) >= 3:
+                res += len(s) - j   #len(s) - j 表示以 i 开头的valid_substring的个数, j为满足条件的字串的最后一个下标
+                
+                ch_to_freq[s[i]] -= 1
+                if ch_to_freq[s[i]] == 0:
+                    del ch_to_freq[s[i]]
+                i += 1
+                
+        return res
+       
+       
+       
+
+class Solution:
+    def numberOfSubstrings(self, s: str) -> int:
         ch_to_cnt = defaultdict(int)
         j = 0
         res = 0
