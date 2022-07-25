@@ -43,16 +43,19 @@ class Solution:
         for j in range(len(nums)):
             sums = sums + nums[j]
             
+            #不满足条件，更新i
             while i < j and sums > target:
                 sums = sums - nums[i]
                 i += 1
-                
+            
+            #满足条件更新结果
             if sums <= target:
                 cnt += j - i + 1  #以j结尾连续字串的个数
                 
         return cnt
 
-       
+/***********************************************舍弃********************************************/  
+
 class Solution:
     def numSubarraysWithSum(self, nums: List[int], goal: int) -> int:
         def atMost(goal):
@@ -68,9 +71,8 @@ class Solution:
                     cnt += j - i + 1
             return cnt
         return atMost(goal) - atMost(goal - 1)  
+
        
-     
-     
 class Solution:
     def numSubarraysWithSum(self, nums: List[int], goal: int) -> int:
         def atMost(goal):
