@@ -56,6 +56,24 @@ class Solution:
 class Solution:
     def numSubarraysWithSum(self, nums: List[int], goal: int) -> int:
         def atMost(goal):
+            cnt = 0
+            i = 0
+            sums = 0
+            for j in range(len(nums)):
+                sums += nums[j]
+                while i < j and sums > goal:
+                    sums = sums - nums[i]
+                    i += 1
+                if sums <= goal:
+                    cnt += j - i + 1
+            return cnt
+        return atMost(goal) - atMost(goal - 1)  
+       
+     
+     
+class Solution:
+    def numSubarraysWithSum(self, nums: List[int], goal: int) -> int:
+        def atMost(goal):
             if goal < 0:   #注意这里不要忘记判断
                 return 0
             res = 0
