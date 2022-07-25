@@ -20,6 +20,22 @@ Constraints:
 nums[i] is either 0 or 1.
 """
 
+class Solution:
+    def findMaxConsecutiveOnes(self, nums: List[int]) -> int:
+        max_lens = 0
+        zero_cnt = 0
+        i = 0
+        for j in range(len(nums)):
+            zero_cnt += 1 if nums[j] == 0 else 0
+            
+            while i <= j and zero_cnt > 1:
+                zero_cnt -= 1 if nums[i] == 0 else 0
+                i += 1
+            if zero_cnt <= 1:
+                max_lens = max(max_lens, j - i + 1)
+        return max_lens
+            
+
 """
 sliding window solution: find the longest subarray with at most one 0.
 这题是most s problem, 写法是while loop里让前面的指针去追后面的指针. 
