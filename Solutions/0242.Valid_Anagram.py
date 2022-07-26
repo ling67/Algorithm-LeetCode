@@ -19,11 +19,11 @@ Constraints:
 s and t consist of lowercase English letters.
 */
 
-//python version1
+//python version1 Counter
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        arr1 = Counter(list(s))
-        arr2 = Counter(list(t))
+        arr1 = Counter(s)
+        arr2 = Counter(t)
         
         if arr1 == arr2:
             return True
