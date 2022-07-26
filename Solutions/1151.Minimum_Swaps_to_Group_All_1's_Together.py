@@ -32,6 +32,22 @@ data[i] is either 0 or 1.
 
 class Solution:
     def minSwaps(self, data: List[int]) -> int:
+        k = sum(data)         #one amount, window size
+        min_cnt = len(data)  # record the min_cnt of 0s in the window
+        one_cnt = 0           # record cnt of 1s in the window
+        
+        for i, ch in enumerate(data):
+            one_cnt += ch
+            
+            if i >= k:        # if i larger than window size
+                one_cnt -= data[i - k]
+            
+            min_cnt = min(min_cnt, k - one_cnt)
+        return min_cnt
+       
+
+class Solution:
+    def minSwaps(self, data: List[int]) -> int:
         #base on size to get fix window
         k = sum(data)           # k is the window size, which equals how many 1s are there in data
         min_cnt = len(data)     # record the min_cnt of 0s in the window
