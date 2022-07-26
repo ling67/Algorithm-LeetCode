@@ -31,20 +31,6 @@ Constraints:
 1 <= cardPoints[i] <= 104
 1 <= k <= cardPoints.length
 
-class Solution:
-    def maxScore(self, cardPoints: List[int], k: int) -> int:
-        n = len(cardPoints)
-        # get splipper window size n-k
-        windowSize = n - k
-        # 选前 n-k 个作为初始值
-        s = sum(cardPoints[:windowSize])
-        minSum = s
-        for i in range(windowSize, n):
-            # 滑动窗口每向右移动一格，增加从右侧进入窗口的元素值，并减少从左侧离开窗口的元素值
-            s += cardPoints[i] - cardPoints[i-windowSize] 
-            minSum = min(minSum, s)
-        return sum(cardPoints) - minSum
-
  #滑动窗口:模板
  class Solution:
     def maxScore(self, cardPoints: List[int], k: int) -> int:
@@ -63,3 +49,19 @@ class Solution:
                 min_points = min(min_points, points)
         
         return total - min_points
+
+class Solution:
+    def maxScore(self, cardPoints: List[int], k: int) -> int:
+        n = len(cardPoints)
+        # get splipper window size n-k
+        windowSize = n - k
+        # 选前 n-k 个作为初始值
+        s = sum(cardPoints[:windowSize])
+        minSum = s
+        for i in range(windowSize, n):
+            # 滑动窗口每向右移动一格，增加从右侧进入窗口的元素值，并减少从左侧离开窗口的元素值
+            s += cardPoints[i] - cardPoints[i-windowSize] 
+            minSum = min(minSum, s)
+        return sum(cardPoints) - minSum
+
+
