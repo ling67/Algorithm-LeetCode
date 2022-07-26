@@ -39,7 +39,9 @@ class Solution:
             if i >= k:  
                 vowel_cnt -= 1 if s[i - k] in "aeiou" else 0    # step 2: 把(i-k)th item 吐出来
             
-            max_cnt = max(max_cnt, vowel_cnt)     # step 3: 更新res
+            if i >= k - 1:    #满足条件更新，不过可有有无，因为求的是最大值
+                max_cnt = max(max_cnt, vowel_cnt)     # step 3: 更新res
         
         return max_cnt
+
 
