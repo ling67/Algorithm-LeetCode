@@ -40,17 +40,18 @@ which represents how man ymore people can be satisfied if the owner use X minite
 
 class Solution:
     def maxSatisfied(self, customers: List[int], grumpy: List[int], minutes: int) -> int:
-        satisfy = sum(customers[i] for i in range(len(customers)) if grumpy[i] == 0) #how many customer could be satisfy
+        satisfy = sum(customers[i] for i in range(len(customers)) if grumpy[i] == 0)
         max_satisfy = satisfy
-        for i in range(len(customers)):
+        for i, ch in enumerate(customers):
             if grumpy[i] == 1:
                 satisfy += customers[i]
             
             if i >= minutes:
-                if grumpy[i-minutes] == 1:
-                    satisfy -= customers[i-minutes]
-            
-            max_satisfy = max(max_satisfy, satisfy)
-            
+                if grumpy[i - minutes] == 1:
+                    satisfy -= customers[i - minutes]
+                
+            if i >= minutes - 1:        #这个可有可无，因为是求最大值
+                max_satisfy = max(max_satisfy, satisfy)
+              
         return max_satisfy
       
