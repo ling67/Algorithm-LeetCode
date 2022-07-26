@@ -55,19 +55,25 @@
 可以发现**滑动窗口的精妙之处在于根据当前子序列和大小的情况，不断调节子序列的起始位置。从而将O(n^2)暴力解法降为O(n)。**
 
 
-## Sliding Window 第一种模板：Find Min_Window_Size for At Least Problem
+## 滑动窗口题型
+
+一般情况，子串问题，如什么最小覆盖子串、长度最小的子数组等等，都可以考虑使用滑动窗口算法。比较经典的滑动窗口题目有这些：
+
+* 无重复字符的最长子串
+* 最小覆盖子串
+* 串联所有单词的子串
+* 至多包含两个不同字符的最长子串
+* 长度最小的子数组
+* 滑动窗口最大值
+* 字符串的排列
+* 最小窗口子序列
+
+## Sliding Window 第一种模板：Find Min_Window_Size for At Least Problem(求最小窗口)
 
 * 和大于等于target的最小size
 * i不变，j往前走直到满足条件，i往前走一步，j继续往前走直到满足条件
 
 ```python
-
-for i in range(lens):
-    while j < lens and 满足条件:
-        更新带有 j 的信息
-        j += 1
-    更新 res if 满足条件
-    更新带有 i 的信息
 
 Leetcode: 209
 
@@ -78,61 +84,20 @@ class Solution:
         i = 0
         for j in range(len(nums)):
             sums += nums[j]
+            
+            #满足条件更新res，移动i
             while sums >= target:
                 res = min(res, j - i + 1)
                 sums -= nums[i]
                 i += 1
-        return 0 if res == float("inf") else res
-
-class Solution:
-    def minSubArrayLen(self, target: int, nums: List[int]) -> int:
-        lens = len(nums)
-        minSize = float("inf")
-        sums = 0
-        j = 0
-        for i in range(lens):
-            while j < lens and sums < target:    # 满足条件 sums < s
-                sums += nums[j]                  # 更新 j
-                j += 1
-            if sums >= target:                  # 更新 res if 满足条件
-                minSize = min(minSize, j - i)  
                 
-            sums -= nums[i]                     # 更新 i
-            
-        return minSize if minSize != float("inf") else 0
+        return 0 if res == float("inf") else res
         
 ```
 
-## Sliding Window 第二种模板：Find Max_Window_Size for At Most Problem   
+## Sliding Window 第二种模板：Find Max_Window_Size for At Most Problem(求最大窗口)
 
 * 和小于target的最小size
-
-```python
-for j in range(lens):
-    更新带有 j 的信息
-    while i <= j and 满足条件:
-        更新带有 i 的信息
-        i += 1
-    更新 res if 满足条件
-```
-
-```python
-Leetcode: 1208
-
-class Solution:
-    def equalSubstring(self, s: str, t: str, maxCost: int) -> int:
-        i = 0
-        sums = 0
-        max_lens = 0
-        for j in range(len(s)):
-            sums += abs(ord(t[j]) - ord(s[j]))
-            if sums <= maxCost:
-                max_lens = max(max_lens, j - i + 1)
-            else:
-                sums -= abs(ord(t[i]) - ord(s[i]))
-                i += 1
-        return max_lens
-```
 
 ```python
 Leetcode: 930
@@ -148,17 +113,19 @@ class Solution:
         for j in range(len(nums)):
             sums = sums + nums[j]
             
+            #不满足条件
             while i < j and sums > target:
                 sums = sums - nums[i]
                 i += 1
                 
+            #满足条件    
             if sums <= target:
                 cnt += j - i + 1  #以j结尾连续字串的个数
                 
         return cnt
 ```
 
-## Sliding Window 第三种模板是 fixed_window problem
+## Sliding Window 第三种模板是 fixed_window problem (求固定窗口)
 
 ```python
 写法是while loop里让前面的指针去追后面的指针. 模板：
@@ -167,40 +134,29 @@ for i in range(lens):
     把 ith item 加到window
     if i >= k:
         把 (i-k)th item 吐出来 to maintian a fixed size window
-更新 res if 满足条件
+    if 满足条件：    
+        更新 res
+return
 
-
-"""
-567
-permutation:排列，顺序不一样
-solution 1: 由于我们要求的substring时固定长度的，所以最好maintina a fixed size window - 套用fix window模板
-"""
-class Solution:
-    def checkInclusion(self, s1: str, s2: str) -> bool:
-        k = len(s1)   #store s1的长度
-        cnter_2 = Counter(s1)   #store s1的字符和频次
-        ch_to_cnt = defaultdict(int)   #记录窗口内的字母和频次的对应关系
+leedcode 1423
+#滑动窗口:模板
+ class Solution:
+    def maxScore(self, cardPoints: List[int], k: int) -> int:
+        n = len(cardPoints)
+        size = n - k
+        total = sum(cardPoints)
+        min_points = total
+        points = 0
+        for i in range(len(cardPoints)):
+            points += cardPoints[i]
+            
+            if i >= size:
+                points -= cardPoints[i - size]
+                
+            if i >= size - 1:          #容易忘记
+                min_points = min(min_points, points)
         
-        for i in range(len(s2)):
-            ch_to_cnt[s2[i]] += 1
-            
-            if i >= k:
-                ch_to_cnt[s2[i - k]] -= 1
-                if ch_to_cnt[s2[i - k]] == 0:
-                    del ch_to_cnt[s2[i - k]]
-            
-            if ch_to_cnt == cnter_2:
-                return True
-            
-        return False
+        return total - min_points
 
 ```
-
-
-
-
-
-
-
-
 
