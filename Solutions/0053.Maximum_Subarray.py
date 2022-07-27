@@ -22,8 +22,20 @@ class Solution:
             max_sum = max(max_sum, pre - min_pre)     # 注意不能更换maxSubSum和minPrefixSum的更新顺序,why， 比如输入为[-1]
             min_pre = min(min_pre, pre)
         return max_sum
-        
 
+    
+    
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        res = cur = nums[0]
+        for n in nums[1:]:
+            cur = max(cur + n, n)
+            res = max(res, cur)
+        return res
+    
+    
+
+/************************************Java Version******************************************/
 class Solution {
     public int maxSubArray(int[] nums) {
         if (nums == null || nums.length == 0) {
