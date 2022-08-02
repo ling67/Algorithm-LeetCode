@@ -11,8 +11,11 @@
 * https://www.cnblogs.com/grandyang/p/4606334.html
 * https://labuladong.github.io/algo/2/
 
+leetcode:
 leedcode讨论区代码：https://leetcode.com/problems/replace-the-substring-for-balanced-string/discuss/408978/javacpython-sliding-window/367697
 
+github:
+starred 各种总结
 
 2.堆  <br>
 见到集合求Min/max 就用堆  <br>
