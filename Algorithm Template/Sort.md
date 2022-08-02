@@ -1,8 +1,9 @@
-## quick sort
+## partition
 
 ```python
 O(nlogn) O(1)
-def partitionArray(self, nums, k):
+
+def partition(self, nums, k):
         # write your code here
         lens = len(nums)
         if lens == 0:
@@ -20,6 +21,38 @@ def partitionArray(self, nums, k):
                 r -= 1
         
         return l     #l一定是大于r的
+```
+
+## quick sort
+```python
+#快速排序 NlogN
+
+class Solution:
+    def sortArray(self, nums: List[int]) -> List[int]:
+        self.quickSort(nums, 0, len(nums) - 1)
+        return nums
+    
+    def quickSort(self, nums, start, end):
+        if start >= end:    # 易错点：容易忘记 the outlet of the recursion is start >= end 
+            return 
+        
+        # 先整体有序, left <= right， l一定是小于等于，这样right一定大于left，下面递归就知道
+        # 注意这里选取pivot原因不能保证recursion tree深度稳定在log(N)，最坏的情况是深度为N.
+        pivot = nums[(start + end) // 2]   # key point 1: pivot is the value, not the index，一定要在while循环外面取值  
+        left, right = start, end
+        while left <= right:
+            while left <= right and nums[left] < pivot:   # 注意点nums[left] < pivot，一定要使用pivot，而不是nums[mid]，因为当nums[i] nums[j]交换之后，数组变了，所以nums[mid]也可能变了
+                left += 1
+            while left <= right and nums[right] > pivot:  # 注意点nums[left] > pivot 可以将pivot均匀分到两边。
+                right -= 1
+            if left <= right:
+                nums[left], nums[right] = nums[right], nums[left]
+                left += 1
+                right -= 1
+        
+        # 再局部有序, 注意出while循环之后right在左边，所以这里是right
+        self.quickSort(nums, start, right) # no return for the quickSort function!
+        self.quickSort(nums, left, end)
 ```
 
 ## quick select
@@ -97,6 +130,19 @@ class Solution:
 2.再将freq作为数组下标，下标相同的放在同一个bucket中
 3.根据bucket链上结果
 4.以空间换时间
+
+    def sortArray(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+        for i in range(n):   #优化1:i代表需要排序的轮数,其实只需要n-1轮就可以
+            id_made_swap = False  ## 设置标志位，若本身已经有序，则直接break
+            for j in range(n - i - 1):  #j+1为每次能确定的位置 from n - i - 1 = n - 1
+                if nums[j] > nums[j + 1]:
+                    nums[j], nums[j + 1] = nums[j + 1], nums[j]
+                    is_made_swap = True    #交换过就设置为true
+            if not is_made_swap:
+                break
+        return nums
+
 ```
 
 ## cycle sort
