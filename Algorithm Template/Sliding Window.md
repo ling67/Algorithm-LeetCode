@@ -1,13 +1,12 @@
 # 滑动窗口
 
+> **规律1：见到窗口满足什么条件求最大最小，滑动窗口**
+
 题目暴力解法当然是 两个for循环，然后不断的寻找符合条件的子序列，时间复杂度很明显是O(n^2)。
-
-
 
 * A subarray is a contiguous part of the array.
 * A substring is a contiguous sequence of characters within a string.
 * 只能用于全是正数的数组，要保证窗口移动过程中的单调性。 有负数可以使用prefix sum。
-
 
 
 接下来就开始介绍数组操作中另一个重要的方法：**滑动窗口**。
