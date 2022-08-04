@@ -16,7 +16,17 @@ Output: 4
 
 */
 
-#solution 1: heapq, time: O(N+KlogK), N 来自于for循环，logK来自于heap的长度是K，heap 的push 和pop都是logK; heapq适合做第K大，第K小，前K大，前K小问题;
+#solution 0: heapq, time: O(N + KlogK), N 来自于for循环，logK来自于heap的长度是K，heap 的push 和pop都是logK; heapq适合做第K大，第K小，前K大，前K小问题;
+class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        numsHeapq = []
+        for num in nums:
+            heapq.heappush(numsHeapq, num)
+            if len(numsHeapq) > k:
+                heapq.heappop(numsHeapq)   # python默认是最小堆, 每次都是pop出最小值, 于是留下来的就是最大值了
+        return numsHeapq[0]
+    
+#solution 1: heapq, time: O(N+NlogN)
 
 class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
