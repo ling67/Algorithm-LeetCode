@@ -17,13 +17,6 @@ leedcode讨论区代码：https://leetcode.com/problems/replace-the-substring-fo
 github:
 starred 各种总结
 
-2.堆  <br>
-见到集合求Min/max 就用堆  <br>
-见到数组先排序  <br>
-  **规律1：见到需要维护一个集合的最小值/最大值的时候要想到用堆**   <br>
-  **规律2：第k小的元素，Heap用来维护当前候选集合。**  <br>
-  **规律3：见到数组要想到先排序**   <br>
-
 3.Union Find 并查集 <br>
 并查集：一种用来解决集合查询合并的数据结构 支持O(1)find/O(1)union  <br>
 **考点：**   <br>
