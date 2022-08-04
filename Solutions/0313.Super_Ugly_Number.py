@@ -43,7 +43,27 @@ Constraints:
 2 <= primes[i] <= 1000
 primes[i] is guaranteed to be a prime number.
 All the values of primes are unique and sorted in ascending order.
-                
+
+
+# Solution1:heap solution: O(nlog(kn)) where k is the lens of primes list
+
+class Solution:
+    def nthSuperUglyNumber(self, n: int, primes: List[int]) -> int:
+        added = set()
+        added.add(1)
+        hq = [1]
+        for _ in range(n):
+            curr_min = heappop(hq)
+            for prime in primes:
+                if prime * curr_min not in added:
+                    heappush(hq, prime * curr_min)
+                    added.add(prime * curr_min)
+                    
+        return curr_min
+
+      
+# Solution2:DP 
+
 # https://leetcode-cn.com/problems/super-ugly-number/solution/chao-ji-chou-shu-by-leetcode-solution-uzff/
     
 class Solution:
