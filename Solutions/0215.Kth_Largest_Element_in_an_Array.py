@@ -16,7 +16,8 @@ Output: 4
 
 */
 
-//python heap
+#solution 1: heapq, time: O(N+KlogK), N 来自于for循环，logK来自于heap的长度是K，heap 的push 和pop都是logK; heapq适合做第K大，第K小，前K大，前K小问题;
+
 class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
         heapify(nums)    #初始化成最小堆
@@ -24,7 +25,8 @@ class Solution:
             heappop(nums)
         return nums[0]
        
-//python quick select
+#Solution2: quick select:O(N) - O(N^2)
+
 class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
         return self.quickSelect(nums, 0, len(nums) - 1, k - 1)
