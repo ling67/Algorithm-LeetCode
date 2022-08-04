@@ -34,8 +34,8 @@ class Solution:
         res = []
         for num in arr:
             hq.append((abs(num - x), num))
-        heapify(hq)
+        heapify(hq)                            #nlogn
         for _ in range(k):
-            res.append(heappop(hq)[1])
-        res.sort()
+            res.append(heappop(hq)[1])         #klogn
+        res.sort()                             #klogk
         return res
