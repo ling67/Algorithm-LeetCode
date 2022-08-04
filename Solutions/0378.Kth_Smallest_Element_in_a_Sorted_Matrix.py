@@ -39,7 +39,6 @@ Could you solve the problem in O(n) time complexity? The solution may be too adv
 3. 对于任意一个位置(i,j),我们知道(1+1，j),(i, j + 1) 一定比当前数大，展开搜索BFS
     起点：(0,0) 每次展开最小值
     https://www.youtube.com/watch?v=Lo23qFLhJNY
-    
     利用sorted matrix的性质，从左上角第一个元素开始，添加进heap，然后heap当然自动排序了，然后pop出最小的，然后把最小的那个数的右边和下边的元素分别入heap，这样可以保证每次pop出来的都是最小的。
 O(Klog(K) 
 
