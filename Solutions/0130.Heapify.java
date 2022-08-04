@@ -15,6 +15,11 @@ Return any of them.
 //1.数组从前往后for每个数，数组从前往后for循环，从上到下，交换 nlogn  1-n sift up 
 //2.数组中间往前for循环，往下调shif down
 
+/*参考文档：
+  https://www.cs.princeton.edu/~wayne/kleinberg-tardos/pdf/DemoHeapify.pdf
+  http://www.jiuzhang.com/solutions/heapify/
+*/
+
 //version 1 siftup nlogn
 public class Solution {
     /*
