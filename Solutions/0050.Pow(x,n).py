@@ -18,6 +18,33 @@ Output: 0.25000
 Explanation: 2-2 = 1/22 = 1/4 = 0.25
 */
 
+//python version
+
+"""
+-3 % 2 = 1
+-3 // 2 = -2
+"""
+
+class Solution:
+    def myPow(self, x: float, n: int) -> float:
+        if n == 0:
+            return 1
+        if n == 1:
+            return x
+        if n == -1:
+            return 1/x
+        
+        if n % 2 == 0:
+            half = self.myPow(x, n // 2)
+            return half * half
+        else:
+            half = self.myPow(x, n // 2)
+            return half * half * x    
+                
+        return res
+       
+       
+
 //recursion solution: O(logN)
 
 class Solution {
