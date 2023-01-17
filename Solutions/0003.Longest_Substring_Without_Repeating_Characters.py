@@ -41,8 +41,8 @@ class Solution:
                     del ch_to_cnt[s[i]]
                 i += 1
             
-            if j - i + 1 == len(ch_to_cnt):
-                max_len = max(max_len, j - i + 1)
+#             if j - i + 1 == len(ch_to_cnt):    #可以删除
+#                 max_len = max(max_len, j - i + 1)
         
         return max_len
        
