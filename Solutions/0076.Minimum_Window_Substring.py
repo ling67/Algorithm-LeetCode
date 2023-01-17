@@ -33,6 +33,9 @@ s and t consist of uppercase and lowercase English letters.
  
 
 Follow up: Could you find an algorithm that runs in O(m + n) time?
+ 
+官方答案：https://leetcode.com/problems/minimum-window-substring/solutions/164122/minimum-window-substring/
+ 
 
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
