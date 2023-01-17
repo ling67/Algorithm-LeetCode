@@ -33,7 +33,36 @@ s and t consist of uppercase and lowercase English letters.
  
 
 Follow up: Could you find an algorithm that runs in O(m + n) time?
-  
+
+class Solution:
+    def minWindow(self, s: str, t: str) -> str:
+        res = s + s
+        t_cnt = collections.Counter(t)
+        window_cnt = defaultdict(int)
+
+        l = 0
+        for r, ch in enumerate(s):
+            window_cnt[ch] += 1
+
+            # satisfy condition l need to move
+            while l <= r and self.satisfy_condition(window_cnt, t_cnt):
+                if r - l + 1 < len(res):
+                    res = s[l:r+1] 
+                
+                window_cnt[s[l]] -= 1
+                if window_cnt[s[l]] == 0:
+                    del window_cnt[s[l]]
+                l += 1
+
+        return "" if res == s + s else res
+
+    def satisfy_condition(self, cnter_s, cnter_t):
+        for ch, cnt in cnter_t.items():
+            if cnt > cnter_s[ch]:
+                return False
+        return True
+ 
+ 
 """
 time complexity, O(mn) m is the time to check is_valid()
 """
