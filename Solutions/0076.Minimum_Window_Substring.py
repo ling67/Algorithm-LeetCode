@@ -46,8 +46,8 @@ class Solution:
         j = 0
         
         #套用九章的模板 for at least problems
-        for i, ch in enumerate(s):
-            while j < len(s) and not self.is_valid(cnter, cnter_t):
+        for i, ch in enumerate(s): 
+            while j < len(s) and not self.is_valid(cnter, cnter_t):  # s = "ADOBECODEBANC", t = "ABC" , j will became O.
                 cnter[s[j]] += 1
                 j += 1
             
@@ -57,7 +57,7 @@ class Solution:
                     start, end = i, j
             cnter[s[i]] -= 1
             
-        return s[start:end]
+        return s[start:end]  #not include end
     
     #check if all character cnter_t has already in cnter_s
     def is_valid(self, cnter_s, cnter_t):
