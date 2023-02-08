@@ -1,3 +1,21 @@
+# [String]()
+- [0242.Valid_Anagram.java](0242.Valid_Anagram.java) (E) <br>
+Character method or array to record the frequency of each char.
+- [0125.Valid_Palindrome.java](0125.Valid_Palindrome.java) (E) <br>
+Two Pointer.
+- [0409.Longest_Palindrome.java](0409.Longest_Palindrome.java) (E) <br>
+Hashmap
+- [0005.Longest_Palindromic_Substring.java](0005.Longest_Palindromic_Substring.java) (M) <br>
+1.Brute Force. 2.Expand Around Center. 3.Dynamic Programming
+- [0003.Longest_Substring_Without_Repeating_Characters.java](0003.Longest_Substring_Without_Repeating_Characters.java) (M) <br>
+Sliding Window. We need consider when we need move i.
+- [0438.Find_All_Anagrams_in_a_String.java](0438.Find_All_Anagrams_in_a_String.java) (M) <br>
+Sliding Window. with a hashmap(fix window) or sliding window with a array
+- [0076.Minimum_Window_Substring.java](0076.Minimum_Window_Substring.java) (M) <br>
+Sliding Window. 
+- [0008.String_to_Integer_(atoi).java](0008.String_to_Integer_(atoi).java) (M) <br>
+不会，好难
+
 # [Array]()
 
 ```python
@@ -6,11 +24,11 @@
 - [0001.Two_Sum.java](0001.Two_Sum.java) (E) <br>
 Brute force, Hashmap, Two Point(can't use)
 - [0015.3Sum.java](0015.3Sum.java) (M) <br>
-Two Point, then use set to remove repeat array. (more easy)
+Two Pointer. then use set to remove repeat array. (more easy)
 - [0011.Container_With_Most_Water.java](0011.Container_With_Most_Water.java) (M) <br>
-Two Point
+Two Pointer
 - [0075.Sort_Colors.java](0075.Sort_Colors.java) (M) <br>
-Three Point.
+Three Pointer.
 - [0169.Majority_Element.java](0169.Majority_Element.java) (E) <br>
 method 1: sort then return the middle element
 method 2: Hashmap record the feq of the element
@@ -29,17 +47,50 @@ Solution 3: Finding Prefix Product and Suffix Product, it is hard to make sure t
 - [0039.Combination_Sum.java](0039.Combination_Sum.java) (M) <br>
 Backtrack!
 
-# [String]()
-- [0125.Valid_Palindrome.java](0125.Valid_Palindrome.java) (E) <br>
-Two Pointer.
-- [0242.Valid_Anagram.java](0242.Valid_Anagram.java) (E) <br>
-Character method or array to record the frequency of each char.
-- [0409.Longest_Palindrome.java](0409.Longest_Palindrome.java) (E) <br>
-Hashmap
-- [0003.Longest_Substring_Without_Repeating_Characters.java](0003.Longest_Substring_Without_Repeating_Characters.java) (M) <br>
-Sliding Window. We need consider when we need move i.
-- [0008.String_to_Integer_(atoi).java](0008.String_to_Integer_(atoi).java) (M) <br>
-不会，好难
+# [Linked List]()
+- [0021.Merge_Two_Sorted_Lists.java](0021.Merge_Two_Sorted_Lists.java) (E) <br>
+Two Pointer
+- [0141.Linked_List_Cycle.java](0141.Linked_List_Cycle.java) (E) <br>
+Two Pointer. slow and fast point.
+- [0876.Middle_of_the_Linked_List.java](0876.Middle_of_the_Linked_List.java) (E) <br>
+Two Pointer. slow and fast point.
+- [0206.Reverse_Linked_List.java](0206.Reverse_Linked_List.java) (E) <br>
+Recursion.
+- [0146.LRU_Cache.java](0146.LRU_Cache.java) (M) <br>
+Approach 1: LinkedHashMap. https://www.jianshu.com/p/8f4f58b4b8ab
+Approach 2: Hashmap + DoubleLinkedList
+
+# [Stack]()
+- [0020.Valid_Parentheses.java](0020.Valid_Parentheses.java) (E) <br>
+Stack. 
+- [0150.Evaluate_Reverse_Polish_Notation.java](0150.Evaluate_Reverse_Polish_Notation.java) (M) <br>
+- [0232.Implement_Queue_using_Stacks.java](0232.Implement_Queue_using_Stacks.java) (E) <br>
+Two Stack.
+- [0155.Min_Stack.java](0155.Min_Stack.java) (M) <br>
+Two Stack.
+- [0224.Basic_Calculator.java](0224.Basic_Calculator.java) (H) <br>
+Two Stack.太难了
+- [0042.Trapping_Rain_Water.java](0042.Trapping_Rain_Water.java) (M) <br>
+Two Pointer
+TODO[84]太难了
+2.栈解法：固定h，向左右扩散，向左边如果高度大于等于当前h，就加入这个面积，如果高度小于当前的高度就不加入，那此时的面积就是h*(j-i).
+向左/右寻找第一个比自己小的位置可以用两次单调栈实现，我们可以把向左和向右第一个比自己小的位置存到起来，然后再来计算面积。
+
+# [Heap]()
+- [0973.K_Closest_Points_to_Origin.java]( 0973.K_Closest_Points_to_Origin.java) (M) <br>
+1. Brute Force. 2.PriorityQueue
+- [0621.Task_Scheduler.java](0621.Task_Scheduler.java) (M) <br>
+1. Brute Force. 2.PriorityQueue
+
+
+
+
+
+
+
+
+
+
 
 
 
