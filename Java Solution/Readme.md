@@ -78,9 +78,54 @@ TODO[84]太难了
 
 # [Heap]()
 - [0973.K_Closest_Points_to_Origin.java]( 0973.K_Closest_Points_to_Origin.java) (M) <br>
-1. Brute Force. 2.PriorityQueue
+1.Brute Force. 2.PriorityQueue
 - [0621.Task_Scheduler.java](0621.Task_Scheduler.java) (M) <br>
-1. Brute Force. 2.PriorityQueue
+1.Brute Force. 2.PriorityQueue
+
+# [Binary]()
+- [0067.Add_Binary.java](0067.Add_Binary.java) (E) <br>
+Two Pointer, 以前考过
+
+# [Binary Search]()
+- [0704.Binary_Search.java](0704.Binary_Search.java) (E) <br>
+- [0278.First_Bad_Version.java](0278.First_Bad_Version.java) (E) <br>
+- [0033.Search_in_Rotated_Sorted_Array.java](0033.Search_in_Rotated_Sorted_Array.java) (M) <br>
+
+# [Binary Tree]()
+- [0226.Invert_Binary_Tree.java](0226.Invert_Binary_Tree.java) (E) <br>
+Recursion three point: end condition, divide, conquer
+- [0110.Balanced_Binary_Tree.java](0110.Balanced_Binary_Tree.java) (E) <br>
+Recursion three point: end condition, divide, conquer
+- [0236.Lowest_Common_Ancestor_of_a_Binary_Tree.java](0236.Lowest_Common_Ancestor_of_a_Binary_Tree.java) (M) <br>
+Recursion three point: end condition, divide, conquer
+- [0235.Lowest_Common_Ancestor_of_a_Binary_Search_Tree.java](0235.Lowest_Common_Ancestor_of_a_Binary_Search_Tree.java) (E) <br>
+Recursion three point: end condition, divide, conquer
+- [0104.Maximum_Depth_of_Binary_Tree.java](0104.Maximum_Depth_of_Binary_Tree.java) (E) <br>
+Length of Tree
+- [0543.Diameter_of_Binary_Tree.java](0543.Diameter_of_Binary_Tree.java) (E) <br>
+Length of Tree
+- [0102.Binary_Tree_Level_Order_Traversal.java](0102.Binary_Tree_Level_Order_Traversal.java) (M) <br>
+BFS，Queue
+- [0199.Binary_Tree_Right_Side_View.java](0199.Binary_Tree_Right_Side_View.java) (M) <br>
+BFS，Queue
+- [0098.Validate_Binary_Search_Tree.java](0098.Validate_Binary_Search_Tree.java) (M) <br>
+Binary Search Tree
+- [0230.Kth_Smallest_Element_in_a_BST.java](0230.Kth_Smallest_Element_in_a_BST.java) (M) <br>
+Binary Search Tree + inorder
+
+# [Graph]()
+- [0733.Flood_Fill.java](0733.Flood_Fill.java) (E) <br>
+DFS
+
+
+
+
+
+
+
+
+
+
 
 
 
