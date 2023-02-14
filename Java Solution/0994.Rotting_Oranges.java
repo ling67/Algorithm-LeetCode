@@ -13,9 +13,9 @@ class Solution {
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++ ) {
                 if (grid[i][j] == 2) {
-                    Pair<Integer, Integer> pair = new Pair(i, j);
-                    queue.offer(pair);    //讲起始的坏橘子放进队列
-                    set.add(pair);
+                    Pair<Integer, Integer> p = new Pair(i, j);
+                    queue.offer(p);    //讲起始的坏橘子放进队列
+                    set.add(p);
                     sumNum++;
                 }
                 if (grid[i][j] == 1) {
@@ -29,8 +29,8 @@ class Solution {
         }
         
         //方向：右-下-左-上
-        int[] directionX = {0, 1, -1, 0};
-        int[] directionY = {1, 0, 0, -1};
+        int[] X = {0, 1, -1, 0};
+        int[] Y = {1, 0, 0, -1};
         
         while (!queue.isEmpty()) {
             layer++;
@@ -41,8 +41,8 @@ class Solution {
             for (int i = 0; i < size; i++) {
                 Pair<Integer, Integer> cur = queue.poll();
                 for (int j = 0; j < 4; j++) {
-                    int x = cur.getKey() + directionX[j];
-                    int y = cur.getValue() + directionY[j];
+                    int x = cur.getKey() + X[j];
+                    int y = cur.getValue() + Y[j];
                      Pair<Integer, Integer> adj = new Pair(x, y);
                     if (x < 0 || x >= m || y < 0 || y >= n) {
                         continue;
