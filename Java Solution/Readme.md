@@ -114,6 +114,8 @@ Binary Search Tree
 Binary Search Tree + inorder
 
 # [Graph]()
+
+## [DFS]()
 - [0733.Flood_Fill.java](0733.Flood_Fill.java) (E) <br>
 DFS
 - [0200.Number_of_Islands.java](0200.Number_of_Islands.java) (M) <br>
@@ -122,6 +124,8 @@ DFS
 DFS-Backtrack
 - [0542.01_Matrix.java](0542.01_Matrix.java) (M) <br>
 BFS-Matrix-with layer
+
+## [BFS]()
 - [0994.Rotting_Oranges.java](0994.Rotting_Oranges.java) (M) <br>
 BFS-Matrix-with layer
 - [0207.Course_Schedule.java](0207.Course_Schedule.java) (M) <br>
