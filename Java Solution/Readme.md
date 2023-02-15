@@ -116,8 +116,26 @@ Binary Search Tree + inorder
 # [Graph]()
 - [0733.Flood_Fill.java](0733.Flood_Fill.java) (E) <br>
 DFS
+- [0200.Number_of_Islands.java](0200.Number_of_Islands.java) (M) <br>
+DFS
+- [0079.Word_Search.java](0079.Word_Search.java) (M) <br>
+DFS-Backtrack
+- [0542.01_Matrix.java](0542.01_Matrix.java) (M) <br>
+BFS-Matrix-with layer
+- [0994.Rotting_Oranges.java](0994.Rotting_Oranges.java) (M) <br>
+BFS-Matrix-with layer
+- [0207.Course_Schedule.java](0207.Course_Schedule.java) (M) <br>
+BFS-Topological Sort 
 
-
+# [Recursion]()
+- [0046.Permutations.java](0046.Permutations.java) (M) <br>
+DFS-Backtrack
+- [0078.Subsets.java](0078.Subsets.java) (M) <br>
+DFS-Backtrack
+- [0017.Letter_Combinations_of_a_Phone_Number.java](0017.Letter_Combinations_of_a_Phone_Number.java) (M) <br>
+DFS-Backtrack
+- [0133.Clone_Graph.java](0133.Clone_Graph.java) (M) <br>
+DFS-Backtrack
 
 
 
