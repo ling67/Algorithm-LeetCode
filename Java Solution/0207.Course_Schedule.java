@@ -33,6 +33,6 @@ public class Solution {
 	               zeroVerts.offer(c);
 	        }
         }
-        return courseOrder == numCourses; 
+        return courseOrder == numCourses;   //must ==, if there is cicle, courseOrder with be 0, we should return false.
     }
 }
