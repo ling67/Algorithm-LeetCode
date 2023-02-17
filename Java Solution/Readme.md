@@ -108,6 +108,8 @@ Length of Tree
 BFS，Queue
 - [0199.Binary_Tree_Right_Side_View.java](0199.Binary_Tree_Right_Side_View.java) (M) <br>
 BFS，Queue
+- [0111.Minimum_Depth_of_Binary_Tree.java](0111.Minimum_Depth_of_Binary_Tree.java) (M) <br>
+BFS，Queue
 - [0098.Validate_Binary_Search_Tree.java](0098.Validate_Binary_Search_Tree.java) (M) <br>
 Binary Search Tree
 - [0230.Kth_Smallest_Element_in_a_BST.java](0230.Kth_Smallest_Element_in_a_BST.java) (M) <br>
@@ -129,6 +131,8 @@ BFS-Matrix-with layer
 - [0994.Rotting_Oranges.java](0994.Rotting_Oranges.java) (M) <br>
 BFS-Matrix-with layer
 - [0207.Course_Schedule.java](0207.Course_Schedule.java) (M) <br>
+BFS-Topological Sort 
+- [0210.Course_Schedule_II.java](0210.Course_Schedule_II.java) (M) <br>
 BFS-Topological Sort 
 
 # [Recursion]()
