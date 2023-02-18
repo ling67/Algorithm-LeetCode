@@ -15,6 +15,11 @@ Sliding Window. with a hashmap(fix window) or sliding window with a array
 Sliding Window. 
 - [0008.String_to_Integer_(atoi).java](0008.String_to_Integer_(atoi).java) (M) <br>
 不会，好难
+- [0151.Reverse_Words_in_a_String.java](0151.Reverse_Words_in_a_String.java) (M) <br>
+split()
+- [0186.Reverse_Words_in_a_String_II.java](0186.Reverse_Words_in_a_String_II.java) (M) <br>
+Two Pointer
+
 
 # [Array]()
 
