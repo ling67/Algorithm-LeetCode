@@ -130,10 +130,10 @@ DFS
 DFS
 - [0079.Word_Search.java](0079.Word_Search.java) (M) <br>
 DFS-Backtrack
-- [0542.01_Matrix.java](0542.01_Matrix.java) (M) <br>
-BFS-Matrix-with layer
 
 ## [BFS]()
+- [0542.01_Matrix.java](0542.01_Matrix.java) (M) <br>
+BFS-Matrix-with layer
 - [0994.Rotting_Oranges.java](0994.Rotting_Oranges.java) (M) <br>
 BFS-Matrix-with layer
 - [0207.Course_Schedule.java](0207.Course_Schedule.java) (M) <br>
